@@ -113,13 +113,13 @@ def pill_row(tags, x0, y0, max_x, font=F_REG, size=7.2, pad=6.5, h=14.0, gap=5.5
 def draw_brand_logos_centered(x_center, y_top, max_w, box_h=25, gap=6.5):
     logos_config = [
         ("telmont.png", False, 11.5, 7.0),
-        ("bruichladdich.png", False, 12.5, 7.0),
         ("mount-gay.png", False, 12.5, 7.0),
+        ("octomore.png", False, 13.0, 7.0),
         ("remy-martin.png", True, 19.0, 8.0),
         ("cointreau.png", True, 15.5, 8.0),
-        ("port-charlotte.png", False, 15.0, 1.57),
-        ("octomore.png", False, 13.0, 7.0),
-        ("botanist.png", False, 10.0, 7.0),
+        ("bruichladdich.png", False, 13.0, 7.0),
+        ("port-charlotte.png", False, 14.5, 1.57),
+        ("botanist.png", False, 11.0, 7.0),
     ]
     boxes = []
     total_w = 0.0
