@@ -1,0 +1,186 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<title>@trinhtphat — Link Hub</title>
+<style>
+  :root{
+    --bg:#F6F1E6;
+    --surface:#EBE0CC;
+    --surface-2:#DFD0B2;
+    --text:#221A12;
+    --text-muted:#6E5F4C;
+    --accent:#A85B23;
+    --accent-2:#8B2E23;
+    --line:rgba(34,26,18,0.16);
+    --font-display:'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body:'IBM Plex Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+    --font-mono:'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#17120D; --surface:#211A12; --surface-2:#2C2318;
+      --text:#F3E9D8; --text-muted:#B9A88F;
+      --accent:#D98A3D; --accent-2:#C0483A;
+      --line:rgba(243,233,216,0.16);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#17120D; --surface:#211A12; --surface-2:#2C2318;
+    --text:#F3E9D8; --text-muted:#B9A88F;
+    --accent:#D98A3D; --accent-2:#C0483A;
+    --line:rgba(243,233,216,0.16);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;min-height:100vh;background:var(--bg);color:var(--text);
+    font-family:var(--font-body);
+    display:flex;justify-content:center;
+    padding:52px 20px 40px;
+  }
+  .card{width:100%;max-width:420px;}
+
+  .avatar{
+    width:104px;height:104px;border-radius:50%;margin:0 auto 20px;
+    background:radial-gradient(120% 130% at 25% 15%, color-mix(in srgb, var(--accent) 30%, transparent), transparent 60%),
+      linear-gradient(155deg, var(--surface-2), var(--surface));
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);font-style:italic;font-weight:500;
+    font-size:34px;color:var(--text);
+  }
+
+  .name{
+    font-family:var(--font-display);font-weight:500;font-size:26px;
+    text-align:center;margin:0 0 4px;letter-spacing:-0.01em;
+  }
+  .handle{
+    text-align:center;font-family:var(--font-mono);font-size:13px;
+    color:var(--accent);margin:0 0 16px;letter-spacing:0.02em;
+  }
+  .bio{
+    text-align:center;font-size:14.5px;line-height:1.6;color:var(--text-muted);
+    margin:0 0 28px;
+  }
+  .bio strong{color:var(--text);font-weight:600;}
+
+  .tags{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:30px;}
+  .tags span{
+    font-family:var(--font-mono);font-size:11px;letter-spacing:0.04em;
+    padding:6px 10px;border:1px solid var(--line);border-radius:999px;color:var(--text-muted);
+  }
+
+  .links{display:flex;flex-direction:column;gap:12px;}
+  .link{
+    display:flex;align-items:center;gap:14px;
+    padding:16px 18px;border-radius:8px;
+    background:var(--surface);border:1px solid var(--line);
+    text-decoration:none;color:var(--text);
+    transition:transform .15s ease, border-color .15s ease;
+  }
+  .link:hover{transform:translateY(-2px);border-color:var(--accent);}
+  .link .ico{
+    width:38px;height:38px;border-radius:6px;flex:0 0 auto;
+    background:var(--surface-2);display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);font-style:italic;color:var(--accent);font-size:17px;
+  }
+  .link .body{flex:1;min-width:0;}
+  .link .t{font-weight:600;font-size:14.5px;margin:0 0 2px;}
+  .link .s{font-size:12.5px;color:var(--text-muted);margin:0;}
+  .link .arrow{font-family:var(--font-mono);color:var(--text-muted);font-size:16px;}
+
+  .link.primary{background:var(--accent);border-color:var(--accent);}
+  .link.primary .ico{background:rgba(0,0,0,0.15);color:#1A1208;}
+  .link.primary .t{color:#1A1208;}
+  .link.primary .s{color:rgba(26,18,8,0.65);}
+  .link.primary .arrow{color:#1A1208;}
+
+  .divider{
+    display:flex;align-items:center;gap:12px;margin:28px 0 16px;
+    font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;
+    color:var(--text-muted);text-transform:uppercase;
+  }
+  .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line);}
+
+  footer{
+    margin-top:36px;text-align:center;
+    font-family:var(--font-mono);font-size:11px;color:var(--text-muted);
+  }
+  footer a{color:var(--accent);text-decoration:none;}
+
+  /* ---------- BRAND STRIP: CENTER ANCHOR ---------- */
+  .brand-strip{
+    margin:0 0 24px;padding:14px 16px;background:var(--surface);
+    border:1px solid var(--line);border-radius:8px;text-align:center;
+  }
+  .brand-strip-title{
+    font-family:var(--font-mono);font-size:10px;letter-spacing:0.08em;
+    color:var(--accent);text-transform:uppercase;margin-bottom:10px;font-weight:600;
+  }
+  .brand-strip-anchors{
+    display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;
+  }
+  .brand-strip-anchors .bs-logo{
+    height:38px;background:var(--bg);border:1px solid rgba(168,91,35,0.35);
+    border-radius:5px;padding:0 12px;display:flex;align-items:center;justify-content:center;
+  }
+  .brand-strip-anchors .bs-logo img{
+    max-height:24px;max-width:70px;width:auto;height:auto;object-fit:contain;display:block;
+  }
+  .brand-strip-sub{
+    font-family:var(--font-mono);font-size:10px;color:var(--text-muted);
+    letter-spacing:0.03em;line-height:1.5;
+  }
+</style>
+
+<div class="card">
+  <div class="avatar">PT</div>
+  <h1 class="name">Phát Trịnh</h1>
+  <p class="handle">@trinhtphat</p>
+  <p class="bio">Brand Ambassador ngành spirits, <strong>10+ năm</strong> sống cùng quầy bar Việt Nam. Không dạy đời — chỉ chia sẻ những gì học được về rượu, về nghề.</p>
+
+  <div class="tags">
+    <span>SPIRITS</span><span>COCKTAIL</span><span>F&amp;B</span>
+  </div>
+
+  <div class="brand-strip">
+    <div class="brand-strip-title">Portfolio Rémy Cointreau Việt Nam</div>
+    <div class="brand-strip-anchors">
+      <div class="bs-logo" title="Rémy Martin Fine Champagne Cognac"><img src="brand-logos/remy-martin.png" alt="Rémy Martin"></div>
+      <div class="bs-logo" title="Cointreau L'Unique"><img src="brand-logos/cointreau.png" alt="Cointreau"></div>
+    </div>
+    <div class="brand-strip-sub">
+      The Botanist · Bruichladdich · Octomore · Mount Gay · Telmont
+    </div>
+  </div>
+
+  <div class="links">
+    <a class="link primary" href="https://claude.ai/code/artifact/d9d78ee5-fa9a-4fd7-bdf4-a63a993aeb8c" target="_blank" rel="noopener">
+      <div class="ico">RC</div>
+      <div class="body">
+        <p class="t">Hồ sơ Brand Ambassador đầy đủ</p>
+        <p class="s">Portfolio Rémy Cointreau · booking &amp; hợp tác</p>
+      </div>
+      <div class="arrow">→</div>
+    </a>
+
+    <div class="divider">theo dõi &amp; kết nối</div>
+
+    <a class="link" href="#" onclick="return false;">
+      <div class="ico">IG</div>
+      <div class="body">
+        <p class="t">Drink Note</p>
+        <p class="s">Nội dung F&amp;B, rượu &amp; cocktail mỗi tuần</p>
+      </div>
+      <div class="arrow">↗</div>
+    </a>
+
+    <a class="link" href="https://zalo.me/0988822807" target="_blank" rel="noopener">
+      <div class="ico">💬</div>
+      <div class="body">
+        <p class="t">Nhắn Zalo hợp tác</p>
+        <p class="s">Sự kiện, training, nội dung thương hiệu</p>
+      </div>
+      <div class="arrow">↗</div>
+    </a>
+  </div>
+
+  <footer>phat.trinh@alchemy-asia.com · +84 988 822 807<br>TP. Hồ Chí Minh · <a href="https://zalo.me/0988822807" target="_blank" rel="noopener">Nhắn tin Zalo</a></footer>
+</div>

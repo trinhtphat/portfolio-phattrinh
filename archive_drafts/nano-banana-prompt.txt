@@ -1,0 +1,21 @@
+Using the attached reference photo, preserve the exact facial identity of the person: same face shape, bone structure, eyes, nose, mouth, skin tone, hairline, and facial hair exactly as shown. Do not beautify, idealize, or alter the face in any way — the result must be immediately recognizable as the same individual, not a different or generic person.
+
+Regenerate this exact person in a new professional portrait with a cool, confident, modern editorial look:
+
+Pose/expression: chest-up crop, looking directly into the camera with a calm, self-assured, faintly cool expression — the look of someone competent and at ease, not stiff or overly formal.
+
+Wardrobe: fitted black turtleneck sweater (or dark tailored jacket over a black turtleneck), sleeves neat, grooming sharp and intentional.
+
+Lighting: soft, directional studio lighting with slightly more contrast — a defined key light that sculpts the jawline and cheekbones, gentle shadow falloff for depth, subtle rim light separating the subject from the background.
+
+Background: seamless dark or light grey studio backdrop, clean and uncluttered, subtle vignette for focus.
+
+Composition: subject centered or slightly off-center, generous negative space, confident upright posture, chin slightly down and eyes up for a stronger, more assertive gaze.
+
+Technical: medium-format camera look, 85mm lens, shallow depth of field, tack-sharp focus on the eyes, fine natural film grain, high dynamic range, rich tonal range from deep blacks to soft whites, editorial fashion-magazine retouching quality.
+
+Style: monochrome black and white photography, modern and cool editorial tone — polished and professional, but with an understated edge, not corporate or stiff.
+
+Orientation: vertical portrait, aspect ratio 4:5.
+
+Priority: identity match to the reference photo overrides all stylistic instructions above — if there is any conflict, keep the person's real face unchanged.

@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor & AI Tool Files
+.vscode/
+.idea/
+.claude/
+scratch/
+temp_*.html
+test_*.html
+*.tmp
+
+# Credentials & Environment
+.env
+.env.local
