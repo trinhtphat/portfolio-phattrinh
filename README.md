@@ -33,14 +33,13 @@ Trang web được thiết kế theo phong cách tối giản, sang trọng chu�
 
 ```
 Porfolio_personal/
-├── deploy/                     # Gói sản phẩm thuần web sẵn sàng deploy (Vercel / Netlify / GitHub Pages)
-│   ├── index.html              # Trang web chính thức
-│   ├── landing-trade.html      # Bản lưu trữ trang web
-│   ├── img/                    # 22 ảnh thực tế đã tối ưu web (WebP/JPG)
-│   ├── brand-logos/            # 7 logo thương hiệu Rémy Cointreau
-│   ├── portrait.jpg            # Ảnh chân dung
-│   ├── portrait_rounded.png    # Ảnh chân dung bo góc
-│   └── qr.png                  # Mã QR kết nối Zalo
+├── index.html                  # Trang web chính thức (tự động kích hoạt trên GitHub Pages / Root)
+├── landing-trade.html          # Bản sao lưu trữ trang web
+├── img/                        # 22 ảnh thực tế đã tối ưu web (WebP/JPG)
+├── brand-logos/                # 7 logo thương hiệu Rémy Cointreau
+├── portrait.jpg                # Ảnh chân dung
+├── portrait_rounded.png        # Ảnh chân dung bo góc
+├── qr.png                      # Mã QR kết nối Zalo
 │
 ├── pdf_profile/                # Thư mục ấn phẩm hồ sơ năng lực PDF chuẩn in ấn A4 (1 trang duy nhất)
 │   ├── Phat-Trinh-Brand-Ambassador-Profile.pdf     # Bản tiếng Việt
@@ -67,17 +66,18 @@ Porfolio_personal/
 
 ## 🚀 Hướng Dẫn Deploy Lên GitHub Pages / Vercel
 
-### Cách 1: GitHub Pages
+### Cách 1: GitHub Pages (Mặc định & Đơn giản nhất)
 1. Vào mục **Settings** của repository trên GitHub.
-2. Chọn tab **Pages**.
+2. Chọn tab **Pages** ở menu bên trái.
 3. Tại phần **Build and deployment**:
    - Source: `Deploy from a branch`
-   - Branch: `main` / Folder: `/deploy` (hoặc `/ (root)` nếu cấu hình index ở root).
-4. Nhấn **Save**, trang web sẽ được kích hoạt tại `https://trinhtphat.github.io/portfolio-phattrinh/`.
+   - Branch: `main` / Folder: `/ (root)`
+4. Nhấn **Save**. Trang web sẽ tự động chạy online tại:  
+   🌐 `https://trinhtphat.github.io/portfolio-phattrinh/`
 
 ### Cách 2: Vercel / Netlify
 1. Kết nối với repository `portfolio-phattrinh`.
-2. Đặt **Root Directory** là `deploy` (hoặc để mặc định nếu trỏ trực tiếp).
+2. Giữ nguyên cấu hình mặc định (Root Directory: `/`).
 3. Nhấn **Deploy**.
 
 ---
