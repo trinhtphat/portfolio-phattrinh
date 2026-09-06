@@ -117,6 +117,7 @@ def draw_brand_logos_centered(x_center, y_top, max_w, box_h=25, gap=6.5):
         ("mount-gay.png", False, 12.5, 7.0),
         ("remy-martin.png", True, 19.0, 8.0),
         ("cointreau.png", True, 15.5, 8.0),
+        ("port-charlotte.png", False, 15.0, 1.57),
         ("octomore.png", False, 13.0, 7.0),
         ("botanist.png", False, 10.0, 7.0),
     ]
@@ -216,7 +217,7 @@ hline(y)
 y -= 15
 stats = [
     ("10+", "Years in the trade"),
-    ("07", "Prestige brands repped"),
+    ("08", "Prestige brands repped"),
     ("Nationwide", "Bar & partner network"),
     ("HCMC", "Primary home base"),
 ]

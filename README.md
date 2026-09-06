@@ -7,7 +7,7 @@
 
 ## 🍸 Overview
 
-Hồ sơ năng lực và trang web cá nhân chuyên nghiệp của **Phát Trịnh**, Brand Ambassador đại diện cho danh mục rượu cao cấp của **Rémy Cointreau** tại Việt Nam (Rémy Martin, Cointreau, The Botanist Islay Dry Gin, Bruichladdich, Octomore, Mount Gay Rum, Champagne Telmont).
+Hồ sơ năng lực và trang web cá nhân chuyên nghiệp của **Phát Trịnh**, Brand Ambassador đại diện cho danh mục rượu cao cấp của **Rémy Cointreau** tại Việt Nam (Rémy Martin, Cointreau, The Botanist Islay Dry Gin, Bruichladdich, Port Charlotte, Octomore, Mount Gay Rum, Champagne Telmont).
 
 Trang web được thiết kế theo phong cách tối giản, sang trọng chuẩn ngành đồ uống xa xỉ (Luxury Spirits & Trade Insider), hỗ trợ song ngữ Tiếng Việt và Tiếng Anh.
 
@@ -36,7 +36,8 @@ Porfolio_personal/
 ├── index.html                  # Trang web chính thức (tự động kích hoạt trên GitHub Pages / Root)
 ├── landing-trade.html          # Bản sao lưu trữ trang web
 ├── img/                        # 22 ảnh thực tế đã tối ưu web (WebP/JPG)
-├── brand-logos/                # 7 logo thương hiệu Rémy Cointreau
+├── brand-logos/                # 8 logo thương hiệu Rémy Cointreau (kèm Port Charlotte)
+├── Port Charlotte-logo.png     # Logo Port Charlotte
 ├── portrait.jpg                # Ảnh chân dung
 ├── portrait_rounded.png        # Ảnh chân dung bo góc
 ├── qr.png                      # Mã QR kết nối Zalo

@@ -118,6 +118,7 @@ def draw_brand_logos_centered(x_center, y_top, max_w, box_h=25, gap=6.5):
         ("mount-gay.png", False, 12.5, 7.0),
         ("remy-martin.png", True, 19.0, 8.0),
         ("cointreau.png", True, 15.5, 8.0),
+        ("port-charlotte.png", False, 15.0, 1.57),
         ("octomore.png", False, 13.0, 7.0),
         ("botanist.png", False, 10.0, 7.0),
     ]
@@ -218,7 +219,7 @@ hline(y)
 y -= 15
 stats = [
     ("10+", "Năm kinh nghiệm F&B / Bar"),
-    ("07", "Thương hiệu di sản đại diện"),
+    ("08", "Thương hiệu di sản đại diện"),
     ("Toàn quốc", "Mạng lưới đối tác & bar"),
     ("TP. HCM", "Địa bàn hoạt động chính"),
 ]
