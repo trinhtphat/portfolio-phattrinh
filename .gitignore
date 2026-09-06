@@ -21,3 +21,5 @@ test_*.html
 # Credentials & Environment
 .env
 .env.local
+
+*.bat
