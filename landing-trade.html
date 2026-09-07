@@ -1,6 +1,11 @@
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap">
-<title>Phát Trịnh — Brand Ambassador</title>
-<style>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phát Trịnh — Brand Ambassador</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap">
+  <style>
   :root{
     --yellow:#F4A62A;
     --black:#161513;
@@ -319,37 +324,54 @@
     .gallery{grid-template-columns:1fr;gap:14px;}
   }
   .g-tile{
-    position:relative;aspect-ratio:4/3;border-radius:4px;overflow:hidden;
-    background:var(--black);box-shadow:0 4px 14px rgba(0,0,0,0.08);
-    transition:transform 0.25s ease, box-shadow 0.25s ease;
+    position:relative;aspect-ratio:4/3;border-radius:6px;overflow:hidden;
+    background:#161513;
+    background:radial-gradient(circle at center, #24211d 0%, #141311 100%);
+    border:1px solid rgba(255,255,255,0.08);
+    box-shadow:0 4px 14px rgba(0,0,0,0.12);
+    transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
   }
-  .g-tile:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.18);}
+  .g-tile:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 28px rgba(0,0,0,0.3);
+    border-color:rgba(244,166,42,0.35);
+  }
   .g-tile img{
-    width:100%;height:100%;object-fit:cover;display:block;
-    transition:transform 0.4s ease;
+    width:100%;height:100%;object-fit:contain;object-position:center;display:block;
+    transition:transform 0.35s ease;
   }
-  .g-tile:hover img{transform:scale(1.05);}
+  .g-tile:hover img{transform:scale(1.03);}
   .g-overlay{
     position:absolute;inset:0;
-    background:linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0.88) 100%);
+    background:linear-gradient(180deg, rgba(0,0,0,0.25) 0%, transparent 35%, transparent 60%, rgba(0,0,0,0.88) 100%);
     display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;
-    padding:16px 18px;gap:5px;
+    padding:14px 16px;gap:3px;
     pointer-events:none;
+    box-sizing:border-box;
+    transition:background 0.25s ease;
+  }
+  .g-tile:hover .g-overlay{
+    background:linear-gradient(180deg, rgba(0,0,0,0.35) 0%, transparent 30%, transparent 55%, rgba(0,0,0,0.94) 100%);
   }
   .g-overlay .cat{
+    position:absolute;top:12px;left:14px;
     display:inline-block;
     font-family:var(--font-head);font-weight:800;font-size:9.5px;letter-spacing:0.08em;
     background:var(--yellow);color:var(--black);padding:3px 8px;border-radius:2px;text-transform:uppercase;
+    box-shadow:0 2px 6px rgba(0,0,0,0.4);
   }
   .g-overlay .lbl{
     display:block;
     font-family:var(--font-head);font-weight:700;font-size:13px;color:var(--white);
     letter-spacing:0.02em;line-height:1.3;
+    text-shadow:0 1px 4px rgba(0,0,0,0.9);
   }
   .g-overlay .sublbl{
     display:block;
-    font-size:11px;color:rgba(255,255,255,0.78);line-height:1.35;
+    font-size:11px;color:rgba(255,255,255,0.85);line-height:1.35;
+    text-shadow:0 1px 3px rgba(0,0,0,0.9);
   }
   .g-tile.g-hidden{display:none !important;}
 
@@ -430,7 +452,234 @@
   @media (max-width:560px){
     .wd-grid,.gallery,.proof-grid,.stat-block{grid-template-columns:1fr;}
   }
+
+  /* ---------- LIGHTBOX MODAL ---------- */
+  .lightbox-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(10, 9, 8, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    user-select: none;
+    overflow: hidden;
+  }
+  .lightbox-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .lb-header {
+    position: relative;
+    flex: 0 0 auto;
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+    background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, transparent 100%);
+  }
+  .lb-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .lb-cat-badge {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    background: var(--yellow);
+    color: var(--black);
+    padding: 5px 12px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+  .lb-counter {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--white);
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 4px 14px;
+    border-radius: 999px;
+  }
+  .lb-close-btn {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--white);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 1;
+  }
+  .lb-close-btn:hover {
+    background: var(--yellow);
+    color: var(--black);
+    border-color: var(--yellow);
+    transform: scale(1.08);
+  }
+  .lb-stage {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 6px 74px;
+    box-sizing: border-box;
+    overflow: hidden;
+    z-index: 5;
+  }
+  .lb-image-wrapper {
+    max-width: 100%;
+    max-height: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .lb-img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.12);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    will-change: opacity, transform;
+  }
+  .lb-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(25, 23, 20, 0.75);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--white);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+  }
+  .lb-arrow:hover {
+    background: var(--yellow);
+    color: var(--black);
+    border-color: var(--yellow);
+    transform: translateY(-50%) scale(1.1);
+  }
+  .lb-prev { left: 16px; }
+  .lb-next { right: 16px; }
+
+  .lb-footer {
+    position: relative;
+    flex: 0 0 auto;
+    padding: 12px 28px 18px;
+    text-align: center;
+    z-index: 10;
+    background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+  }
+  .lb-title {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: clamp(15px, 2vw, 18px);
+    color: var(--white);
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+  }
+  .lb-subtitle {
+    font-size: clamp(12px, 1.4vw, 13.5px);
+    color: rgba(255,255,255,0.8);
+    line-height: 1.4;
+    max-width: 700px;
+  }
+
+  /* Gallery interactive polish */
+  .gallery .g-tile {
+    cursor: pointer;
+    position: relative;
+  }
+  .gallery .g-tile::after {
+    content: '⤢';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(22, 21, 19, 0.7);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    opacity: 0;
+    transform: scale(0.85);
+    transition: all 0.2s ease;
+    pointer-events: none;
+    z-index: 3;
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+  .gallery .g-tile:hover::after {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 768px) {
+    .lb-header {
+      padding: 12px 16px;
+    }
+    .lb-stage {
+      padding: 4px 10px;
+    }
+    .lb-arrow {
+      width: 40px;
+      height: 40px;
+      font-size: 19px;
+      background: rgba(25, 23, 20, 0.85);
+    }
+    .lb-prev { left: 6px; }
+    .lb-next { right: 6px; }
+    .lb-footer {
+      padding: 10px 16px 14px;
+    }
+    .lb-title {
+      font-size: 14.5px;
+    }
+    .lb-subtitle {
+      font-size: 11.5px;
+    }
+  }
+
 </style>
+</head>
+<body>
 
 <div class="shell">
   <aside class="sidebar">
@@ -601,7 +850,8 @@
           <div class="g-overlay">
             <span class="cat" data-lang="en">TRAINING</span>
             <span class="cat" data-lang="vi">ĐÀO TẠO</span>
-            <span class="lbl">Angelina • Sofitel Legend Metropole</span>
+            <span class="lbl" data-lang="en">Angelina • Sofitel Legend Metropole Hanoi</span>
+            <span class="lbl" data-lang="vi">Angelina • Sofitel Legend Metropole Hà Nội</span>
             <span class="sublbl" data-lang="en">Brand Rituals & Terroir Masterclass</span>
             <span class="sublbl" data-lang="vi">Đào tạo Nghi thức & Terroir Masterclass</span>
           </div>
@@ -612,9 +862,34 @@
           <div class="g-overlay">
             <span class="cat" data-lang="en">TRAINING</span>
             <span class="cat" data-lang="vi">ĐÀO TẠO</span>
-            <span class="lbl">La Siesta Premium Hotel • Hanoi</span>
+            <span class="lbl" data-lang="en">La Siesta Premium Hotel • Hanoi</span>
+            <span class="lbl" data-lang="vi">La Siesta Premium Hotel • Hà Nội</span>
             <span class="sublbl" data-lang="en">Spirits Knowledge & Bar Team Training</span>
             <span class="sublbl" data-lang="vi">Đào tạo Kiến thức Rượu & Đội ngũ Dịch vụ</span>
+          </div>
+        </div>
+        <!-- TRAINING 4 -->
+        <div class="g-tile" data-category="training">
+          <img src="img/training-tebar.jpg" alt="Tê Bar Danang Bartender Workshop" loading="lazy">
+          <div class="g-overlay">
+            <span class="cat" data-lang="en">TRAINING</span>
+            <span class="cat" data-lang="vi">ĐÀO TẠO</span>
+            <span class="lbl" data-lang="en">Tê Bar • Danang</span>
+            <span class="lbl" data-lang="vi">Tê Bar • Đà Nẵng</span>
+            <span class="sublbl" data-lang="en">Spirits Portfolio & Practical Bartender Workshop</span>
+            <span class="sublbl" data-lang="vi">Workshop Thực chiến & Đào tạo Bartender</span>
+          </div>
+        </div>
+        <!-- TRAINING 5 -->
+        <div class="g-tile" data-category="training">
+          <img src="img/training-akata.jpg" alt="AKATA Cocktail Bar Danang Training" loading="lazy">
+          <div class="g-overlay">
+            <span class="cat" data-lang="en">TRAINING</span>
+            <span class="cat" data-lang="vi">ĐÀO TẠO</span>
+            <span class="lbl" data-lang="en">AKATA Cocktail Bar • Danang</span>
+            <span class="lbl" data-lang="vi">AKATA Cocktail Bar • Đà Nẵng</span>
+            <span class="sublbl" data-lang="en">Spirits Craft & Advanced Mixology Training</span>
+            <span class="sublbl" data-lang="vi">Đào tạo Nghi thức Nếm thử & Kỹ năng Pha chế</span>
           </div>
         </div>
         <!-- TASTING 1 -->
@@ -623,9 +898,10 @@
           <div class="g-overlay">
             <span class="cat" data-lang="en">TASTING</span>
             <span class="cat" data-lang="vi">TASTING</span>
-            <span class="lbl">Octomore Single Malt • Official Launch</span>
-            <span class="sublbl" data-lang="en">The World's Most Heavily Peated Whisky</span>
-            <span class="sublbl" data-lang="vi">Sự kiện Ra mắt Single Malt Đậm Khói Nhất Thế Giới</span>
+            <span class="lbl" data-lang="en">Octomore Single Malt • Official Launch</span>
+            <span class="lbl" data-lang="vi">Octomore Single Malt • Lễ Ra Mắt Chính Thức</span>
+            <span class="sublbl" data-lang="en">The World's Most Heavily Peated Single Malt Whisky</span>
+            <span class="sublbl" data-lang="vi">Sự kiện Ra mắt Dòng Single Malt Đậm Khói Nhất Thế Giới</span>
           </div>
         </div>
         <!-- TASTING 2 -->
@@ -634,7 +910,8 @@
           <div class="g-overlay">
             <span class="cat" data-lang="en">TASTING</span>
             <span class="cat" data-lang="vi">TASTING</span>
-            <span class="lbl">Rémy Cointreau Portfolio • VIP Tasting</span>
+            <span class="lbl" data-lang="en">Rémy Cointreau Portfolio • VIP Tasting</span>
+            <span class="lbl" data-lang="vi">Rémy Cointreau Portfolio • VIP Tasting</span>
             <span class="sublbl" data-lang="en">Curated Glassware Ritual & Terroir Education</span>
             <span class="sublbl" data-lang="vi">Nghi thức Thưởng rượu & Trải nghiệm Terroir Độc quyền</span>
           </div>
@@ -645,20 +922,22 @@
           <div class="g-overlay">
             <span class="cat" data-lang="en">TASTING</span>
             <span class="cat" data-lang="vi">TASTING</span>
-            <span class="lbl">Octomore Masterclass & Media Session</span>
-            <span class="sublbl" data-lang="en">Private Tasting for Spirits Connoisseurs</span>
-            <span class="sublbl" data-lang="vi">Buổi Nếm thử Chuyên sâu cùng Chuyên gia & Báo chí</span>
+            <span class="lbl" data-lang="en">Octomore Masterclass & Media Session</span>
+            <span class="lbl" data-lang="vi">Octomore Masterclass & Gặp Gỡ Báo Chí</span>
+            <span class="sublbl" data-lang="en">Private Tasting for Spirits Connoisseurs & Editors</span>
+            <span class="sublbl" data-lang="vi">Buổi Nếm thử Chuyên sâu cùng Chuyên gia & Báo giới</span>
           </div>
         </div>
         <!-- GUEST BARTENDER 1 -->
         <div class="g-tile" data-category="guest">
-          <img src="img/guest-stir.jpg" alt="Stir Modern Classic Cocktails Saigon" loading="lazy">
+          <img src="img/guest-stir.jpg" alt="Stir Saigon x The Elephant Room" loading="lazy">
           <div class="g-overlay">
             <span class="cat" data-lang="en">GUEST BARTENDER</span>
             <span class="cat" data-lang="vi">GUEST SHIFT</span>
-            <span class="lbl">Stir - Modern Classic Cocktails • Saigon</span>
-            <span class="sublbl" data-lang="en">Guest Shift at Asia's 50 Best Bars Ranked Venue</span>
-            <span class="sublbl" data-lang="vi">Guest Shift tại Quán Bar Top 50 Châu Á</span>
+            <span class="lbl" data-lang="en">Stir Saigon x The Elephant Room • Guest Shift</span>
+            <span class="lbl" data-lang="vi">Stir Sài Gòn x The Elephant Room • Guest Shift Quốc tế</span>
+            <span class="sublbl" data-lang="en">Featuring Asia's 50 Best Bars Ranked Venues & Rémy Cointreau Spirits</span>
+            <span class="sublbl" data-lang="vi">Hợp tác cùng Asia's 50 Best Bars & Các Dòng Rượu Di sản Rémy Cointreau</span>
           </div>
         </div>
         <!-- GUEST BARTENDER 2 -->
@@ -667,7 +946,8 @@
           <div class="g-overlay">
             <span class="cat" data-lang="en">GUEST BARTENDER</span>
             <span class="cat" data-lang="vi">GUEST SHIFT</span>
-            <span class="lbl">The Haflington • Speakeasy Hanoi</span>
+            <span class="lbl" data-lang="en">The Haflington • Speakeasy Hanoi</span>
+            <span class="lbl" data-lang="vi">The Haflington • Speakeasy Hà Nội</span>
             <span class="sublbl" data-lang="en">Heritage Cocktails & Brand Takeover Night</span>
             <span class="sublbl" data-lang="vi">Đêm Tiệc Takeover & Trình diễn Cocktail Di sản</span>
           </div>
@@ -678,7 +958,8 @@
           <div class="g-overlay">
             <span class="cat" data-lang="en">GUEST BARTENDER</span>
             <span class="cat" data-lang="vi">GUEST SHIFT</span>
-            <span class="lbl">Guest Shift • Behind The Bar</span>
+            <span class="lbl" data-lang="en">Guest Shift • Behind The Bar Experience</span>
+            <span class="lbl" data-lang="vi">Guest Shift • Trải nghiệm Sau Quầy Bar</span>
             <span class="sublbl" data-lang="en">High-Energy Signature Cocktail Takeover</span>
             <span class="sublbl" data-lang="vi">Đứng Quầy & Trình Diễn Signature Cocktails</span>
           </div>
@@ -689,31 +970,34 @@
           <div class="g-overlay">
             <span class="cat" data-lang="en">EVENT SPONSOR</span>
             <span class="cat" data-lang="vi">SỰ KIỆN & TÀI TRỢ</span>
-            <span class="lbl">Chess Club • Private Lounge Saigon</span>
+            <span class="lbl" data-lang="en">Chess Club • Private Lounge Saigon</span>
+            <span class="lbl" data-lang="vi">Chess Club • Private Lounge Sài Gòn</span>
             <span class="sublbl" data-lang="en">Sponsored Spirits Showcase & VIP Night</span>
             <span class="sublbl" data-lang="vi">Đêm Tiệc Tài trợ & Không gian Giao lưu Đẳng cấp</span>
           </div>
         </div>
         <!-- EVENT SPONSOR 2 -->
         <div class="g-tile" data-category="event">
-          <img src="img/event-cham.jpg" alt="CHAM Brand Activation" loading="lazy">
+          <img src="img/event-cham.jpg" alt="CHẤM Brand Activation" loading="lazy">
           <div class="g-overlay">
             <span class="cat" data-lang="en">EVENT SPONSOR</span>
             <span class="cat" data-lang="vi">SỰ KIỆN & TÀI TRỢ</span>
-            <span class="lbl">CHẤM • Brand Activation</span>
-            <span class="sublbl" data-lang="en">Sponsored Spirits Showcase & Culture</span>
-            <span class="sublbl" data-lang="vi">Không gian Tài trợ & Trưng bày Đẳng cấp</span>
+            <span class="lbl" data-lang="en">CHẤM Dining • Brand Activation</span>
+            <span class="lbl" data-lang="vi">CHẤM Dining • Brand Activation</span>
+            <span class="sublbl" data-lang="en">Sponsored Spirits Showcase & Gastronomy Pairing</span>
+            <span class="sublbl" data-lang="vi">Không gian Tài trợ & Kết hợp Ẩm thực Đẳng cấp</span>
           </div>
         </div>
         <!-- EVENT SPONSOR 3 -->
         <div class="g-tile" data-category="event">
-          <img src="img/event-showcase-night.jpg" alt="Sponsored Brand Showcase Lounge" loading="lazy">
+          <img src="img/event-showcase.jpg" alt="Luxury Gala Dinner Pairing Showcase" loading="lazy">
           <div class="g-overlay">
             <span class="cat" data-lang="en">EVENT SPONSOR</span>
             <span class="cat" data-lang="vi">SỰ KIỆN & TÀI TRỢ</span>
-            <span class="lbl">Sponsored Brand Showcase & Gala Lounge</span>
-            <span class="sublbl" data-lang="en">Open-Air Luxury Spirits Activation</span>
-            <span class="sublbl" data-lang="vi">Không gian Trải nghiệm Rượu Di sản Ngoài trời</span>
+            <span class="lbl" data-lang="en">Luxury Gala Dinner & Pairing Showcase</span>
+            <span class="lbl" data-lang="vi">Tiệc Gala Tinh hoa & Ẩm thực Thượng lưu</span>
+            <span class="sublbl" data-lang="en">Bridging World-Class Spirits with Contemporary Culture</span>
+            <span class="sublbl" data-lang="vi">Kết nối Nghệ thuật Rượu Di sản với Phong cách Đương đại</span>
           </div>
         </div>
       </div>
@@ -798,6 +1082,28 @@
       <span data-lang="en">BRAND AMBASSADOR · RÉMY COINTREAU VIETNAM</span>
       <span data-lang="vi">BRAND AMBASSADOR · RÉMY COINTREAU VIỆT NAM</span>
     </footer>
+    <!-- LIGHTBOX MODAL -->
+  <div id="lightboxModal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Portfolio Image Preview">
+    <div class="lb-header">
+      <div class="lb-meta">
+        <span class="lb-cat-badge" id="lbCatBadge">TRAINING</span>
+        <span class="lb-counter" id="lbCounter">1 / 7</span>
+      </div>
+      <button class="lb-close-btn" id="lbCloseBtn" aria-label="Close Lightbox" title="Close (Esc)">✕</button>
+    </div>
+    <div class="lb-stage" id="lbStage">
+      <button class="lb-arrow lb-prev" id="lbPrevBtn" aria-label="Previous Image" title="Previous (←)">‹</button>
+      <div class="lb-image-wrapper">
+        <img id="lbImg" class="lb-img" src="" alt="Portfolio Image Preview">
+      </div>
+      <button class="lb-arrow lb-next" id="lbNextBtn" aria-label="Next Image" title="Next (→)">›</button>
+    </div>
+    <div class="lb-footer">
+      <div class="lb-title" id="lbTitle"></div>
+      <div class="lb-subtitle" id="lbSubtitle"></div>
+    </div>
+  </div>
+
   </main>
 </div>
 
@@ -811,6 +1117,7 @@
     });
     try { localStorage.setItem('bio-lang', lang); } catch(e) {}
     document.documentElement.setAttribute('lang', lang);
+    if (typeof lbModal !== 'undefined' && lbModal && lbModal.classList.contains('active')) { renderLightbox(false); }
   }
   document.querySelectorAll('.lang-toggle button').forEach(function(btn){
     btn.addEventListener('click', function(){ setLang(btn.getAttribute('data-setlang')); });
@@ -844,4 +1151,368 @@
       });
     });
   });
+
+  // Complete Albums Database by Category
+  var ALBUMS = {
+    training: [
+      {
+        src: "img/training-thelongbar.jpg",
+        title_en: "The Long Bar • Times Square Saigon",
+        title_vi: "The Long Bar • Times Square TP. HCM",
+        sub_en: "Luxury Hotel Bar Team & Hospitality Workshop",
+        sub_vi: "Workshop Kỹ năng Phục vụ & Chuẩn mực 5 Sao"
+      },
+      {
+        src: "img/training-metropole.jpg",
+        title_en: "Angelina • Sofitel Legend Metropole Hanoi",
+        title_vi: "Angelina • Sofitel Legend Metropole Hà Nội",
+        sub_en: "Brand Rituals & Terroir Masterclass",
+        sub_vi: "Đào tạo Nghi thức & Terroir Masterclass"
+      },
+      {
+        src: "img/training-lasiesta.jpg",
+        title_en: "La Siesta Premium Hotel • Hanoi",
+        title_vi: "La Siesta Premium Hotel • Hà Nội",
+        sub_en: "Spirits Knowledge & Bar Team Training",
+        sub_vi: "Đào tạo Kiến thức Rượu & Đội ngũ Dịch vụ"
+      },
+      {
+        src: "img/training-tebar.jpg",
+        title_en: "Tê Bar • Danang",
+        title_vi: "Tê Bar • Đà Nẵng",
+        sub_en: "Spirits Portfolio & Practical Bartender Workshop",
+        sub_vi: "Workshop Thực chiến & Đào tạo Bartender"
+      },
+      {
+        src: "img/training-akata.jpg",
+        title_en: "AKATA Cocktail Bar • Danang",
+        title_vi: "AKATA Cocktail Bar • Đà Nẵng",
+        sub_en: "Spirits Craft & Advanced Mixology Training",
+        sub_vi: "Đào tạo Nghi thức Nếm thử & Kỹ năng Pha chế"
+      },
+      {
+        src: "img/training-lasiesta-2.jpg",
+        title_en: "La Siesta Hotels • Masterclass Session",
+        title_vi: "La Siesta Hotels • Buổi Đào tạo Chuyên sâu",
+        sub_en: "Tasting Rituals & Premium Service Standards",
+        sub_vi: "Nghi thức Nếm thử & Tiêu chuẩn Phục vụ 5 Sao"
+      },
+      {
+        src: "img/training-ayvy.jpg",
+        title_en: "Ay Vy Bar & Lounge • Hospitality Workshop",
+        title_vi: "Ay Vy Bar & Lounge • Rèn giũa Tay nghề",
+        sub_en: "Hands-on Hospitality & Terroir Spirits Education",
+        sub_vi: "Thực hành Kỹ năng Quầy Bar & Trải nghiệm Terroir"
+      }
+    ],
+    tasting: [
+      {
+        src: "img/tasting-octomore-1.jpg",
+        title_en: "Octomore Single Malt • Official Launch",
+        title_vi: "Octomore Single Malt • Lễ Ra Mắt Chính Thức",
+        sub_en: "The World's Most Heavily Peated Single Malt Whisky",
+        sub_vi: "Sự kiện Ra mắt Dòng Single Malt Đậm Khói Nhất Thế Giới"
+      },
+      {
+        src: "img/tasting-masterclass.jpg",
+        title_en: "Rémy Cointreau Portfolio • VIP Tasting",
+        title_vi: "Rémy Cointreau Portfolio • VIP Tasting",
+        sub_en: "Curated Glassware Ritual & Terroir Education",
+        sub_vi: "Nghi thức Thưởng rượu & Trải nghiệm Terroir Độc quyền"
+      },
+      {
+        src: "img/tasting-octomore-2.jpg",
+        title_en: "Octomore Masterclass & Media Session",
+        title_vi: "Octomore Masterclass & Gặp Gỡ Báo Chí",
+        sub_en: "Private Tasting for Spirits Connoisseurs & Editors",
+        sub_vi: "Buổi Nếm thử Chuyên sâu cùng Chuyên gia & Báo giới"
+      },
+      {
+        src: "img/tasting-octomore-3.jpg",
+        title_en: "Octomore Peat Exploration • Sensory Tasting",
+        title_vi: "Octomore Khám Phá Thổ Nhưỡng • Tasting Đa Giác Quan",
+        sub_en: "Unlocking Single Farm & High-PPM Islay Terroir",
+        sub_vi: "Hành trình Cảm nhận Thổ nhưỡng Islay Độc bản"
+      }
+    ],
+    guest: [
+      {
+        src: "img/guest-stir.jpg",
+        title_en: "Stir Saigon x The Elephant Room • Guest Shift",
+        title_vi: "Stir Sài Gòn x The Elephant Room • Guest Shift Quốc tế",
+        sub_en: "Featuring Asia's 50 Best Bars Ranked Venues & Rémy Cointreau Spirits",
+        sub_vi: "Hợp tác cùng Asia's 50 Best Bars & Các Dòng Rượu Di sản Rémy Cointreau"
+      },
+      {
+        src: "img/guest-haflington.jpg",
+        title_en: "The Haflington • Speakeasy Hanoi",
+        title_vi: "The Haflington • Speakeasy Hà Nội",
+        sub_en: "Heritage Cocktails & Brand Takeover Night",
+        sub_vi: "Đêm Tiệc Takeover & Trình diễn Cocktail Di sản"
+      },
+      {
+        src: "img/guest-haflington-2.jpg",
+        title_en: "The Haflington Hanoi • Guest Shift Edition 2",
+        title_vi: "The Haflington Hà Nội • Guest Shift Kỳ 2",
+        sub_en: "Signature Cocktails & Mindful Drinking Experience",
+        sub_vi: "Giao thoa Cocktail Nghệ thuật & Tinh thần Mindful Drinking"
+      },
+      {
+        src: "img/guest-du.jpg",
+        title_en: "Dư Cocktail Bar • Guest Bartender Shift",
+        title_vi: "Dư Cocktail Bar • Đêm Guest Shift Đặc biệt",
+        sub_en: "Modern Spirits Craft & Guest Hospitality",
+        sub_vi: "Trình diễn Kỹ thuật Pha chế & Kết nối Thực khách"
+      },
+      {
+        src: "img/guest-mami.jpg",
+        title_en: "Mami Cocktail Bar • Brand Takeover",
+        title_vi: "Mami Cocktail Bar • Brand Takeover",
+        sub_en: "Creative Cocktail Culture & Energy Behind The Bar",
+        sub_vi: "Không gian Năng động & Sáng tạo Cocktail Đương đại"
+      },
+      {
+        src: "img/guest-whiskylane.jpg",
+        title_en: "Whisky Lane • Single Malt Guest Shift",
+        title_vi: "Whisky Lane • Đêm Single Malt & Guest Shift",
+        sub_en: "Exploring Islay Peat & Modern Whisky Highballs",
+        sub_vi: "Khám phá Hương vị Khói Islay & Cocktail Highball"
+      },
+      {
+        src: "img/guest-shift-1.jpg",
+        title_en: "Guest Shift • Behind The Bar Experience",
+        title_vi: "Guest Shift • Trải nghiệm Sau Quầy Bar",
+        sub_en: "High-Energy Signature Cocktail Takeover",
+        sub_vi: "Đứng Quầy & Trình Diễn Signature Cocktails"
+      },
+      {
+        src: "img/guest-shift-2.jpg",
+        title_en: "Guest Shift • Connecting With The Trade",
+        title_vi: "Guest Shift • Kết nối Cộng đồng Nghề",
+        sub_en: "Celebrating Hospitality Craft & Mindful Pouring",
+        sub_vi: "Tôn vinh Nghề Pha chế & Phong cách Thưởng thức Tinh tế"
+      },
+      {
+        src: "img/guest-shift-3.jpg",
+        title_en: "Guest Shift • Atmosphere & Energy",
+        title_vi: "Guest Shift • Bùng nổ Năng lượng Quầy Bar",
+        sub_en: "Curating Unforgettable Guest Experiences",
+        sub_vi: "Mang đến Trải nghiệm Khó quên cho Khách hàng"
+      }
+    ],
+    event: [
+      {
+        src: "img/event-cham.jpg",
+        title_en: "CHẤM Dining • Brand Activation",
+        title_vi: "CHẤM Dining • Brand Activation",
+        sub_en: "Sponsored Spirits Showcase & Gastronomy Pairing",
+        sub_vi: "Không gian Tài trợ & Kết hợp Ẩm thực Đẳng cấp"
+      },
+      {
+        src: "img/event-chessclub.jpg",
+        title_en: "Chess Club • Private Lounge Saigon",
+        title_vi: "Chess Club • Private Lounge Sài Gòn",
+        sub_en: "Sponsored Spirits Showcase & VIP Night",
+        sub_vi: "Đêm Tiệc Tài trợ & Không gian Giao lưu Đẳng cấp"
+      },
+      {
+        src: "img/event-chessclub-poster.jpg",
+        title_en: "Chess Club Saigon • Event Showcase Night",
+        title_vi: "Chess Club Sài Gòn • Đêm Trình diễn Sự kiện",
+        sub_en: "Exclusive Heritage Spirits Celebration",
+        sub_vi: "Tôn vinh Nghệ thuật Pha chế & Rượu Di sản Thượng hạng"
+      },
+      {
+        src: "img/event-tasting.jpg",
+        title_en: "Rémy Cointreau Sponsored Tasting Lounge",
+        title_vi: "Không gian Tasting Tài trợ Rémy Cointreau",
+        sub_en: "Curated Spirits Experience & Brand Education",
+        sub_vi: "Trải nghiệm Đồ uống Di sản cùng Đối tác Chiến lược"
+      },
+      {
+        src: "img/event-showcase.jpg",
+        title_en: "Luxury Gala Dinner & Pairing Showcase",
+        title_vi: "Tiệc Gala Tinh hoa & Ẩm thực Thượng lưu",
+        sub_en: "Bridging World-Class Spirits with Contemporary Culture",
+        sub_vi: "Kết nối Nghệ thuật Rượu Di sản với Phong cách Đương đại"
+      },
+      {
+        src: "img/event-activation.jpg",
+        title_en: "VIP Reception & Brand Activation Night",
+        title_vi: "Tiếp đón Khách mời VIP & Kích hoạt Thương hiệu",
+        sub_en: "Welcoming Strategic Partners & Lifestyle Leaders",
+        sub_vi: "Gặp gỡ Lãnh đạo Ngành & Đối tác Chiến lược"
+      },
+      {
+        src: "img/event-gala-night.jpg",
+        title_en: "Grand Gala Night • Brand Celebration",
+        title_vi: "Đêm Đại tiệc Gala • Tôn vinh Thương hiệu",
+        sub_en: "Mindful Drinking Rituals & Luxury Hospitality",
+        sub_vi: "Nghi thức Mindful Drinking & Văn hóa Thưởng thức Đỉnh cao"
+      }
+    ]
+  };
+
+  var CAT_NAMES = {
+    training: { en: "TRAINING", vi: "ĐÀO TẠO" },
+    tasting: { en: "TASTING", vi: "TASTING" },
+    guest: { en: "GUEST BARTENDER", vi: "GUEST SHIFT" },
+    event: { en: "EVENT SPONSOR", vi: "SỰ KIỆN & TÀI TRỢ" }
+  };
+
+  var currentActiveFilter = 'all';
+  var currentAlbum = [];
+  var currentAlbumKey = 'training';
+  var currentIndex = 0;
+
+  var lbModal = document.getElementById('lightboxModal');
+  var lbImg = document.getElementById('lbImg');
+  var lbCounter = document.getElementById('lbCounter');
+  var lbCatBadge = document.getElementById('lbCatBadge');
+  var lbTitle = document.getElementById('lbTitle');
+  var lbSubtitle = document.getElementById('lbSubtitle');
+  var lbPrevBtn = document.getElementById('lbPrevBtn');
+  var lbNextBtn = document.getElementById('lbNextBtn');
+  var lbCloseBtn = document.getElementById('lbCloseBtn');
+  var lbStage = document.getElementById('lbStage');
+
+  function getLang() {
+    return document.documentElement.getAttribute('lang') || 'vi';
+  }
+
+  function openLightbox(catKey, imgSrc) {
+    currentAlbumKey = catKey;
+    currentAlbum = ALBUMS[catKey] || ALBUMS.training;
+    
+    // Find index of clicked image
+    var idx = currentAlbum.findIndex(function(item) {
+      return item.src === imgSrc || (imgSrc && imgSrc.indexOf(item.src) !== -1);
+    });
+    currentIndex = idx >= 0 ? idx : 0;
+    
+    renderLightbox(false);
+    lbModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function renderLightbox(animate) {
+    if (!currentAlbum || currentAlbum.length === 0) return;
+    var item = currentAlbum[currentIndex];
+    var lang = getLang();
+    var catInfo = CAT_NAMES[currentAlbumKey] || { en: "PORTFOLIO", vi: "PORTFOLIO" };
+
+    lbCatBadge.textContent = lang === 'vi' ? catInfo.vi : catInfo.en;
+    lbCounter.textContent = (currentIndex + 1) + " / " + currentAlbum.length;
+
+    lbTitle.textContent = lang === 'vi' ? (item.title_vi || item.title_en) : (item.title_en || item.title_vi);
+    lbSubtitle.textContent = lang === 'vi' ? (item.sub_vi || item.sub_en) : (item.sub_en || item.sub_vi);
+
+    if (animate) {
+      lbImg.style.opacity = '0';
+      lbImg.style.transform = 'scale(0.97)';
+      setTimeout(function() {
+        lbImg.onload = function() {
+          lbImg.style.opacity = '1';
+          lbImg.style.transform = 'scale(1)';
+        };
+        lbImg.src = item.src;
+        lbImg.alt = item.title_en || "Portfolio Preview";
+        if (lbImg.complete) {
+          lbImg.style.opacity = '1';
+          lbImg.style.transform = 'scale(1)';
+        }
+      }, 70);
+    } else {
+      lbImg.onload = function() {
+        lbImg.style.opacity = '1';
+        lbImg.style.transform = 'scale(1)';
+      };
+      lbImg.src = item.src;
+      lbImg.alt = item.title_en || "Portfolio Preview";
+      if (lbImg.complete) {
+        lbImg.style.opacity = '1';
+        lbImg.style.transform = 'scale(1)';
+      }
+    }
+
+    // Preload adjacent images
+    var nextIdx = (currentIndex + 1) % currentAlbum.length;
+    var prevIdx = (currentIndex - 1 + currentAlbum.length) % currentAlbum.length;
+    var pNext = new Image(); pNext.src = currentAlbum[nextIdx].src;
+    var pPrev = new Image(); pPrev.src = currentAlbum[prevIdx].src;
+  }
+
+  function nextImage() {
+    if (!currentAlbum || currentAlbum.length <= 1) return;
+    currentIndex = (currentIndex + 1) % currentAlbum.length;
+    renderLightbox(true);
+  }
+
+  function prevImage() {
+    if (!currentAlbum || currentAlbum.length <= 1) return;
+    currentIndex = (currentIndex - 1 + currentAlbum.length) % currentAlbum.length;
+    renderLightbox(true);
+  }
+
+  function closeLightbox() {
+    lbModal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  lbNextBtn.addEventListener('click', function(e) { e.stopPropagation(); nextImage(); });
+  lbPrevBtn.addEventListener('click', function(e) { e.stopPropagation(); prevImage(); });
+  lbCloseBtn.addEventListener('click', function(e) { e.stopPropagation(); closeLightbox(); });
+
+  lbModal.addEventListener('click', function(e) {
+    if (e.target === lbModal || e.target === lbStage || e.target.classList.contains('lb-image-wrapper')) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (!lbModal.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    else if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextImage(); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); prevImage(); }
+  });
+
+  // Touch Swipe for Mobile / Tablet
+  var touchStartX = 0;
+  var touchStartY = 0;
+  var touchEndX = 0;
+  var touchEndY = 0;
+
+  lbModal.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+
+  lbModal.addEventListener('touchend', function(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
+    var deltaX = touchEndX - touchStartX;
+    var deltaY = touchEndY - touchStartY;
+    if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
+      if (deltaX < 0) {
+        nextImage(); // Swipe left -> next
+      } else {
+        prevImage(); // Swipe right -> prev
+      }
+    }
+  }, { passive: true });
+
+  function bindGalleryClicks() {
+    document.querySelectorAll('.g-tile').forEach(function(tile) {
+      tile.addEventListener('click', function() {
+        var cat = tile.getAttribute('data-category');
+        var img = tile.querySelector('img');
+        var src = img ? img.getAttribute('src') : '';
+        openLightbox(cat, src);
+      });
+    });
+  }
+  bindGalleryClicks();
+
 </script>
+</body>
+</html>
