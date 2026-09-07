@@ -341,7 +341,7 @@ c.drawString(col2_mid, y, "HÌNH THỨC HỢP TÁC SẴN SÀNG")
 y -= 12
 
 venues = [
-    "Sofitel Legend Metropole", "InterContinental Danang", "Stir Saigon (Top 50 Asia)",
+    "Sofitel Legend Metropole", "Times Square Saigon", "Stir Saigon (Top 50 Asia)",
     "The Haflington Hanoi", "La Siesta Hotels", "CHẤM Dining", "Chess Club Saigon"
 ]
 avail = [
