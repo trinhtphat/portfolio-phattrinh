@@ -34,7 +34,6 @@ Trang web được thiết kế theo phong cách tối giản, sang trọng chu�
 ```
 Porfolio_personal/
 ├── index.html                  # Trang web chính thức (tự động kích hoạt trên GitHub Pages / Root)
-├── landing-trade.html          # Bản sao lưu trữ trang web
 ├── img/                        # 22 ảnh thực tế đã tối ưu web (WebP/JPG)
 ├── brand-logos/                # 8 logo thương hiệu Rémy Cointreau (kèm Port Charlotte)
 ├── Port Charlotte-logo.png     # Logo Port Charlotte
@@ -56,7 +55,6 @@ Porfolio_personal/
 │   └── Event_Tasting/          # Ảnh các buổi tasting & masterclasses
 │
 ├── source_brand_logos_raw/     # Tệp tài nguyên gốc logo các nhãn hàng
-├── landing-trade.html          # Trang web gốc tại root
 ├── make_pdf.py                 # Script tạo PDF gốc
 ├── make_pdf_en.py              # Script tạo PDF tiếng Anh gốc
 ├── .gitignore
