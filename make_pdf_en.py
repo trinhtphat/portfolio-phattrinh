@@ -23,7 +23,7 @@ QR_PNG = os.path.join(ROOT_DIR, "qr.png")
 LOGOS = os.path.join(ROOT_DIR, "brand-logos")
 PORTRAIT_JPG = os.path.join(ROOT_DIR, "portrait.jpg")
 ROUNDED_PORTRAIT = os.path.join(ROOT_DIR, "portrait_rounded.png")
-ZALO_URL = "https://zalo.me/0988822807"
+ZALO_URL = "https://zalo.me/0988222807"
 
 # Prepare Rounded Portrait
 if not os.path.exists(ROUNDED_PORTRAIT):
@@ -367,7 +367,7 @@ c.drawString(MARGIN + 14, foot_top - 28, "Looking for someone who knows every la
 c.drawString(MARGIN + 14, foot_top - 39, "Get in touch directly to explore collaborations — private tastings, team trainings, or guest shifts.")
 c.setFont(F_BOLD, 7.8)
 c.setFillColor(HexColor(ACCENT))
-c.drawString(MARGIN + 14, foot_bottom + 8, "phat.trinh@alchemy-asia.com  ·  +84 988 822 807  ·  @trinhtphat  ·  Ho Chi Minh City")
+c.drawString(MARGIN + 14, foot_bottom + 8, "phat.trinh@alchemy-asia.com  ·  +84 988 222 807  ·  @trinhtphat  ·  Ho Chi Minh City")
 
 qr_size = foot_h - 14
 qr_x = PAGE_W - MARGIN - 14 - qr_size
