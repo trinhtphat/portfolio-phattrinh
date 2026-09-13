@@ -35,8 +35,7 @@ Trang web được thiết kế theo phong cách tối giản, sang trọng chu�
 Porfolio_personal/
 ├── index.html                  # Trang web chính thức (tự động kích hoạt trên GitHub Pages / Root)
 ├── img/                        # 22 ảnh thực tế đã tối ưu web (WebP/JPG)
-├── brand-logos/                # 8 logo thương hiệu Rémy Cointreau (kèm Port Charlotte)
-├── Port Charlotte-logo.png     # Logo Port Charlotte
+├── brand-logos/                # 8 logo thương hiệu Rémy Cointreau sử dụng trong landing page
 ├── portrait.jpg                # Ảnh chân dung
 ├── portrait_rounded.png        # Ảnh chân dung bo góc
 ├── qr.png                      # Mã QR kết nối Zalo
@@ -54,7 +53,6 @@ Porfolio_personal/
 │   ├── Event_Sponsor/          # Ảnh các sự kiện tài trợ & gala
 │   └── Event_Tasting/          # Ảnh các buổi tasting & masterclasses
 │
-├── source_brand_logos_raw/     # Tệp tài nguyên gốc logo các nhãn hàng
 ├── make_pdf.py                 # Script tạo PDF gốc
 ├── make_pdf_en.py              # Script tạo PDF tiếng Anh gốc
 ├── .gitignore
