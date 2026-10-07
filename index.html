@@ -70,13 +70,21 @@
   .sidenav a:hover, .sidenav a.active{color:var(--yellow);}
   .sidenav a.active::before, .sidenav a:hover::before{background:var(--yellow);}
 
-  .side-foot{margin-top:auto;display:flex;gap:12px;}
-  .side-foot a{
-    width:32px;height:32px;border-radius:6px;border:1px solid rgba(255,255,255,0.15);
-    display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);
-    text-decoration:none;font-size:13px;transition:all .15s ease;
+  .side-foot{margin-top:auto;display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:nowrap;}
+  .side-foot a, .side-foot button{
+    width:34px;height:34px;min-width:34px;min-height:34px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);
+    background:transparent;display:inline-flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.68);
+    text-decoration:none;font-size:12.5px;font-family:var(--font-head);font-weight:800;transition:all .2s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor:pointer;padding:0;line-height:1;box-sizing:border-box;flex-shrink:0;
   }
-  .side-foot a:hover{border-color:var(--yellow);color:var(--yellow);}
+  .side-foot a:hover, .side-foot button:hover{
+    border-color:var(--yellow);color:var(--yellow);background:rgba(244,166,42,0.08);transform:translateY(-2px);
+    box-shadow:0 4px 12px rgba(244,166,42,0.2);
+  }
+  .side-foot a:active, .side-foot button:active{transform:scale(0.94);}
+  .side-foot a:focus-visible, .side-foot button:focus-visible{
+    outline:2px solid var(--yellow) !important;outline-offset:2px !important;
+  }
 
   main{min-width:0;}
   section{padding:74px 56px;}
@@ -408,7 +416,7 @@
     .sidenav{flex-direction:row;gap:4px;}
     .sidenav a{padding:8px 10px;font-size:11px;white-space:nowrap;}
     .sidenav a::before{display:none;}
-    .side-foot{display:none;}
+    .side-foot{display:flex;margin:0 0 0 auto;gap:8px;align-items:center;flex-shrink:0;flex-wrap:nowrap;}
     .hero{grid-template-columns:1fr;}
     .hero-right{
       min-height:460px;
@@ -439,7 +447,7 @@
   .lightbox-modal {
     position: fixed;
     inset: 0;
-    z-index: 99999;
+    z-index: 999999;
     background: rgba(10, 9, 8, 0.96);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
@@ -660,6 +668,266 @@
   }
 
 
+
+  /* ---------- OFFICIAL MEDIA ASSETS CTA & PASSCODE MODAL (WARM AMBER & OAK) ---------- */
+  .portfolio-cta-wrap {
+    margin-top: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn-media-assets {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #1A1412;
+    border: 1.5px solid #D48B38;
+    color: #F5EFE6;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    padding: 14px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    min-height: 48px;
+  }
+  .btn-media-assets:hover {
+    background: #251B17;
+    border-color: #E59F4C;
+    color: #FFFFFF;
+    box-shadow: 0 8px 24px rgba(212, 139, 56, 0.32), 0 0 0 1px rgba(212, 139, 56, 0.35);
+    transform: translateY(-2px);
+  }
+  .btn-media-assets:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 3px 10px rgba(212, 139, 56, 0.2);
+  }
+  .btn-media-assets:focus-visible {
+    outline: 2px solid #D48B38 !important;
+    outline-offset: 3px !important;
+  }
+
+  /* Passcode Modal */
+  .passcode-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.26s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.26s;
+  }
+  .passcode-modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .passcode-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(14, 11, 9, 0.82);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    cursor: pointer;
+  }
+  .passcode-dialog {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 440px;
+    background: #1A1412;
+    background: radial-gradient(circle at 50% 0%, #291D17 0%, #17110F 100%);
+    border: 1.5px solid #D48B38;
+    border-radius: 8px;
+    padding: 36px 30px 30px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 35px rgba(212, 139, 56, 0.16);
+    color: #F5EFE6;
+    text-align: center;
+    transform: scale(0.95) translateY(10px);
+    transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .passcode-modal.active .passcode-dialog {
+    transform: scale(1) translateY(0);
+  }
+  .passcode-close-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #D6CEC5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+  }
+  .passcode-close-btn:hover {
+    background: rgba(212, 139, 56, 0.2);
+    border-color: #D48B38;
+    color: #F5EFE6;
+    transform: scale(1.05);
+  }
+  .passcode-close-btn:focus-visible {
+    outline: 2px solid #D48B38 !important;
+    outline-offset: 2px !important;
+  }
+  .passcode-badge-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(212, 139, 56, 0.12);
+    border: 1.5px solid rgba(212, 139, 56, 0.35);
+    color: #D48B38;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    box-shadow: 0 0 20px rgba(212, 139, 56, 0.18);
+  }
+  .passcode-title {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 21px;
+    letter-spacing: 0.02em;
+    color: #F5EFE6;
+    margin: 0 0 10px;
+    line-height: 1.25;
+  }
+  .passcode-desc {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #BFA588;
+    margin: 0 0 24px;
+  }
+  .passcode-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .passcode-input-wrap {
+    position: relative;
+    margin-bottom: 6px;
+  }
+  .passcode-input {
+    width: 100%;
+    height: 56px;
+    background: #110D0B;
+    border: 1.5px solid rgba(212, 139, 56, 0.35);
+    border-radius: 6px;
+    color: #F5EFE6;
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 28px;
+    text-align: center;
+    letter-spacing: 0.45em;
+    padding-left: 0.45em;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+  .passcode-input::placeholder {
+    color: rgba(212, 139, 56, 0.3);
+    letter-spacing: 0.35em;
+  }
+  .passcode-input:focus {
+    outline: none;
+    border-color: #D48B38;
+    box-shadow: 0 0 0 3px rgba(212, 139, 56, 0.25), 0 0 16px rgba(212, 139, 56, 0.15);
+    background: #140F0D;
+  }
+  .passcode-input.is-error {
+    border-color: #EF4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25) !important;
+  }
+  .passcode-error {
+    font-size: 13px;
+    color: #F87171;
+    font-weight: 600;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    min-height: 20px;
+    line-height: 1.4;
+  }
+  .passcode-submit-btn {
+    width: 100%;
+    height: 48px;
+    background: linear-gradient(135deg, #D48B38 0%, #BA7324 100%);
+    color: #1A1412;
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 16px rgba(212, 139, 56, 0.3);
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+  }
+  .passcode-submit-btn:hover {
+    background: linear-gradient(135deg, #E59F4C 0%, #C77E2B 100%);
+    box-shadow: 0 6px 22px rgba(212, 139, 56, 0.42);
+    transform: translateY(-1px);
+  }
+  .passcode-submit-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 8px rgba(212, 139, 56, 0.25);
+  }
+  .passcode-submit-btn:focus-visible {
+    outline: 2px solid #F5EFE6 !important;
+    outline-offset: 3px !important;
+  }
+  @keyframes passcodeShake {
+    0%, 100% { transform: translateX(0); }
+    15%, 45%, 75% { transform: translateX(-8px); }
+    30%, 60%, 90% { transform: translateX(8px); }
+  }
+  .shake {
+    animation: passcodeShake 0.45s ease-in-out;
+  }
+
+  @media (max-width: 600px) {
+    .portfolio-cta-wrap {
+      margin-top: 26px;
+    }
+    .btn-media-assets {
+      width: 100%;
+      max-width: 340px;
+      padding: 14px 20px;
+      font-size: 12.5px;
+    }
+    .passcode-dialog {
+      padding: 30px 20px 24px;
+    }
+    .passcode-title {
+      font-size: 19px;
+    }
+    .passcode-desc {
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+    .passcode-input {
+      height: 52px;
+      font-size: 24px;
+    }
+  }
+
   /* === UI/UX PRO MAX DESIGN SYSTEM ENHANCEMENTS === */
 
   /* Global Base & Accessible Focus */
@@ -727,12 +995,11 @@
     justify-content: center;
     color: var(--yellow);
   }
-  .side-foot a {
-    display: flex;
+  .side-foot a,
+  .side-foot button {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 44px;
-    min-height: 44px;
   }
 
   /* Touch Targets (WCAG 2.2 / HIG 44x44px minimum) */
@@ -899,7 +1166,20 @@
       display: none;
     }
     .side-foot {
-      display: none;
+      display: flex;
+      margin: 0;
+      gap: 6px;
+      align-items: center;
+      flex-shrink: 0;
+      flex-wrap: nowrap;
+    }
+    .side-foot a,
+    .side-foot button {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      min-height: 32px;
+      font-size: 11px;
     }
     .toast {
       left: 16px;
@@ -949,8 +1229,15 @@
       <li><a href="#contact" data-lang="en">Contact</a><a href="#contact" data-lang="vi">Liên hệ</a></li>
     </ul></nav>
     <div class="side-foot">
-      <a href="#contact" title="Email" aria-label="Email contact"><svg class="svg-ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
-      <a href="https://instagram.com/trinhtphat" target="_blank" rel="noopener" title="@trinhtphat">IG</a>
+      <a href="#contact" title="Email" aria-label="Email contact"><svg class="svg-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+      <a href="https://www.instagram.com/trinhtphat/" target="_blank" rel="noopener noreferrer" title="Instagram (@trinhtphat)" aria-label="Instagram profile">IG</a>
+      <button type="button" class="side-foot-btn" id="openPasscodeModalBtn" title="Event Media Assets (Passcode Required)" aria-label="Event Media Assets (Passcode Required)" aria-haspopup="dialog" aria-controls="passcodeModal">
+        <svg class="svg-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+          <rect x="9.5" y="11.5" width="5" height="4.5" rx="1"></rect>
+          <path d="M10.5 11.5V10a1.5 1.5 0 0 1 3 0v1.5"></path>
+        </svg>
+      </button>
     </div>
   </aside>
 
@@ -1251,6 +1538,7 @@
           </div>
         </div>
       </div>
+
     </section>
 
     <section id="proof">
@@ -1354,6 +1642,68 @@
     <div class="lb-footer">
       <div class="lb-title" id="lbTitle"></div>
       <div class="lb-subtitle" id="lbSubtitle"></div>
+    </div>
+  </div>
+
+  <!-- PASSCODE MODAL FOR OFFICIAL MEDIA ASSETS -->
+  <div id="passcodeModal" class="passcode-modal" role="dialog" aria-modal="true" aria-labelledby="passcodeTitle" aria-describedby="passcodeDesc">
+    <div class="passcode-backdrop" id="passcodeBackdrop"></div>
+    <div class="passcode-dialog">
+      <button type="button" class="passcode-close-btn" id="closePasscodeModalBtn" aria-label="Đóng popup / Close" title="Close (Esc)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="passcode-badge-icon" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+      </div>
+
+      <h3 class="passcode-title" id="passcodeTitle">
+        <span data-lang="en">Event Media Assets</span>
+        <span data-lang="vi">Tư liệu sự kiện</span>
+      </h3>
+
+      <p class="passcode-desc" id="passcodeDesc">
+        <span data-lang="en">Please enter the access code for event organizers &amp; media partners to unlock high-resolution assets.</span>
+        <span data-lang="vi">Vui lòng nhập mã bảo mật dành cho đối tác tổ chức sự kiện &amp; truyền thông để mở kho ảnh chất lượng cao.</span>
+      </p>
+
+      <form id="passcodeForm" class="passcode-form" novalidate autocomplete="off">
+        <div class="passcode-input-wrap">
+          <label for="passcodeInput" class="sr-only">
+            <span data-lang="en">Security Passcode</span>
+            <span data-lang="vi">Mã bảo mật</span>
+          </label>
+          <input 
+            type="password" 
+            id="passcodeInput" 
+            name="passcode" 
+            class="passcode-input" 
+            maxlength="4" 
+            placeholder="••••" 
+            inputmode="numeric" 
+            pattern="[0-9]*" 
+            autocomplete="off" 
+            required 
+            aria-describedby="passcodeError"
+          >
+        </div>
+
+        <div id="passcodeError" class="passcode-error" role="alert" aria-live="assertive" style="display: none;">
+          <span data-lang="en">Incorrect access code</span>
+          <span data-lang="vi">Mã truy cập không đúng</span>
+        </div>
+
+        <button type="submit" class="passcode-submit-btn" id="submitPasscodeBtn">
+          <span data-lang="en">Unlock →</span>
+          <span data-lang="vi">Mở khóa →</span>
+        </button>
+      </form>
     </div>
   </div>
 
@@ -1826,7 +2176,125 @@
     document.body.removeChild(ta);
   }
 
-  // Scrollspy to automatically highlight active navigation item
+  // === PASSCODE MODAL & OFFICIAL MEDIA ASSETS LOGIC ===
+  var passcodeModal = document.getElementById('passcodeModal');
+  var openPasscodeModalBtn = document.getElementById('openPasscodeModalBtn');
+  var closePasscodeModalBtn = document.getElementById('closePasscodeModalBtn');
+  var passcodeBackdrop = document.getElementById('passcodeBackdrop');
+  var passcodeForm = document.getElementById('passcodeForm');
+  var passcodeInput = document.getElementById('passcodeInput');
+  var passcodeError = document.getElementById('passcodeError');
+  var DRIVE_URL = 'https://drive.google.com/drive/folders/1LykZxEsH0jKiHgLqZR-KJ8Zgfjtaxbhw?fbclid=IwY2xjawUzHuZleHRuA2FlbQIxMABwZG9mBWJyaWQRMUZHejZ0SkhtWTdGUmZIbWNzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEesm8PYIbf5zYVpnCCYD9V45u_XlU2gE1hUaKtibQ5sXu8JPCTq3ldiudWp2U_aem_SpZmq_jU2Xo2nzZtW3y69g';
+  var clearInputTimer = null;
+
+  function verifyPasscode(code) {
+    var enteredCode = (code || '').trim();
+    if (enteredCode === '1999') {
+      clearTimeout(clearInputTimer);
+      closePasscodeModal();
+      window.open(DRIVE_URL, '_blank', 'noopener,noreferrer');
+      passcodeInput.value = '';
+      passcodeError.style.display = 'none';
+      passcodeInput.classList.remove('is-error', 'shake');
+    } else {
+      passcodeError.style.display = 'block';
+      passcodeInput.classList.add('is-error');
+      passcodeInput.classList.remove('shake');
+      void passcodeInput.offsetWidth; // Force CSS reflow to re-trigger shake
+      passcodeInput.classList.add('shake');
+
+      // Tự động xóa trắng ô input sau 400ms để người dùng gõ lại mã mới ngay
+      clearTimeout(clearInputTimer);
+      clearInputTimer = setTimeout(function() {
+        if (passcodeModal && passcodeModal.classList.contains('active')) {
+          passcodeInput.value = '';
+          passcodeInput.focus();
+        }
+      }, 400);
+    }
+  }
+
+  function openPasscodeModal() {
+    if (!passcodeModal) return;
+    clearTimeout(clearInputTimer);
+    passcodeInput.value = '';
+    passcodeError.style.display = 'none';
+    passcodeInput.classList.remove('is-error', 'shake');
+    passcodeModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    passcodeInput.focus();
+    setTimeout(function() {
+      if (passcodeInput) passcodeInput.focus();
+    }, 60);
+  }
+
+  function closePasscodeModal() {
+    if (!passcodeModal) return;
+    clearTimeout(clearInputTimer);
+    passcodeModal.classList.remove('active');
+    document.body.style.overflow = '';
+    if (openPasscodeModalBtn) openPasscodeModalBtn.focus();
+  }
+
+  if (openPasscodeModalBtn) {
+    openPasscodeModalBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      openPasscodeModal();
+    });
+  }
+
+  if (closePasscodeModalBtn) {
+    closePasscodeModalBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      closePasscodeModal();
+    });
+  }
+
+  if (passcodeBackdrop) {
+    passcodeBackdrop.addEventListener('click', function() {
+      closePasscodeModal();
+    });
+  }
+
+  // Auto-trigger on input as soon as 4 digits are entered
+  if (passcodeInput) {
+    passcodeInput.addEventListener('input', function() {
+      var val = passcodeInput.value;
+      if (val.length < 4) {
+        clearTimeout(clearInputTimer);
+        if (passcodeInput.classList.contains('is-error')) {
+          passcodeInput.classList.remove('is-error');
+          passcodeError.style.display = 'none';
+        }
+        return;
+      }
+      if (val.length === 4) {
+        verifyPasscode(val);
+      }
+    });
+  }
+
+  // Fallback submit for users pressing Enter or clicking Unlock
+  if (passcodeForm) {
+    passcodeForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (passcodeInput.value.length > 0) {
+        verifyPasscode(passcodeInput.value);
+      }
+    });
+  }
+
+  // Close passcode modal on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (passcodeModal && passcodeModal.classList.contains('active')) {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closePasscodeModal();
+      }
+    }
+  });
+
+    // Scrollspy to automatically highlight active navigation item
   var spySections = document.querySelectorAll('main > section[id], #home');
   var spyNavLinks = document.querySelectorAll('.sidenav a');
   if ('IntersectionObserver' in window && spySections.length > 0) {
