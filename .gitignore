@@ -23,3 +23,7 @@ test_*.html
 .env.local
 
 *.bat
+
+# Taste skill test output & backups
+.taste-skill/
+*.backup.html

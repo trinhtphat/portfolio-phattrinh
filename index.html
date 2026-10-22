@@ -3,1634 +3,2100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Phát Trịnh — Brand Ambassador</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap">
+  <title>Phát Trịnh — Brand Ambassador &amp; Spirits Educator</title>
+  <meta name="description" content="Portfolio of Phát Trịnh — Brand Ambassador & Spirits Educator representing Rémy Cointreau Heritage Spirits in Vietnam.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-  :root{
-    --yellow:#F4A62A;
-    --black:#161513;
-    --white:#FFFFFF;
-    --grey:#EEEBE4;
-    --grey-2:#DAD5C9;
-    --text:#1B1A17;
-    --muted:#6B6558;
-    --line:#00000014;
-    --font-head:'Be Vietnam Pro', 'Arial Black', sans-serif;
-    --font-body:'Be Vietnam Pro', 'Segoe UI', Helvetica, Arial, sans-serif;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;background:var(--white);color:var(--text);
-    font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit;}
-  img{display:block;max-width:100%;}
-  .container{max-width:1200px;margin:0 auto;}
+  :root {
+    /* Concept 2: The Progressive Disruptor (Obsidian & Bruichladdich Aqua) */
+    --bg-primary: #0D1117;
+    --bg-deep: #070A0E;
+    --bg-surface: #161D26;
+    --bg-surface-elevated: #1F2836;
+    
+    /* High contrast ink (8:1+) */
+    --ink: #FFFFFF;
+    --ink-secondary: #E2E8F0;
+    --ink-muted: #94A3B8;
+    
+    /* Bruichladdich Signature Aqua Turquoise */
+    --aqua: #00D2B4;
+    --aqua-hover: #00F0CF;
+    --aqua-surface: rgba(0, 210, 180, 0.12);
 
-  /* ---------- shell: sidebar + content ---------- */
-  .shell{display:grid;grid-template-columns:250px 1fr;min-height:100vh;}
-  .sidebar{
-    background:var(--black);color:var(--white);
-    position:sticky;top:0;height:100vh;
-    display:flex;flex-direction:column;align-items:center;
-    padding:34px 20px;gap:26px;
-  }
-  .avatar{
-    width:100%;aspect-ratio:1/1;border-radius:6px;
-    background:
-      linear-gradient(160deg, #2a2823 0%, #161513 60%),
-      repeating-linear-gradient(135deg, transparent 0 8px, rgba(244,166,42,0.06) 8px 16px);
-    border:1px solid rgba(255,255,255,0.08);
-    display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
-  }
-  .avatar img{width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block;}
+    --font-head: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Be Vietnam Pro', sans-serif;
+    
+    /* Strict 5-step typographic scale */
+    --step-display: clamp(40px, 4.8vw, 64px);
+    --step-head: clamp(26px, 2.6vw, 36px);
+    --step-lead: 18px;
+    --step-body: 16px;
+    --step-small: 14px;
 
-  .lang-toggle{
-    display:flex;background:rgba(255,255,255,0.08);border-radius:999px;padding:3px;gap:2px;
-  }
-  .lang-toggle button{
-    border:none;background:transparent;color:rgba(255,255,255,0.55);
-    font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:0.04em;
-    padding:6px 13px;border-radius:999px;cursor:pointer;transition:all .15s ease;
-  }
-  .lang-toggle button.active{background:var(--yellow);color:var(--black);}
-
-  .sidenav{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;width:100%;}
-  .sidenav li{position:relative;}
-  .sidenav a{
-    display:block;text-decoration:none;color:rgba(255,255,255,0.6);
-    font-family:var(--font-head);font-weight:700;font-size:12.5px;letter-spacing:0.08em;
-    padding:11px 6px 11px 22px;border-radius:4px;transition:color .15s ease;
-  }
-  .sidenav a::before{
-    content:"";position:absolute;left:4px;top:50%;transform:translateY(-50%);
-    width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.25);
-  }
-  .sidenav a:hover, .sidenav a.active{color:var(--yellow);}
-  .sidenav a.active::before, .sidenav a:hover::before{background:var(--yellow);}
-
-  .side-foot{margin-top:auto;display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:nowrap;}
-  .side-foot a, .side-foot button{
-    width:34px;height:34px;min-width:34px;min-height:34px;border-radius:6px;border:1px solid rgba(255,255,255,0.18);
-    background:transparent;display:inline-flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.68);
-    text-decoration:none;font-size:12.5px;font-family:var(--font-head);font-weight:800;transition:all .2s cubic-bezier(0.16, 1, 0.3, 1);
-    cursor:pointer;padding:0;line-height:1;box-sizing:border-box;flex-shrink:0;
-  }
-  .side-foot a:hover, .side-foot button:hover{
-    border-color:var(--yellow);color:var(--yellow);background:rgba(244,166,42,0.08);transform:translateY(-2px);
-    box-shadow:0 4px 12px rgba(244,166,42,0.2);
-  }
-  .side-foot a:active, .side-foot button:active{transform:scale(0.94);}
-  .side-foot a:focus-visible, .side-foot button:focus-visible{
-    outline:2px solid var(--yellow) !important;outline-offset:2px !important;
+    --sidebar-w: 280px;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-pill: 9999px;
+    --transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  main{min-width:0;}
-  section{padding:74px 56px;}
-  .eyebrow-box{
-    display:inline-block;border:1.5px dashed rgba(0,0,0,0.25);border-radius:4px;
-    padding:8px 18px;margin-bottom:26px;
-  }
-  h2.section-title{
-    font-family:var(--font-head);font-weight:900;font-size:clamp(28px,3.4vw,42px);
-    margin:0;letter-spacing:-0.01em;text-transform:uppercase;
-  }
-
-  /* ---------- HERO ---------- */
-  .hero{padding:0;display:grid;grid-template-columns:1fr 1fr;min-height:640px;}
-  .hero-left{padding:74px 56px;display:flex;flex-direction:column;justify-content:center;}
-  .hi{font-family:var(--font-head);font-weight:700;font-size:16px;letter-spacing:0.02em;margin:0 0 6px;color:var(--muted);}
-  .hero h1{
-    font-family:var(--font-head);font-weight:900;font-size:clamp(34px,4.4vw,52px);
-    margin:0 0 14px;line-height:1.02;letter-spacing:-0.01em;
-  }
-  .hero h1 .hl{color:var(--yellow);-webkit-text-stroke:0.5px var(--black);}
-  .role-badge{
-    display:inline-block;background:var(--yellow);color:var(--black);
-    font-family:var(--font-head);font-weight:800;font-size:12px;letter-spacing:0.06em;
-    padding:7px 14px;margin-bottom:20px;
-  }
-  .hero p.lead{font-size:15px;color:var(--muted);max-width:46ch;margin:0 0 28px;}
-  .btn{
-    display:inline-flex;align-items:center;gap:10px;width:fit-content;
-    background:var(--yellow);color:var(--black);text-decoration:none;
-    font-family:var(--font-head);font-weight:800;font-size:12.5px;letter-spacing:0.05em;
-    padding:15px 26px;border-radius:2px;transition:transform .15s ease;
-  }
-  .btn:hover{transform:translateY(-2px);}
-  .hero-right{
-    background:linear-gradient(155deg,#2a2823,#161513);
-    position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;
-  }
-  .hero-right img{
-    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;
-  }
-  .hero-right::after{
-    content:"";position:absolute;inset:0;
-    background:linear-gradient(155deg, rgba(22,21,19,0.42) 0%, rgba(22,21,19,0.05) 45%, rgba(22,21,19,0.55) 100%);
-    pointer-events:none;
-  }
-
-  /* ---------- ABOUT ---------- */
-  .about{background:var(--grey);}
-  .about-grid{
-    display:grid;
-    grid-template-columns:1.15fr 0.85fr;
-    gap:44px;
-    margin-top:28px;
-    align-items:center;
-  }
-  .about p.role{font-size:16px;margin:0 0 12px;line-height:1.5;}
-  .about p.role b{font-family:var(--font-head);}
-  .about p.desc{color:var(--muted);font-size:14px;max-width:52ch;margin:0;line-height:1.6;}
-  .stat-block{
-    background:var(--black);color:var(--white);border-radius:6px;
-    display:grid;grid-template-columns:1fr 1fr;
-  }
-  .stat-block .cell{padding:22px 20px;border-right:1px solid rgba(255,255,255,0.1);border-bottom:1px solid rgba(255,255,255,0.1);}
-  .stat-block .cell:nth-child(2n){border-right:none;}
-  .stat-block .cell:nth-child(3),.stat-block .cell:nth-child(4){border-bottom:none;}
-  .stat-block .n{font-family:var(--font-head);font-weight:900;color:var(--yellow);font-size:clamp(22px,2.4vw,28px);display:block;}
-  .stat-block .d{font-size:10.5px;letter-spacing:0.04em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-top:5px;}
-
-  .whatido{
-    margin-top:36px;
-    padding-top:28px;
-    border-top:1px solid var(--line);
-  }
-  .whatido h3{font-family:var(--font-head);font-weight:800;font-size:15px;text-transform:uppercase;margin:0 0 18px;letter-spacing:0.03em;}
-  .wd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-  .wd-item{
-    background:var(--white);
-    border:1px solid var(--line);
-    border-radius:6px;
-    padding:20px 18px;
-    display:flex;
-    flex-direction:column;
-    transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;
-  }
-  .wd-item:hover{
-    transform:translateY(-2px);
-    border-color:rgba(0,0,0,0.22);
-    box-shadow:0 6px 18px rgba(0,0,0,0.06);
-  }
-  .wd-item .pillar-kicker{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    align-self:flex-start;
-    font-family:var(--font-head);
-    font-weight:900;
-    font-size:10.5px;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    color:var(--black);
-    background:var(--yellow);
-    padding:3px 8px;
-    border-radius:3px;
-    margin-bottom:12px;
-  }
-  .wd-item .wd-header{
-    display:flex;
-    align-items:center;
-    margin-bottom:10px;
-    min-height:22px;
-  }
-  .wd-item h4{
-    font-family:var(--font-head);font-weight:800;font-size:13.5px;
-    margin:0;text-transform:uppercase;line-height:1.3;letter-spacing:0.01em;
-    color:var(--text);
-  }
-  .wd-item .wd-tag{
-    font-family:var(--font-head);font-weight:700;font-size:11px;letter-spacing:0.02em;
-    color:var(--black);background:rgba(244,166,42,0.16);border-left:2.5px solid var(--yellow);
-    padding:6px 9px;margin:0 0 12px;line-height:1.45;border-radius:0 3px 3px 0;
-  }
-  .wd-item .wd-tag .badge{
-    display:inline-block;background:var(--black);color:var(--yellow);
-    font-family:var(--font-head);font-weight:800;font-size:10.5px;
-    letter-spacing:0.06em;text-transform:uppercase;padding:2px 5px;
-    border-radius:2px;margin-right:5px;vertical-align:baseline;
-  }
-  .wd-item p{
-    font-size:12.5px;color:var(--muted);margin:0;line-height:1.6;flex-grow:1;
-  }
-
-  /* ---------- EXPERIENCE ---------- */
-  .timeline{margin-top:36px;display:flex;flex-direction:column;}
-  .t-item{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:26px 0;border-top:1px solid var(--line);}
-  .t-item:last-child{border-bottom:1px solid var(--line);}
-  .t-item .when{font-family:var(--font-head);font-weight:800;color:var(--yellow);font-size:14px;-webkit-text-stroke:0.4px var(--black);}
-  .t-item h4{font-family:var(--font-head);font-weight:800;font-size:16px;margin:0 0 8px;}
-  .t-item p{font-size:13.5px;color:var(--muted);margin:0;max-width:64ch;}
-  /* ---------- BRAND LOGOS: HARMONIOUS OPTICAL ALIGNMENT & CENTER ANCHOR ---------- */
-  .brand-logos{
-    display:flex;flex-wrap:nowrap;gap:8px;margin-top:18px;
-    align-items:center;justify-content:center;
-  }
-  .brand-logos .lg{
-    height:50px;display:flex;align-items:center;justify-content:center;
-    background:var(--white);border:1px solid var(--line);border-radius:6px;
-    padding:0 12px;flex-shrink:0;
-    transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
-  }
-  .brand-logos .lg:hover{
-    transform:translateY(-2px);border-color:rgba(0,0,0,0.25);
-    box-shadow:0 4px 14px rgba(0,0,0,0.06);
-  }
-
-  /* Core House Center Anchors: Rémy Martin & Cointreau (Clean & Elegant) */
-  .brand-logos .lg.lg-anchor{
-    height:52px;padding:0 14px;
-    border:1px solid rgba(0,0,0,0.18);
-    background:var(--white);
-  }
-
-  /* Optical Sizing: Equal Perceived Area */
-  .brand-logos .lg img{
-    width:auto;height:auto;object-fit:contain;display:block;
-  }
-  .brand-logos .lg-remy img{max-height:36px;max-width:52px;}
-  .brand-logos .lg-cointreau img{max-height:28px;max-width:62px;}
-  .brand-logos .lg-telmont img{max-height:16px;max-width:68px;}
-  .brand-logos .lg-mountgay img{max-height:18px;max-width:62px;}
-  .brand-logos .lg-octomore img{max-height:19px;max-width:60px;}
-  .brand-logos .lg-bruichladdich img{max-height:19px;max-width:66px;}
-  .brand-logos .lg-portcharlotte img{max-height:24px;max-width:52px;}
-  .brand-logos .lg-botanist img{max-height:16px;max-width:88px;}
-
-  /* Desktop Symmetrical Sequence: Rémy Martin & Cointreau at Visual Center, Islay Trio Adjacent */
-  .brand-logos .lg-telmont{order:1;}
-  .brand-logos .lg-mountgay{order:2;}
-  .brand-logos .lg-octomore{order:3;}
-  .brand-logos .lg-remy{order:4;}
-  .brand-logos .lg-cointreau{order:5;}
-  .brand-logos .lg-bruichladdich{order:6;}
-  .brand-logos .lg-portcharlotte{order:7;}
-  .brand-logos .lg-botanist{order:8;}
-
-  /* Mobile/Tablet Responsiveness: Clean symmetrical rows with Islay Trio grouped */
-  @media (max-width:920px){
-    .brand-logos{flex-wrap:wrap;gap:8px;justify-content:center;}
-    .brand-logos .lg{flex:0 0 calc(33.333% - 6px);height:46px;padding:0 8px;}
-    .brand-logos .lg.lg-remy{order:1 !important;flex:0 0 calc(50% - 4px);height:50px;}
-    .brand-logos .lg.lg-cointreau{order:2 !important;flex:0 0 calc(50% - 4px);height:50px;}
-    .brand-logos .lg-telmont{order:3 !important;}
-    .brand-logos .lg-mountgay{order:4 !important;}
-    .brand-logos .lg-octomore{order:5 !important;}
-    .brand-logos .lg-bruichladdich{order:6 !important;}
-    .brand-logos .lg-portcharlotte{order:7 !important;}
-    .brand-logos .lg-botanist{order:8 !important;}
-  }
-  @media (max-width:540px){
-    .brand-logos{gap:6px;}
-    .brand-logos .lg{flex:0 0 calc(33.333% - 4px);height:44px;padding:0 4px;}
-    .brand-logos .lg.lg-remy{flex:0 0 calc(50% - 3px);height:46px;}
-    .brand-logos .lg.lg-cointreau{flex:0 0 calc(50% - 3px);height:46px;}
-    .brand-logos .lg-botanist img{max-width:76px;}
-    .brand-logos .lg-bruichladdich img{max-width:60px;}
-    .brand-logos .lg-portcharlotte img{max-height:22px;max-width:46px;}
-  }
-  .brand-logos .lg.tbd{border:1.5px dashed var(--grey-2);background:transparent;padding:0 16px;}
-  .brand-logos .lg.tbd span{font-family:var(--font-body);font-weight:700;font-size:10.5px;letter-spacing:0.05em;color:var(--muted);text-transform:uppercase;}
-
-  /* ---------- PORTFOLIO / GALLERY (3 PILLARS & REAL PROOF) ---------- */
-  .portfolio{background:var(--grey);}
-  .filters{display:flex;gap:10px;flex-wrap:wrap;margin:30px 0 26px;}
-  .filters button{
-    font-family:var(--font-head);font-weight:700;font-size:11.5px;letter-spacing:0.04em;
-    background:transparent;border:1.5px solid var(--black);color:var(--black);
-    padding:9px 16px;border-radius:2px;cursor:pointer;text-transform:uppercase;
-    transition:all 0.2s ease;
-  }
-  .filters button.active{background:var(--black);color:var(--yellow);}
-  .filters button:hover:not(.active){background:rgba(0,0,0,0.06);}
-  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-  @media(max-width:900px){
-    .gallery{grid-template-columns:repeat(2,1fr);gap:14px;}
-  }
-  @media(max-width:600px){
-    .gallery{grid-template-columns:1fr;gap:14px;}
-  }
-  .g-tile{
-    position:relative;aspect-ratio:4/3;border-radius:6px;overflow:hidden;
-    background:#161513;
-    background:radial-gradient(circle at center, #24211d 0%, #141311 100%);
-    border:1px solid rgba(255,255,255,0.08);
-    box-shadow:0 4px 14px rgba(0,0,0,0.12);
-    transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
-  }
-  .g-tile:hover{
-    transform:translateY(-4px);
-    box-shadow:0 12px 28px rgba(0,0,0,0.3);
-    border-color:rgba(244,166,42,0.35);
-  }
-  .g-tile img{
-    width:100%;height:100%;object-fit:contain;object-position:center;display:block;
-    transition:transform 0.35s ease;
-  }
-  .g-tile:hover img{transform:scale(1.03);}
-  .g-overlay{
-    position:absolute;inset:0;
-    background:linear-gradient(180deg, rgba(0,0,0,0.25) 0%, transparent 35%, transparent 60%, rgba(0,0,0,0.88) 100%);
-    display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;
-    padding:14px 16px;gap:3px;
-    pointer-events:none;
-    box-sizing:border-box;
-    transition:background 0.25s ease;
-  }
-  .g-tile:hover .g-overlay{
-    background:linear-gradient(180deg, rgba(0,0,0,0.35) 0%, transparent 30%, transparent 55%, rgba(0,0,0,0.94) 100%);
-  }
-  .g-overlay .cat{
-    position:absolute;top:12px;left:14px;
-    display:inline-block;
-    font-family:var(--font-head);font-weight:800;font-size:10.5px;letter-spacing:0.08em;
-    background:var(--yellow);color:var(--black);padding:3px 8px;border-radius:2px;text-transform:uppercase;
-    box-shadow:0 2px 6px rgba(0,0,0,0.4);
-  }
-  .g-overlay .lbl{
-    display:block;
-    font-family:var(--font-head);font-weight:700;font-size:13px;color:var(--white);
-    letter-spacing:0.02em;line-height:1.3;
-    text-shadow:0 1px 4px rgba(0,0,0,0.9);
-  }
-  .g-overlay .sublbl{
-    display:block;
-    font-size:11px;color:rgba(255,255,255,0.85);line-height:1.35;
-    text-shadow:0 1px 3px rgba(0,0,0,0.9);
-  }
-  .g-tile.g-hidden{display:none !important;}
-
-  /* ---------- SOCIAL PROOF ---------- */
-  .proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px;}
-  @media(max-width:1024px){
-    .proof-grid{grid-template-columns:repeat(2,1fr);gap:16px;}
-  }
-  @media(max-width:600px){
-    .proof-grid{grid-template-columns:1fr;gap:14px;}
-  }
-  .proof-card{
-    background:var(--black);color:var(--white);border-radius:4px;padding:28px 24px;
-    display:flex;flex-direction:column;gap:14px;
-  }
-  .proof-card .tag{
-    align-self:flex-start;background:var(--yellow);color:var(--black);
-    font-family:var(--font-head);font-weight:800;font-size:10.5px;letter-spacing:0.05em;
-    padding:5px 11px;border-radius:2px;text-transform:uppercase;
-  }
-  .proof-card p{font-size:13.5px;color:rgba(255,255,255,0.8);margin:0;line-height:1.55;}
-  .proof-card .stars{color:var(--yellow);font-size:13px;letter-spacing:2px;}
-
-  /* ---------- CONTACT ---------- */
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:34px;align-items:center;}
-  .contact-row{display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid var(--line);}
-  .contact-row:last-child{border-bottom:1px solid var(--line);}
-  .contact-row .ico{
-    width:42px;height:42px;border-radius:50%;background:var(--black);color:var(--yellow);
-    display:flex;align-items:center;justify-content:center;font-size:16px;flex:0 0 auto;
-  }
-  .contact-row .txt b{display:block;font-family:var(--font-head);font-weight:700;font-size:13px;}
-  .contact-row .txt span{font-size:12.5px;color:var(--muted);}
-  .contact-cta{background:var(--yellow);border-radius:6px;padding:36px;text-align:center;}
-  .contact-cta h3{font-family:var(--font-head);font-weight:900;font-size:22px;margin:0 0 10px;text-transform:uppercase;}
-  .contact-cta p{font-size:13px;color:rgba(0,0,0,0.7);margin:0 0 22px;}
-  .contact-cta .btn{background:var(--black);color:var(--white);}
-
-  footer.pagefoot{
-    background:var(--black);color:rgba(255,255,255,0.5);
-    font-family:var(--font-body);font-size:11.5px;letter-spacing:0.03em;
-    padding:22px 56px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
-  }
-
-  /* hide the inactive language regardless of any component's own display rule */
-  [data-lang]:not(.lang-active){display:none !important;}
-
-  @media (max-width:920px){
-    .shell{grid-template-columns:1fr;}
-    .sidebar{position:relative;height:auto;flex-direction:row;align-items:center;padding:16px 20px;overflow-x:auto;}
-    .avatar{display:none;}
-    .sidenav{flex-direction:row;gap:4px;}
-    .sidenav a{padding:8px 10px;font-size:11px;white-space:nowrap;}
-    .sidenav a::before{display:none;}
-    .side-foot{display:flex;margin:0 0 0 auto;gap:8px;align-items:center;flex-shrink:0;flex-wrap:nowrap;}
-    .hero{grid-template-columns:1fr;}
-    .hero-right{
-      min-height:460px;
-      height:78vw;
-      max-height:540px;
-      order:-1;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero-right img{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center 20%;
-    }
-    section{padding:52px 22px;}
-    .about-grid,.contact-grid{grid-template-columns:1fr;gap:24px;}
-    .gallery,.proof-grid{grid-template-columns:1fr 1fr;}
-    .wd-grid{grid-template-columns:1fr;gap:16px;}
-  }
-  @media (max-width:560px){
-    .wd-grid,.gallery,.proof-grid,.stat-block{grid-template-columns:1fr;}
-  }
-
-  /* ---------- LIGHTBOX MODAL ---------- */
-  .lightbox-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 999999;
-    background: rgba(10, 9, 8, 0.96);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s ease;
-    user-select: none;
-    overflow: hidden;
-  }
-  .lightbox-modal.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .lb-header {
-    position: relative;
-    flex: 0 0 auto;
-    padding: 16px 28px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 10;
-    background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, transparent 100%);
-  }
-  .lb-meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .lb-cat-badge {
-    font-family: var(--font-head);
-    font-weight: 800;
-    font-size: 10.5px;
-    letter-spacing: 0.08em;
-    background: var(--yellow);
-    color: var(--black);
-    padding: 5px 12px;
-    border-radius: 3px;
-    text-transform: uppercase;
-  }
-  .lb-counter {
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 0.06em;
-    color: var(--white);
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.18);
-    padding: 4px 14px;
-    border-radius: 999px;
-  }
-  .lb-close-btn {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: var(--white);
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    line-height: 1;
-  }
-  .lb-close-btn:hover {
-    background: var(--yellow);
-    color: var(--black);
-    border-color: var(--yellow);
-    transform: scale(1.08);
-  }
-  .lb-stage {
-    position: relative;
-    flex: 1 1 auto;
-    min-height: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 6px 74px;
-    box-sizing: border-box;
-    overflow: hidden;
-    z-index: 5;
-  }
-  .lb-image-wrapper {
-    max-width: 100%;
-    max-height: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-  .lb-img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    border-radius: 6px;
-    box-shadow: 0 16px 50px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.12);
-    transition: opacity 0.18s ease, transform 0.18s ease;
-    will-change: opacity, transform;
-  }
-  .lb-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(25, 23, 20, 0.75);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: var(--white);
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    z-index: 10;
-  }
-  .lb-arrow:hover {
-    background: var(--yellow);
-    color: var(--black);
-    border-color: var(--yellow);
-    transform: translateY(-50%) scale(1.1);
-  }
-  .lb-prev { left: 16px; }
-  .lb-next { right: 16px; }
-
-  .lb-footer {
-    position: relative;
-    flex: 0 0 auto;
-    padding: 12px 28px 18px;
-    text-align: center;
-    z-index: 10;
-    background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-  }
-  .lb-title {
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: clamp(15px, 2vw, 18px);
-    color: var(--white);
-    letter-spacing: 0.02em;
-    line-height: 1.3;
-  }
-  .lb-subtitle {
-    font-size: clamp(12px, 1.4vw, 13.5px);
-    color: rgba(255,255,255,0.8);
-    line-height: 1.4;
-    max-width: 700px;
-  }
-
-  /* Gallery interactive polish */
-  .gallery .g-tile {
-    cursor: pointer;
-    position: relative;
-  }
-  .gallery .g-tile::after {
-    content: '⤢';
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: rgba(22, 21, 19, 0.7);
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    opacity: 0;
-    transform: scale(0.85);
-    transition: all 0.2s ease;
-    pointer-events: none;
-    z-index: 3;
-    border: 1px solid rgba(255,255,255,0.25);
-  }
-  .gallery .g-tile:hover::after {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  /* Mobile Adjustments */
-  @media (max-width: 768px) {
-    .lb-header {
-      padding: 12px 16px;
-    }
-    .lb-stage {
-      padding: 4px 10px;
-    }
-    .lb-arrow {
-      width: 40px;
-      height: 40px;
-      font-size: 19px;
-      background: rgba(25, 23, 20, 0.85);
-    }
-    .lb-prev { left: 6px; }
-    .lb-next { right: 6px; }
-    .lb-footer {
-      padding: 10px 16px 14px;
-    }
-    .lb-title {
-      font-size: 14.5px;
-    }
-    .lb-subtitle {
-      font-size: 11.5px;
-    }
-  }
-
-
-
-  /* ---------- OFFICIAL MEDIA ASSETS CTA & PASSCODE MODAL (WARM AMBER & OAK) ---------- */
-  .portfolio-cta-wrap {
-    margin-top: 36px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .btn-media-assets {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: #1A1412;
-    border: 1.5px solid #D48B38;
-    color: #F5EFE6;
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 0.05em;
-    padding: 14px 30px;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    min-height: 48px;
-  }
-  .btn-media-assets:hover {
-    background: #251B17;
-    border-color: #E59F4C;
-    color: #FFFFFF;
-    box-shadow: 0 8px 24px rgba(212, 139, 56, 0.32), 0 0 0 1px rgba(212, 139, 56, 0.35);
-    transform: translateY(-2px);
-  }
-  .btn-media-assets:active {
-    transform: translateY(0) scale(0.98);
-    box-shadow: 0 3px 10px rgba(212, 139, 56, 0.2);
-  }
-  .btn-media-assets:focus-visible {
-    outline: 2px solid #D48B38 !important;
-    outline-offset: 3px !important;
-  }
-
-  /* Passcode Modal */
-  .passcode-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 999999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.26s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.26s;
-  }
-  .passcode-modal.active {
-    opacity: 1;
-    visibility: visible;
-  }
-  .passcode-backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(14, 11, 9, 0.82);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    cursor: pointer;
-  }
-  .passcode-dialog {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 440px;
-    background: #1A1412;
-    background: radial-gradient(circle at 50% 0%, #291D17 0%, #17110F 100%);
-    border: 1.5px solid #D48B38;
-    border-radius: 8px;
-    padding: 36px 30px 30px;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 35px rgba(212, 139, 56, 0.16);
-    color: #F5EFE6;
-    text-align: center;
-    transform: scale(0.95) translateY(10px);
-    transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .passcode-modal.active .passcode-dialog {
-    transform: scale(1) translateY(0);
-  }
-  .passcode-close-btn {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #D6CEC5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    padding: 0;
-  }
-  .passcode-close-btn:hover {
-    background: rgba(212, 139, 56, 0.2);
-    border-color: #D48B38;
-    color: #F5EFE6;
-    transform: scale(1.05);
-  }
-  .passcode-close-btn:focus-visible {
-    outline: 2px solid #D48B38 !important;
-    outline-offset: 2px !important;
-  }
-  .passcode-badge-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: rgba(212, 139, 56, 0.12);
-    border: 1.5px solid rgba(212, 139, 56, 0.35);
-    color: #D48B38;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 16px;
-    box-shadow: 0 0 20px rgba(212, 139, 56, 0.18);
-  }
-  .passcode-title {
-    font-family: var(--font-head);
-    font-weight: 800;
-    font-size: 21px;
-    letter-spacing: 0.02em;
-    color: #F5EFE6;
-    margin: 0 0 10px;
-    line-height: 1.25;
-  }
-  .passcode-desc {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg-primary);
+    color: var(--ink-secondary);
     font-family: var(--font-body);
-    font-size: 13.5px;
-    line-height: 1.55;
-    color: #BFA588;
-    margin: 0 0 24px;
+    font-size: var(--step-body);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
-  .passcode-form {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .passcode-input-wrap {
-    position: relative;
-    margin-bottom: 6px;
-  }
-  .passcode-input {
-    width: 100%;
-    height: 56px;
-    background: #110D0B;
-    border: 1.5px solid rgba(212, 139, 56, 0.35);
-    border-radius: 6px;
-    color: #F5EFE6;
-    font-family: var(--font-head);
-    font-weight: 800;
-    font-size: 28px;
-    text-align: center;
-    letter-spacing: 0.45em;
-    padding-left: 0.45em;
-    transition: all 0.2s ease;
-    box-sizing: border-box;
-  }
-  .passcode-input::placeholder {
-    color: rgba(212, 139, 56, 0.3);
-    letter-spacing: 0.35em;
-  }
-  .passcode-input:focus {
-    outline: none;
-    border-color: #D48B38;
-    box-shadow: 0 0 0 3px rgba(212, 139, 56, 0.25), 0 0 16px rgba(212, 139, 56, 0.15);
-    background: #140F0D;
-  }
-  .passcode-input.is-error {
-    border-color: #EF4444 !important;
-    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25) !important;
-  }
-  .passcode-error {
-    font-size: 13px;
-    color: #F87171;
-    font-weight: 600;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    min-height: 20px;
-    line-height: 1.4;
-  }
-  .passcode-submit-btn {
-    width: 100%;
-    height: 48px;
-    background: linear-gradient(135deg, #D48B38 0%, #BA7324 100%);
-    color: #1A1412;
-    border: none;
-    border-radius: 4px;
-    font-family: var(--font-head);
-    font-weight: 800;
-    font-size: 13px;
-    letter-spacing: 0.06em;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    box-shadow: 0 4px 16px rgba(212, 139, 56, 0.3);
-    transition: all 0.2s ease;
-    text-transform: uppercase;
-  }
-  .passcode-submit-btn:hover {
-    background: linear-gradient(135deg, #E59F4C 0%, #C77E2B 100%);
-    box-shadow: 0 6px 22px rgba(212, 139, 56, 0.42);
-    transform: translateY(-1px);
-  }
-  .passcode-submit-btn:active {
-    transform: scale(0.98);
-    box-shadow: 0 2px 8px rgba(212, 139, 56, 0.25);
-  }
-  .passcode-submit-btn:focus-visible {
-    outline: 2px solid #F5EFE6 !important;
-    outline-offset: 3px !important;
-  }
-  @keyframes passcodeShake {
-    0%, 100% { transform: translateX(0); }
-    15%, 45%, 75% { transform: translateX(-8px); }
-    30%, 60%, 90% { transform: translateX(8px); }
-  }
-  .shake {
-    animation: passcodeShake 0.45s ease-in-out;
-  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; height: auto; }
+  button { font-family: inherit; font-size: inherit; }
 
-  @media (max-width: 600px) {
-    .portfolio-cta-wrap {
-      margin-top: 26px;
-    }
-    .btn-media-assets {
-      width: 100%;
-      max-width: 340px;
-      padding: 14px 20px;
-      font-size: 12.5px;
-    }
-    .passcode-dialog {
-      padding: 30px 20px 24px;
-    }
-    .passcode-title {
-      font-size: 19px;
-    }
-    .passcode-desc {
-      font-size: 13px;
-      margin-bottom: 20px;
-    }
-    .passcode-input {
-      height: 52px;
-      font-size: 24px;
-    }
-  }
-
-  /* === UI/UX PRO MAX DESIGN SYSTEM ENHANCEMENTS === */
-
-  /* Global Base & Accessible Focus */
-  html {
-    font-size: 16px;
-    box-sizing: border-box;
-    scroll-padding-top: 70px;
-  }
-  *, *::before, *::after {
-    box-sizing: inherit;
-  }
-  :focus-visible {
-    outline: 2px solid var(--yellow) !important;
-    outline-offset: 3px !important;
-  }
-  button:focus:not(:focus-visible),
-  a:focus:not(:focus-visible) {
-    outline: none;
-  }
-
-  /* Screen Reader Only Utility */
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
-  /* Accessible Skip-Link */
+  /* Skip link */
   .skip-link {
-    position: absolute;
-    top: -120px;
-    left: 20px;
-    background: var(--yellow);
-    color: var(--black);
-    padding: 12px 22px;
-    font-family: var(--font-head);
-    font-weight: 800;
-    font-size: 13px;
-    letter-spacing: 0.04em;
-    z-index: 999999;
-    border-radius: 4px;
-    text-decoration: none;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-    transition: top 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    position: absolute; top: -999px; left: 16px;
+    background: var(--aqua); color: var(--bg-deep);
+    padding: 10px 18px; border-radius: var(--radius-sm);
+    font-weight: 700; z-index: 10000;
   }
-  .skip-link:focus {
-    top: 20px;
-  }
+  .skip-link:focus { top: 16px; }
 
-  /* SVG Icon standard */
-  .svg-ico {
-    display: inline-block;
-    vertical-align: middle;
-    flex-shrink: 0;
-  }
-  .contact-row .ico {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--yellow);
-  }
-  .side-foot a,
-  .side-foot button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
+  /* Bilingual switch visibility */
+  [data-lang] { display: none !important; }
+  [data-lang].lang-active { display: block !important; }
+  span[data-lang].lang-active, b[data-lang].lang-active, a[data-lang].lang-active { display: inline-block !important; }
 
-  /* Touch Targets (WCAG 2.2 / HIG 44x44px minimum) */
-  .lang-toggle button {
-    min-height: 38px;
-    min-width: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .filters button {
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
-  }
-  .sidenav a {
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    transition: color 0.2s ease, background 0.2s ease;
-    border-radius: 4px;
-  }
-  .sidenav a.active {
-    color: var(--yellow);
-    background: rgba(244,166,42,0.12);
-  }
-  .sidenav a.active::before {
-    background: var(--yellow);
-  }
-
-  /* Interactive Tap Feedback (:active state) */
-  .btn:active,
-  button:active,
-  .filters button:active,
-  .lang-toggle button:active {
-    transform: scale(0.97);
-  }
-
-  /* Tabular figures for stats numbers */
-  .stat-block .n {
-    font-variant-numeric: tabular-nums;
-  }
-  .stat-block .d {
-    font-size: 12px; /* Increased from 10.5px for readability */
-    color: rgba(255, 255, 255, 0.85);
-  }
-
-  /* Timeline titles */
-  .tl-title {
-    font-family: var(--font-head);
-    font-weight: 800;
-    font-size: 16px;
-    margin: 0 0 8px;
-    color: inherit;
-  }
-
-  /* Copy Button & Toast */
-  .contact-val-wrap {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  .btn-copy {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    background: rgba(0, 0, 0, 0.06);
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
-    padding: 4px 8px;
-    font-size: 11.5px;
-    font-family: var(--font-head);
-    font-weight: 700;
-    color: var(--text);
-    cursor: pointer;
-    line-height: 1;
-    min-height: 28px;
-    transition: all 0.2s ease;
-  }
-  .btn-copy:hover {
-    background: var(--yellow);
-    color: var(--black);
-    border-color: var(--yellow);
-  }
-  .toast {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background: var(--black);
-    color: var(--white);
-    border: 1px solid var(--yellow);
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 13.5px;
-    font-family: var(--font-body);
-    font-weight: 600;
-    z-index: 100000;
-    opacity: 0;
-    transform: translateY(16px);
-    pointer-events: none;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-  }
-  .toast.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Lightbox close button target */
-  .lb-close-btn {
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    min-height: 44px;
-  }
-
-  /* Mobile Sticky Navigation Enhancements (<= 767px) */
-  @media (max-width: 767px) {
-    .shell {
-      grid-template-columns: 1fr;
+  /* Keyframes for Motion Layer (taste-skill step 9 compliance) */
+  @keyframes enterUp {
+    0% {
+      opacity: 0.1;
+      transform: translateY(16px);
     }
-    .sidebar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      height: auto;
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 10px 16px;
-      gap: 12px;
-      background: rgba(22, 21, 19, 0.96);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    .sidenav-nav {
-      flex: 1;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-    .sidenav-nav::-webkit-scrollbar {
-      display: none;
-    }
-    .sidenav {
-      flex-direction: row;
-      gap: 6px;
-      padding: 0;
-      margin: 0;
-    }
-    .sidenav a {
-      padding: 8px 12px;
-      font-size: 12px;
-      white-space: nowrap;
-      min-height: 40px;
-    }
-    .sidenav a::before {
-      display: none;
-    }
-    .avatar {
-      display: none;
-    }
-    .side-foot {
-      display: flex;
-      margin: 0;
-      gap: 6px;
-      align-items: center;
-      flex-shrink: 0;
-      flex-wrap: nowrap;
-    }
-    .side-foot a,
-    .side-foot button {
-      width: 32px;
-      height: 32px;
-      min-width: 32px;
-      min-height: 32px;
-      font-size: 11px;
-    }
-    .toast {
-      left: 16px;
-      right: 16px;
-      bottom: 16px;
-      text-align: center;
+    100% {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
-  /* Prefers-reduced-motion (WCAG 2.2 AA) */
+  .hero-left h1 { animation: enterUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .hero-role { animation: enterUp 0.5s 0.08s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .hero-lead { animation: enterUp 0.5s 0.16s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .hero-actions { animation: enterUp 0.5s 0.24s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .hero-portrait-card { animation: enterUp 0.6s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+  .stat-card:nth-child(1) { animation: enterUp 0.5s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .stat-card:nth-child(2) { animation: enterUp 0.5s 0.16s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .stat-card:nth-child(3) { animation: enterUp 0.5s 0.22s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .stat-card:nth-child(4) { animation: enterUp 0.5s 0.28s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+  .pillar-card:nth-child(1) { animation: enterUp 0.5s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .pillar-card:nth-child(2) { animation: enterUp 0.5s 0.18s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .pillar-card:nth-child(3) { animation: enterUp 0.5s 0.26s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+  .proof-card:nth-child(1) { animation: enterUp 0.5s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .proof-card:nth-child(2) { animation: enterUp 0.5s 0.16s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .proof-card:nth-child(3) { animation: enterUp 0.5s 0.22s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .proof-card:nth-child(4) { animation: enterUp 0.5s 0.28s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-    .btn:hover,
-    .btn:active,
-    .card:hover,
-    .proof-card:hover {
-      transform: none !important;
     }
   }
 
-</style>
+  /* ---------------- Shell Layout ---------------- */
+  .shell {
+    display: grid;
+    grid-template-columns: var(--sidebar-w) 1fr;
+    min-height: 100vh;
+  }
+
+  /* ---------------- Sidebar ---------------- */
+  .sidebar {
+    background: var(--bg-deep);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 32px 24px;
+    gap: 22px;
+    z-index: 50;
+    overflow-y: auto;
+  }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+
+  .avatar {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: var(--radius-md);
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-surface);
+  }
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    transition: transform 0.4s ease;
+  }
+  .avatar:hover img {
+    transform: scale(1.04);
+  }
+
+  /* Language Switch */
+  .lang-toggle {
+    display: flex;
+    background: var(--bg-surface);
+    border-radius: var(--radius-pill);
+    padding: 4px;
+    gap: 4px;
+  }
+  .lang-toggle button {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: var(--ink-muted);
+    font-weight: 700;
+    font-size: var(--step-small);
+    padding: 6px 0;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .lang-toggle button:hover {
+    color: var(--ink);
+  }
+  .lang-toggle button.active {
+    background: var(--aqua);
+    color: var(--bg-deep);
+  }
+
+  /* Knowledge Hub Trigger in Sidebar (Solution A) */
+  .hub-trigger-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: var(--aqua-surface);
+    color: var(--aqua);
+    border: none;
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    font-size: var(--step-small);
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: left;
+  }
+  .hub-trigger-btn:hover {
+    background: var(--aqua);
+    color: var(--bg-deep);
+    transform: translateY(-2px);
+  }
+  .hub-trigger-btn .hub-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hub-badge {
+    background: var(--aqua);
+    color: var(--bg-deep);
+    font-size: var(--step-small);
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+  }
+  .hub-trigger-btn:hover .hub-badge {
+    background: var(--bg-deep);
+    color: var(--aqua);
+  }
+
+  /* Nav Links */
+  .sidenav-nav { flex: 1; }
+  .sidenav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .sidenav a {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    font-size: var(--step-small);
+    font-weight: 600;
+    color: var(--ink-secondary);
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    position: relative;
+  }
+  .sidenav a:hover {
+    color: var(--ink);
+    background: var(--bg-surface);
+  }
+  .sidenav a.active {
+    color: var(--aqua);
+    background: var(--aqua-surface);
+    font-weight: 700;
+  }
+  .sidenav a.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    background: var(--aqua);
+    border-radius: 0 3px 3px 0;
+  }
+
+  /* Sidebar Footer */
+  .side-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 18px;
+  }
+  .side-foot a, .side-foot button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--bg-surface);
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--ink-muted);
+    font-size: var(--step-small);
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .side-foot a:hover, .side-foot button:hover {
+    color: var(--aqua);
+    background: var(--aqua-surface);
+  }
+
+  /* ---------------- Main Content ---------------- */
+  main {
+    min-width: 0;
+    background: var(--bg-primary);
+    position: relative;
+  }
+
+  /* Marquee Ticker */
+  .marquee-bar {
+    background: var(--bg-surface);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+  }
+  .marquee-track {
+    display: inline-flex;
+    animation: marquee 40s linear infinite;
+    gap: 32px;
+    padding-left: 32px;
+  }
+  .marquee-track span {
+    font-family: var(--font-head);
+    font-size: var(--step-small);
+    font-weight: 600;
+    color: var(--ink-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .marquee-track .star {
+    color: var(--aqua);
+    font-size: 16px;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Container */
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 36px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  /* Section Common Styling */
+  section {
+    padding: 88px 0;
+  }
+  .section-title {
+    font-family: var(--font-head);
+    font-size: var(--step-head);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0 0 24px 0;
+    color: var(--ink);
+  }
+
+  /* ---------------- Section: Hero (#home) ---------------- */
+  .hero {
+    padding: 96px 0 84px;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.95fr;
+    gap: 50px;
+    align-items: center;
+  }
+  .hero h1 {
+    font-family: var(--font-head);
+    font-size: var(--step-display);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+    margin: 0 0 16px 0;
+    color: var(--ink);
+  }
+  .hero-role {
+    font-family: var(--font-head);
+    font-size: var(--step-lead);
+    font-weight: 600;
+    color: var(--aqua);
+    margin-bottom: 24px;
+  }
+  .hero-lead {
+    font-size: var(--step-body);
+    line-height: 1.75;
+    color: var(--ink-secondary);
+    margin: 0 0 34px 0;
+    max-width: 560px;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--aqua);
+    color: var(--bg-deep);
+    font-family: var(--font-head);
+    font-size: var(--step-small);
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: var(--radius-pill);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .btn-primary:hover {
+    background: var(--aqua-hover);
+    transform: translateY(-2px);
+  }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-surface);
+    color: var(--ink);
+    border: none;
+    font-family: var(--font-head);
+    font-size: var(--step-small);
+    font-weight: 600;
+    padding: 14px 24px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .btn-secondary:hover {
+    color: var(--aqua);
+    background: var(--bg-surface-elevated);
+  }
+  .hero-portrait-card {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--bg-surface);
+  }
+  .hero-portrait-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+  .hero-portrait-badge {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    right: 18px;
+    background: var(--bg-surface);
+    padding: 14px 18px;
+    border-radius: var(--radius-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hero-portrait-badge .title {
+    font-family: var(--font-head);
+    font-size: var(--step-small);
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .hero-portrait-badge .sub {
+    font-size: var(--step-small);
+    color: var(--aqua);
+    font-weight: 500;
+  }
+
+  /* ---------------- Section: About (#about) ---------------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .about-bio .role-text {
+    font-size: var(--step-lead);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 14px;
+    font-family: var(--font-head);
+  }
+  .about-bio .bio-p {
+    font-size: var(--step-body);
+    line-height: 1.8;
+    color: var(--ink-secondary);
+    margin-bottom: 22px;
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .stat-card {
+    min-width: 0;
+    overflow: hidden;
+    background: var(--bg-surface);
+    border-radius: var(--radius-md);
+    padding: 24px 20px;
+    transition: var(--transition);
+  }
+  .stat-card:hover {
+    background: var(--bg-surface-elevated);
+    transform: translateY(-2px);
+  }
+  .stat-card .num {
+    font-family: var(--font-head);
+    font-size: clamp(20px, 3.2vw, 32px);
+    font-weight: 800;
+    color: var(--aqua);
+    line-height: 1.1;
+    margin-bottom: 8px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  .stat-card .lbl {
+    font-size: var(--step-small);
+    font-weight: 500;
+    color: var(--ink-muted);
+    line-height: 1.4;
+  }
+
+  .pdf-downloads-bar {
+    display: flex;
+    gap: 14px;
+    margin: 30px 0 10px;
+    flex-wrap: wrap;
+  }
+  .pdf-downloads-bar a {
+    max-width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* 3 Core Pillars: Bento Grid */
+  .pillars-heading {
+    margin-top: 40px;
+    margin-bottom: 24px;
+  }
+  .pillars-heading h3 {
+    font-family: var(--font-head);
+    font-size: var(--step-head);
+    font-weight: 800;
+    margin: 0;
+  }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .pillar-card {
+    background: var(--bg-surface);
+    border-radius: var(--radius-md);
+    padding: 30px 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--transition);
+  }
+  .pillar-card:hover {
+    background: var(--bg-surface-elevated);
+    transform: translateY(-3px);
+  }
+  .pillar-num {
+    display: inline-block;
+    font-family: var(--font-head);
+    font-size: var(--step-small);
+    font-weight: 700;
+    color: var(--aqua);
+    margin-bottom: 12px;
+  }
+  .pillar-card h4 {
+    font-family: var(--font-head);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 12px 0;
+    line-height: 1.3;
+  }
+  .pillar-badge {
+    display: inline-block;
+    background: var(--aqua-surface);
+    color: var(--aqua);
+    font-size: var(--step-small);
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 16px;
+  }
+  .pillar-card p {
+    font-size: var(--step-body);
+    line-height: 1.7;
+    color: var(--ink-secondary);
+    margin: 0;
+  }
+
+  /* ---------------- Section: Experience (#experience) ---------------- */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 32px;
+    padding: 32px;
+    background: var(--bg-surface);
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+  }
+  .tl-item:hover {
+    background: var(--bg-surface-elevated);
+  }
+  .tl-year {
+    font-family: var(--font-head);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--aqua);
+  }
+  .tl-content h3 {
+    font-family: var(--font-head);
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    color: var(--ink);
+  }
+  .tl-content p {
+    font-size: var(--step-body);
+    color: var(--ink-secondary);
+    margin: 0 0 24px 0;
+  }
+
+  /* Brand Logos Grid: Pure White Luxury Badges */
+  .brand-logos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 18px;
+  }
+  .lg-item {
+    background: #FFFFFF;
+    border-radius: var(--radius-sm);
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 58px;
+    transition: var(--transition);
+  }
+  .lg-item:hover {
+    background: #FFFFFF;
+    transform: translateY(-2px);
+  }
+  .lg-item img {
+    max-height: 32px;
+    width: auto;
+    max-width: 90%;
+    object-fit: contain;
+    filter: none;
+    transition: transform 0.2s ease;
+  }
+  .lg-item:hover img {
+    transform: scale(1.04);
+  }
+  .lg-item[data-brand="remy"] img { max-height: 34px; }
+  .lg-item[data-brand="cointreau"] img { max-height: 30px; }
+  .lg-item[data-brand="telmont"] img { max-height: 22px; }
+  .lg-item[data-brand="mountgay"] img { max-height: 24px; }
+  .lg-item[data-brand="octomore"] img { max-height: 24px; }
+  .lg-item[data-brand="bruichladdich"] img { max-height: 24px; }
+  .lg-item[data-brand="portcharlotte"] img { max-height: 30px; }
+  .lg-item[data-brand="botanist"] img { max-height: 20px; }
+
+  /* ---------------- Section: Portfolio (#portfolio) ---------------- */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 34px;
+  }
+  .filters button {
+    background: var(--bg-surface);
+    border: none;
+    color: var(--ink-muted);
+    font-family: var(--font-head);
+    font-size: var(--step-small);
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .filters button:hover {
+    color: var(--ink);
+    background: var(--bg-surface-elevated);
+  }
+  .filters button.active {
+    background: var(--aqua);
+    color: var(--bg-deep);
+    font-weight: 700;
+  }
+
+  /* Gallery Grid */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .g-tile {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--bg-surface);
+    aspect-ratio: 4/3;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .g-tile.g-hidden {
+    display: none !important;
+  }
+  .g-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .g-tile:hover {
+    transform: translateY(-3px);
+  }
+  .g-tile:hover img {
+    transform: scale(1.06);
+  }
+  .g-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(13,17,23,0) 30%, rgba(13,17,23,0.92) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 18px;
+    pointer-events: none;
+  }
+  .g-overlay .cat {
+    font-family: var(--font-head);
+    font-size: var(--step-small);
+    font-weight: 700;
+    color: var(--aqua);
+    margin-bottom: 4px;
+  }
+  .g-overlay .lbl {
+    font-family: var(--font-head);
+    font-size: var(--step-body);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.35;
+    margin-bottom: 4px;
+  }
+  .g-overlay .sublbl {
+    font-size: var(--step-small);
+    color: var(--ink-muted);
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* ---------------- Section: Proof (#proof) ---------------- */
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin-top: 28px;
+  }
+  .proof-card {
+    background: var(--bg-surface);
+    border-radius: var(--radius-md);
+    padding: 30px 26px;
+    transition: var(--transition);
+  }
+  .proof-card:hover {
+    background: var(--bg-surface-elevated);
+    transform: translateY(-2px);
+  }
+  .proof-card .tag {
+    display: inline-block;
+    color: var(--aqua);
+    font-family: var(--font-head);
+    font-size: var(--step-small);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .proof-card p {
+    font-size: var(--step-body);
+    line-height: 1.75;
+    color: var(--ink-secondary);
+    margin: 0;
+  }
+
+  /* ---------------- Section: Contact (#contact) ---------------- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: stretch;
+  }
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: var(--bg-surface);
+    padding: 18px 22px;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+  }
+  .contact-row:hover {
+    background: var(--bg-surface-elevated);
+  }
+  .contact-row .ico {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--aqua);
+    flex-shrink: 0;
+  }
+  .contact-row .txt {
+    flex: 1;
+    min-width: 0;
+  }
+  .contact-row .txt b {
+    display: block;
+    font-size: var(--step-small);
+    font-family: var(--font-head);
+    font-weight: 600;
+    color: var(--ink-muted);
+  }
+  .contact-row .txt span, .contact-row .txt a {
+    font-size: var(--step-body);
+    color: var(--ink);
+    font-weight: 600;
+    word-break: break-all;
+  }
+  .btn-copy {
+    background: var(--aqua-surface);
+    border: none;
+    color: var(--aqua);
+    font-size: var(--step-small);
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 10px;
+    transition: var(--transition);
+  }
+  .btn-copy:hover {
+    background: var(--aqua);
+    color: var(--bg-deep);
+  }
+
+  .contact-cta-box {
+    background: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    padding: 38px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .contact-cta-box h3 {
+    font-family: var(--font-head);
+    font-size: var(--step-head);
+    font-weight: 800;
+    margin: 0 0 14px 0;
+    color: var(--ink);
+  }
+  .contact-cta-box p {
+    font-size: var(--step-body);
+    line-height: 1.7;
+    color: var(--ink-secondary);
+    margin: 0 0 28px 0;
+  }
+
+  /* Footer */
+  .pagefoot {
+    padding: 36px 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--step-small);
+    font-family: var(--font-head);
+    font-weight: 500;
+    color: var(--ink-muted);
+    background: var(--bg-deep);
+  }
+
+  /* ---------------- SOLUTION A: KNOWLEDGE HUB DRAWER ---------------- */
+  .drawer-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: stretch;
+    justify-content: flex-end;
+  }
+  .drawer-modal.active {
+    display: flex;
+  }
+  .drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .drawer-modal.active .drawer-backdrop {
+    opacity: 1;
+  }
+  .drawer-panel {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    background: var(--bg-deep);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 10;
+  }
+  .drawer-modal.active .drawer-panel {
+    transform: translateX(0);
+  }
+  .drawer-header {
+    padding: 26px 26px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: var(--bg-surface);
+  }
+  .drawer-kicker {
+    display: inline-block;
+    font-family: var(--font-head);
+    font-size: var(--step-small);
+    font-weight: 700;
+    color: var(--aqua);
+    margin-bottom: 6px;
+  }
+  .drawer-title {
+    font-family: var(--font-head);
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0;
+  }
+  .drawer-close-btn {
+    background: var(--bg-surface-elevated);
+    border: none;
+    color: var(--ink);
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .drawer-close-btn:hover {
+    color: var(--aqua);
+    background: var(--aqua-surface);
+  }
+
+  /* Drawer Topics Filter */
+  .drawer-filters {
+    padding: 16px 22px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    background: var(--bg-primary);
+  }
+  .drawer-filters::-webkit-scrollbar { display: none; }
+  .d-chip {
+    background: var(--bg-surface);
+    border: none;
+    color: var(--ink-muted);
+    font-family: var(--font-head);
+    font-size: var(--step-small);
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .d-chip:hover {
+    color: var(--ink);
+  }
+  .d-chip.active {
+    background: var(--aqua);
+    color: var(--bg-deep);
+    font-weight: 700;
+  }
+
+  /* Drawer Body Cards */
+  .drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .drawer-body::-webkit-scrollbar { width: 5px; }
+  .drawer-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 5px; }
+
+  .k-card {
+    background: var(--bg-surface);
+    border-radius: var(--radius-md);
+    padding: 24px 22px;
+    transition: var(--transition);
+  }
+  .k-card:hover {
+    background: var(--bg-surface-elevated);
+  }
+  .k-card.k-hidden {
+    display: none;
+  }
+  .k-brand-tag {
+    display: inline-block;
+    font-family: var(--font-head);
+    font-size: var(--step-small);
+    font-weight: 700;
+    color: var(--aqua);
+    margin-bottom: 8px;
+  }
+  .k-card h3 {
+    font-family: var(--font-head);
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 12px 0;
+    line-height: 1.35;
+  }
+  .k-card p {
+    font-size: var(--step-body);
+    line-height: 1.7;
+    color: var(--ink-secondary);
+    margin: 0 0 12px 0;
+  }
+  .k-card ul {
+    margin: 0 0 14px 0;
+    padding-left: 20px;
+    font-size: var(--step-body);
+    color: var(--ink-secondary);
+  }
+  .k-card li {
+    margin-bottom: 8px;
+  }
+  .k-takeaway {
+    background: var(--aqua-surface);
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    font-size: var(--step-small);
+    color: var(--ink);
+    margin-top: 12px;
+  }
+  .k-takeaway strong {
+    color: var(--aqua);
+  }
+
+  .drawer-footer {
+    padding: 18px 22px;
+    background: var(--bg-surface);
+    font-size: var(--step-small);
+    color: var(--ink-muted);
+    text-align: center;
+  }
+
+  /* ---------------- Lightbox Modal (Preserved & Styled) ---------------- */
+  .lightbox-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(7, 10, 14, 0.95);
+    backdrop-filter: blur(12px);
+    z-index: 2000;
+    display: none;
+    flex-direction: column;
+  }
+  .lightbox-modal.active { display: flex; }
+  .lb-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 26px;
+    background: var(--bg-deep);
+  }
+  .lb-cat-badge {
+    background: var(--aqua-surface);
+    color: var(--aqua);
+    font-size: var(--step-small);
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: var(--radius-pill);
+    margin-right: 14px;
+  }
+  .lb-counter {
+    font-size: var(--step-small);
+    font-weight: 700;
+    color: var(--ink-muted);
+    font-family: var(--font-head);
+  }
+  .lb-close-btn {
+    background: var(--bg-surface);
+    border: none;
+    color: var(--ink);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .lb-close-btn:hover {
+    color: var(--aqua);
+    background: var(--bg-surface-elevated);
+  }
+  .lb-stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px;
+    min-height: 0;
+  }
+  .lb-image-wrapper {
+    max-width: 90vw;
+    max-height: 72vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lb-img {
+    max-width: 100%;
+    max-height: 72vh;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .lb-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    background: var(--bg-surface);
+    border: none;
+    border-radius: 50%;
+    color: var(--ink);
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    user-select: none;
+    z-index: 10;
+  }
+  .lb-arrow:hover {
+    background: var(--aqua);
+    color: var(--bg-deep);
+  }
+  .lb-prev { left: 24px; }
+  .lb-next { right: 24px; }
+  .lb-footer {
+    padding: 20px 26px;
+    text-align: center;
+    background: var(--bg-deep);
+  }
+  .lb-title {
+    font-family: var(--font-head);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .lb-subtitle {
+    font-size: var(--step-small);
+    color: var(--ink-muted);
+  }
+
+  /* ---------------- Passcode Modal (Preserved & Styled) ---------------- */
+  .passcode-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2500;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .passcode-modal.active { display: flex; }
+  .passcode-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(7, 10, 14, 0.85);
+    backdrop-filter: blur(8px);
+  }
+  .passcode-dialog {
+    position: relative;
+    background: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 420px;
+    padding: 36px 30px;
+    text-align: center;
+    z-index: 10;
+  }
+  .passcode-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    color: var(--ink-muted);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .passcode-close-btn:hover { color: var(--aqua); }
+  .passcode-badge-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--aqua-surface);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--aqua);
+    margin: 0 auto 18px;
+  }
+  .passcode-title {
+    font-family: var(--font-head);
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: var(--ink);
+  }
+  .passcode-desc {
+    font-size: var(--step-small);
+    color: var(--ink-secondary);
+    line-height: 1.6;
+    margin: 0 0 24px 0;
+  }
+  .passcode-input {
+    width: 180px;
+    height: 50px;
+    background: var(--bg-deep);
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--ink);
+    font-size: 24px;
+    letter-spacing: 0.35em;
+    text-align: center;
+    margin: 0 auto 14px;
+    outline: none;
+    transition: var(--transition);
+  }
+  .passcode-input:focus {
+    box-shadow: 0 0 0 2px var(--aqua);
+  }
+  .passcode-input.is-error {
+    box-shadow: 0 0 0 2px #FF5A5A;
+  }
+  .passcode-error {
+    color: #FF5A5A;
+    font-size: var(--step-small);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .passcode-submit-btn {
+    width: 100%;
+    background: var(--aqua);
+    color: var(--bg-deep);
+    border: none;
+    padding: 14px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-head);
+    font-size: var(--step-small);
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .passcode-submit-btn:hover {
+    background: var(--aqua-hover);
+  }
+
+  /* Toast Notification */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--bg-surface-elevated);
+    color: var(--ink);
+    padding: 14px 22px;
+    border-radius: var(--radius-sm);
+    font-size: var(--step-small);
+    font-weight: 600;
+    display: none;
+    z-index: 3000;
+  }
+  .toast.active { display: block; }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); border: 0;
+  }
+
+  /* ---------------- Responsive Breakpoints ---------------- */
+  @media (max-width: 1024px) {
+    .shell {
+      grid-template-columns: 1fr;
+    }
+    .sidebar {
+      height: auto;
+      position: relative;
+      padding: 24px 20px;
+    }
+    .sidenav {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .avatar {
+      width: 90px;
+      margin: 0 auto;
+    }
+    .hero-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 36px;
+    }
+    .hero-actions { justify-content: center; }
+    .hero-lead { margin: 0 auto 30px; }
+    .hero-portrait-card { max-width: 420px; margin: 0 auto; }
+    .about-grid { grid-template-columns: minmax(0, 1fr); }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+    .brand-logos { grid-template-columns: repeat(3, 1fr); }
+    .proof-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 0 20px; }
+    section { padding: 52px 0; }
+    .gallery { grid-template-columns: 1fr; }
+    .brand-logos { grid-template-columns: repeat(2, 1fr); }
+    .tl-item { grid-template-columns: 1fr; gap: 12px; }
+    .pagefoot { flex-direction: column; gap: 10px; text-align: center; }
+    .drawer-panel { max-width: 100%; }
+  }
+
+  @media (max-width: 480px) {
+    .stat-grid { grid-template-columns: minmax(0, 1fr); }
+    .stat-card { padding: 20px 18px; }
+    .hero-actions { flex-direction: column; width: 100%; }
+    .hero-actions a, .hero-actions button { width: 100%; justify-content: center; }
+  }
+  </style>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content / Chuyển đến nội dung chính</a>
 
+  <div class="shell">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="avatar">
+        <img src="portrait.jpg" alt="Phát Trịnh" width="120" height="120" decoding="async">
+      </div>
 
-<div class="shell">
-  <aside class="sidebar">
-    <div class="avatar">
-      <img src="portrait.jpg" alt="Phát Trịnh" width="120" height="120" decoding="async">
-    </div>
-    <div class="lang-toggle" role="group" aria-label="Language selection / Chọn ngôn ngữ">
-      <button type="button" data-setlang="en" aria-label="Switch to English" aria-pressed="false">EN</button>
-      <button type="button" data-setlang="vi" aria-label="Chuyển sang Tiếng Việt" aria-pressed="true">VI</button>
-    </div>
-    <nav aria-label="Main Navigation" class="sidenav-nav"><ul class="sidenav">
-      <li><a href="#home" data-lang="en">Home</a><a href="#home" data-lang="vi">Trang chủ</a></li>
-      <li><a href="#about" data-lang="en">About Me</a><a href="#about" data-lang="vi">Giới thiệu</a></li>
-      <li><a href="#experience" data-lang="en">Experience</a><a href="#experience" data-lang="vi">Kinh nghiệm</a></li>
-      <li><a href="#portfolio" data-lang="en">Portfolio</a><a href="#portfolio" data-lang="vi">Portfolio</a></li>
-      <li><a href="#proof" data-lang="en">Real Journey</a><a href="#proof" data-lang="vi">Hành trình thực tế</a></li>
-      <li><a href="#contact" data-lang="en">Contact</a><a href="#contact" data-lang="vi">Liên hệ</a></li>
-    </ul></nav>
-    <div class="side-foot">
-      <a href="#contact" title="Email" aria-label="Email contact"><svg class="svg-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
-      <a href="https://www.instagram.com/trinhtphat/" target="_blank" rel="noopener noreferrer" title="Instagram (@trinhtphat)" aria-label="Instagram profile">IG</a>
-      <button type="button" class="side-foot-btn" id="openPasscodeModalBtn" title="Event Media Assets (Passcode Required)" aria-label="Event Media Assets (Passcode Required)" aria-haspopup="dialog" aria-controls="passcodeModal">
-        <svg class="svg-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-          <rect x="9.5" y="11.5" width="5" height="4.5" rx="1"></rect>
-          <path d="M10.5 11.5V10a1.5 1.5 0 0 1 3 0v1.5"></path>
-        </svg>
+      <!-- Language Toggle -->
+      <div class="lang-toggle" role="group" aria-label="Language selection / Chọn ngôn ngữ">
+        <button type="button" data-setlang="en" aria-label="Switch to English" aria-pressed="false">EN</button>
+        <button type="button" data-setlang="vi" aria-label="Chuyển sang Tiếng Việt" aria-pressed="true">VI</button>
+      </div>
+
+      <!-- SOLUTION A: KNOWLEDGE HUB TRIGGER -->
+      <button type="button" class="hub-trigger-btn" id="openDrawerBtn" aria-label="Open Spirits Knowledge Hub" aria-controls="knowledgeDrawer">
+        <div class="hub-left">
+          <span style="color:var(--aqua)">•</span>
+          <span data-lang="en">Spirits Field Notes</span>
+          <span data-lang="vi">Sổ Tay Rượu Di Sản</span>
+        </div>
+        <span class="hub-badge">HUB</span>
       </button>
+
+      <!-- Main Navigation -->
+      <nav aria-label="Main Navigation" class="sidenav-nav">
+        <ul class="sidenav">
+          <li><a href="#home" data-lang="en">Home</a><a href="#home" data-lang="vi">Trang chủ</a></li>
+          <li><a href="#about" data-lang="en">About Me</a><a href="#about" data-lang="vi">Giới thiệu</a></li>
+          <li><a href="#experience" data-lang="en">Experience</a><a href="#experience" data-lang="vi">Kinh nghiệm</a></li>
+          <li><a href="#portfolio" data-lang="en">Portfolio</a><a href="#portfolio" data-lang="vi">Portfolio</a></li>
+          <li><a href="#proof" data-lang="en">Real Journey</a><a href="#proof" data-lang="vi">Hành trình thực tế</a></li>
+          <li><a href="#contact" data-lang="en">Contact</a><a href="#contact" data-lang="vi">Liên hệ</a></li>
+        </ul>
+      </nav>
+
+      <!-- Sidebar Foot Controls -->
+      <div class="side-foot">
+        <a href="#contact" title="Email" aria-label="Email contact">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+        <a href="https://www.instagram.com/trinhtphat/" target="_blank" rel="noopener noreferrer" title="Instagram (@trinhtphat)" aria-label="Instagram profile">IG</a>
+        <button type="button" class="side-foot-btn" id="openPasscodeModalBtn" title="Event Media Assets (Passcode Required)" aria-label="Event Media Assets (Passcode Required)" aria-haspopup="dialog" aria-controls="passcodeModal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+            <rect x="9.5" y="11.5" width="5" height="4.5" rx="1"></rect>
+            <path d="M10.5 11.5V10a1.5 1.5 0 0 1 3 0v1.5"></path>
+          </svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN BODY -->
+    <main id="main-content">
+      <!-- Kinetic Marquee Ticker -->
+      <div class="marquee-bar" aria-hidden="true">
+        <div class="marquee-track">
+          <span>50+ Masterclasses <span class="star">•</span> 500+ F&B Talents Trained <span class="star">•</span> 100+ Guest Shifts &amp; Activations <span class="star">•</span> Rémy Cointreau Vietnam <span class="star">•</span> Bruichladdich Islay Single Malt <span class="star">•</span> Rémy Martin Cognac <span class="star">•</span> The Botanist Dry Gin <span class="star">•</span> Cointreau <span class="star">•</span> Champagne Telmont <span class="star">•</span> Mount Gay Rum 1703</span>
+          <span>50+ Masterclasses <span class="star">•</span> 500+ F&B Talents Trained <span class="star">•</span> 100+ Guest Shifts &amp; Activations <span class="star">•</span> Rémy Cointreau Vietnam <span class="star">•</span> Bruichladdich Islay Single Malt <span class="star">•</span> Rémy Martin Cognac <span class="star">•</span> The Botanist Dry Gin <span class="star">•</span> Cointreau <span class="star">•</span> Champagne Telmont <span class="star">•</span> Mount Gay Rum 1703</span>
+        </div>
+      </div>
+
+      <!-- SECTION: HERO (#home) -->
+      <section id="home" class="hero">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-left">
+              <h1 data-lang="en">Phát Trịnh · Brand Ambassador</h1>
+              <h1 data-lang="vi">Phát Trịnh · Brand Ambassador</h1>
+              <div class="hero-role" data-lang="en">Spirits Educator · Rémy Cointreau Vietnam</div>
+              <div class="hero-role" data-lang="vi">Đào Tạo Spirits · Rémy Cointreau Việt Nam</div>
+              <p class="hero-lead" data-lang="en">I have spent over a decade behind the bar and representing the world's most iconic spirits houses. Today, I champion Rémy Cointreau's luxury portfolio in Vietnam — training bartenders, hosting masterclasses, and connecting world-class heritage with modern bar craft.</p>
+              <p class="hero-lead" data-lang="vi">Hơn 10 năm kinh nghiệm sau quầy pha chế và đồng hành cùng các thương hiệu rượu di sản thế giới. Hiện tại, mình đại diện cho danh mục Rémy Cointreau tại Việt Nam — trực tiếp đào tạo đội ngũ, dẫn dắt các buổi tasting và đưa tinh hoa di sản chạm đến bàn tiệc mỗi đêm.</p>
+              <div class="hero-actions">
+                <a class="btn-primary" href="#about" data-lang="en">Explore Journey →</a>
+                <a class="btn-primary" href="#about" data-lang="vi">Tìm hiểu về mình →</a>
+                <button type="button" class="btn-secondary" id="heroHubBtn">
+                  <span data-lang="en">Spirits Knowledge Hub</span>
+                  <span data-lang="vi">Sổ tay Kiến thức Rượu</span>
+                </button>
+              </div>
+            </div>
+            <div class="hero-right">
+              <div class="hero-portrait-card">
+                <img src="portrait.jpg" alt="Phát Trịnh — Brand Ambassador &amp; Spirits Educator" width="540" height="680" decoding="async" fetchpriority="high">
+                <div class="hero-portrait-badge">
+                  <div>
+                    <div class="title">Phát Trịnh</div>
+                    <div class="sub" data-lang="en">Vietnam Market · On Trade</div>
+                    <div class="sub" data-lang="vi">Thị trường Việt Nam · On Trade</div>
+                  </div>
+                  <a href="#contact" class="btn-primary" style="padding: 6px 16px; font-size: 13px;">Connect</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: ABOUT (#about) -->
+      <section id="about" class="about">
+        <div class="container">
+          <h2 class="section-title" data-lang="en">About Me &amp; Philosophy</h2>
+          <h2 class="section-title" data-lang="vi">Hồ Sơ &amp; Triết Lý Nghề</h2>
+
+          <div class="about-grid">
+            <div class="about-bio">
+              <p class="role-text" data-lang="en">I am <b>Phát Trịnh</b>, Brand Ambassador &amp; Spirits Educator.</p>
+              <p class="role-text" data-lang="vi">Mình là <b>Phát Trịnh</b>, Brand Ambassador &amp; Người Đào Tạo Spirits.</p>
+              <p class="bio-p" data-lang="en">Whenever I share my journey, I remind people: I came up the exact same way you did — service, barback, bartender, then bar operations. The challenges of this craft are not stories I heard about; I lived them night after night.</p>
+              <p class="bio-p" data-lang="vi">Mỗi lần chia sẻ, mình luôn nói cùng anh em: mình đi lên từ chính các vị trí nền tảng — phục vụ, phụ bar, pha chế chính rồi quản lý vận hành. Mọi gian nan và thử thách của nghề là những điều mình đã trực tiếp trải qua qua hàng nghìn ca làm việc.</p>
+            </div>
+
+            <div class="stat-grid" data-ui>
+              <div class="stat-card">
+                <div class="num">10+</div>
+                <div class="lbl" data-lang="en">Years in the Bar Trade</div>
+                <div class="lbl" data-lang="vi">Năm Thực Chiến Ngành Bar</div>
+              </div>
+              <div class="stat-card">
+                <div class="num">8</div>
+                <div class="lbl" data-lang="en">World-Class Spirits Brands</div>
+                <div class="lbl" data-lang="vi">Nhãn Hiệu Di Sản Đại Diện</div>
+              </div>
+              <div class="stat-card">
+                <div class="num" data-lang="en">Nationwide</div>
+                <div class="num" data-lang="vi">Toàn quốc</div>
+                <div class="lbl" data-lang="en">Premier Bar &amp; Hotel Network</div>
+                <div class="lbl" data-lang="vi">Mạng Lưới Bar &amp; Khách Sạn 5 Sao</div>
+              </div>
+              <div class="stat-card">
+                <div class="num">HCMC</div>
+                <div class="lbl" data-lang="en">Home Base &amp; Nationwide Tours</div>
+                <div class="lbl" data-lang="vi">Hoạt Động Chính &amp; Lưu Diễn</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pdf-downloads-bar" data-ui>
+            <a class="btn-secondary" href="Phat-Trinh-Brand-Ambassador-Profile.pdf" target="_blank" data-lang="vi">Tải Profile PDF (Tiếng Việt)</a>
+            <a class="btn-secondary" href="Phat-Trinh-Brand-Ambassador-Profile-EN.pdf" target="_blank" data-lang="en">Download Profile PDF (English)</a>
+          </div>
+
+          <!-- 3 CORE PILLARS (Bento Grid) -->
+          <div class="pillars-heading">
+            <h3 data-lang="en">Three Core Operational Pillars</h3>
+            <h3 data-lang="vi">Ba Trụ Cột Hoạt Động Cốt Lõi</h3>
+          </div>
+          <div class="pillars-grid">
+            <!-- PILLAR 1 -->
+            <div class="pillar-card">
+              <div>
+                <span class="pillar-num">Pillar 1 · Terroir</span>
+                <h4 data-lang="en">Brand Representation</h4>
+                <h4 data-lang="vi">Đại Diện Thương Hiệu</h4>
+                <span class="pillar-badge" data-lang="en">Luxury &amp; Heritage Spirits</span>
+                <span class="pillar-badge" data-lang="vi">Di Sản &amp; Chưng Cất Thượng Hạng</span>
+                <p data-lang="en">Championing the heritage and authentic terroir of exceptional spirits across premier venues, industry partners, and the trade community nationwide.</p>
+                <p data-lang="vi">Lan tỏa giá trị di sản và thổ nhưỡng nguyên bản của những dòng rượu trứ danh đến các Outlets hàng đầu, đối tác chiến lược và cộng đồng làm nghề trên toàn quốc.</p>
+              </div>
+            </div>
+
+            <!-- PILLAR 2 -->
+            <div class="pillar-card">
+              <div>
+                <span class="pillar-num">Pillar 2 · People</span>
+                <h4 data-lang="en">Team Training &amp; Education</h4>
+                <h4 data-lang="vi">Đào Tạo Đội Ngũ Thực Chiến</h4>
+                <span class="pillar-badge" data-lang="en">50+ Masterclasses · 500+ Staff</span>
+                <span class="pillar-badge" data-lang="vi">50+ Masterclasses · 500+ Nhân sự F&B</span>
+                <p data-lang="en">Conducting hands-on tastings, spirits craft, and practical hospitality workshops—empowering bar and floor teams with real-world skills to elevate the guest experience.</p>
+                <p data-lang="vi">Trực tiếp dẫn dắt các buổi tasting chuẩn mực và workshop dịch vụ mang tính ứng dụng cao. Đồng hành rèn giũa tay nghề thực chiến, nâng chuẩn trải nghiệm cho từng thực khách.</p>
+              </div>
+            </div>
+
+            <!-- PILLAR 3 -->
+            <div class="pillar-card">
+              <div>
+                <span class="pillar-num">Pillar 3 · Time</span>
+                <h4 data-lang="en">Event &amp; Experience Hosting</h4>
+                <h4 data-lang="vi">Tổ Chức Sự Kiện &amp; Trải Nghiệm</h4>
+                <span class="pillar-badge" data-lang="en">100+ Activations &amp; Guest Shifts</span>
+                <span class="pillar-badge" data-lang="vi">100+ Hoạt Động &amp; Guest Shifts</span>
+                <p data-lang="en">Curating and hosting memorable guest shifts, curated tasting dinners, and brand activations that celebrate the art of mindful drinking and modern lifestyle culture.</p>
+                <p data-lang="vi">Sáng tạo và điều phối những đêm Guest Shift thăng hoa, tiệc tasting cùng sự kiện thương hiệu giao thoa với phong cách sống hiện đại và tinh thần Mindful Drinking.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: EXPERIENCE (#experience) -->
+      <section id="experience">
+        <div class="container">
+          <h2 class="section-title" data-lang="en">Career Trajectory &amp; Portfolio</h2>
+          <h2 class="section-title" data-lang="vi">Hành Trình Sự Nghiệp &amp; Di Sản</h2>
+
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-year">From 2010</div>
+              <div class="tl-content">
+                <h3 data-lang="en">Started From The Ground Up</h3>
+                <h3 data-lang="vi">Đi Lên Từ Vị Trí Nền Tảng</h3>
+                <p data-lang="en">Service, barback, bartender, then bar operations — before holding any Brand Ambassador title, this is where the foundation was forged.</p>
+                <p data-lang="vi">Service, barback, bartender, rồi quản lý vận hành quầy bar — trước khi nhận trọng trách Brand Ambassador, mình tích lũy trọn vẹn từng viên gạch nền tảng từ những năm tháng đứng sau quầy.</p>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-year" data-lang="en">Present</div>
+              <div class="tl-year" data-lang="vi">Hiện tại</div>
+              <div class="tl-content">
+                <h3 data-lang="en">Brand Ambassador, Rémy Cointreau Vietnam</h3>
+                <h3 data-lang="vi">Brand Ambassador, Rémy Cointreau Việt Nam</h3>
+                <p data-lang="en">Representing a world-class luxury spirits portfolio across Vietnam — partnering with top cocktail bars, luxury hotels, whisky lounges, and specialist on-trade retailers.</p>
+                <p data-lang="vi">Đại diện cho danh mục rượu di sản cao cấp hàng đầu thế giới tại Việt Nam — đồng hành cùng hệ thống cocktail bar, khách sạn 5 sao, lounge chuyên biệt và các đối tác phân phối trọng điểm.</p>
+
+                <!-- Brand Logos -->
+                <div class="brand-logos" role="list" aria-label="Brand Portfolio">
+                  <div class="lg-item" data-brand="telmont" role="listitem" title="Champagne Telmont">
+                    <img src="brand-logos/telmont.png" alt="Champagne Telmont" width="160" height="80" loading="lazy" decoding="async">
+                  </div>
+                  <div class="lg-item" data-brand="mountgay" role="listitem" title="Mount Gay Rum 1703">
+                    <img src="brand-logos/mount-gay.png" alt="Mount Gay Rum" width="160" height="80" loading="lazy" decoding="async">
+                  </div>
+                  <div class="lg-item" data-brand="octomore" role="listitem" title="Octomore Super Heavily Peated Single Malt">
+                    <img src="brand-logos/octomore.png" alt="Octomore Islay Single Malt" width="160" height="80" loading="lazy" decoding="async">
+                  </div>
+                  <div class="lg-item" data-brand="remy" role="listitem" title="Rémy Martin Fine Champagne Cognac">
+                    <img src="brand-logos/remy-martin.png" alt="Rémy Martin Cognac" width="160" height="80" loading="lazy" decoding="async">
+                  </div>
+                  <div class="lg-item" data-brand="cointreau" role="listitem" title="Cointreau L'Unique Orange Liqueur">
+                    <img src="brand-logos/cointreau.png" alt="Cointreau Liqueur" width="160" height="80" loading="lazy" decoding="async">
+                  </div>
+                  <div class="lg-item" data-brand="bruichladdich" role="listitem" title="Bruichladdich Progressive Hebridean Distillers">
+                    <img src="brand-logos/bruichladdich.png" alt="Bruichladdich Distillery" width="160" height="80" loading="lazy" decoding="async">
+                  </div>
+                  <div class="lg-item" data-brand="portcharlotte" role="listitem" title="Port Charlotte Heavily Peated Islay Single Malt">
+                    <img src="brand-logos/port-charlotte.png" alt="Port Charlotte Whisky" width="160" height="80" loading="lazy" decoding="async">
+                  </div>
+                  <div class="lg-item" data-brand="botanist" role="listitem" title="The Botanist Islay Dry Gin">
+                    <img src="brand-logos/botanist.png" alt="The Botanist Islay Dry Gin" width="160" height="80" loading="lazy" decoding="async">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: PORTFOLIO (#portfolio) -->
+      <section id="portfolio" class="portfolio">
+        <div class="container">
+          <h2 class="section-title" data-lang="en">Field Activations &amp; Visual Diary</h2>
+          <h2 class="section-title" data-lang="vi">Nhật Ký Hoạt Động Thực Chiến</h2>
+
+          <div class="filters" role="tablist">
+            <button class="active" data-filter="all" data-lang="en">All</button>
+            <button class="active" data-filter="all" data-lang="vi">Tất cả</button>
+            <button data-filter="training" data-lang="en">Training</button>
+            <button data-filter="training" data-lang="vi">Đào tạo</button>
+            <button data-filter="tasting" data-lang="en">Tasting</button>
+            <button data-filter="tasting" data-lang="vi">Tasting</button>
+            <button data-filter="guest" data-lang="en">Guest Bartender</button>
+            <button data-filter="guest" data-lang="vi">Guest Shift</button>
+            <button data-filter="event" data-lang="en">Event Sponsor</button>
+            <button data-filter="event" data-lang="vi">Sự kiện &amp; Tài trợ</button>
+          </div>
+
+          <div class="gallery">
+            <!-- TRAINING 1 -->
+            <div class="g-tile" data-category="training">
+              <img src="img/training-thelongbar.jpg" alt="The Long Bar Times Square Saigon" loading="lazy">
+              <div class="g-overlay">
+                <span class="cat" data-lang="en">Training</span>
+                <span class="cat" data-lang="vi">Đào tạo</span>
+                <span class="lbl" data-lang="en">The Long Bar • Times Square Saigon</span>
+                <span class="lbl" data-lang="vi">The Long Bar • Times Square TP. HCM</span>
+                <span class="sublbl" data-lang="en">Luxury Hotel Bar Team &amp; Hospitality Workshop</span>
+                <span class="sublbl" data-lang="vi">Workshop Kỹ năng Phục vụ &amp; Chuẩn mực 5 Sao</span>
+              </div>
+            </div>
+            <!-- TRAINING 2 -->
+            <div class="g-tile" data-category="training">
+              <img src="img/training-metropole.jpg" alt="Angelina Sofitel Legend Metropole Hanoi Training" loading="lazy">
+              <div class="g-overlay">
+                <span class="cat" data-lang="en">Training</span>
+                <span class="cat" data-lang="vi">Đào tạo</span>
+                <span class="lbl" data-lang="en">Angelina • Sofitel Legend Metropole Hanoi</span>
+                <span class="lbl" data-lang="vi">Angelina • Sofitel Legend Metropole Hà Nội</span>
+                <span class="sublbl" data-lang="en">Brand Rituals &amp; Terroir Masterclass</span>
+                <span class="sublbl" data-lang="vi">Đào tạo Nghi thức &amp; Terroir Masterclass</span>
+              </div>
+            </div>
+            <!-- TRAINING 3 -->
+            <div class="g-tile" data-category="training">
+              <img src="img/training-lasiesta.jpg" alt="La Siesta Premium Hotel Hanoi Training" loading="lazy">
+              <div class="g-overlay">
+                <span class="cat" data-lang="en">Training</span>
+                <span class="cat" data-lang="vi">Đào tạo</span>
+                <span class="lbl" data-lang="en">La Siesta Premium Hotel • Hanoi</span>
+                <span class="lbl" data-lang="vi">La Siesta Premium Hotel • Hà Nội</span>
+                <span class="sublbl" data-lang="en">Spirits Knowledge &amp; Bar Team Training</span>
+                <span class="sublbl" data-lang="vi">Đào tạo Kiến thức Rượu &amp; Đội ngũ Dịch vụ</span>
+              </div>
+            </div>
+            <!-- TRAINING 4 -->
+            <div class="g-tile" data-category="training">
+              <img src="img/training-tebar.jpg" alt="Tê Bar Danang Bartender Workshop" loading="lazy">
+              <div class="g-overlay">
+                <span class="cat" data-lang="en">Training</span>
+                <span class="cat" data-lang="vi">Đào tạo</span>
+                <span class="lbl" data-lang="en">Tê Bar • Danang</span>
+                <span class="lbl" data-lang="vi">Tê Bar • Đà Nẵng</span>
+                <span class="sublbl" data-lang="en">Spirits Portfolio &amp; Practical Bartender Workshop</span>
+                <span class="sublbl" data-lang="vi">Workshop Thực chiến &amp; Đào tạo Bartender</span>
+              </div>
+            </div>
+            <!-- TRAINING 5 -->
+            <div class="g-tile" data-category="training">
+              <img src="img/training-akata.jpg" alt="AKATA Cocktail Bar Danang Training" loading="lazy">
+              <div class="g-overlay">
+                <span class="cat" data-lang="en">Training</span>
+                <span class="cat" data-lang="vi">Đào tạo</span>
+                <span class="lbl" data-lang="en">AKATA Cocktail Bar • Danang</span>
+                <span class="lbl" data-lang="vi">AKATA Cocktail Bar • Đà Nẵng</span>
+                <span class="sublbl" data-lang="en">Spirits Craft &amp; Advanced Mixology Training</span>
+                <span class="sublbl" data-lang="vi">Đào tạo Nghi thức Nếm thử &amp; Kỹ năng Pha chế</span>
+              </div>
+            </div>
+            <!-- TASTING 1 -->
+            <div class="g-tile" data-category="tasting">
+              <img src="img/tasting-octomore-1.jpg" alt="Octomore Single Malt Official Launch" loading="lazy">
+              <div class="g-overlay">
+                <span class="cat" data-lang="en">Tasting</span>
+                <span class="cat" data-lang="vi">Tasting</span>
+                <span class="lbl" data-lang="en">Octomore Single Malt • Official Launch</span>
+                <span class="lbl" data-lang="vi">Octomore Single Malt • Lễ Ra Mắt Chính Thức</span>
+                <span class="sublbl" data-lang="en">The World's Most Heavily Peated Single Malt Whisky</span>
+                <span class="sublbl" data-lang="vi">Sự kiện Ra mắt Dòng Single Malt Đậm Khói Nhất Thế Giới</span>
+              </div>
+            </div>
+            <!-- TASTING 2 -->
+            <div class="g-tile" data-category="tasting">
+              <img src="img/tasting-masterclass.jpg" alt="Remy Cointreau Portfolio VIP Tasting" loading="lazy">
+              <div class="g-overlay">
+                <span class="cat" data-lang="en">Tasting</span>
+                <span class="cat" data-lang="vi">Tasting</span>
+                <span class="lbl" data-lang="en">Rémy Cointreau Portfolio • VIP Tasting</span>
+                <span class="lbl" data-lang="vi">Rémy Cointreau Portfolio • VIP Tasting</span>
+                <span class="sublbl" data-lang="en">Curated Glassware Ritual &amp; Terroir Education</span>
+                <span class="sublbl" data-lang="vi">Nghi thức Thưởng rượu &amp; Trải nghiệm Terroir Độc quyền</span>
+              </div>
+            </div>
+            <!-- TASTING 3 -->
+            <div class="g-tile" data-category="tasting">
+              <img src="img/tasting-octomore-2.jpg" alt="Octomore Masterclass Media Session" loading="lazy">
+              <div class="g-overlay">
+                <span class="cat" data-lang="en">Tasting</span>
+                <span class="cat" data-lang="vi">Tasting</span>
+                <span class="lbl" data-lang="en">Octomore Masterclass &amp; Media Session</span>
+                <span class="lbl" data-lang="vi">Octomore Masterclass &amp; Gặp Gỡ Báo Chí</span>
+                <span class="sublbl" data-lang="en">Private Tasting for Spirits Connoisseurs &amp; Editors</span>
+                <span class="sublbl" data-lang="vi">Buổi Nếm thử Chuyên sâu cùng Chuyên gia &amp; Báo giới</span>
+              </div>
+            </div>
+            <!-- GUEST BARTENDER 1 -->
+            <div class="g-tile" data-category="guest">
+              <img src="img/guest-stir.jpg" alt="Stir Saigon x The Elephant Room" loading="lazy">
+              <div class="g-overlay">
+                <span class="cat" data-lang="en">Guest Bartender</span>
+                <span class="cat" data-lang="vi">Guest Shift</span>
+                <span class="lbl" data-lang="en">Stir Saigon x The Elephant Room • Guest Shift</span>
+                <span class="lbl" data-lang="vi">Stir Sài Gòn x The Elephant Room • Guest Shift Quốc tế</span>
+                <span class="sublbl" data-lang="en">Featuring Asia's 50 Best Bars Ranked Venues &amp; Rémy Cointreau Spirits</span>
+                <span class="sublbl" data-lang="vi">Hợp tác cùng Asia's 50 Best Bars &amp; Các Dòng Rượu Di sản Rémy Cointreau</span>
+              </div>
+            </div>
+            <!-- GUEST BARTENDER 2 -->
+            <div class="g-tile" data-category="guest">
+              <img src="img/guest-haflington.jpg" alt="The Haflington Speakeasy Hanoi" loading="lazy">
+              <div class="g-overlay">
+                <span class="cat" data-lang="en">Guest Bartender</span>
+                <span class="cat" data-lang="vi">Guest Shift</span>
+                <span class="lbl" data-lang="en">The Haflington • Speakeasy Hanoi</span>
+                <span class="lbl" data-lang="vi">The Haflington • Speakeasy Hà Nội</span>
+                <span class="sublbl" data-lang="en">Heritage Cocktails &amp; Brand Takeover Night</span>
+                <span class="sublbl" data-lang="vi">Đêm Tiệc Takeover &amp; Trình diễn Cocktail Di sản</span>
+              </div>
+            </div>
+            <!-- GUEST BARTENDER 3 -->
+            <div class="g-tile" data-category="guest">
+              <img src="img/guest-shift-1.jpg" alt="Guest Shift Behind The Bar" loading="lazy">
+              <div class="g-overlay">
+                <span class="cat" data-lang="en">Guest Bartender</span>
+                <span class="cat" data-lang="vi">Guest Shift</span>
+                <span class="lbl" data-lang="en">Guest Shift • Behind The Bar Experience</span>
+                <span class="lbl" data-lang="vi">Guest Shift • Trải nghiệm Sau Quầy Bar</span>
+                <span class="sublbl" data-lang="en">High-Energy Signature Cocktail Takeover</span>
+                <span class="sublbl" data-lang="vi">Đứng Quầy &amp; Trình Diễn Signature Cocktails</span>
+              </div>
+            </div>
+            <!-- EVENT SPONSOR 1 -->
+            <div class="g-tile" data-category="event">
+              <img src="img/event-chessclub.jpg" alt="Chess Club Private Lounge Saigon" loading="lazy">
+              <div class="g-overlay">
+                <span class="cat" data-lang="en">Event Sponsor</span>
+                <span class="cat" data-lang="vi">Sự kiện &amp; Tài trợ</span>
+                <span class="lbl" data-lang="en">Chess Club • Private Lounge Saigon</span>
+                <span class="lbl" data-lang="vi">Chess Club • Private Lounge Sài Gòn</span>
+                <span class="sublbl" data-lang="en">Sponsored Spirits Showcase &amp; VIP Night</span>
+                <span class="sublbl" data-lang="vi">Đêm Tiệc Tài trợ &amp; Không gian Giao lưu Đẳng cấp</span>
+              </div>
+            </div>
+            <!-- EVENT SPONSOR 2 -->
+            <div class="g-tile" data-category="event">
+              <img src="img/event-cham.jpg" alt="CHẤM Brand Activation" loading="lazy">
+              <div class="g-overlay">
+                <span class="cat" data-lang="en">Event Sponsor</span>
+                <span class="cat" data-lang="vi">Sự kiện &amp; Tài trợ</span>
+                <span class="lbl" data-lang="en">CHẤM Dining • Brand Activation</span>
+                <span class="lbl" data-lang="vi">CHẤM Dining • Brand Activation</span>
+                <span class="sublbl" data-lang="en">Sponsored Spirits Showcase &amp; Gastronomy Pairing</span>
+                <span class="sublbl" data-lang="vi">Không gian Tài trợ &amp; Kết hợp Ẩm thực Đẳng cấp</span>
+              </div>
+            </div>
+            <!-- EVENT SPONSOR 3 -->
+            <div class="g-tile" data-category="event">
+              <img src="img/event-showcase.jpg" alt="Luxury Gala Dinner Pairing Showcase" loading="lazy">
+              <div class="g-overlay">
+                <span class="cat" data-lang="en">Event Sponsor</span>
+                <span class="cat" data-lang="vi">Sự kiện &amp; Tài trợ</span>
+                <span class="lbl" data-lang="en">Luxury Gala Dinner &amp; Pairing Showcase</span>
+                <span class="lbl" data-lang="vi">Tiệc Gala Tinh hoa &amp; Ẩm thực Thượng lưu</span>
+                <span class="sublbl" data-lang="en">Bridging World-Class Spirits with Contemporary Culture</span>
+                <span class="sublbl" data-lang="vi">Kết nối Nghệ thuật Rượu Di sản với Phong cách Đương đại</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: PROOF (#proof) -->
+      <section id="proof">
+        <div class="container">
+          <h2 class="section-title" data-lang="en">Authentic Industry Impact</h2>
+          <h2 class="section-title" data-lang="vi">Hành Trình &amp; Giá Trị Thực Chiến</h2>
+          <p style="color:var(--ink-secondary);max-width:68ch;margin-top:-8px;font-size:var(--step-lead);" data-lang="en">No fluff — just pure passion, authentic craft, and dedication that happens week in, week out.</p>
+          <p style="color:var(--ink-secondary);max-width:68ch;margin-top:-8px;font-size:var(--step-lead);" data-lang="vi">Không hoa mỹ — chỉ đơn giản là niềm đam mê, kỹ nghệ thực chiến và sự tận tâm lặp lại mỗi tuần.</p>
+
+          <div class="proof-grid">
+            <div class="proof-card">
+              <span class="tag" data-lang="en">Team Training</span><span class="tag" data-lang="vi">Đào Tạo Đội Ngũ</span>
+              <p data-lang="en">Regular hands-on trainings for bar and floor teams across 5-star hotels and premier venues: Metropole Hanoi, Times Square Saigon, La Siesta — real conversations about spirits terroir, tasting rituals, and hospitality craft.</p>
+              <p data-lang="vi">Đào tạo thực chiến đều đặn cho đội ngũ pha chế &amp; phục vụ tại các khách sạn 5 sao và quán bar hàng đầu (Metropole, Times Square Saigon, La Siesta) — câu chuyện thật về terroir, nghi thức nếm thử và kỹ năng nghề.</p>
+            </div>
+            <div class="proof-card">
+              <span class="tag" data-lang="en">Tasting &amp; Masterclass</span><span class="tag" data-lang="vi">Tasting &amp; Masterclass</span>
+              <p data-lang="en">Curating in-depth tastings and brand reveals for world-class icons like Octomore, Rémy Martin, and The Botanist — engaging connoisseurs, media, and trade leaders.</p>
+              <p data-lang="vi">Dẫn dắt các buổi tasting chuyên sâu và ra mắt sản phẩm biểu tượng thế giới như Octomore, Rémy Martin, The Botanist — kết nối tệp khách sành, báo chí và chuyên gia trong ngành.</p>
+            </div>
+            <div class="proof-card">
+              <span class="tag" data-lang="en">Guest Bartender</span><span class="tag" data-lang="vi">Guest Bartender</span>
+              <p data-lang="en">Behind the bar at high-energy guest shifts and brand takeovers at Vietnam's most celebrated cocktail destinations: Stir Saigon (Asia's 50 Best Bars), The Haflington Hanoi, and beyond.</p>
+              <p data-lang="vi">Trực tiếp đứng quầy tại các buổi guest shift bùng nổ năng lượng và takeover thương hiệu ở những quán cocktail hàng đầu Việt Nam: Stir Saigon (Top 50 Bar Châu Á), The Haflington Hà Nội...</p>
+            </div>
+            <div class="proof-card">
+              <span class="tag" data-lang="en">Event Sponsor</span><span class="tag" data-lang="vi">Sự Kiện &amp; Tài Trợ</span>
+              <p data-lang="en">Partnering with and hosting sponsored showcases, exclusive VIP club nights, and gala dinners: CHẤM Dining, Chess Club Saigon — bridging heritage spirits with contemporary culture.</p>
+              <p data-lang="vi">Đồng hành tài trợ và chủ trì các sự kiện thương hiệu, đêm tiệc VIP club và gala dinner: CHẤM Dining, Chess Club Sài Gòn — kết nối nghệ thuật pha chế di sản với phong cách sống đương đại.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: CONTACT (#contact) -->
+      <section id="contact">
+        <div class="container">
+          <h2 class="section-title" data-lang="en">Get In Touch &amp; Collaborate</h2>
+          <h2 class="section-title" data-lang="vi">Kết Nối Hợp Tác &amp; Giao Lưu</h2>
+
+          <div class="contact-grid">
+            <div class="contact-list">
+              <div class="contact-row">
+                <div class="ico" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div class="txt">
+                  <b data-lang="en">Email</b><b data-lang="vi">Email</b>
+                  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+                    <a href="mailto:phat.trinh@alchemy-asia.com">phat.trinh@alchemy-asia.com</a>
+                    <button type="button" class="btn-copy" data-copy="phat.trinh@alchemy-asia.com" aria-label="Copy email address" title="Copy email">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                      <span data-lang="en">Copy</span><span data-lang="vi">Sao chép</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-row">
+                <div class="ico" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div class="txt">
+                  <b data-lang="en">Phone / Zalo</b><b data-lang="vi">Điện Thoại / Zalo</b>
+                  <span>+84 988 222 807</span>
+                </div>
+              </div>
+
+              <div class="contact-row">
+                <div class="ico" style="font-size:14px;font-weight:700;">IG</div>
+                <div class="txt">
+                  <b data-lang="en">Instagram</b><b data-lang="vi">Instagram</b>
+                  <a href="https://www.instagram.com/trinhtphat/" target="_blank" rel="noopener noreferrer">@trinhtphat</a>
+                </div>
+              </div>
+
+              <div class="contact-row">
+                <div class="ico" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div class="txt">
+                  <b data-lang="en">Based In</b><b data-lang="vi">Địa Bàn Hoạt Động</b>
+                  <span data-lang="en">Ho Chi Minh City &amp; Nationwide Activations</span>
+                  <span data-lang="vi">TP. Hồ Chí Minh &amp; Lưu Diễn Toàn Quốc</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-cta-box">
+              <h3 data-lang="en">Let's Talk Spirits.</h3>
+              <h3 data-lang="vi">Cùng Làm Một Ly?</h3>
+              <p data-lang="en">Looking for someone who knows every label by heart, but also understands every corner and sweat behind the bar? Let's connect.</p>
+              <p data-lang="vi">Bạn cần một người hiểu rõ cặn kẽ từng nhãn rượu di sản, nhưng cũng đồng cảm với từng giọt mồ hôi sau quầy pha chế? Hãy cùng kết nối.</p>
+              <a class="btn-primary" href="https://zalo.me/0988222807" target="_blank" rel="noopener" data-lang="en">Connect on Zalo →</a>
+              <a class="btn-primary" href="https://zalo.me/0988222807" target="_blank" rel="noopener" data-lang="vi">Nhắn cho mình qua Zalo →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE FOOTER -->
+      <footer class="pagefoot">
+        <div>
+          <span data-lang="en">© Phát Trịnh — Ho Chi Minh City, Vietnam</span>
+          <span data-lang="vi">© Phát Trịnh — TP. Hồ Chí Minh, Việt Nam</span>
+        </div>
+        <div>
+          <span data-lang="en">Brand Ambassador · Rémy Cointreau Vietnam</span>
+          <span data-lang="vi">Brand Ambassador · Rémy Cointreau Việt Nam</span>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- ================= SOLUTION A: KNOWLEDGE HUB DRAWER ================= -->
+  <div id="knowledgeDrawer" class="drawer-modal" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true">
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <div>
+          <span class="drawer-kicker" data-lang="en">Spirits Field Notes · By Phát Trịnh</span>
+          <span class="drawer-kicker" data-lang="vi">Sổ Tay Nghề Rượu · Phát Trịnh</span>
+          <h2 id="drawerTitle" class="drawer-title">
+            <span data-lang="en">Spirits Knowledge Hub</span>
+            <span data-lang="vi">Kiến Thức Rượu Di Sản</span>
+          </h2>
+        </div>
+        <button type="button" class="drawer-close-btn" id="closeDrawerBtn" aria-label="Đóng cẩm nang / Close" title="Close (Esc)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <!-- Topics Filter Chips -->
+      <div class="drawer-filters" role="tablist">
+        <button class="d-chip active" data-topic="all" data-lang="en">All Notes</button>
+        <button class="d-chip active" data-topic="all" data-lang="vi">Tất cả</button>
+        <button class="d-chip" data-topic="cognac" data-lang="en">Cognac</button>
+        <button class="d-chip" data-topic="cognac" data-lang="vi">Cognac</button>
+        <button class="d-chip" data-topic="gin" data-lang="en">Gin Craft</button>
+        <button class="d-chip" data-topic="gin" data-lang="vi">Gin Di sản</button>
+        <button class="d-chip" data-topic="whisky" data-lang="en">Islay Single Malt</button>
+        <button class="d-chip" data-topic="whisky" data-lang="vi">Islay Whisky</button>
+        <button class="d-chip" data-topic="rum-champagne" data-lang="en">Rum &amp; Champagne</button>
+        <button class="d-chip" data-topic="rum-champagne" data-lang="vi">Rum &amp; Champagne</button>
+      </div>
+
+      <!-- Drawer Content Cards -->
+      <div class="drawer-body">
+        <!-- TOPIC 1: COGNAC -->
+        <article class="k-card" data-topic="cognac">
+          <span class="k-brand-tag" data-lang="en">Rémy Martin · Fine Champagne Cognac</span>
+          <span class="k-brand-tag" data-lang="vi">Rémy Martin · Di Sản Cognac Thượng Hạng</span>
+          <h3 data-lang="en">What is Cognac &amp; Why Not All Brandies Are Cognac?</h3>
+          <h3 data-lang="vi">Cognac là gì &amp; Vì sao không phải Brandy nào cũng là Cognac?</h3>
+          <p data-lang="en">All Cognac is brandy (grape-distilled spirit), but only brandy distilled in the strictly demarcated <b>Cognac region of France</b> under AOC laws can carry the name Cognac.</p>
+          <p data-lang="vi">Mọi Cognac đều là Brandy (rượu mạnh chưng cất từ nho), nhưng chỉ rượu chưng cất tại <b>vùng Cognac (Cộng hòa Pháp)</b> tuân theo bộ quy chuẩn AOC nghiêm ngặt mới được mang danh hiệu Cognac.</p>
+          <ul>
+            <li data-lang="en"><b>The 6 Crus (Terroir):</b> Only <i>Grande Champagne</i> and <i>Petite Champagne</i> have the unique chalky limestone soil capable of yielding eaux-de-vie with immense aging potential and aromatic depth.</li>
+            <li data-lang="vi"><b>6 Vùng Thổ Nhưỡng (Crus):</b> Trong 6 vùng của Cognac, chỉ duy nhất <i>Grande Champagne</i> và <i>Petite Champagne</i> sở hữu chất đất phấn xốp đặc hữu, tạo nên eaux-de-vie có tiềm năng lưu giữ hương thơm hoa quả thanh lịch nhất.</li>
+            <li data-lang="en"><b>Fine Champagne Legal Status:</b> Rémy Martin exclusively crafts <i>Fine Champagne Cognac</i> — requiring at least 50% Grande Champagne with the balance from Petite Champagne.</li>
+            <li data-lang="vi"><b>Chuẩn Fine Champagne:</b> Rémy Martin chuyên tâm tạo ra <i>Fine Champagne Cognac</i> — tiêu chuẩn pháp lý đòi hỏi tối thiểu 50% nho từ Grande Champagne và phần còn lại từ Petite Champagne.</li>
+            <li data-lang="en"><b>Aging Classifications:</b> VSOP (aged min. 4 years in Limousin oak), XO (aged min. 10 years).</li>
+            <li data-lang="vi"><b>Phân hạng tuổi ủ:</b> VSOP (ủ tối thiểu 4 năm trong thùng gỗ sồi Limousin), XO (ủ tối thiểu 10 năm).</li>
+          </ul>
+          <div class="k-takeaway">
+            <strong data-lang="en">Ambassador's Note:</strong>
+            <strong data-lang="vi">Lời khuyên từ Đại sứ:</strong>
+            <span data-lang="en"> When tasting Rémy Martin XO, drop in one large clear ice cube. Watch how the chill unlocks rich notes of candied orange, jasmine, and ripe fig.</span>
+            <span data-lang="vi"> Khi thưởng thức Rémy Martin XO, hãy thử cùng một viên đá tròn trong suốt. Nhiệt độ mát lạnh sẽ mở khóa các tầng hương cam thảo, hoa nhài và quả sung chín mọng.</span>
+          </div>
+        </article>
+
+        <!-- TOPIC 2: GIN -->
+        <article class="k-card" data-topic="gin">
+          <span class="k-brand-tag" data-lang="en">The Botanist · Progressive Islay Dry Gin</span>
+          <span class="k-brand-tag" data-lang="vi">The Botanist · Nghệ Thuật Thảo Mộc Islay</span>
+          <h3 data-lang="en">Understanding Gin &amp; The 22 Wild Foraged Botanicals</h3>
+          <h3 data-lang="vi">Bản chất của Gin &amp; Triết lý 22 Thảo Mộc Hoang Dã</h3>
+          <p data-lang="en">By definition, Gin is a neutral spirit whose predominant flavor must stem from <b>Juniper berries</b>. But true artistry lies in how secondary botanicals harmonize with the terroir.</p>
+          <p data-lang="vi">Về bản chất, Gin là rượu mạnh có hương vị chủ đạo bắt buộc từ <b>quả bách xù (Juniper berries)</b>. Tuy nhiên, linh hồn và sự khác biệt của Gin nằm ở câu chuyện thổ nhưỡng của các loại thảo mộc kết hợp.</p>
+          <ul>
+            <li data-lang="en"><b>22 Hand-Foraged Islay Botanicals:</b> In addition to 9 classic core botanicals, The Botanist forages 22 indigenous wild botanicals sustainably across the remote Scottish island of Islay (apple mint, bog myrtle, gorse flowers...).</li>
+            <li data-lang="vi"><b>22 Thảo mộc hoang dã đảo Islay:</b> Ngoài 9 loại thảo mộc nền kinh điển, The Botanist thu hái thủ công hoàn toàn 22 loại thảo mộc bản địa mọc hoang dã trên đảo Islay (bạc hà táo, thạch nam, hoa kim tước...).</li>
+            <li data-lang="en"><b>Ugly Betty Still:</b> Distilled in a modified Lomond copper pot still running at simmer pressure for a slow 17 hours — preserving delicate essential floral oils without scorching.</li>
+            <li data-lang="vi"><b>Nồi chưng cất "Ugly Betty":</b> Sử dụng nồi đồng Lomond cổ duy nhất còn lại, chưng cất ở nhiệt độ thấp và tốc độ siêu chậm suốt 17 tiếng để chiết xuất trọn vẹn tinh dầu thảo mộc tinh khiết nhất.</li>
+          </ul>
+          <div class="k-takeaway">
+            <strong data-lang="en">Ambassador's Note:</strong>
+            <strong data-lang="vi">Lời khuyên từ Đại sứ:</strong>
+            <span data-lang="en"> The Botanist &amp; Tonic: Garnish with a sprig of fresh rosemary and a slice of pink grapefruit to amplify the wild herbal notes.</span>
+            <span data-lang="vi"> Khi pha The Botanist &amp; Tonic: Hãy dùng một nhánh hương thảo kẹp nhẹ cùng lát bưởi hồng để kích thích tối đa tinh dầu bách xù và hoa dại.</span>
+          </div>
+        </article>
+
+        <!-- TOPIC 3: SINGLE MALT WHISKY -->
+        <article class="k-card" data-topic="whisky">
+          <span class="k-brand-tag" data-lang="en">Bruichladdich Distillery · Islay Single Malt</span>
+          <span class="k-brand-tag" data-lang="vi">Bruichladdich · Thổ Nhưỡng &amp; Khói Than Bùn Islay</span>
+          <h3 data-lang="en">Peated Whisky Explained: From 0 PPM to Octomore</h3>
+          <h3 data-lang="vi">Whisky Khói là gì? Sự phân cấp từ Không Khói đến Siêu Đậm Khói</h3>
+          <p data-lang="en">Peat smoke flavor does not come from oak casks; it is infused into the malted barley when drying over burning peat fires. Peat intensity is measured in <b>PPM (Phenol Parts Per Million)</b>.</p>
+          <p data-lang="vi">Vị khói than bùn (Peat Smoke) không sinh ra từ thùng gỗ, mà ngấm vào hạt lúa mạch (malted barley) trong quá trình sấy khô bằng khói than bùn trước khi lên men. Độ đậm khói được đo bằng chỉ số <b>PPM</b>.</p>
+          <ul>
+            <li data-lang="en"><b>The Classic Laddie (0 PPM — Unpeated):</b> Proof that Islay whisky does not need smoke to be legendary. 100% Scottish barley, floral, honeyed, with distinct maritime salinity.</li>
+            <li data-lang="vi"><b>The Classic Laddie (0 PPM — Không khói):</b> Minh chứng rằng whisky đảo Islay không cần khói vẫn là kiệt tác. Tôn vinh vị ngọt bùi nguyên bản của lúa mạch Scotland và hơi thở khoáng mặn của biển cả.</li>
+            <li data-lang="en"><b>Port Charlotte (40 PPM — Heavily Peated):</b> Elegant barbecue smoke, campfire warmth, balanced against rich orchard fruits and French oak elegance.</li>
+            <li data-lang="vi"><b>Port Charlotte (40 PPM — Đậm khói thanh lịch):</b> Làn khói nướng barbecue ấm áp, đầm ấm, cân bằng hoàn mỹ giữa than bùn, hoa quả chín và gỗ sồi.</li>
+            <li data-lang="en"><b>Octomore (100+ PPM to 200+ PPM):</b> The most heavily peated single malt series in existence. Bottled at cask strength, defying all conventions with astonishing elegance beneath monumental smoke.</li>
+            <li data-lang="vi"><b>Octomore (100+ đến 200+ PPM):</b> Dòng Single Malt đậm khói nhất hành tinh. Đóng chai ở nồng độ cồn nguyên bản (Cask Strength), phá vỡ mọi quy tắc với độ êm mượt đáng kinh ngạc ẩn sau màn khói khổng lồ.</li>
+          </ul>
+          <div class="k-takeaway">
+            <strong data-lang="en">Ambassador's Note:</strong>
+            <strong data-lang="vi">Lời khuyên từ Đại sứ:</strong>
+            <span data-lang="en"> Bruichladdich whiskies are 100% un-chill filtered and naturally colored — every drop preserves authentic distillery terroir.</span>
+            <span data-lang="vi"> Toàn bộ sản phẩm của Bruichladdich cam kết không lọc lạnh (Non-chill filtered) và màu tự nhiên 100% từ thùng gỗ sồi, không bao giờ dùng phẩm màu caramel.</span>
+          </div>
+        </article>
+
+        <!-- TOPIC 4: RUM MOUNT GAY -->
+        <article class="k-card" data-topic="rum-champagne">
+          <span class="k-brand-tag" data-lang="en">Mount Gay · The Rum That Invented Rum (1703)</span>
+          <span class="k-brand-tag" data-lang="vi">Mount Gay 1703 · Cội Nguồn Của Nghệ Thuật Rum</span>
+          <h3 data-lang="en">Why Mount Gay is The Oldest Commercial Rum in the World</h3>
+          <h3 data-lang="vi">Vì sao Mount Gay 1703 được công nhận là Rum lâu đời nhất thế giới?</h3>
+          <p data-lang="en">A legal deed dated <b>February 20, 1703</b> on the island of Barbados confirms Mount Gay as the oldest continuously operating rum distillery on earth.</p>
+          <p data-lang="vi">Văn bản pháp lý đề ngày <b>20 tháng 2 năm 1703</b> tại đảo Barbados xác nhận Mount Gay là lò chưng cất rượu rum hoạt động liên tục lâu đời nhất trên thế giới.</p>
+          <ul>
+            <li data-lang="en"><b>Coral-Filtered Water:</b> Water is drawn from subterranean wells naturally filtered through the coral limestone bedrock of Barbados.</li>
+            <li data-lang="vi"><b>Nước ngầm lọc qua đá san hô:</b> Nguồn nước làm rượu được lấy từ tầng nước ngầm lọc tự nhiên qua các rạn san hô cổ của đảo Barbados, mang lại độ tinh khiết không tì vết.</li>
+            <li data-lang="en"><b>Double Pot Still &amp; Column Still:</b> Blending aromatic pot-still spirits (ripe banana, toasted oak, spice) with column-still spirits for roundness and silky balance.</li>
+            <li data-lang="vi"><b>Bậc thầy phối trộn Pot &amp; Column Still:</b> Kết hợp tinh tế giữa rượu chưng cất từ nồi đồng cổ (Pot Still - hương chuối chín, gia vị nồng nàn) và tháp chưng cất (Column Still - độ êm mượt thanh thoát).</li>
+          </ul>
+        </article>
+
+        <!-- TOPIC 5: CHAMPAGNE TELMONT -->
+        <article class="k-card" data-topic="rum-champagne">
+          <span class="k-brand-tag" data-lang="en">Champagne Telmont · In The Name of Mother Nature</span>
+          <span class="k-brand-tag" data-lang="vi">Champagne Telmont · Vì Mẹ Thiên Nhiên</span>
+          <h3 data-lang="en">Champagne Telmont &amp; The Sustainable Viticulture Revolution</h3>
+          <h3 data-lang="vi">Champagne Telmont &amp; Cuộc Cách Mạng Canh Tác Hữu Cơ Bền Vững</h3>
+          <p data-lang="en">Founded in 1912 in Damery, Telmont is spearheading organic farming in Champagne: targeting 100% organic estate viticulture by 2025.</p>
+          <p data-lang="vi">Thành lập từ năm 1912 tại Damery (Pháp), Nhà Champagne Telmont đang dẫn đầu phong trào canh tác hữu cơ: cam kết 100% diện tích vườn nho canh tác hữu cơ (Organic Viticulture).</p>
+          <ul>
+            <li data-lang="en"><b>No Gift Box Policy:</b> Abolished all heavy presentation boxes to drastically curb shipping carbon footprints.</li>
+            <li data-lang="vi"><b>Triệt tiêu hộp quà thừa thãi:</b> Loại bỏ 100% hộp giấy đóng gói không cần thiết để cắt giảm triệt để lượng khí thải carbon vận chuyển.</li>
+            <li data-lang="en"><b>Lightest Champagne Bottle:</b> Pioneering 800g recycled green glass bottles running on 100% renewable energy.</li>
+            <li data-lang="vi"><b>Chai thủy tinh siêu nhẹ 800g:</b> Sử dụng chai thủy tinh xanh tái chế siêu nhẹ 800g vận hành hoàn toàn bằng điện năng lượng tái tạo.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="drawer-footer">
+        <p data-lang="en">Curated by Phát Trịnh · Brand Ambassador &amp; Spirits Educator.</p>
+        <p data-lang="vi">Biên soạn bởi Phát Trịnh · Brand Ambassador &amp; Spirits Educator.</p>
+      </div>
     </div>
-  </aside>
+  </div>
 
-  <main id="main-content">
-    <section id="home" class="hero">
-      <div class="hero-left">
-        <p class="hi" data-lang="en">HI THERE!</p>
-        <p class="hi" data-lang="vi">CHÀO BẠN!</p>
-        <h1 data-lang="en">I'M <span class="hl">PHÁT</span></h1>
-        <h1 data-lang="vi">MÌNH LÀ <span class="hl">PHÁT</span></h1>
-        <div class="role-badge" data-lang="en">BRAND AMBASSADOR / SPIRITS EDUCATOR</div>
-        <div class="role-badge" data-lang="vi">BRAND AMBASSADOR / ĐÀO TẠO SPIRITS</div>
-        <p class="lead" data-lang="en">I've spent 10+ years behind the bar and on the road for some of the world's top spirits brands. These days I represent Rémy Cointreau's portfolio in Vietnam — training bartenders, hosting tastings, and helping brands actually connect with the people pouring their drinks.</p>
-        <p class="lead" data-lang="vi">Hơn 10 năm lăn lộn sau quầy bar và rong ruổi cùng những nhãn rượu hàng đầu thế giới. Hiện tại, mình đại diện cho danh mục đồ uống của Rémy Cointreau tại Việt Nam — trực tiếp đào tạo bartender, dẫn dắt các buổi tasting và làm cầu nối để thương hiệu thực sự gắn kết với những người làm nghề mỗi đêm.</p>
-        <a class="btn" href="#about" data-lang="en">MORE ABOUT ME →</a>
-        <a class="btn" href="#about" data-lang="vi">TÌM HIỂU VỀ MÌNH →</a>
-      </div>
-      <div class="hero-right">
-        <img src="portrait.jpg" alt="Phát Trịnh — Brand Ambassador" width="540" height="680" decoding="async" fetchpriority="high">
-      </div>
-    </section>
-
-    <section id="about" class="about">
-      <div class="eyebrow-box"><h2 class="section-title" data-lang="en">About Me</h2><h2 class="section-title" data-lang="vi">Giới Thiệu</h2></div>
-      <div class="about-grid">
-        <div>
-          <p class="role" data-lang="en">I'm <b>Phát Trịnh</b>, Brand Ambassador &amp; Spirits Educator.</p>
-          <p class="role" data-lang="vi">Mình là <b>Phát Trịnh</b>, Brand Ambassador &amp; người đào tạo về spirits.</p>
-          <p class="desc" data-lang="en">Whenever I get up to share something, I tell people the same thing: I came up the exact same way you did — service, barback, bartender, then bar operations. So the hard parts of this job aren't something I heard about. I lived them.</p>
-          <p class="desc" data-lang="vi">Mỗi lần đứng chia sẻ, mình hay nói với anh em một câu: mình cũng đi lên từ vị trí y như các bạn — service, barback, bartender, rồi Bar Operation. Nên cái khó của nghề, mình không nghe kể lại, mình từng sống trong đó.</p>
-        </div>
-
-        <div class="stat-block">
-          <div class="cell"><span class="n">10+</span><span class="d" data-lang="en">Years in the trade</span><span class="d" data-lang="vi">Năm trong nghề</span></div>
-          <div class="cell"><span class="n">08</span><span class="d" data-lang="en">Premium brands repped</span><span class="d" data-lang="vi">Nhãn hiệu đang đại diện</span></div>
-          <div class="cell"><span class="n" data-lang="en">Nationwide</span><span class="n" data-lang="vi">Toàn quốc</span><span class="d" data-lang="en">Bar network</span><span class="d" data-lang="vi">Mạng lưới bar</span></div>
-          <div class="cell"><span class="n">HCMC</span><span class="d" data-lang="en">Home base</span><span class="d" data-lang="vi">Hoạt động chính</span></div>
-        </div>
-      </div>
-
-      <div class="whatido">
-        <h3 data-lang="en">3 Core Pillars</h3>
-        <h3 data-lang="vi">3 Trụ Cột Hoạt Động</h3>
-        <div class="wd-grid">
-          <div class="wd-item">
-            <div class="pillar-kicker">① TERROIR</div>
-            <div class="wd-header">
-              <h4 data-lang="en">Brand Representation</h4>
-              <h4 data-lang="vi">Đại Diện Thương Hiệu</h4>
-            </div>
-            <div class="wd-tag" data-lang="en"><span class="badge">Headline</span>Rémy Cointreau Portfolio | Luxury &amp; Heritage Spirits</div>
-            <div class="wd-tag" data-lang="vi"><span class="badge">Portfolio</span>Rémy Cointreau Portfolio | Di Sản &amp; Nghệ Thuật Chưng Cất Thượng Hạng</div>
-            <p data-lang="en">Championing the heritage and authentic terroir of exceptional spirits across premier venues, industry partners, and the trade community nationwide.</p>
-            <p data-lang="vi">Lan tỏa giá trị di sản và thổ nhưỡng nguyên bản của những dòng rượu trứ danh đến các Outlets hàng đầu, đối tác chiến lược và cộng đồng làm nghề trên toàn quốc. Đưa từng câu chuyện nhà nghề chạm đến bàn tiệc bằng sự am tường sâu sắc.</p>
-          </div>
-          <div class="wd-item">
-            <div class="pillar-kicker">② PEOPLE</div>
-            <div class="wd-header">
-              <h4 data-lang="en">Team Training</h4>
-              <h4 data-lang="vi">Đào Tạo Đội Ngũ</h4>
-            </div>
-            <div class="wd-tag" data-lang="en"><span class="badge">Proof Points</span>50+ Masterclasses • 500+ Staff Trained (Nationwide &amp; Overseas)</div>
-            <div class="wd-tag" data-lang="vi"><span class="badge">Minh Chứng</span>50+ Masterclasses • 500+ Nhân sự F&B được đào tạo</div>
-            <p data-lang="en">Conducting hands-on tastings, spirits craft, and practical hospitality workshops—empowering bar and floor teams with real-world skills to elevate the guest experience.</p>
-            <p data-lang="vi">Trực tiếp dẫn dắt các buổi tasting chuẩn mực và workshop dịch vụ mang tính ứng dụng cao. Đồng hành cùng đội ngũ quầy bar và service để rèn giũa tay nghề thực chiến, nâng chuẩn trải nghiệm cho từng thực khách.</p>
-          </div>
-          <div class="wd-item">
-            <div class="pillar-kicker">③ TIME</div>
-            <div class="wd-header">
-              <h4 data-lang="en">Event &amp; Experience Hosting</h4>
-              <h4 data-lang="vi">Tổ Chức Sự Kiện &amp; Trải Nghiệm</h4>
-            </div>
-            <div class="wd-tag" data-lang="en"><span class="badge">Proof Points</span>100+ Activations (Guest Shifts, Dinners &amp; Brand Events)</div>
-            <div class="wd-tag" data-lang="vi"><span class="badge">Minh Chứng</span>100+ Hoạt động (Guest Shifts, Tasting Dinners &amp; Events)</div>
-            <p data-lang="en">Curating and hosting memorable guest shifts, curated tasting dinners, and brand activations that celebrate the art of mindful drinking and modern lifestyle culture.</p>
-            <p data-lang="vi">Sáng tạo và điều phối những đêm Guest Shift thăng hoa, tiệc tasting cùng sự kiện thương hiệu . Nơi nghệ thuật pha chế giao thoa với phong cách sống hiện đại, tôn vinh tinh thần Mindful Drinking và từng khoảnh khắc thưởng thức trọn vẹn.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience">
-      <div class="eyebrow-box"><h2 class="section-title" data-lang="en">Experience</h2><h2 class="section-title" data-lang="vi">Kinh Nghiệm</h2></div>
-      <div class="timeline">
-        <div class="t-item">
-          <div class="when">2010 →</div>
-          <div>
-            <h3 data-lang="en" class="tl-title">Started from the ground up</h3>
-            <h3 data-lang="vi" class="tl-title">Đi lên từ vị trí nền tảng</h3>
-            <p data-lang="en">Service, barback, bartender, then bar operations — before any Brand Ambassador title, this is where it started.</p>
-            <p data-lang="vi">Service, barback, bartender, rồi Bar Operation — trước khi có chức danh Brand Ambassador, mình đi từng bước từ đây.</p>
-          </div>
-        </div>
-        <div class="t-item">
-          <div class="when" data-lang="en">Now</div>
-          <div class="when" data-lang="vi">Hiện tại</div>
-          <div>
-            <h3 data-lang="en" class="tl-title">Brand Ambassador, Rémy Cointreau Vietnam</h3>
-            <h3 data-lang="vi" class="tl-title">Brand Ambassador, Rémy Cointreau Việt Nam</h3>
-            <p data-lang="en">Representing a premium spirits portfolio across Vietnam — cocktail bars, whisky bars, and specialist retailers alike.</p>
-            <p data-lang="vi">Đại diện một portfolio rượu cao cấp trên khắp Việt Nam — từ cocktail bar, whisky bar đến các nhà bán lẻ chuyên biệt.</p>
-            <div class="brand-logos" role="list" aria-label="Brand Portfolio">
-              <div class="lg lg-telmont" data-brand="telmont" role="listitem"><img src="brand-logos/telmont.png" alt="Champagne Telmont" width="160" height="80" loading="lazy" decoding="async"></div>
-              <div class="lg lg-mountgay" data-brand="mountgay" role="listitem"><img src="brand-logos/mount-gay.png" alt="Mount Gay Rum" width="160" height="80" loading="lazy" decoding="async"></div>
-              <div class="lg lg-octomore" data-brand="octomore" role="listitem"><img src="brand-logos/octomore.png" alt="Octomore Islay Single Malt" width="160" height="80" loading="lazy" decoding="async"></div>
-              <div class="lg lg-anchor lg-remy" data-brand="remy" role="listitem" title="Rémy Martin Fine Champagne Cognac"><img src="brand-logos/remy-martin.png" alt="Rémy Martin Cognac" width="160" height="80" loading="lazy" decoding="async"></div>
-              <div class="lg lg-anchor lg-cointreau" data-brand="cointreau" role="listitem" title="Cointreau L'Unique"><img src="brand-logos/cointreau.png" alt="Cointreau Liqueur" width="160" height="80" loading="lazy" decoding="async"></div>
-              <div class="lg lg-bruichladdich" data-brand="bruichladdich" role="listitem"><img src="brand-logos/bruichladdich.png" alt="Bruichladdich Distillery" width="160" height="80" loading="lazy" decoding="async"></div>
-              <div class="lg lg-portcharlotte" data-brand="portcharlotte" role="listitem" title="Port Charlotte Heavily Peated Islay Single Malt"><img src="brand-logos/port-charlotte.png" alt="Port Charlotte Whisky" width="160" height="80" loading="lazy" decoding="async"></div>
-              <div class="lg lg-botanist" data-brand="botanist" role="listitem"><img src="brand-logos/botanist.png" alt="The Botanist Islay Dry Gin" width="160" height="80" loading="lazy" decoding="async"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="portfolio" class="portfolio">
-      <div class="eyebrow-box"><h2 class="section-title" data-lang="en">Portfolio</h2><h2 class="section-title" data-lang="vi">Portfolio</h2></div>
-      <div class="filters" role="tablist">
-        <button class="active" data-filter="all" data-lang="en">ALL</button>
-        <button class="active" data-filter="all" data-lang="vi">TẤT CẢ</button>
-        <button data-filter="training" data-lang="en">TRAINING</button>
-        <button data-filter="training" data-lang="vi">ĐÀO TẠO</button>
-        <button data-filter="tasting" data-lang="en">TASTING</button>
-        <button data-filter="tasting" data-lang="vi">TASTING</button>
-        <button data-filter="guest" data-lang="en">GUEST BARTENDER</button>
-        <button data-filter="guest" data-lang="vi">GUEST SHIFT</button>
-        <button data-filter="event" data-lang="en">EVENT SPONSOR</button>
-        <button data-filter="event" data-lang="vi">SỰ KIỆN & TÀI TRỢ</button>
-      </div>
-      <div class="gallery">
-        <!-- TRAINING 1 -->
-        <div class="g-tile" data-category="training">
-          <img src="img/training-thelongbar.jpg" alt="The Long Bar Times Square Saigon" loading="lazy">
-          <div class="g-overlay">
-            <span class="cat" data-lang="en">TRAINING</span>
-            <span class="cat" data-lang="vi">ĐÀO TẠO</span>
-            <span class="lbl" data-lang="en">The Long Bar • Times Square Saigon</span>
-            <span class="lbl" data-lang="vi">The Long Bar • Times Square TP. HCM</span>
-            <span class="sublbl" data-lang="en">Luxury Hotel Bar Team & Hospitality Workshop</span>
-            <span class="sublbl" data-lang="vi">Workshop Kỹ năng Phục vụ & Chuẩn mực 5 Sao</span>
-          </div>
-        </div>
-        <!-- TRAINING 2 -->
-        <div class="g-tile" data-category="training">
-          <img src="img/training-metropole.jpg" alt="Angelina Sofitel Legend Metropole Hanoi Training" loading="lazy">
-          <div class="g-overlay">
-            <span class="cat" data-lang="en">TRAINING</span>
-            <span class="cat" data-lang="vi">ĐÀO TẠO</span>
-            <span class="lbl" data-lang="en">Angelina • Sofitel Legend Metropole Hanoi</span>
-            <span class="lbl" data-lang="vi">Angelina • Sofitel Legend Metropole Hà Nội</span>
-            <span class="sublbl" data-lang="en">Brand Rituals & Terroir Masterclass</span>
-            <span class="sublbl" data-lang="vi">Đào tạo Nghi thức & Terroir Masterclass</span>
-          </div>
-        </div>
-        <!-- TRAINING 3 -->
-        <div class="g-tile" data-category="training">
-          <img src="img/training-lasiesta.jpg" alt="La Siesta Premium Hotel Hanoi Training" loading="lazy">
-          <div class="g-overlay">
-            <span class="cat" data-lang="en">TRAINING</span>
-            <span class="cat" data-lang="vi">ĐÀO TẠO</span>
-            <span class="lbl" data-lang="en">La Siesta Premium Hotel • Hanoi</span>
-            <span class="lbl" data-lang="vi">La Siesta Premium Hotel • Hà Nội</span>
-            <span class="sublbl" data-lang="en">Spirits Knowledge & Bar Team Training</span>
-            <span class="sublbl" data-lang="vi">Đào tạo Kiến thức Rượu & Đội ngũ Dịch vụ</span>
-          </div>
-        </div>
-        <!-- TRAINING 4 -->
-        <div class="g-tile" data-category="training">
-          <img src="img/training-tebar.jpg" alt="Tê Bar Danang Bartender Workshop" loading="lazy">
-          <div class="g-overlay">
-            <span class="cat" data-lang="en">TRAINING</span>
-            <span class="cat" data-lang="vi">ĐÀO TẠO</span>
-            <span class="lbl" data-lang="en">Tê Bar • Danang</span>
-            <span class="lbl" data-lang="vi">Tê Bar • Đà Nẵng</span>
-            <span class="sublbl" data-lang="en">Spirits Portfolio & Practical Bartender Workshop</span>
-            <span class="sublbl" data-lang="vi">Workshop Thực chiến & Đào tạo Bartender</span>
-          </div>
-        </div>
-        <!-- TRAINING 5 -->
-        <div class="g-tile" data-category="training">
-          <img src="img/training-akata.jpg" alt="AKATA Cocktail Bar Danang Training" loading="lazy">
-          <div class="g-overlay">
-            <span class="cat" data-lang="en">TRAINING</span>
-            <span class="cat" data-lang="vi">ĐÀO TẠO</span>
-            <span class="lbl" data-lang="en">AKATA Cocktail Bar • Danang</span>
-            <span class="lbl" data-lang="vi">AKATA Cocktail Bar • Đà Nẵng</span>
-            <span class="sublbl" data-lang="en">Spirits Craft & Advanced Mixology Training</span>
-            <span class="sublbl" data-lang="vi">Đào tạo Nghi thức Nếm thử & Kỹ năng Pha chế</span>
-          </div>
-        </div>
-        <!-- TASTING 1 -->
-        <div class="g-tile" data-category="tasting">
-          <img src="img/tasting-octomore-1.jpg" alt="Octomore Single Malt Official Launch" loading="lazy">
-          <div class="g-overlay">
-            <span class="cat" data-lang="en">TASTING</span>
-            <span class="cat" data-lang="vi">TASTING</span>
-            <span class="lbl" data-lang="en">Octomore Single Malt • Official Launch</span>
-            <span class="lbl" data-lang="vi">Octomore Single Malt • Lễ Ra Mắt Chính Thức</span>
-            <span class="sublbl" data-lang="en">The World's Most Heavily Peated Single Malt Whisky</span>
-            <span class="sublbl" data-lang="vi">Sự kiện Ra mắt Dòng Single Malt Đậm Khói Nhất Thế Giới</span>
-          </div>
-        </div>
-        <!-- TASTING 2 -->
-        <div class="g-tile" data-category="tasting">
-          <img src="img/tasting-masterclass.jpg" alt="Remy Cointreau Portfolio VIP Tasting" loading="lazy">
-          <div class="g-overlay">
-            <span class="cat" data-lang="en">TASTING</span>
-            <span class="cat" data-lang="vi">TASTING</span>
-            <span class="lbl" data-lang="en">Rémy Cointreau Portfolio • VIP Tasting</span>
-            <span class="lbl" data-lang="vi">Rémy Cointreau Portfolio • VIP Tasting</span>
-            <span class="sublbl" data-lang="en">Curated Glassware Ritual & Terroir Education</span>
-            <span class="sublbl" data-lang="vi">Nghi thức Thưởng rượu & Trải nghiệm Terroir Độc quyền</span>
-          </div>
-        </div>
-        <!-- TASTING 3 -->
-        <div class="g-tile" data-category="tasting">
-          <img src="img/tasting-octomore-2.jpg" alt="Octomore Masterclass Media Session" loading="lazy">
-          <div class="g-overlay">
-            <span class="cat" data-lang="en">TASTING</span>
-            <span class="cat" data-lang="vi">TASTING</span>
-            <span class="lbl" data-lang="en">Octomore Masterclass & Media Session</span>
-            <span class="lbl" data-lang="vi">Octomore Masterclass & Gặp Gỡ Báo Chí</span>
-            <span class="sublbl" data-lang="en">Private Tasting for Spirits Connoisseurs & Editors</span>
-            <span class="sublbl" data-lang="vi">Buổi Nếm thử Chuyên sâu cùng Chuyên gia & Báo giới</span>
-          </div>
-        </div>
-        <!-- GUEST BARTENDER 1 -->
-        <div class="g-tile" data-category="guest">
-          <img src="img/guest-stir.jpg" alt="Stir Saigon x The Elephant Room" loading="lazy">
-          <div class="g-overlay">
-            <span class="cat" data-lang="en">GUEST BARTENDER</span>
-            <span class="cat" data-lang="vi">GUEST SHIFT</span>
-            <span class="lbl" data-lang="en">Stir Saigon x The Elephant Room • Guest Shift</span>
-            <span class="lbl" data-lang="vi">Stir Sài Gòn x The Elephant Room • Guest Shift Quốc tế</span>
-            <span class="sublbl" data-lang="en">Featuring Asia's 50 Best Bars Ranked Venues & Rémy Cointreau Spirits</span>
-            <span class="sublbl" data-lang="vi">Hợp tác cùng Asia's 50 Best Bars & Các Dòng Rượu Di sản Rémy Cointreau</span>
-          </div>
-        </div>
-        <!-- GUEST BARTENDER 2 -->
-        <div class="g-tile" data-category="guest">
-          <img src="img/guest-haflington.jpg" alt="The Haflington Speakeasy Hanoi" loading="lazy">
-          <div class="g-overlay">
-            <span class="cat" data-lang="en">GUEST BARTENDER</span>
-            <span class="cat" data-lang="vi">GUEST SHIFT</span>
-            <span class="lbl" data-lang="en">The Haflington • Speakeasy Hanoi</span>
-            <span class="lbl" data-lang="vi">The Haflington • Speakeasy Hà Nội</span>
-            <span class="sublbl" data-lang="en">Heritage Cocktails & Brand Takeover Night</span>
-            <span class="sublbl" data-lang="vi">Đêm Tiệc Takeover & Trình diễn Cocktail Di sản</span>
-          </div>
-        </div>
-        <!-- GUEST BARTENDER 3 -->
-        <div class="g-tile" data-category="guest">
-          <img src="img/guest-shift-1.jpg" alt="Guest Shift Behind The Bar" loading="lazy">
-          <div class="g-overlay">
-            <span class="cat" data-lang="en">GUEST BARTENDER</span>
-            <span class="cat" data-lang="vi">GUEST SHIFT</span>
-            <span class="lbl" data-lang="en">Guest Shift • Behind The Bar Experience</span>
-            <span class="lbl" data-lang="vi">Guest Shift • Trải nghiệm Sau Quầy Bar</span>
-            <span class="sublbl" data-lang="en">High-Energy Signature Cocktail Takeover</span>
-            <span class="sublbl" data-lang="vi">Đứng Quầy & Trình Diễn Signature Cocktails</span>
-          </div>
-        </div>
-        <!-- EVENT SPONSOR 1 -->
-        <div class="g-tile" data-category="event">
-          <img src="img/event-chessclub.jpg" alt="Chess Club Private Lounge Saigon" loading="lazy">
-          <div class="g-overlay">
-            <span class="cat" data-lang="en">EVENT SPONSOR</span>
-            <span class="cat" data-lang="vi">SỰ KIỆN & TÀI TRỢ</span>
-            <span class="lbl" data-lang="en">Chess Club • Private Lounge Saigon</span>
-            <span class="lbl" data-lang="vi">Chess Club • Private Lounge Sài Gòn</span>
-            <span class="sublbl" data-lang="en">Sponsored Spirits Showcase & VIP Night</span>
-            <span class="sublbl" data-lang="vi">Đêm Tiệc Tài trợ & Không gian Giao lưu Đẳng cấp</span>
-          </div>
-        </div>
-        <!-- EVENT SPONSOR 2 -->
-        <div class="g-tile" data-category="event">
-          <img src="img/event-cham.jpg" alt="CHẤM Brand Activation" loading="lazy">
-          <div class="g-overlay">
-            <span class="cat" data-lang="en">EVENT SPONSOR</span>
-            <span class="cat" data-lang="vi">SỰ KIỆN & TÀI TRỢ</span>
-            <span class="lbl" data-lang="en">CHẤM Dining • Brand Activation</span>
-            <span class="lbl" data-lang="vi">CHẤM Dining • Brand Activation</span>
-            <span class="sublbl" data-lang="en">Sponsored Spirits Showcase & Gastronomy Pairing</span>
-            <span class="sublbl" data-lang="vi">Không gian Tài trợ & Kết hợp Ẩm thực Đẳng cấp</span>
-          </div>
-        </div>
-        <!-- EVENT SPONSOR 3 -->
-        <div class="g-tile" data-category="event">
-          <img src="img/event-showcase.jpg" alt="Luxury Gala Dinner Pairing Showcase" loading="lazy">
-          <div class="g-overlay">
-            <span class="cat" data-lang="en">EVENT SPONSOR</span>
-            <span class="cat" data-lang="vi">SỰ KIỆN & TÀI TRỢ</span>
-            <span class="lbl" data-lang="en">Luxury Gala Dinner & Pairing Showcase</span>
-            <span class="lbl" data-lang="vi">Tiệc Gala Tinh hoa & Ẩm thực Thượng lưu</span>
-            <span class="sublbl" data-lang="en">Bridging World-Class Spirits with Contemporary Culture</span>
-            <span class="sublbl" data-lang="vi">Kết nối Nghệ thuật Rượu Di sản với Phong cách Đương đại</span>
-          </div>
-        </div>
-      </div>
-
-    </section>
-
-    <section id="proof">
-      <div class="eyebrow-box"><h2 class="section-title" data-lang="en">Real Journey</h2><h2 class="section-title" data-lang="vi">HÀNH TRÌNH THỰC TẾ</h2></div>
-      <p class="lead" style="max-width:70ch;margin-top:-6px;" data-lang="en">No fluff — just pure passion and the craft that happens week in, week out.</p>
-      <p class="lead" style="max-width:70ch;margin-top:-6px;" data-lang="vi">Không hoa mỹ — chỉ đơn giản là đam mê và công việc lặp lại mỗi tuần</p>
-      <div class="proof-grid">
-        <div class="proof-card">
-          <span class="tag" data-lang="en">Team Training</span><span class="tag" data-lang="vi">Đào Tạo Đội Ngũ</span>
-          <p data-lang="en">Regular hands-on trainings for bar and floor teams across 5-star hotels and top venues: Metropole, Times Square Saigon, La Siesta — real conversations about spirits terroir, tasting rituals, and hospitality craft.</p>
-          <p data-lang="vi">Đào tạo thực chiến đều đặn cho đội ngũ pha chế & phục vụ tại các khách sạn 5 sao và quán bar hàng đầu (Metropole, Times Square Saigon, La Siesta) — câu chuyện thật về terroir, nghi thức nếm thử và kỹ năng nghề.</p>
-        </div>
-        <div class="proof-card">
-          <span class="tag" data-lang="en">Tasting & Masterclass</span><span class="tag" data-lang="vi">Tasting & Masterclass</span>
-          <p data-lang="en">Curating in-depth tastings and brand reveals for world-class icons like Octomore, Rémy Martin, and The Botanist — engaging connoisseurs, media, and trade leaders.</p>
-          <p data-lang="vi">Dẫn dắt các buổi tasting chuyên sâu và ra mắt sản phẩm biểu tượng thế giới như Octomore, Rémy Martin, The Botanist — kết nối tệp khách sành, báo chí và chuyên gia trong ngành.</p>
-        </div>
-        <div class="proof-card">
-          <span class="tag" data-lang="en">Guest Bartender</span><span class="tag" data-lang="vi">Guest Bartender</span>
-          <p data-lang="en">Behind the bar at high-energy guest shifts and brand takeovers at Vietnam's most celebrated cocktail destinations: Stir Saigon (Asia's 50 Best Bars), The Haflington Hanoi, and beyond.</p>
-          <p data-lang="vi">Trực tiếp đứng quầy tại các buổi guest shift bùng nổ năng lượng và takeover thương hiệu ở những quán cocktail hàng đầu Việt Nam: Stir Saigon (Top 50 Bar Châu Á), The Haflington Hà Nội...</p>
-        </div>
-        <div class="proof-card">
-          <span class="tag" data-lang="en">Event Sponsor</span><span class="tag" data-lang="vi">Sự Kiện & Tài Trợ</span>
-          <p data-lang="en">Partnering with and hosting sponsored showcases, exclusive VIP club nights, and gala dinners: CHẤM Dining, Chess Club Saigon — bridging heritage spirits with contemporary culture.</p>
-          <p data-lang="vi">Đồng hành tài trợ và chủ trì các sự kiện thương hiệu, đêm tiệc VIP club và gala dinner: CHẤM Dining, Chess Club Sài Gòn — kết nối nghệ thuật pha chế di sản với phong cách sống đương đại.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="eyebrow-box"><h2 class="section-title" data-lang="en">Contact</h2><h2 class="section-title" data-lang="vi">Liên Hệ</h2></div>
-      <div class="contact-grid">
-        <div>
-          <div class="contact-row">
-            <div class="ico" aria-hidden="true"><svg class="svg-ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div class="txt">
-              <b data-lang="en">Email</b><b data-lang="vi">Email</b>
-              <div class="contact-val-wrap"><span><a href="mailto:phat.trinh@alchemy-asia.com" style="color:inherit;text-decoration:none;">phat.trinh@alchemy-asia.com</a></span> <button type="button" class="btn-copy" data-copy="phat.trinh@alchemy-asia.com" aria-label="Copy email address" title="Copy email">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                <span data-lang="en">Copy</span><span data-lang="vi">Sao chép</span>
-              </button></div>
-            </div>
-          </div>
-          <div class="contact-row">
-            <div class="ico" aria-hidden="true"><svg class="svg-ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-            <div class="txt">
-              <b data-lang="en">Phone</b><b data-lang="vi">Điện thoại</b>
-              <span>+84 988 222 807</span>
-            </div>
-          </div>
-          <div class="contact-row">
-            <div class="ico" style="font-size:12px;font-family:var(--font-head);font-weight:800;">IG</div>
-            <div class="txt">
-              <b data-lang="en">Instagram</b><b data-lang="vi">Instagram</b>
-              <span>@trinhtphat</span>
-            </div>
-          </div>
-          <div class="contact-row">
-            <div class="ico" aria-hidden="true"><svg class="svg-ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-            <div class="txt">
-              <b data-lang="en">Based in</b><b data-lang="vi">Địa điểm</b>
-              <span data-lang="en">Ho Chi Minh City, Vietnam</span>
-              <span data-lang="vi">TP. Hồ Chí Minh, Việt Nam</span>
-            </div>
-          </div>
-        </div>
-        <div class="contact-cta">
-          <h3 data-lang="en">Let's Talk</h3>
-          <h3 data-lang="vi">LÀM MỘT LY?</h3>
-          <p data-lang="en">Looking for someone who knows every label by heart, but also understands every corner behind the bar?</p>
-          <p data-lang="vi">Bạn cần người hiểu rõ từng nhãn rượu, nhưng cũng thấu cặn kẽ từng góc nhỏ sau quầy pha chế?</p>
-          <a class="btn" href="https://zalo.me/0988222807" target="_blank" rel="noopener" data-lang="en">CONNECT ON ZALO →</a>
-          <a class="btn" href="https://zalo.me/0988222807" target="_blank" rel="noopener" data-lang="vi">NHẮN CHO MÌNH →</a>
-        </div>
-      </div>
-    </section>
-
-    <footer class="pagefoot">
-      <span data-lang="en">© PHÁT TRỊNH — HO CHI MINH CITY</span>
-      <span data-lang="vi">© PHÁT TRỊNH — TP. HỒ CHÍ MINH</span>
-      <span data-lang="en">BRAND AMBASSADOR · RÉMY COINTREAU VIETNAM</span>
-      <span data-lang="vi">BRAND AMBASSADOR · RÉMY COINTREAU VIỆT NAM</span>
-    </footer>
-    <!-- LIGHTBOX MODAL -->
+  <!-- LIGHTBOX MODAL (Preserved & Enhanced) -->
   <div id="lightboxModal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Portfolio Image Preview">
     <div class="lb-header">
       <div class="lb-meta">
-        <span class="lb-cat-badge" id="lbCatBadge">TRAINING</span>
+        <span class="lb-cat-badge" id="lbCatBadge">Training</span>
         <span class="lb-counter" id="lbCounter">1 / 7</span>
       </div>
-      <button class="lb-close-btn" id="lbCloseBtn" aria-label="Close preview" title="Close (Esc)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      <button class="lb-close-btn" id="lbCloseBtn" aria-label="Close preview" title="Close (Esc)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
     </div>
     <div class="lb-stage" id="lbStage">
       <button class="lb-arrow lb-prev" id="lbPrevBtn" aria-label="Previous Image" title="Previous (←)">‹</button>
@@ -1645,7 +2111,7 @@
     </div>
   </div>
 
-  <!-- PASSCODE MODAL FOR OFFICIAL MEDIA ASSETS -->
+  <!-- PASSCODE MODAL FOR OFFICIAL MEDIA ASSETS (Preserved & Enhanced) -->
   <div id="passcodeModal" class="passcode-modal" role="dialog" aria-modal="true" aria-labelledby="passcodeTitle" aria-describedby="passcodeDesc">
     <div class="passcode-backdrop" id="passcodeBackdrop"></div>
     <div class="passcode-dialog">
@@ -1665,7 +2131,7 @@
 
       <h3 class="passcode-title" id="passcodeTitle">
         <span data-lang="en">Event Media Assets</span>
-        <span data-lang="vi">Tư liệu sự kiện</span>
+        <span data-lang="vi">Tư Liệu Sự Kiện</span>
       </h3>
 
       <p class="passcode-desc" id="passcodeDesc">
@@ -1701,16 +2167,21 @@
 
         <button type="submit" class="passcode-submit-btn" id="submitPasscodeBtn">
           <span data-lang="en">Unlock →</span>
-          <span data-lang="vi">Mở khóa →</span>
+          <span data-lang="vi">Mở Khóa →</span>
         </button>
       </form>
     </div>
   </div>
 
-  </main>
-</div>
+  <!-- Screen reader live announcement region -->
+  <div id="a11y-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
-<script>
+  <!-- Toast Notification Feedback -->
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- SCRIPTS -->
+  <script>
+
   function setLang(lang){
     document.querySelectorAll('[data-lang]').forEach(function(el){
       el.classList.toggle('lang-active', el.getAttribute('data-lang') === lang);
@@ -2316,13 +2787,117 @@
     spySections.forEach(function(sec) { spyObserver.observe(sec); });
   }
 
-</script>
 
-  <!-- Screen reader live announcement region -->
-  <div id="a11y-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
-  <!-- Toast Notification Feedback -->
-  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+  // --- Solution A: Knowledge Hub Drawer Controller ---
+  var drawerModal = document.getElementById('knowledgeDrawer');
+  var drawerBackdrop = document.getElementById('drawerBackdrop');
+  var openDrawerBtn = document.getElementById('openDrawerBtn');
+  var heroHubBtn = document.getElementById('heroHubBtn');
+  var closeDrawerBtn = document.getElementById('closeDrawerBtn');
 
+  function openKnowledgeDrawer() {
+    if (!drawerModal) return;
+    drawerModal.classList.add('active');
+    drawerModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (closeDrawerBtn) closeDrawerBtn.focus();
+  }
+
+  function closeKnowledgeDrawer() {
+    if (!drawerModal) return;
+    drawerModal.classList.remove('active');
+    drawerModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (openDrawerBtn) openDrawerBtn.focus();
+  }
+
+  if (openDrawerBtn) {
+    openDrawerBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      openKnowledgeDrawer();
+    });
+  }
+  if (heroHubBtn) {
+    heroHubBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      openKnowledgeDrawer();
+    });
+  }
+  if (closeDrawerBtn) {
+    closeDrawerBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      closeKnowledgeDrawer();
+    });
+  }
+  if (drawerBackdrop) {
+    drawerBackdrop.addEventListener('click', function() {
+      closeKnowledgeDrawer();
+    });
+  }
+
+  // Knowledge Hub Topic Filter Chips
+  var dChips = document.querySelectorAll('.d-chip');
+  var kCards = document.querySelectorAll('.k-card');
+
+  dChips.forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      var topic = chip.getAttribute('data-topic');
+      dChips.forEach(function(c) {
+        c.classList.toggle('active', c.getAttribute('data-topic') === topic);
+      });
+      kCards.forEach(function(card) {
+        if (topic === 'all' || card.getAttribute('data-topic') === topic) {
+          card.classList.remove('k-hidden');
+        } else {
+          card.classList.add('k-hidden');
+        }
+      });
+    });
+  });
+
+  // Escape key support for Drawer
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      if (drawerModal && drawerModal.classList.contains('active')) {
+        closeKnowledgeDrawer();
+      }
+    }
+  });
+
+  // Clipboard copy email helper
+  document.querySelectorAll('.btn-copy').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var text = btn.getAttribute('data-copy');
+      if (!text) return;
+      navigator.clipboard.writeText(text).then(function() {
+        var toast = document.getElementById('toast');
+        if (toast) {
+          toast.textContent = 'Copied: ' + text;
+          toast.classList.add('active');
+          setTimeout(function() { toast.classList.remove('active'); }, 2400);
+        }
+      });
+    });
+  });
+
+  // Scroll reveal entrance
+  var revealElements = document.querySelectorAll('.pillar-card, .g-tile, .proof-card, .tl-item');
+  if ('IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealElements.forEach(function(el) {
+      el.classList.add('reveal-init');
+      revealObserver.observe(el);
+    });
+  }
+
+  </script>
 </body>
 </html>
