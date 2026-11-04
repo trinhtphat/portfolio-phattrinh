@@ -909,190 +909,6 @@
     background: var(--bg-deep);
   }
 
-  /* ---------------- SOLUTION A: KNOWLEDGE HUB DRAWER ---------------- */
-  .drawer-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    display: none;
-    align-items: stretch;
-    justify-content: flex-end;
-  }
-  .drawer-modal.active {
-    display: flex;
-  }
-  .drawer-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(6px);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .drawer-modal.active .drawer-backdrop {
-    opacity: 1;
-  }
-  .drawer-panel {
-    position: relative;
-    width: 100%;
-    max-width: 520px;
-    background: var(--bg-deep);
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    transform: translateX(100%);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 10;
-  }
-  .drawer-modal.active .drawer-panel {
-    transform: translateX(0);
-  }
-  .drawer-header {
-    padding: 26px 26px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    background: var(--bg-surface);
-  }
-  .drawer-kicker {
-    display: inline-block;
-    font-family: var(--font-head);
-    font-size: var(--step-small);
-    font-weight: 700;
-    color: var(--aqua);
-    margin-bottom: 6px;
-  }
-  .drawer-title {
-    font-family: var(--font-head);
-    font-size: 26px;
-    font-weight: 800;
-    color: var(--ink);
-    margin: 0;
-  }
-  .drawer-close-btn {
-    background: var(--bg-surface-elevated);
-    border: none;
-    color: var(--ink);
-    width: 38px;
-    height: 38px;
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: var(--transition);
-  }
-  .drawer-close-btn:hover {
-    color: var(--aqua);
-    background: var(--aqua-surface);
-  }
-
-  /* Drawer Topics Filter */
-  .drawer-filters {
-    padding: 16px 22px;
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    background: var(--bg-primary);
-  }
-  .drawer-filters::-webkit-scrollbar { display: none; }
-  .d-chip {
-    background: var(--bg-surface);
-    border: none;
-    color: var(--ink-muted);
-    font-family: var(--font-head);
-    font-size: var(--step-small);
-    font-weight: 600;
-    padding: 7px 16px;
-    border-radius: var(--radius-pill);
-    white-space: nowrap;
-    cursor: pointer;
-    transition: var(--transition);
-  }
-  .d-chip:hover {
-    color: var(--ink);
-  }
-  .d-chip.active {
-    background: var(--aqua);
-    color: var(--bg-deep);
-    font-weight: 700;
-  }
-
-  /* Drawer Body Cards */
-  .drawer-body {
-    flex: 1;
-    overflow-y: auto;
-    padding: 24px 22px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .drawer-body::-webkit-scrollbar { width: 5px; }
-  .drawer-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 5px; }
-
-  .k-card {
-    background: var(--bg-surface);
-    border-radius: var(--radius-md);
-    padding: 24px 22px;
-    transition: var(--transition);
-  }
-  .k-card:hover {
-    background: var(--bg-surface-elevated);
-  }
-  .k-card.k-hidden {
-    display: none;
-  }
-  .k-brand-tag {
-    display: inline-block;
-    font-family: var(--font-head);
-    font-size: var(--step-small);
-    font-weight: 700;
-    color: var(--aqua);
-    margin-bottom: 8px;
-  }
-  .k-card h3 {
-    font-family: var(--font-head);
-    font-size: 19px;
-    font-weight: 700;
-    color: var(--ink);
-    margin: 0 0 12px 0;
-    line-height: 1.35;
-  }
-  .k-card p {
-    font-size: var(--step-body);
-    line-height: 1.7;
-    color: var(--ink-secondary);
-    margin: 0 0 12px 0;
-  }
-  .k-card ul {
-    margin: 0 0 14px 0;
-    padding-left: 20px;
-    font-size: var(--step-body);
-    color: var(--ink-secondary);
-  }
-  .k-card li {
-    margin-bottom: 8px;
-  }
-  .k-takeaway {
-    background: var(--aqua-surface);
-    padding: 12px 16px;
-    border-radius: var(--radius-sm);
-    font-size: var(--step-small);
-    color: var(--ink);
-    margin-top: 12px;
-  }
-  .k-takeaway strong {
-    color: var(--aqua);
-  }
-
-  .drawer-footer {
-    padding: 18px 22px;
-    background: var(--bg-surface);
-    font-size: var(--step-small);
-    color: var(--ink-muted);
-    text-align: center;
-  }
-
   /* ---------------- Lightbox Modal (Preserved & Styled) ---------------- */
   .lightbox-modal {
     position: fixed;
@@ -1333,24 +1149,214 @@
     overflow: hidden; clip: rect(0,0,0,0); border: 0;
   }
 
+  /* ---------------- Mobile Sticky Topbar ---------------- */
+  .mobile-topbar {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    height: 56px;
+    background: rgba(10, 14, 18, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .mobile-topbar-brand-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 14px;
+    font-family: var(--font-head);
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .mobile-topbar-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg-surface);
+    border: 1px solid rgba(0, 210, 180, 0.35);
+    flex-shrink: 0;
+  }
+  .mobile-topbar-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .mobile-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .mobile-hub-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--aqua-surface);
+    color: var(--aqua);
+    padding: 5px 8px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid rgba(0, 210, 180, 0.25);
+    flex-shrink: 0;
+    white-space: nowrap;
+    transition: var(--transition);
+  }
+  .mobile-hub-link .mobile-hub-badge {
+    background: var(--aqua);
+    color: var(--bg-deep);
+    font-size: 10px;
+    font-weight: 900;
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+  .mobile-topbar .lang-toggle {
+    display: inline-flex;
+    padding: 2px;
+    gap: 2px;
+    flex-shrink: 0;
+  }
+  .mobile-topbar .lang-toggle button {
+    padding: 4px 7px;
+    font-size: 11px;
+    min-width: 28px;
+  }
+
+  /* ---------------- 3D Interactive Depth & Specular Light Sheen ---------------- */
+  .depth-stage {
+    perspective: 1000px;
+  }
+  [data-depth-card] {
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+  }
+  [data-depth-card] .depth-pop,
+  [data-depth-card] .hero-portrait-badge,
+  [data-depth-card] .stat-number,
+  [data-depth-card] .pillar-num,
+  [data-depth-card] .pillar-title,
+  [data-depth-card] .g-content {
+    transform: translateZ(18px);
+    transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  [data-depth-card]::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      circle at var(--light-x, 50%) var(--light-y, 50%),
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(0, 210, 180, 0.08) 28%,
+      transparent 65%
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+  }
+  [data-depth-card].is-tilting::after {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-depth-card] {
+      transform: none !important;
+      transition: none !important;
+    }
+    [data-depth-card]::after {
+      display: none !important;
+    }
+    [data-depth-card] .depth-pop,
+    [data-depth-card] .hero-portrait-badge,
+    [data-depth-card] .stat-number,
+    [data-depth-card] .pillar-num,
+    [data-depth-card] .pillar-title,
+    [data-depth-card] .g-content {
+      transform: none !important;
+    }
+  }
+
   /* ---------------- Responsive Breakpoints ---------------- */
   @media (max-width: 1024px) {
+    .mobile-topbar {
+      display: flex;
+    }
     .shell {
       grid-template-columns: 1fr;
     }
     .sidebar {
       height: auto;
-      position: relative;
-      padding: 24px 20px;
+      position: sticky;
+      top: 56px;
+      padding: 8px 16px;
+      gap: 0;
+      background: rgba(10, 14, 18, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      z-index: 95;
+    }
+    .sidebar .avatar,
+    .sidebar .lang-toggle,
+    .sidebar .hub-trigger-btn,
+    .sidebar .side-foot {
+      display: none;
+    }
+    .sidenav-nav {
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      width: 100%;
+      padding: 4px 0;
+    }
+    .sidenav-nav::-webkit-scrollbar {
+      display: none;
     }
     .sidenav {
       flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      gap: 8px;
     }
-    .avatar {
-      width: 90px;
-      margin: 0 auto;
+    .sidenav a {
+      padding: 6px 14px;
+      font-size: 13px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-surface);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      flex-shrink: 0;
+    }
+    .sidenav a.active {
+      background: var(--aqua-surface);
+      border-color: rgba(0, 210, 180, 0.4);
+    }
+    .sidenav a.active::before {
+      display: none;
+    }
+    .hero {
+      padding: 44px 0 60px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 7.5vw, 42px);
+      letter-spacing: -0.02em;
+    }
+    .hero-role {
+      font-size: clamp(15px, 4.2vw, 18px);
+      margin-bottom: 18px;
     }
     .hero-grid {
       grid-template-columns: 1fr;
@@ -1369,16 +1375,24 @@
   }
 
   @media (max-width: 640px) {
-    .container { padding: 0 20px; }
-    section { padding: 52px 0; }
+    :root {
+      --step-display: clamp(28px, 7.5vw, 36px);
+    }
+    .container { padding: 0 16px; }
+    section { padding: 48px 0; }
     .gallery { grid-template-columns: 1fr; }
     .brand-logos { grid-template-columns: repeat(2, 1fr); }
     .tl-item { grid-template-columns: 1fr; gap: 12px; }
     .pagefoot { flex-direction: column; gap: 10px; text-align: center; }
-    .drawer-panel { max-width: 100%; }
   }
 
   @media (max-width: 480px) {
+    .mobile-topbar {
+      padding: 8px 12px;
+    }
+    .mobile-topbar-brand {
+      font-size: 13.5px;
+    }
     .stat-grid { grid-template-columns: minmax(0, 1fr); }
     .stat-card { padding: 20px 18px; }
     .hero-actions { flex-direction: column; width: 100%; }
@@ -1388,6 +1402,26 @@
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content / Chuyển đến nội dung chính</a>
+
+  <!-- MOBILE STICKY GLASS TOPBAR (Visible <= 1024px) -->
+  <header class="mobile-topbar" aria-label="Mobile Navigation">
+    <a href="#home" class="mobile-topbar-brand-link">
+      <div class="mobile-topbar-avatar">
+        <img src="portrait.jpg" alt="Phát Trịnh" width="36" height="36" decoding="async">
+      </div>
+      <span class="mobile-topbar-brand">Phát Trịnh</span>
+    </a>
+    <div class="mobile-topbar-right">
+      <a href="library/index.html" class="mobile-hub-link" aria-label="The Drinks Library">
+        <span class="mobile-hub-icon">🥃</span>
+        <span class="mobile-hub-badge">HUB</span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Language selection / Chọn ngôn ngữ">
+        <button type="button" data-setlang="en" aria-label="Switch to English" aria-pressed="false">EN</button>
+        <button type="button" data-setlang="vi" class="active" aria-label="Chuyển sang Tiếng Việt" aria-pressed="true">VI</button>
+      </div>
+    </div>
+  </header>
 
   <div class="shell">
     <!-- SIDEBAR -->
@@ -1402,15 +1436,15 @@
         <button type="button" data-setlang="vi" aria-label="Chuyển sang Tiếng Việt" aria-pressed="true">VI</button>
       </div>
 
-      <!-- SOLUTION A: KNOWLEDGE HUB TRIGGER -->
-      <button type="button" class="hub-trigger-btn" id="openDrawerBtn" aria-label="Open Spirits Knowledge Hub" aria-controls="knowledgeDrawer">
+      <!-- THE DRINKS LIBRARY ENTRY -->
+      <a href="library/index.html" class="hub-trigger-btn" id="openDrawerBtn" aria-label="Open The Drinks Library">
         <div class="hub-left">
           <span style="color:var(--aqua)">•</span>
-          <span data-lang="en">Spirits Field Notes</span>
-          <span data-lang="vi">Sổ Tay Rượu Di Sản</span>
+          <span data-lang="en">The Drinks Library</span>
+          <span data-lang="vi">The Drinks Library</span>
         </div>
         <span class="hub-badge">HUB</span>
-      </button>
+      </a>
 
       <!-- Main Navigation -->
       <nav aria-label="Main Navigation" class="sidenav-nav">
@@ -1464,14 +1498,14 @@
               <div class="hero-actions">
                 <a class="btn-primary" href="#about" data-lang="en">Explore Journey →</a>
                 <a class="btn-primary" href="#about" data-lang="vi">Tìm hiểu về mình →</a>
-                <button type="button" class="btn-secondary" id="heroHubBtn">
-                  <span data-lang="en">Spirits Knowledge Hub</span>
-                  <span data-lang="vi">Sổ tay Kiến thức Rượu</span>
-                </button>
+                <a class="btn-secondary" href="library/index.html" id="heroHubBtn">
+                  <span data-lang="en">The Drinks Library</span>
+                  <span data-lang="vi">The Drinks Library</span>
+                </a>
               </div>
             </div>
             <div class="hero-right">
-              <div class="hero-portrait-card">
+              <div class="hero-portrait-card" data-depth-card>
                 <img src="portrait.jpg" alt="Phát Trịnh — Brand Ambassador &amp; Spirits Educator" width="540" height="680" decoding="async" fetchpriority="high">
                 <div class="hero-portrait-badge">
                   <div>
@@ -1502,23 +1536,23 @@
             </div>
 
             <div class="stat-grid" data-ui>
-              <div class="stat-card">
+              <div class="stat-card" data-depth-card>
                 <div class="num">10+</div>
                 <div class="lbl" data-lang="en">Years in the Bar Trade</div>
                 <div class="lbl" data-lang="vi">Năm Thực Chiến Ngành Bar</div>
               </div>
-              <div class="stat-card">
+              <div class="stat-card" data-depth-card>
                 <div class="num">8</div>
                 <div class="lbl" data-lang="en">World-Class Spirits Brands</div>
                 <div class="lbl" data-lang="vi">Nhãn Hiệu Di Sản Đại Diện</div>
               </div>
-              <div class="stat-card">
+              <div class="stat-card" data-depth-card>
                 <div class="num" data-lang="en">Nationwide</div>
                 <div class="num" data-lang="vi">Toàn quốc</div>
                 <div class="lbl" data-lang="en">Premier Bar &amp; Hotel Network</div>
                 <div class="lbl" data-lang="vi">Mạng Lưới Bar &amp; Khách Sạn 5 Sao</div>
               </div>
-              <div class="stat-card">
+              <div class="stat-card" data-depth-card>
                 <div class="num">HCMC</div>
                 <div class="lbl" data-lang="en">Home Base &amp; Nationwide Tours</div>
                 <div class="lbl" data-lang="vi">Hoạt Động Chính &amp; Lưu Diễn</div>
@@ -1538,7 +1572,7 @@
           </div>
           <div class="pillars-grid">
             <!-- PILLAR 1 -->
-            <div class="pillar-card">
+            <div class="pillar-card" data-depth-card>
               <div>
                 <span class="pillar-num">Pillar 1 · Terroir</span>
                 <h4 data-lang="en">Brand Representation</h4>
@@ -1551,7 +1585,7 @@
             </div>
 
             <!-- PILLAR 2 -->
-            <div class="pillar-card">
+            <div class="pillar-card" data-depth-card>
               <div>
                 <span class="pillar-num">Pillar 2 · People</span>
                 <h4 data-lang="en">Team Training &amp; Education</h4>
@@ -1564,7 +1598,7 @@
             </div>
 
             <!-- PILLAR 3 -->
-            <div class="pillar-card">
+            <div class="pillar-card" data-depth-card>
               <div>
                 <span class="pillar-num">Pillar 3 · Time</span>
                 <h4 data-lang="en">Event &amp; Experience Hosting</h4>
@@ -1659,7 +1693,7 @@
 
           <div class="gallery">
             <!-- TRAINING 1 -->
-            <div class="g-tile" data-category="training">
+            <div class="g-tile" data-depth-card data-category="training">
               <img src="img/training-thelongbar.jpg" alt="The Long Bar Times Square Saigon" loading="lazy">
               <div class="g-overlay">
                 <span class="cat" data-lang="en">Training</span>
@@ -1671,7 +1705,7 @@
               </div>
             </div>
             <!-- TRAINING 2 -->
-            <div class="g-tile" data-category="training">
+            <div class="g-tile" data-depth-card data-category="training">
               <img src="img/training-metropole.jpg" alt="Angelina Sofitel Legend Metropole Hanoi Training" loading="lazy">
               <div class="g-overlay">
                 <span class="cat" data-lang="en">Training</span>
@@ -1683,7 +1717,7 @@
               </div>
             </div>
             <!-- TRAINING 3 -->
-            <div class="g-tile" data-category="training">
+            <div class="g-tile" data-depth-card data-category="training">
               <img src="img/training-lasiesta.jpg" alt="La Siesta Premium Hotel Hanoi Training" loading="lazy">
               <div class="g-overlay">
                 <span class="cat" data-lang="en">Training</span>
@@ -1695,7 +1729,7 @@
               </div>
             </div>
             <!-- TRAINING 4 -->
-            <div class="g-tile" data-category="training">
+            <div class="g-tile" data-depth-card data-category="training">
               <img src="img/training-tebar.jpg" alt="Tê Bar Danang Bartender Workshop" loading="lazy">
               <div class="g-overlay">
                 <span class="cat" data-lang="en">Training</span>
@@ -1707,7 +1741,7 @@
               </div>
             </div>
             <!-- TRAINING 5 -->
-            <div class="g-tile" data-category="training">
+            <div class="g-tile" data-depth-card data-category="training">
               <img src="img/training-akata.jpg" alt="AKATA Cocktail Bar Danang Training" loading="lazy">
               <div class="g-overlay">
                 <span class="cat" data-lang="en">Training</span>
@@ -1719,7 +1753,7 @@
               </div>
             </div>
             <!-- TASTING 1 -->
-            <div class="g-tile" data-category="tasting">
+            <div class="g-tile" data-depth-card data-category="tasting">
               <img src="img/tasting-octomore-1.jpg" alt="Octomore Single Malt Official Launch" loading="lazy">
               <div class="g-overlay">
                 <span class="cat" data-lang="en">Tasting</span>
@@ -1731,7 +1765,7 @@
               </div>
             </div>
             <!-- TASTING 2 -->
-            <div class="g-tile" data-category="tasting">
+            <div class="g-tile" data-depth-card data-category="tasting">
               <img src="img/tasting-masterclass.jpg" alt="Remy Cointreau Portfolio VIP Tasting" loading="lazy">
               <div class="g-overlay">
                 <span class="cat" data-lang="en">Tasting</span>
@@ -1743,7 +1777,7 @@
               </div>
             </div>
             <!-- TASTING 3 -->
-            <div class="g-tile" data-category="tasting">
+            <div class="g-tile" data-depth-card data-category="tasting">
               <img src="img/tasting-octomore-2.jpg" alt="Octomore Masterclass Media Session" loading="lazy">
               <div class="g-overlay">
                 <span class="cat" data-lang="en">Tasting</span>
@@ -1755,7 +1789,7 @@
               </div>
             </div>
             <!-- GUEST BARTENDER 1 -->
-            <div class="g-tile" data-category="guest">
+            <div class="g-tile" data-depth-card data-category="guest">
               <img src="img/guest-stir.jpg" alt="Stir Saigon x The Elephant Room" loading="lazy">
               <div class="g-overlay">
                 <span class="cat" data-lang="en">Guest Bartender</span>
@@ -1767,7 +1801,7 @@
               </div>
             </div>
             <!-- GUEST BARTENDER 2 -->
-            <div class="g-tile" data-category="guest">
+            <div class="g-tile" data-depth-card data-category="guest">
               <img src="img/guest-haflington.jpg" alt="The Haflington Speakeasy Hanoi" loading="lazy">
               <div class="g-overlay">
                 <span class="cat" data-lang="en">Guest Bartender</span>
@@ -1779,7 +1813,7 @@
               </div>
             </div>
             <!-- GUEST BARTENDER 3 -->
-            <div class="g-tile" data-category="guest">
+            <div class="g-tile" data-depth-card data-category="guest">
               <img src="img/guest-shift-1.jpg" alt="Guest Shift Behind The Bar" loading="lazy">
               <div class="g-overlay">
                 <span class="cat" data-lang="en">Guest Bartender</span>
@@ -1791,7 +1825,7 @@
               </div>
             </div>
             <!-- EVENT SPONSOR 1 -->
-            <div class="g-tile" data-category="event">
+            <div class="g-tile" data-depth-card data-category="event">
               <img src="img/event-chessclub.jpg" alt="Chess Club Private Lounge Saigon" loading="lazy">
               <div class="g-overlay">
                 <span class="cat" data-lang="en">Event Sponsor</span>
@@ -1803,7 +1837,7 @@
               </div>
             </div>
             <!-- EVENT SPONSOR 2 -->
-            <div class="g-tile" data-category="event">
+            <div class="g-tile" data-depth-card data-category="event">
               <img src="img/event-cham.jpg" alt="CHẤM Brand Activation" loading="lazy">
               <div class="g-overlay">
                 <span class="cat" data-lang="en">Event Sponsor</span>
@@ -1815,7 +1849,7 @@
               </div>
             </div>
             <!-- EVENT SPONSOR 3 -->
-            <div class="g-tile" data-category="event">
+            <div class="g-tile" data-depth-card data-category="event">
               <img src="img/event-showcase.jpg" alt="Luxury Gala Dinner Pairing Showcase" loading="lazy">
               <div class="g-overlay">
                 <span class="cat" data-lang="en">Event Sponsor</span>
@@ -1941,150 +1975,6 @@
         </div>
       </footer>
     </main>
-  </div>
-
-  <!-- ================= SOLUTION A: KNOWLEDGE HUB DRAWER ================= -->
-  <div id="knowledgeDrawer" class="drawer-modal" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true">
-    <div class="drawer-backdrop" id="drawerBackdrop"></div>
-    <div class="drawer-panel">
-      <div class="drawer-header">
-        <div>
-          <span class="drawer-kicker" data-lang="en">Spirits Field Notes · By Phát Trịnh</span>
-          <span class="drawer-kicker" data-lang="vi">Sổ Tay Nghề Rượu · Phát Trịnh</span>
-          <h2 id="drawerTitle" class="drawer-title">
-            <span data-lang="en">Spirits Knowledge Hub</span>
-            <span data-lang="vi">Kiến Thức Rượu Di Sản</span>
-          </h2>
-        </div>
-        <button type="button" class="drawer-close-btn" id="closeDrawerBtn" aria-label="Đóng cẩm nang / Close" title="Close (Esc)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
-      </div>
-
-      <!-- Topics Filter Chips -->
-      <div class="drawer-filters" role="tablist">
-        <button class="d-chip active" data-topic="all" data-lang="en">All Notes</button>
-        <button class="d-chip active" data-topic="all" data-lang="vi">Tất cả</button>
-        <button class="d-chip" data-topic="cognac" data-lang="en">Cognac</button>
-        <button class="d-chip" data-topic="cognac" data-lang="vi">Cognac</button>
-        <button class="d-chip" data-topic="gin" data-lang="en">Gin Craft</button>
-        <button class="d-chip" data-topic="gin" data-lang="vi">Gin Di sản</button>
-        <button class="d-chip" data-topic="whisky" data-lang="en">Islay Single Malt</button>
-        <button class="d-chip" data-topic="whisky" data-lang="vi">Islay Whisky</button>
-        <button class="d-chip" data-topic="rum-champagne" data-lang="en">Rum &amp; Champagne</button>
-        <button class="d-chip" data-topic="rum-champagne" data-lang="vi">Rum &amp; Champagne</button>
-      </div>
-
-      <!-- Drawer Content Cards -->
-      <div class="drawer-body">
-        <!-- TOPIC 1: COGNAC -->
-        <article class="k-card" data-topic="cognac">
-          <span class="k-brand-tag" data-lang="en">Rémy Martin · Fine Champagne Cognac</span>
-          <span class="k-brand-tag" data-lang="vi">Rémy Martin · Di Sản Cognac Thượng Hạng</span>
-          <h3 data-lang="en">What is Cognac &amp; Why Not All Brandies Are Cognac?</h3>
-          <h3 data-lang="vi">Cognac là gì &amp; Vì sao không phải Brandy nào cũng là Cognac?</h3>
-          <p data-lang="en">All Cognac is brandy (grape-distilled spirit), but only brandy distilled in the strictly demarcated <b>Cognac region of France</b> under AOC laws can carry the name Cognac.</p>
-          <p data-lang="vi">Mọi Cognac đều là Brandy (rượu mạnh chưng cất từ nho), nhưng chỉ rượu chưng cất tại <b>vùng Cognac (Cộng hòa Pháp)</b> tuân theo bộ quy chuẩn AOC nghiêm ngặt mới được mang danh hiệu Cognac.</p>
-          <ul>
-            <li data-lang="en"><b>The 6 Crus (Terroir):</b> Only <i>Grande Champagne</i> and <i>Petite Champagne</i> have the unique chalky limestone soil capable of yielding eaux-de-vie with immense aging potential and aromatic depth.</li>
-            <li data-lang="vi"><b>6 Vùng Thổ Nhưỡng (Crus):</b> Trong 6 vùng của Cognac, chỉ duy nhất <i>Grande Champagne</i> và <i>Petite Champagne</i> sở hữu chất đất phấn xốp đặc hữu, tạo nên eaux-de-vie có tiềm năng lưu giữ hương thơm hoa quả thanh lịch nhất.</li>
-            <li data-lang="en"><b>Fine Champagne Legal Status:</b> Rémy Martin exclusively crafts <i>Fine Champagne Cognac</i> — requiring at least 50% Grande Champagne with the balance from Petite Champagne.</li>
-            <li data-lang="vi"><b>Chuẩn Fine Champagne:</b> Rémy Martin chuyên tâm tạo ra <i>Fine Champagne Cognac</i> — tiêu chuẩn pháp lý đòi hỏi tối thiểu 50% nho từ Grande Champagne và phần còn lại từ Petite Champagne.</li>
-            <li data-lang="en"><b>Aging Classifications:</b> VSOP (aged min. 4 years in Limousin oak), XO (aged min. 10 years).</li>
-            <li data-lang="vi"><b>Phân hạng tuổi ủ:</b> VSOP (ủ tối thiểu 4 năm trong thùng gỗ sồi Limousin), XO (ủ tối thiểu 10 năm).</li>
-          </ul>
-          <div class="k-takeaway">
-            <strong data-lang="en">Ambassador's Note:</strong>
-            <strong data-lang="vi">Lời khuyên từ Đại sứ:</strong>
-            <span data-lang="en"> When tasting Rémy Martin XO, drop in one large clear ice cube. Watch how the chill unlocks rich notes of candied orange, jasmine, and ripe fig.</span>
-            <span data-lang="vi"> Khi thưởng thức Rémy Martin XO, hãy thử cùng một viên đá tròn trong suốt. Nhiệt độ mát lạnh sẽ mở khóa các tầng hương cam thảo, hoa nhài và quả sung chín mọng.</span>
-          </div>
-        </article>
-
-        <!-- TOPIC 2: GIN -->
-        <article class="k-card" data-topic="gin">
-          <span class="k-brand-tag" data-lang="en">The Botanist · Progressive Islay Dry Gin</span>
-          <span class="k-brand-tag" data-lang="vi">The Botanist · Nghệ Thuật Thảo Mộc Islay</span>
-          <h3 data-lang="en">Understanding Gin &amp; The 22 Wild Foraged Botanicals</h3>
-          <h3 data-lang="vi">Bản chất của Gin &amp; Triết lý 22 Thảo Mộc Hoang Dã</h3>
-          <p data-lang="en">By definition, Gin is a neutral spirit whose predominant flavor must stem from <b>Juniper berries</b>. But true artistry lies in how secondary botanicals harmonize with the terroir.</p>
-          <p data-lang="vi">Về bản chất, Gin là rượu mạnh có hương vị chủ đạo bắt buộc từ <b>quả bách xù (Juniper berries)</b>. Tuy nhiên, linh hồn và sự khác biệt của Gin nằm ở câu chuyện thổ nhưỡng của các loại thảo mộc kết hợp.</p>
-          <ul>
-            <li data-lang="en"><b>22 Hand-Foraged Islay Botanicals:</b> In addition to 9 classic core botanicals, The Botanist forages 22 indigenous wild botanicals sustainably across the remote Scottish island of Islay (apple mint, bog myrtle, gorse flowers...).</li>
-            <li data-lang="vi"><b>22 Thảo mộc hoang dã đảo Islay:</b> Ngoài 9 loại thảo mộc nền kinh điển, The Botanist thu hái thủ công hoàn toàn 22 loại thảo mộc bản địa mọc hoang dã trên đảo Islay (bạc hà táo, thạch nam, hoa kim tước...).</li>
-            <li data-lang="en"><b>Ugly Betty Still:</b> Distilled in a modified Lomond copper pot still running at simmer pressure for a slow 17 hours — preserving delicate essential floral oils without scorching.</li>
-            <li data-lang="vi"><b>Nồi chưng cất "Ugly Betty":</b> Sử dụng nồi đồng Lomond cổ duy nhất còn lại, chưng cất ở nhiệt độ thấp và tốc độ siêu chậm suốt 17 tiếng để chiết xuất trọn vẹn tinh dầu thảo mộc tinh khiết nhất.</li>
-          </ul>
-          <div class="k-takeaway">
-            <strong data-lang="en">Ambassador's Note:</strong>
-            <strong data-lang="vi">Lời khuyên từ Đại sứ:</strong>
-            <span data-lang="en"> The Botanist &amp; Tonic: Garnish with a sprig of fresh rosemary and a slice of pink grapefruit to amplify the wild herbal notes.</span>
-            <span data-lang="vi"> Khi pha The Botanist &amp; Tonic: Hãy dùng một nhánh hương thảo kẹp nhẹ cùng lát bưởi hồng để kích thích tối đa tinh dầu bách xù và hoa dại.</span>
-          </div>
-        </article>
-
-        <!-- TOPIC 3: SINGLE MALT WHISKY -->
-        <article class="k-card" data-topic="whisky">
-          <span class="k-brand-tag" data-lang="en">Bruichladdich Distillery · Islay Single Malt</span>
-          <span class="k-brand-tag" data-lang="vi">Bruichladdich · Thổ Nhưỡng &amp; Khói Than Bùn Islay</span>
-          <h3 data-lang="en">Peated Whisky Explained: From 0 PPM to Octomore</h3>
-          <h3 data-lang="vi">Whisky Khói là gì? Sự phân cấp từ Không Khói đến Siêu Đậm Khói</h3>
-          <p data-lang="en">Peat smoke flavor does not come from oak casks; it is infused into the malted barley when drying over burning peat fires. Peat intensity is measured in <b>PPM (Phenol Parts Per Million)</b>.</p>
-          <p data-lang="vi">Vị khói than bùn (Peat Smoke) không sinh ra từ thùng gỗ, mà ngấm vào hạt lúa mạch (malted barley) trong quá trình sấy khô bằng khói than bùn trước khi lên men. Độ đậm khói được đo bằng chỉ số <b>PPM</b>.</p>
-          <ul>
-            <li data-lang="en"><b>The Classic Laddie (0 PPM — Unpeated):</b> Proof that Islay whisky does not need smoke to be legendary. 100% Scottish barley, floral, honeyed, with distinct maritime salinity.</li>
-            <li data-lang="vi"><b>The Classic Laddie (0 PPM — Không khói):</b> Minh chứng rằng whisky đảo Islay không cần khói vẫn là kiệt tác. Tôn vinh vị ngọt bùi nguyên bản của lúa mạch Scotland và hơi thở khoáng mặn của biển cả.</li>
-            <li data-lang="en"><b>Port Charlotte (40 PPM — Heavily Peated):</b> Elegant barbecue smoke, campfire warmth, balanced against rich orchard fruits and French oak elegance.</li>
-            <li data-lang="vi"><b>Port Charlotte (40 PPM — Đậm khói thanh lịch):</b> Làn khói nướng barbecue ấm áp, đầm ấm, cân bằng hoàn mỹ giữa than bùn, hoa quả chín và gỗ sồi.</li>
-            <li data-lang="en"><b>Octomore (100+ PPM to 200+ PPM):</b> The most heavily peated single malt series in existence. Bottled at cask strength, defying all conventions with astonishing elegance beneath monumental smoke.</li>
-            <li data-lang="vi"><b>Octomore (100+ đến 200+ PPM):</b> Dòng Single Malt đậm khói nhất hành tinh. Đóng chai ở nồng độ cồn nguyên bản (Cask Strength), phá vỡ mọi quy tắc với độ êm mượt đáng kinh ngạc ẩn sau màn khói khổng lồ.</li>
-          </ul>
-          <div class="k-takeaway">
-            <strong data-lang="en">Ambassador's Note:</strong>
-            <strong data-lang="vi">Lời khuyên từ Đại sứ:</strong>
-            <span data-lang="en"> Bruichladdich whiskies are 100% un-chill filtered and naturally colored — every drop preserves authentic distillery terroir.</span>
-            <span data-lang="vi"> Toàn bộ sản phẩm của Bruichladdich cam kết không lọc lạnh (Non-chill filtered) và màu tự nhiên 100% từ thùng gỗ sồi, không bao giờ dùng phẩm màu caramel.</span>
-          </div>
-        </article>
-
-        <!-- TOPIC 4: RUM MOUNT GAY -->
-        <article class="k-card" data-topic="rum-champagne">
-          <span class="k-brand-tag" data-lang="en">Mount Gay · The Rum That Invented Rum (1703)</span>
-          <span class="k-brand-tag" data-lang="vi">Mount Gay 1703 · Cội Nguồn Của Nghệ Thuật Rum</span>
-          <h3 data-lang="en">Why Mount Gay is The Oldest Commercial Rum in the World</h3>
-          <h3 data-lang="vi">Vì sao Mount Gay 1703 được công nhận là Rum lâu đời nhất thế giới?</h3>
-          <p data-lang="en">A legal deed dated <b>February 20, 1703</b> on the island of Barbados confirms Mount Gay as the oldest continuously operating rum distillery on earth.</p>
-          <p data-lang="vi">Văn bản pháp lý đề ngày <b>20 tháng 2 năm 1703</b> tại đảo Barbados xác nhận Mount Gay là lò chưng cất rượu rum hoạt động liên tục lâu đời nhất trên thế giới.</p>
-          <ul>
-            <li data-lang="en"><b>Coral-Filtered Water:</b> Water is drawn from subterranean wells naturally filtered through the coral limestone bedrock of Barbados.</li>
-            <li data-lang="vi"><b>Nước ngầm lọc qua đá san hô:</b> Nguồn nước làm rượu được lấy từ tầng nước ngầm lọc tự nhiên qua các rạn san hô cổ của đảo Barbados, mang lại độ tinh khiết không tì vết.</li>
-            <li data-lang="en"><b>Double Pot Still &amp; Column Still:</b> Blending aromatic pot-still spirits (ripe banana, toasted oak, spice) with column-still spirits for roundness and silky balance.</li>
-            <li data-lang="vi"><b>Bậc thầy phối trộn Pot &amp; Column Still:</b> Kết hợp tinh tế giữa rượu chưng cất từ nồi đồng cổ (Pot Still - hương chuối chín, gia vị nồng nàn) và tháp chưng cất (Column Still - độ êm mượt thanh thoát).</li>
-          </ul>
-        </article>
-
-        <!-- TOPIC 5: CHAMPAGNE TELMONT -->
-        <article class="k-card" data-topic="rum-champagne">
-          <span class="k-brand-tag" data-lang="en">Champagne Telmont · In The Name of Mother Nature</span>
-          <span class="k-brand-tag" data-lang="vi">Champagne Telmont · Vì Mẹ Thiên Nhiên</span>
-          <h3 data-lang="en">Champagne Telmont &amp; The Sustainable Viticulture Revolution</h3>
-          <h3 data-lang="vi">Champagne Telmont &amp; Cuộc Cách Mạng Canh Tác Hữu Cơ Bền Vững</h3>
-          <p data-lang="en">Founded in 1912 in Damery, Telmont is spearheading organic farming in Champagne: targeting 100% organic estate viticulture by 2025.</p>
-          <p data-lang="vi">Thành lập từ năm 1912 tại Damery (Pháp), Nhà Champagne Telmont đang dẫn đầu phong trào canh tác hữu cơ: cam kết 100% diện tích vườn nho canh tác hữu cơ (Organic Viticulture).</p>
-          <ul>
-            <li data-lang="en"><b>No Gift Box Policy:</b> Abolished all heavy presentation boxes to drastically curb shipping carbon footprints.</li>
-            <li data-lang="vi"><b>Triệt tiêu hộp quà thừa thãi:</b> Loại bỏ 100% hộp giấy đóng gói không cần thiết để cắt giảm triệt để lượng khí thải carbon vận chuyển.</li>
-            <li data-lang="en"><b>Lightest Champagne Bottle:</b> Pioneering 800g recycled green glass bottles running on 100% renewable energy.</li>
-            <li data-lang="vi"><b>Chai thủy tinh siêu nhẹ 800g:</b> Sử dụng chai thủy tinh xanh tái chế siêu nhẹ 800g vận hành hoàn toàn bằng điện năng lượng tái tạo.</li>
-          </ul>
-        </article>
-      </div>
-
-      <div class="drawer-footer">
-        <p data-lang="en">Curated by Phát Trịnh · Brand Ambassador &amp; Spirits Educator.</p>
-        <p data-lang="vi">Biên soạn bởi Phát Trịnh · Brand Ambassador &amp; Spirits Educator.</p>
-      </div>
-    </div>
   </div>
 
   <!-- LIGHTBOX MODAL (Preserved & Enhanced) -->
@@ -2787,84 +2677,6 @@
     spySections.forEach(function(sec) { spyObserver.observe(sec); });
   }
 
-
-
-  // --- Solution A: Knowledge Hub Drawer Controller ---
-  var drawerModal = document.getElementById('knowledgeDrawer');
-  var drawerBackdrop = document.getElementById('drawerBackdrop');
-  var openDrawerBtn = document.getElementById('openDrawerBtn');
-  var heroHubBtn = document.getElementById('heroHubBtn');
-  var closeDrawerBtn = document.getElementById('closeDrawerBtn');
-
-  function openKnowledgeDrawer() {
-    if (!drawerModal) return;
-    drawerModal.classList.add('active');
-    drawerModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    if (closeDrawerBtn) closeDrawerBtn.focus();
-  }
-
-  function closeKnowledgeDrawer() {
-    if (!drawerModal) return;
-    drawerModal.classList.remove('active');
-    drawerModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    if (openDrawerBtn) openDrawerBtn.focus();
-  }
-
-  if (openDrawerBtn) {
-    openDrawerBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      openKnowledgeDrawer();
-    });
-  }
-  if (heroHubBtn) {
-    heroHubBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      openKnowledgeDrawer();
-    });
-  }
-  if (closeDrawerBtn) {
-    closeDrawerBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      closeKnowledgeDrawer();
-    });
-  }
-  if (drawerBackdrop) {
-    drawerBackdrop.addEventListener('click', function() {
-      closeKnowledgeDrawer();
-    });
-  }
-
-  // Knowledge Hub Topic Filter Chips
-  var dChips = document.querySelectorAll('.d-chip');
-  var kCards = document.querySelectorAll('.k-card');
-
-  dChips.forEach(function(chip) {
-    chip.addEventListener('click', function() {
-      var topic = chip.getAttribute('data-topic');
-      dChips.forEach(function(c) {
-        c.classList.toggle('active', c.getAttribute('data-topic') === topic);
-      });
-      kCards.forEach(function(card) {
-        if (topic === 'all' || card.getAttribute('data-topic') === topic) {
-          card.classList.remove('k-hidden');
-        } else {
-          card.classList.add('k-hidden');
-        }
-      });
-    });
-  });
-
-  // Escape key support for Drawer
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      if (drawerModal && drawerModal.classList.contains('active')) {
-        closeKnowledgeDrawer();
-      }
-    }
-  });
-
   // Clipboard copy email helper
   document.querySelectorAll('.btn-copy').forEach(function(btn) {
     btn.addEventListener('click', function() {
@@ -2897,6 +2709,109 @@
       revealObserver.observe(el);
     });
   }
+
+  /* ---------------- 3D Interactive Depth & Sheen Controller ---------------- */
+  function initInteractiveDepth() {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    var cards = document.querySelectorAll('[data-depth-card]');
+    if (!cards.length) return;
+
+    var isScrolling = false;
+    var scrollTimeout = null;
+
+    // Guaranteed 0% scroll lag on mobile touch devices
+    window.addEventListener('scroll', function() {
+      isScrolling = true;
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(function() {
+        isScrolling = false;
+      }, 150);
+    }, { passive: true });
+
+    cards.forEach(function(card) {
+      var parent = card.parentElement;
+      if (parent && !parent.classList.contains('depth-stage')) {
+        parent.classList.add('depth-stage');
+      }
+
+      var rect = null;
+      var targetRotateX = 0;
+      var targetRotateY = 0;
+      var currentRotateX = 0;
+      var currentRotateY = 0;
+      var isHovered = false;
+      var rafId = null;
+
+      function updatePhysics() {
+        if (!isHovered && Math.abs(currentRotateX) < 0.05 && Math.abs(currentRotateY) < 0.05) {
+          card.style.transform = '';
+          card.classList.remove('is-tilting');
+          rafId = null;
+          return;
+        }
+
+        // Linear interpolation (Lerp factor 0.12)
+        currentRotateX += (targetRotateX - currentRotateX) * 0.12;
+        currentRotateY += (targetRotateY - currentRotateY) * 0.12;
+
+        if (!isScrolling) {
+          card.style.transform = 'perspective(1000px) rotateX(' + currentRotateX.toFixed(2) + 'deg) rotateY(' + currentRotateY.toFixed(2) + 'deg)';
+        }
+
+        rafId = requestAnimationFrame(updatePhysics);
+      }
+
+      function onPointerMove(e) {
+        if (isScrolling) return;
+        if (!rect) rect = card.getBoundingClientRect();
+
+        var clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+        var clientY = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+
+        var x = clientX - rect.left;
+        var y = clientY - rect.top;
+
+        var normX = (x / rect.width) * 2 - 1;
+        var normY = (y / rect.height) * 2 - 1;
+
+        var maxTilt = 8;
+        targetRotateX = -normY * maxTilt;
+        targetRotateY = normX * maxTilt;
+
+        var lightX = ((x / rect.width) * 100).toFixed(1) + '%';
+        var lightY = ((y / rect.height) * 100).toFixed(1) + '%';
+        card.style.setProperty('--light-x', lightX);
+        card.style.setProperty('--light-y', lightY);
+
+        if (!isHovered) {
+          isHovered = true;
+          card.classList.add('is-tilting');
+          if (!rafId) rafId = requestAnimationFrame(updatePhysics);
+        }
+      }
+
+      function onPointerLeave() {
+        isHovered = false;
+        targetRotateX = 0;
+        targetRotateY = 0;
+        rect = null;
+      }
+
+      card.addEventListener('pointerenter', function(e) {
+        rect = card.getBoundingClientRect();
+        onPointerMove(e);
+      }, { passive: true });
+
+      card.addEventListener('pointermove', onPointerMove, { passive: true });
+      card.addEventListener('pointerleave', onPointerLeave, { passive: true });
+    });
+  }
+
+  window.initInteractiveDepth = initInteractiveDepth;
+  initInteractiveDepth();
 
   </script>
 </body>

@@ -27,3 +27,4 @@ test_*.html
 # Taste skill test output & backups
 .taste-skill/
 *.backup.html
+tests/

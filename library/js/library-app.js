@@ -1,0 +1,740 @@
+import {
+  escapeHtml,
+  localizeField,
+  localizeList,
+  getPublishedEntries,
+  filterEntries,
+  computeGroupCounts,
+  parseLibraryUrlState,
+  buildLibraryUrlSearch,
+  getRelatedEntries,
+} from './library-core.js';
+
+export function mountLibraryApp(rootEl, options = {}) {
+  if (!rootEl) throw new Error('mountLibraryApp requires a root DOM element');
+
+  const {
+    entries = [],
+    brands = [],
+    meta = {},
+    initialUrlSearch = typeof window !== 'undefined' ? window.location.search : '',
+    initialUrlHash = typeof window !== 'undefined' ? window.location.hash : '',
+    storage = typeof window !== 'undefined' ? window.localStorage : null,
+    syncHistory = true,
+  } = options;
+
+  const publishedEntries = getPublishedEntries(entries);
+  const brandById = new Map(brands.map((b) => [b.id, b]));
+  const entryBySlug = new Map(publishedEntries.map((e) => [e.slug, e]));
+
+  const readStoredLang = () => {
+    try {
+      const saved = storage ? storage.getItem('bio-lang') : null;
+      return saved === 'vi' ? 'vi' : 'en';
+    } catch {
+      return 'en';
+    }
+  };
+
+  const parsedInitial = parseLibraryUrlState(initialUrlSearch, initialUrlHash);
+
+  const state = {
+    lang: readStoredLang(),
+    entry: entryBySlug.has(parsedInitial.entry) ? parsedInitial.entry : '',
+    group: parsedInitial.group || 'all',
+    brand: parsedInitial.brand || 'all',
+    query: parsedInitial.query || '',
+  };
+
+  function t(field) {
+    return localizeField(field, state.lang).text;
+  }
+
+  function pushUrlState(replace = false) {
+    if (!syncHistory || typeof window === 'undefined' || !window.history) return;
+    const search = buildLibraryUrlSearch({
+      entry: state.entry,
+      group: state.group,
+      brand: state.brand,
+      query: state.query,
+    });
+    const nextUrl = `${window.location.pathname}${search}`;
+    if (replace) {
+      window.history.replaceState(null, '', nextUrl);
+    } else {
+      window.history.pushState(null, '', nextUrl);
+    }
+  }
+
+  function syncDocumentMeta() {
+    if (typeof document === 'undefined') return;
+    document.documentElement.lang = state.lang;
+    const activeEntry = state.entry ? entryBySlug.get(state.entry) : null;
+    if (activeEntry) {
+      document.title = `${t(activeEntry.title)} · ${t(meta.name)} | Phat Trinh`;
+    } else {
+      document.title = `${t(meta.name)} | Phat Trinh`;
+    }
+
+    const descMeta = document.querySelector('meta[name="description"]');
+    if (descMeta) {
+      if (activeEntry) {
+        descMeta.setAttribute('content', t(activeEntry.summary));
+      } else {
+        descMeta.setAttribute('content', t(meta.subtitle));
+      }
+    }
+  }
+
+  function renderSidebarInner() {
+    const counts = computeGroupCounts(publishedEntries, {
+      brand: 'all',
+      query: '',
+      lang: state.lang,
+    });
+
+    const groupItems = ['all', 'origins', 'brands', 'recipes']
+      .map((gKey) => {
+        const isActive = !state.entry && state.group === gKey && state.brand === 'all';
+        return `
+          <li>
+            <button type="button" class="lib-nav-btn${isActive ? ' is-active' : ''}" data-action="nav-group" data-group="${gKey}">
+              <span>${escapeHtml(t(meta.groups?.[gKey]))}</span>
+              <span class="lib-nav-count">${counts[gKey]}</span>
+            </button>
+          </li>
+        `;
+      })
+      .join('');
+
+    const brandItems = brands
+      .map((b) => {
+        const isActive = state.brand === b.id;
+        const isIslay = b.parentHouseId === 'bruichladdich-distillery';
+        return `
+          <li>
+            <button type="button" class="lib-brand-nav-btn${isActive ? ' is-active' : ''}" data-action="set-brand" data-brand="${escapeHtml(b.id)}">
+              <span class="lib-brand-dot${isIslay ? ' is-islay' : ''}" aria-hidden="true"></span>
+              <span class="lib-brand-nav-text">${escapeHtml(b.name)}</span>
+            </button>
+          </li>
+        `;
+      })
+      .join('');
+
+    return `
+      <div class="lib-sidebar-group">
+        <div class="lib-sidebar-heading">${escapeHtml(state.lang === 'vi' ? 'Danh mục tra cứu' : 'Collections')}</div>
+        <ul class="lib-nav-list">
+          ${groupItems}
+        </ul>
+      </div>
+      <div class="lib-sidebar-group">
+        <div class="lib-sidebar-heading">${escapeHtml(t(meta.brandFilterHeading))}</div>
+        <ul class="lib-nav-list">
+          <li>
+            <button type="button" class="lib-brand-nav-btn${state.brand === 'all' ? ' is-active' : ''}" data-action="set-brand" data-brand="all">
+              <span class="lib-brand-dot" aria-hidden="true"></span>
+              <span class="lib-brand-nav-text">${escapeHtml(t(meta.allBrandsLabel))}</span>
+            </button>
+          </li>
+          ${brandItems}
+        </ul>
+        <p class="lib-islay-note">${escapeHtml(t(meta.islayHouseNote))}</p>
+      </div>
+    `;
+  }
+
+  function renderEntryCard(entry) {
+    const brand = entry.brandId ? brandById.get(entry.brandId) : null;
+    const titleObj = localizeField(entry.title, state.lang);
+    const summaryObj = localizeField(entry.summary, state.lang);
+    const catObj = localizeField(entry.categoryLabel, state.lang);
+
+    const badgeLogo = brand
+      ? `<span class="lib-logo-tile"><img src="${escapeHtml(brand.logo)}" alt="${escapeHtml(brand.name)}" loading="lazy"></span>`
+      : `<span class="lib-origin-monogram" aria-hidden="true">${escapeHtml(state.lang === 'vi' ? 'LS' : 'OH')}</span>`;
+
+    return `
+      <article class="lib-entry-card" data-entry-card="${escapeHtml(entry.slug)}" tabindex="0" role="button" aria-label="${escapeHtml(titleObj.text)}">
+        <div class="lib-entry-card-top">
+          ${badgeLogo}
+          <div class="lib-entry-card-meta">
+            <span class="lib-meta-line">${escapeHtml(catObj.text)}</span>
+          </div>
+        </div>
+        <h2 class="lib-entry-card-title">${escapeHtml(titleObj.text)}</h2>
+        <p class="lib-entry-card-summary">${escapeHtml(summaryObj.text)}</p>
+        <div class="lib-entry-card-foot">
+          <span class="lib-open-prompt">${escapeHtml(state.lang === 'vi' ? 'Xem tài liệu tra cứu →' : 'Open reference sheet →')}</span>
+        </div>
+      </article>
+    `;
+  }
+
+  function renderListView() {
+    const counts = computeGroupCounts(publishedEntries, {
+      brand: state.brand,
+      query: state.query,
+      lang: state.lang,
+    });
+
+    const filtered = filterEntries(publishedEntries, {
+      group: state.group,
+      brand: state.brand,
+      query: state.query,
+      lang: state.lang,
+    });
+
+    const countCardsHtml = ['all', 'origins', 'brands', 'recipes']
+      .map((gKey) => {
+        const selected = state.group === gKey;
+        return `
+          <button type="button" class="lib-count-card${selected ? ' is-selected' : ''}" data-ui="count-card" data-action="set-group" data-group="${gKey}" aria-pressed="${selected ? 'true' : 'false'}">
+            <span class="lib-count-label">${escapeHtml(t(meta.groups?.[gKey]))}</span>
+            <span class="lib-count-value">${counts[gKey]}</span>
+          </button>
+        `;
+      })
+      .join('');
+
+    const mobileBrandChips = [
+      `<button type="button" class="lib-brand-chip${state.brand === 'all' ? ' is-active' : ''}" data-ui="chip" data-action="set-brand" data-brand="all">${escapeHtml(t(meta.allBrandsLabel))}</button>`,
+      ...brands.map(
+        (b) =>
+          `<button type="button" class="lib-brand-chip${state.brand === b.id ? ' is-active' : ''}" data-ui="chip" data-action="set-brand" data-brand="${escapeHtml(b.id)}">${escapeHtml(b.name)}</button>`
+      ),
+    ].join('');
+
+    let bodyHtml = '';
+    if (filtered.length > 0) {
+      bodyHtml = `<div class="lib-cards-grid">${filtered.map(renderEntryCard).join('')}</div>`;
+    } else if (state.group === 'recipes' && !state.query.trim()) {
+      bodyHtml = `
+        <section class="lib-empty-panel" data-role="recipes-pending-state">
+          <h2 class="lib-empty-title">${escapeHtml(t(meta.recipesPendingTitle))}</h2>
+          <p class="lib-empty-body">${escapeHtml(t(meta.recipesPendingBody))}</p>
+          <div class="lib-empty-actions">
+            <button type="button" class="lib-primary-pill" data-action="set-group" data-group="brands">${escapeHtml(t(meta.groups?.brands))}</button>
+            <button type="button" class="lib-secondary-pill" data-ui="pill" data-action="set-group" data-group="origins">${escapeHtml(t(meta.groups?.origins))}</button>
+          </div>
+        </section>
+      `;
+    } else {
+      bodyHtml = `
+        <section class="lib-empty-panel" data-role="no-results-state">
+          <h2 class="lib-empty-title">${escapeHtml(t(meta.noSearchResultsTitle))}</h2>
+          <p class="lib-empty-body">${escapeHtml(t(meta.noSearchResultsBody))}</p>
+          <div class="lib-empty-actions">
+            <button type="button" class="lib-primary-pill" data-action="reset-filters">${escapeHtml(t(meta.resetFiltersLabel))}</button>
+          </div>
+        </section>
+      `;
+    }
+
+    const activeBrandObj = state.brand !== 'all' ? brandById.get(state.brand) : null;
+    const scopeTitle = activeBrandObj ? activeBrandObj.name : t(meta.name);
+    const scopeSubtitle = activeBrandObj
+      ? `${t(activeBrandObj.category)} · ${t(activeBrandObj.origin)}`
+      : t(meta.subtitle);
+
+    return `
+      <div class="lib-list-stage">
+        <header class="lib-title-row">
+          <div class="lib-title-block">
+            <h1 class="lib-page-title">${escapeHtml(scopeTitle)}</h1>
+            <p class="lib-page-subtitle">${escapeHtml(scopeSubtitle)}</p>
+          </div>
+          ${
+            state.brand !== 'all' || state.query.trim()
+              ? `<button type="button" class="lib-secondary-pill" data-ui="pill" data-action="reset-filters">${escapeHtml(t(meta.resetFiltersLabel))}</button>`
+              : ''
+          }
+        </header>
+
+        <div class="lib-count-strip" data-ui="count-strip" role="group" aria-label="Content type filter">
+          ${countCardsHtml}
+        </div>
+
+        <div class="lib-mobile-brands" data-ui="mobile-brands" role="group" aria-label="Brand filter">
+          ${mobileBrandChips}
+        </div>
+
+        ${bodyHtml}
+      </div>
+    `;
+  }
+
+  function renderDetailView(entry) {
+    const brand = entry.brandId ? brandById.get(entry.brandId) : null;
+    let hasMissingTranslation = false;
+
+    const loc = (field) => {
+      const r = localizeField(field, state.lang);
+      if (r.missingTranslation) hasMissingTranslation = true;
+      return r.text;
+    };
+
+    const locArr = (field) => {
+      const r = localizeList(field, state.lang);
+      if (r.missingTranslation) hasMissingTranslation = true;
+      return r.items;
+    };
+
+    const titleText = loc(entry.title);
+    const subtitleText = loc(entry.subtitle);
+    const catText = loc(entry.categoryLabel);
+    const summaryText = loc(entry.summary);
+    const takeaways = locArr(entry.keyTakeaways);
+    const originParagraphs = locArr(entry.originStory);
+    const productionParagraphs = locArr(entry.production);
+    const servingItems = locArr(entry.serving);
+    const methodSteps = locArr(entry.method);
+
+    const related = getRelatedEntries(publishedEntries, entry);
+    const headings = meta.sectionHeadings || {};
+
+    const coverHtml = brand
+      ? `<div class="lib-detail-logo-well"><img src="${escapeHtml(brand.logo)}" alt="${escapeHtml(brand.name)}"></div>`
+      : `<div class="lib-detail-monogram" aria-hidden="true">${escapeHtml(state.lang === 'vi' ? 'LS' : 'OH')}</div>`;
+
+    const specsRowsHtml = Array.isArray(entry.specs)
+      ? entry.specs
+          .map(
+            (s) => `
+              <tr>
+                <th scope="row">${escapeHtml(loc(s.label))}</th>
+                <td>${escapeHtml(loc(s.value))}</td>
+              </tr>
+            `
+          )
+          .join('')
+      : '';
+
+    const recipeBlocksHtml =
+      entry.group === 'recipes' && Array.isArray(entry.ingredients)
+        ? `
+          <section class="lib-grid-card lib-span-3">
+            <h2 class="lib-panel-heading">${escapeHtml(t(headings.ingredients))}</h2>
+            <table class="lib-spec-table">
+              <tbody>
+                ${entry.ingredients
+                  .map(
+                    (ing) => `
+                      <tr>
+                        <th scope="row">${escapeHtml(loc(ing.item))}</th>
+                        <td>${escapeHtml(ing.amount || '')}</td>
+                      </tr>
+                    `
+                  )
+                  .join('')}
+              </tbody>
+            </table>
+          </section>
+          <section class="lib-grid-card lib-span-3">
+            <h2 class="lib-panel-heading">${escapeHtml(t(headings.method))}</h2>
+            <ol class="lib-prose-list lib-ordered-steps">
+              ${methodSteps.map((step) => `<li>${escapeHtml(step)}</li>`).join('')}
+            </ol>
+          </section>
+        `
+        : '';
+
+    const heritageAndProductionHtml =
+      originParagraphs.length || productionParagraphs.length
+        ? `
+          ${
+            originParagraphs.length
+              ? `
+                <section class="lib-grid-card lib-span-3">
+                  <h2 class="lib-panel-heading">${escapeHtml(t(headings.originStory))}</h2>
+                  <div class="lib-prose-stack">
+                    ${originParagraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join('')}
+                  </div>
+                </section>
+              `
+              : ''
+          }
+          ${
+            productionParagraphs.length
+              ? `
+                <section class="lib-grid-card lib-span-3">
+                  <h2 class="lib-panel-heading">${escapeHtml(t(headings.production))}</h2>
+                  <div class="lib-prose-stack">
+                    ${productionParagraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join('')}
+                  </div>
+                </section>
+              `
+              : ''
+          }
+        `
+        : '';
+
+    const expressionsHtml =
+      Array.isArray(entry.expressions) && entry.expressions.length > 0
+        ? `
+          <section class="lib-grid-card lib-span-6">
+            <h2 class="lib-panel-heading">${escapeHtml(t(headings.expressions))}</h2>
+            <div class="lib-expressions-grid">
+              ${entry.expressions
+                .map(
+                  (exp) => `
+                    <div class="lib-expression-panel">
+                      <div class="lib-expression-head">
+                        <h3>${escapeHtml(exp.name)}</h3>
+                        <span class="lib-abv-pill">${escapeHtml(exp.abv || '')}</span>
+                      </div>
+                      <p>${escapeHtml(loc(exp.profile))}</p>
+                    </div>
+                  `
+                )
+                .join('')}
+            </div>
+          </section>
+        `
+        : '';
+
+    const tastingHtml = entry.tasting
+      ? `
+        <section class="lib-grid-card lib-span-4">
+          <h2 class="lib-panel-heading">${escapeHtml(t(headings.tasting))}</h2>
+          <table class="lib-spec-table">
+            <tbody>
+              <tr>
+                <th scope="row">${escapeHtml(state.lang === 'vi' ? 'Hương mũi (Nose)' : 'Nose')}</th>
+                <td>${escapeHtml(loc(entry.tasting.nose))}</td>
+              </tr>
+              <tr>
+                <th scope="row">${escapeHtml(state.lang === 'vi' ? 'Vòm miệng (Palate)' : 'Palate')}</th>
+                <td>${escapeHtml(loc(entry.tasting.palate))}</td>
+              </tr>
+              <tr>
+                <th scope="row">${escapeHtml(state.lang === 'vi' ? 'Hậu vị (Finish)' : 'Finish')}</th>
+                <td>${escapeHtml(loc(entry.tasting.finish))}</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      `
+      : '';
+
+    const servingHtml = servingItems.length
+      ? `
+        <section class="lib-grid-card lib-span-2">
+          <h2 class="lib-panel-heading">${escapeHtml(t(headings.serving))}</h2>
+          <ul class="lib-prose-list">
+            ${servingItems.map((s) => `<li>${escapeHtml(s)}</li>`).join('')}
+          </ul>
+        </section>
+      `
+      : '';
+
+    const connectedItems = [...related.origins, ...related.brands];
+    const relatedRecipesHtml =
+      entry.group !== 'recipes'
+        ? `
+          <section class="lib-grid-card lib-span-3" data-role="related-recipes">
+            <h2 class="lib-panel-heading">${escapeHtml(t(headings.relatedRecipes))}</h2>
+            ${
+              related.recipes.length > 0
+                ? `<div class="lib-related-links">
+                    ${related.recipes
+                      .map(
+                        (r) => `
+                          <button type="button" class="lib-related-row" data-ui="row" data-action="open-entry" data-slug="${escapeHtml(r.slug)}">
+                            <span>${escapeHtml(t(r.title))}</span>
+                            <span class="lib-row-arrow">→</span>
+                          </button>
+                        `
+                      )
+                      .join('')}
+                  </div>`
+                : `<p class="lib-muted-note">${escapeHtml(
+                    state.lang === 'vi'
+                      ? 'Các công thức cocktail chính thức dùng sản phẩm này đang trong bước đối chiếu định lượng cuối cùng trước khi hiển thị.'
+                      : 'Official cocktail serves featuring this expression are undergoing final ratio verification before publication.'
+                  )}</p>`
+            }
+          </section>
+        `
+        : '';
+
+    const relatedReadingHtml =
+      connectedItems.length > 0
+        ? `
+          <section class="lib-grid-card ${entry.group !== 'recipes' ? 'lib-span-3' : 'lib-span-6'}" data-role="related-entries">
+            <h2 class="lib-panel-heading">${escapeHtml(t(headings.relatedEntries))}</h2>
+            <div class="lib-related-links">
+              ${connectedItems
+                .map(
+                  (item) => `
+                    <button type="button" class="lib-related-row" data-ui="row" data-action="open-entry" data-slug="${escapeHtml(item.slug)}">
+                      <div>
+                        <div class="lib-related-title">${escapeHtml(t(item.title))}</div>
+                        <div class="lib-related-sub">${escapeHtml(t(item.categoryLabel))}</div>
+                      </div>
+                      <span class="lib-row-arrow">→</span>
+                    </button>
+                  `
+                )
+                .join('')}
+            </div>
+          </section>
+        `
+        : '';
+
+    const faqHtml =
+      Array.isArray(entry.faq) && entry.faq.length > 0
+        ? `
+          <section class="lib-grid-card lib-span-6">
+            <h2 class="lib-panel-heading">${escapeHtml(t(headings.faq))}</h2>
+            <div class="lib-faq-list" data-ui="faq">
+              ${entry.faq
+                .map(
+                  (item) => `
+                    <details class="lib-faq-item">
+                      <summary>${escapeHtml(loc(item.q))}</summary>
+                      <p>${escapeHtml(loc(item.a))}</p>
+                    </details>
+                  `
+                )
+                .join('')}
+            </div>
+          </section>
+        `
+        : '';
+
+    return `
+      <article class="lib-detail-stage">
+        <div class="lib-detail-back-row">
+          <button type="button" class="lib-back-inline" data-action="close-entry">${escapeHtml(t(meta.backToList))}</button>
+        </div>
+
+        <header class="lib-object-header" data-ui="object-header">
+          <div class="lib-object-main">
+            ${coverHtml}
+            <div class="lib-object-titles">
+              <div class="lib-meta-line">${escapeHtml(catText)}</div>
+              <h1 class="lib-detail-title">${escapeHtml(titleText)}</h1>
+              <p class="lib-detail-subtitle">${escapeHtml(subtitleText)}</p>
+            </div>
+          </div>
+        </header>
+
+        ${
+          hasMissingTranslation
+            ? `<div class="lib-translation-banner" data-role="missing-translation-banner">${escapeHtml(t(meta.missingTranslationNote))}</div>`
+            : ''
+        }
+
+        <p class="lib-detail-lead">${escapeHtml(summaryText)}</p>
+
+        <div class="lib-detail-grid">
+          ${
+            takeaways.length
+              ? `
+                <section class="lib-grid-card lib-span-4">
+                  <h2 class="lib-panel-heading">${escapeHtml(t(headings.takeaways))}</h2>
+                  <ul class="lib-prose-list">
+                    ${takeaways.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
+                  </ul>
+                </section>
+              `
+              : ''
+          }
+
+          ${
+            specsRowsHtml
+              ? `
+                <section class="lib-grid-card ${takeaways.length ? 'lib-span-2' : 'lib-span-6'}">
+                  <h2 class="lib-panel-heading">${escapeHtml(t(headings.specs))}</h2>
+                  <table class="lib-spec-table">
+                    <tbody>${specsRowsHtml}</tbody>
+                  </table>
+                </section>
+              `
+              : ''
+          }
+
+          ${recipeBlocksHtml}
+          ${heritageAndProductionHtml}
+          ${expressionsHtml}
+          ${tastingHtml}
+          ${servingHtml}
+          ${relatedRecipesHtml}
+          ${relatedReadingHtml}
+          ${faqHtml}
+        </div>
+      </article>
+    `;
+  }
+
+  function renderMainStage() {
+    if (state.entry && entryBySlug.has(state.entry)) {
+      return renderDetailView(entryBySlug.get(state.entry));
+    }
+    return renderListView();
+  }
+
+  function renderFullShell() {
+    syncDocumentMeta();
+    rootEl.innerHTML = `
+      <div class="lib-shell" data-ui="shell">
+        <header class="lib-topbar" data-ui="topbar">
+          <div class="lib-topbar-left">
+            <a href="../index.html" class="lib-back-portfolio" data-action="back-portfolio">${escapeHtml(t(meta.backToPortfolio))}</a>
+            <button type="button" class="lib-wordmark-btn" data-action="go-home">${escapeHtml(t(meta.name))}</button>
+          </div>
+          <div class="lib-topbar-search">
+            <input
+              type="search"
+              class="lib-search-input"
+              data-role="search-input"
+              value="${escapeHtml(state.query)}"
+              placeholder="${escapeHtml(t(meta.searchPlaceholder))}"
+              aria-label="${escapeHtml(t(meta.searchPlaceholder))}"
+              autocomplete="off"
+            >
+          </div>
+          <div class="lib-topbar-lang" data-ui="lang-switch" role="group" aria-label="Language switcher">
+            <button type="button" class="lib-lang-btn${state.lang === 'en' ? ' is-active' : ''}" data-action="set-lang" data-lang="en">EN</button>
+            <button type="button" class="lib-lang-btn${state.lang === 'vi' ? ' is-active' : ''}" data-action="set-lang" data-lang="vi">VI</button>
+          </div>
+        </header>
+
+        <div class="lib-body-frame">
+          <aside class="lib-sidebar" data-ui="sidebar" data-role="sidebar-body" aria-label="Library navigation">
+            ${renderSidebarInner()}
+          </aside>
+          <main class="lib-main" data-role="main-stage" id="library-main">
+            ${renderMainStage()}
+          </main>
+        </div>
+      </div>
+    `;
+  }
+
+  function updateRegionsWithoutTouchingSearchInput() {
+    syncDocumentMeta();
+    const sidebarEl = rootEl.querySelector('[data-role="sidebar-body"]');
+    const mainEl = rootEl.querySelector('[data-role="main-stage"]');
+    if (sidebarEl) sidebarEl.innerHTML = renderSidebarInner();
+    if (mainEl) mainEl.innerHTML = renderMainStage();
+  }
+
+  rootEl.addEventListener('click', (ev) => {
+    const actionEl = ev.target.closest('[data-action], [data-entry-card]');
+    if (!actionEl || !rootEl.contains(actionEl)) return;
+
+    if (actionEl.hasAttribute('data-entry-card')) {
+      const slug = actionEl.getAttribute('data-entry-card');
+      if (entryBySlug.has(slug)) {
+        state.entry = slug;
+        pushUrlState(false);
+        updateRegionsWithoutTouchingSearchInput();
+        if (typeof window !== 'undefined' && window.scrollTo) window.scrollTo({ top: 0, behavior: 'auto' });
+      }
+      return;
+    }
+
+    const action = actionEl.getAttribute('data-action');
+    if (action === 'back-portfolio') {
+      return; // allow normal anchor navigation to ../index.html
+    }
+
+    ev.preventDefault();
+
+    if (action === 'set-lang') {
+      const nextLang = actionEl.getAttribute('data-lang') === 'vi' ? 'vi' : 'en';
+      if (nextLang !== state.lang) {
+        state.lang = nextLang;
+        try {
+          if (storage) storage.setItem('bio-lang', nextLang);
+        } catch {}
+        renderFullShell();
+      }
+    } else if (action === 'set-group') {
+      state.group = actionEl.getAttribute('data-group') || 'all';
+      state.entry = '';
+      pushUrlState(false);
+      updateRegionsWithoutTouchingSearchInput();
+    } else if (action === 'nav-group') {
+      state.group = actionEl.getAttribute('data-group') || 'all';
+      state.brand = 'all';
+      state.entry = '';
+      pushUrlState(false);
+      updateRegionsWithoutTouchingSearchInput();
+    } else if (action === 'set-brand') {
+      state.brand = actionEl.getAttribute('data-brand') || 'all';
+      state.entry = '';
+      pushUrlState(false);
+      updateRegionsWithoutTouchingSearchInput();
+    } else if (action === 'reset-filters') {
+      state.group = 'all';
+      state.brand = 'all';
+      state.query = '';
+      state.entry = '';
+      pushUrlState(false);
+      renderFullShell();
+    } else if (action === 'go-home' || action === 'close-entry') {
+      state.entry = '';
+      pushUrlState(false);
+      updateRegionsWithoutTouchingSearchInput();
+    } else if (action === 'open-entry') {
+      const slug = actionEl.getAttribute('data-slug') || '';
+      if (entryBySlug.has(slug)) {
+        state.entry = slug;
+        pushUrlState(false);
+        updateRegionsWithoutTouchingSearchInput();
+        if (typeof window !== 'undefined' && window.scrollTo) window.scrollTo({ top: 0, behavior: 'auto' });
+      }
+    }
+  });
+
+  rootEl.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Enter' || ev.key === ' ') {
+      const card = ev.target.closest('[data-entry-card]');
+      if (card && rootEl.contains(card)) {
+        ev.preventDefault();
+        card.click();
+      }
+    }
+  });
+
+  rootEl.addEventListener('input', (ev) => {
+    if (ev.target && ev.target.matches('[data-role="search-input"]')) {
+      state.query = ev.target.value || '';
+      if (state.entry) {
+        state.entry = '';
+      }
+      pushUrlState(true);
+      updateRegionsWithoutTouchingSearchInput();
+    }
+  });
+
+  if (syncHistory && typeof window !== 'undefined') {
+    window.addEventListener('popstate', () => {
+      const parsed = parseLibraryUrlState(window.location.search, window.location.hash);
+      state.entry = entryBySlug.has(parsed.entry) ? parsed.entry : '';
+      state.group = parsed.group || 'all';
+      state.brand = parsed.brand || 'all';
+      state.query = parsed.query || '';
+      renderFullShell();
+    });
+  }
+
+  renderFullShell();
+
+  return {
+    getState() {
+      return { ...state };
+    },
+    setLang(nextLang) {
+      state.lang = nextLang === 'vi' ? 'vi' : 'en';
+      try {
+        if (storage) storage.setItem('bio-lang', state.lang);
+      } catch {}
+      renderFullShell();
+    },
+  };
+}
