@@ -20,15 +20,47 @@ export const LIBRARY_META = {
     vi: '← Tất cả mục tra cứu',
   },
   searchPlaceholder: {
-    en: 'Search bottle, category, ABV, PPM, terroir, tasting note...',
-    vi: 'Tìm sản phẩm, phân loại, nồng độ ABV, PPM, vùng đất, hương vị...',
+    en: 'Search spirits, origins, cocktails...',
+    vi: 'Tìm kiến thức, thương hiệu, cocktail...',
   },
   groups: {
     all: { en: 'All Modules', vi: 'Tất cả mục' },
-    origins: { en: 'The Basics & Terroir', vi: 'The Basics & Cội nguồn' },
+    origins: { en: 'The Basics', vi: 'Kiến thức nền tảng' },
     brands: { en: 'Spirits & Houses', vi: 'Dòng rượu & Thương hiệu' },
     recipes: { en: 'Cocktail Recipes', vi: 'Công thức Cocktail' },
   },
+  groupDescriptions: {
+    all: {
+      en: 'Comprehensive spirits encyclopedia, terroir foundations, and bar knowledge.',
+      vi: 'Bách khoa toàn thư F&B: Cội nguồn, dòng rượu di sản và chuẩn mực quầy bar.',
+    },
+    origins: {
+      en: 'Foundational modules on terroir, raw ingredients, and distillation for bartenders.',
+      vi: '6 chuyên đề cốt lõi về thổ nhưỡng, nguyên liệu và kỹ nghệ chưng cất cho bartender mới.',
+    },
+    brands: {
+      en: 'Heritage houses, signature expressions, and technical tasting specifications.',
+      vi: 'Khám phá các nhà chưng cất biểu tượng, dòng sản phẩm di sản và thông số nếm vị.',
+    },
+    recipes: {
+      en: 'Verified classic serves with exact ratios, ice format, and glassware.',
+      vi: 'Công thức cocktail kinh điển đối chiếu chuẩn mực từng ml, chuẩn đá và dáng ly.',
+    },
+  },
+  recipesStatusBadge: {
+    en: 'Coming Soon',
+    vi: 'Sắp có',
+  },
+  originTopics: [
+    { id: 'all', label: { en: 'All Topics', vi: 'Tất cả chủ đề' } },
+    { id: 'brandy', label: { en: 'Brandy & Cognac', vi: 'Brandy & Cognac' } },
+    { id: 'liqueur', label: { en: 'Triple Sec & Liqueurs', vi: 'Triple Sec & Rượu mùi cam' } },
+    { id: 'gin', label: { en: 'Gin & Botanicals', vi: 'Gin & Thảo mộc' } },
+    { id: 'champagne', label: { en: 'Champagne & Sparkling', vi: 'Champagne & Vang sủi' } },
+    { id: 'rum', label: { en: 'Rum & Sugarcane', vi: 'Rum & Mía đường' } },
+    { id: 'whisky', label: { en: 'Islay Single Malt', vi: 'Islay Single Malt' } },
+  ],
+
   brandFilterHeading: {
     en: 'Portfolio Houses & Expressions',
     vi: 'Nhà sản xuất & Thương hiệu',
@@ -100,7 +132,12 @@ export const LIBRARY_META = {
     vi: 'Một số thông tin đang hiển thị theo ngôn ngữ gốc đã xác thực trong khi bản dịch đang được rà soát.',
   },
   sectionHeadings: {
+    atAGlanceOrigins: { en: 'Key Concepts to Remember', vi: 'Thông tin cần nhớ' },
     atAGlance: { en: 'At-A-Glance · Quick Bar Specs', vi: 'Thông số thực chiến tại quầy' },
+    toc: { en: 'Table of Contents', vi: 'Mục lục bài viết' },
+    glossary: { en: 'Spirits Terminology', vi: 'Giải thích thuật ngữ' },
+    nextStep: { en: 'Next Learning Step', vi: 'Bước học tiếp theo' },
+    references: { en: 'Authoritative Sources', vi: 'Nguồn tham khảo chuẩn mực' },
     takeaways: { en: 'Key Takeaways', vi: 'Điểm cốt lõi' },
     specs: { en: 'Technical Specifications', vi: 'Thông số kỹ thuật' },
     originStory: { en: 'Origin & Heritage', vi: 'Nguồn gốc & Di sản' },
@@ -189,20 +226,23 @@ export const LIBRARY_ENTRIES = [
     slug: 'history-of-cognac',
     status: 'approved',
     group: 'origins',
+    topicId: 'brandy',
+    coverImage: 'media/origins/cognac-terroir.svg',
+    shortCta: {"en": "Explore Cognac →", "vi": "Tìm hiểu Cognac →"},
     brandId: null,
     brandIds: ['remy-martin'],
     categoryLabel: { en: 'Category History · Brandy & Cognac', vi: 'Lịch sử phân loại · Brandy & Cognac' },
     title: {
-      en: 'Cognac: Chalk Soils, Double Distillation & French Oak',
-      vi: 'Cognac: Thổ nhưỡng đá phấn, Chưng cất kép & Gỗ sồi Pháp',
+      en: 'What is Cognac? From Grape to Glass',
+      vi: 'Cognac là gì? Từ vùng nho đến ly rượu',
     },
     subtitle: {
       en: 'How Charente white wines became a protected AOC wine brandy defined by six crus and copper Charentais pot stills.',
       vi: 'Hành trình rượu vang trắng vùng Charente trở thành dòng brandy được bảo hộ AOC với 6 phân vùng cru và nồi đồng Charentais.',
     },
     summary: {
-      en: 'Protected under French AOC law, Cognac is distilled twice in copper pot stills from high-acidity white grapes (led by Ugni Blanc) and aged a minimum of two years in French oak.',
-      vi: 'Được bảo hộ AOC tại Pháp, Cognac chưng cất hai lần bằng nồi đồng từ giống nho trắng giàu độ chua (chủ đạo là Ugni Blanc) và ủ tối thiểu 2 năm trong thùng gỗ sồi Pháp.',
+      en: 'Master the 6 grape crus, double Charentais distillation, and French oak aging that define world-class Cognac.',
+      vi: 'Nắm vững 6 phân vùng nho Cru, quy tắc chưng cất nồi đồng kép và nghệ thuật ủ thùng sồi Pháp tạo nên chuẩn mực hương vị Cognac.',
     },
     readMinutes: 4,
     keyTakeaways: {
@@ -272,6 +312,59 @@ export const LIBRARY_ENTRIES = [
       },
     ],
     relatedSlugs: ['remy-martin'],
+    glossary: [
+      {
+            "term": {
+                  "en": "Eau-de-vie",
+                  "vi": "Eau-de-vie (Rượu tâm)"
+            },
+            "def": {
+                  "en": "Colorless, fragrant wine spirit produced after double Charentais distillation, before entering oak casks.",
+                  "vi": "Dòng rượu tâm trong suốt, đậm hương hoa trái sau 2 lần chưng cất nồi đồng Charentais trước khi ủ thùng sồi."
+            }
+      },
+      {
+            "term": {
+                  "en": "Cru",
+                  "vi": "Cru (Phân vùng địa chất)"
+            },
+            "def": {
+                  "en": "Six legally defined growing zones in Cognac, classified by soil chalk content from Grande Champagne to Bois Ordinaires.",
+                  "vi": "Sáu phân vùng địa chất trồng nho được bảo hộ tại Cognac, xếp hạng theo hàm lượng đá phấn từ Grande Champagne đến Bois Ordinaires."
+            }
+      },
+      {
+            "term": {
+                  "en": "Cognac Fine Champagne",
+                  "vi": "Cognac Fine Champagne"
+            },
+            "def": {
+                  "en": "Official AOC requiring 100% eaux-de-vie from Grande and Petite Champagne, with at least 50% from Grande Champagne.",
+                  "vi": "Danh xưng AOC bắt buộc 100% rượu tâm từ hai vùng Grande và Petite Champagne, trong đó ít nhất 50% từ Grande Champagne."
+            }
+      },
+      {
+            "term": {
+                  "en": "Rancio Charentais",
+                  "vi": "Rancio Charentais"
+            },
+            "def": {
+                  "en": "A complex, tertiary aromatic profile of dried fruit, mushroom, leather, and walnut that develops only after 15–20+ years in oak.",
+                  "vi": "Tầng hương thứ cấp quý giá gồm nấm rừng, da thuộc, hạt phỉ và mứt khô chỉ hình thành sau hơn 15–20 năm oxy hóa êm đềm trong thùng sồi."
+            }
+      }
+],
+    nextStep: {
+      "title": {
+            "en": "Study Rémy Martin Fine Champagne & Master the Sidecar",
+            "vi": "Nghiên cứu Rémy Martin Fine Champagne & Luyện kỹ thuật Sidecar"
+      },
+      "slug": "remy-martin",
+      "actionLabel": {
+            "en": "View Rémy Martin Profile →",
+            "vi": "Xem hồ sơ Rémy Martin →"
+      }
+},
     sourceNote: { en: 'BNIC Cognac AOC regulations & Rémy Martin Brand Education archive', vi: 'Quy chuẩn AOC của BNIC & Tài liệu đào tạo Rémy Martin' },
     lastUpdated: '2026-11-03',
   },
@@ -279,20 +372,23 @@ export const LIBRARY_ENTRIES = [
     slug: 'history-of-orange-liqueur',
     status: 'approved',
     group: 'origins',
+    topicId: 'liqueur',
+    coverImage: 'media/origins/orange-liqueur.svg',
+    shortCta: {"en": "Explore Orange Liqueurs →", "vi": "Tìm hiểu Rượu mùi cam →"},
     brandId: null,
     brandIds: ['cointreau'],
     categoryLabel: { en: 'Category History · Triple Sec & Orange Liqueurs', vi: 'Lịch sử phân loại · Triple Sec & Rượu mùi cam' },
     title: {
-      en: 'Orange Liqueurs & Triple Sec: Essential Oils Behind Classic Cocktails',
-      vi: 'Rượu mùi cam & Triple Sec: Trụ cột hương vị Cocktail cổ điển',
+      en: 'Orange Liqueurs & Triple Sec: Backbone of Classics',
+      vi: 'Triple Sec & Rượu mùi cam: Trụ cột Cocktail cổ điển',
     },
     subtitle: {
       en: 'From 19th-century French distillation to the structural backbone of the Margarita, Sidecar, and Cosmopolitan.',
       vi: 'Từ kỹ nghệ chưng cất thế kỷ 19 tại Pháp đến trụ cột cân bằng hương vị của Margarita, Sidecar và Cosmopolitan.',
     },
     summary: {
-      en: 'True dry orange liqueurs ("Triple Sec") capture volatile essential oils from sweet and bitter orange peels through copper-still distillation, balancing base spirits and citrus acidity without cloying syrupy weight.',
-      vi: 'Dòng rượu mùi cam thanh khô (Triple Sec) thu giữ tinh dầu dễ bay hơi từ vỏ cam ngọt và cam đắng qua nồi chưng cất đồng, giúp cân bằng rượu nền và vị chua chanh mà không gây ngọt gắt.',
+      en: 'Distinguish Curaçao from Triple Sec and understand essential orange oils in balancing Margarita and Sidecar.',
+      vi: 'Phân biệt Curaçao và Triple Sec, hiểu vai trò tinh dầu vỏ cam trong việc giữ cấu trúc cân bằng cho Margarita và Sidecar.',
     },
     readMinutes: 4,
     keyTakeaways: {
@@ -354,6 +450,49 @@ export const LIBRARY_ENTRIES = [
       },
     ],
     relatedSlugs: ['cointreau-lunique', 'cointreau-spicy'],
+    glossary: [
+      {
+            "term": {
+                  "en": "Triple Sec",
+                  "vi": "Triple Sec"
+            },
+            "def": {
+                  "en": "Clear, dry-style orange liqueur crafted by distilling neutral spirit with dried bitter and sweet orange peels, marked by low sugar and intense aromatics.",
+                  "vi": "Dòng rượu mùi cam trong suốt phong cách khô thanh (sec), chưng cất từ vỏ cam ngọt và cam đắng, nổi bật bởi vị ngọt thanh và tinh dầu cam bùng nổ."
+            }
+      },
+      {
+            "term": {
+                  "en": "Curaçao",
+                  "vi": "Curaçao"
+            },
+            "def": {
+                  "en": "Traditional orange liqueur originally made from dried peel of the bitter Laraha orange on the Caribbean island of Curaçao, typically sweeter with pot-still character.",
+                  "vi": "Rượu mùi cam truyền thống làm từ vỏ cam đắng Laraha trên đảo Curaçao, vị đậm đà và ngọt hơn so với phong cách Triple Sec."
+            }
+      },
+      {
+            "term": {
+                  "en": "Louche Effect",
+                  "vi": "Hiệu ứng vẩn đục (Louche)"
+            },
+            "def": {
+                  "en": "Natural cloudy opalescence occurring when high concentrations of essential orange peel oils precipitate upon dilution with cold water or ice.",
+                  "vi": "Hiện tượng ngả mờ đục tự nhiên khi tinh dầu cam tinh khiết cô đặc trong rượu tiếp xúc với nhiệt độ lạnh hoặc nước đá."
+            }
+      }
+],
+    nextStep: {
+      "title": {
+            "en": "Deep dive into Cointreau L'Unique & Balance the Margarita",
+            "vi": "Khám phá Cointreau L'Unique & Cân bằng vị chua ngọt Margarita"
+      },
+      "slug": "cointreau-lunique",
+      "actionLabel": {
+            "en": "View Cointreau Profile →",
+            "vi": "Xem hồ sơ Cointreau →"
+      }
+},
     sourceNote: { en: 'Classic cocktail historiography & Maison Cointreau Angers archives', vi: 'Lịch sử pha chế cổ điển & Tư liệu lưu trữ Maison Cointreau Angers' },
     lastUpdated: '2026-11-03',
   },
@@ -361,20 +500,23 @@ export const LIBRARY_ENTRIES = [
     slug: 'history-of-gin',
     status: 'approved',
     group: 'origins',
+    topicId: 'gin',
+    coverImage: 'media/origins/gin-botanicals.svg',
+    shortCta: {"en": "Explore Gin →", "vi": "Tìm hiểu Gin →"},
     brandId: null,
     brandIds: ['the-botanist'],
     categoryLabel: { en: 'Category History · Gin & Botanical Spirits', vi: 'Lịch sử phân loại · Gin & Thảo mộc chưng cất' },
     title: {
-      en: 'Gin: From Juniper Remedies to Terroir-Driven Botanical Distillation',
-      vi: 'Gin: Từ phương thuốc quả bách xù đến nghệ thuật chưng cất thảo mộc bản địa',
+      en: 'Gin: From Juniper to Botanical Artistry',
+      vi: 'Gin: Từ quả bách xù đến nghệ thuật thảo mộc',
     },
     subtitle: {
       en: 'Tracing Genever, London Dry standards, vapor infusion, and contemporary provenance-focused gins.',
       vi: 'Hành trình từ Genever Hà Lan, chuẩn mực London Dry đến kỹ thuật chưng cất hơi thảo mộc mang dấu ấn vùng đất.',
     },
     summary: {
-      en: 'Defined legally by a predominant juniper berry profile (Juniperus communis) at 37.5%+ ABV, modern dry gin acts as a botanical lens reflecting distillation pressure, still geometry, and wild-foraged flora.',
-      vi: 'Được định nghĩa bởi hương chủ đạo của quả bách xù (Juniperus communis) ở nồng độ tối thiểu 37,5% ABV, Gin hiện đại là bức tranh hương thảo mộc phản chiếu thiết kế nồi chưng cất và hệ thực vật bản địa.',
+      en: 'Understand London Dry standards, maceration vs vapor infusion, and how botanicals craft modern terroir gin.',
+      vi: 'Hiểu rõ chuẩn mực London Dry, phương pháp ngâm ủ - chưng cất hơi và cách thảo mộc bản địa định hình phong vị Gin hiện đại.',
     },
     readMinutes: 4,
     keyTakeaways: {
@@ -436,6 +578,49 @@ export const LIBRARY_ENTRIES = [
       },
     ],
     relatedSlugs: ['the-botanist-islay-dry-gin'],
+    glossary: [
+      {
+            "term": {
+                  "en": "Juniperus communis",
+                  "vi": "Quả bách xù (Juniper)"
+            },
+            "def": {
+                  "en": "The defining piney, resiny botanical cone that must legally dominate the aroma profile of all authentic gin.",
+                  "vi": "Quả nón có hương nhựa thông ấm áp bắt buộc phải chiếm ưu thế áp đảo về hương vị trong mọi sản phẩm Gin hợp pháp."
+            }
+      },
+      {
+            "term": {
+                  "en": "London Dry Gin",
+                  "vi": "Chuẩn mực London Dry"
+            },
+            "def": {
+                  "en": "Strict legal category requiring all botanicals to be distilled simultaneously in traditional stills; zero artificial flavors or sugar may be added after distillation.",
+                  "vi": "Cấp bậc Gin khắt khe nhất: toàn bộ thảo mộc phải được chưng cất đồng thời trong nồi đồng; tuyệt đối không thêm hương liệu hay phẩm màu sau chưng cất."
+            }
+      },
+      {
+            "term": {
+                  "en": "Vapor Infusion",
+                  "vi": "Chưng cất hơi (Vapor Infusion)"
+            },
+            "def": {
+                  "en": "Suspending delicate botanicals in a copper basket inside the still neck so rising alcohol vapor extracts fragrant floral oils without boiling or stewing them.",
+                  "vi": "Kỹ thuật treo thảo mộc trong giỏ đồng ở cổ nồi để hơi cồn đi qua chiết xuất hương hoa tinh khiết mà không làm chín nẫu lá."
+            }
+      }
+],
+    nextStep: {
+      "title": {
+            "en": "Explore 22 Foraged Islay Botanicals in The Botanist",
+            "vi": "Khám phá 22 loại thảo mộc bản địa trong The Botanist Islay Dry Gin"
+      },
+      "slug": "the-botanist-islay-dry-gin",
+      "actionLabel": {
+            "en": "View The Botanist Profile →",
+            "vi": "Xem hồ sơ The Botanist →"
+      }
+},
     sourceNote: { en: 'EU Spirit Drinks Regulation 2019/787 & Bruichladdich Botanical archives', vi: 'Quy chuẩn Đồ uống có cồn Châu Âu 2019/787 & Tư liệu thực vật học Bruichladdich' },
     lastUpdated: '2026-11-03',
   },
@@ -443,20 +628,23 @@ export const LIBRARY_ENTRIES = [
     slug: 'history-of-champagne',
     status: 'approved',
     group: 'origins',
+    topicId: 'champagne',
+    coverImage: 'media/origins/champagne-terroir.svg',
+    shortCta: {"en": "Explore Champagne →", "vi": "Tìm hiểu Champagne →"},
     brandId: null,
     brandIds: ['telmont'],
     categoryLabel: { en: 'Category History · Sparkling Wine & Champagne', vi: 'Lịch sử phân loại · Rượu vang sủi & Champagne' },
     title: {
-      en: 'Champagne: Cool-Climate Terroir, Méthode Champenoise & Lees Aging',
-      vi: 'Champagne: Thổ nhưỡng lạnh, Phương pháp truyền thống & Ủ cặn men',
+      en: 'Champagne: Chalk Soils & Traditional Method',
+      vi: 'Champagne: Đất đá phấn & Phương pháp truyền thống',
     },
     subtitle: {
       en: 'Why chalk subsoils, reserve wines, and patient bottle autolysis set Champagne apart from every other sparkling wine.',
       vi: 'Vì sao tầng đá phấn cổ đại, rượu dự trữ lâu năm và quá trình ủ trên xác men tạo nên chuẩn mực riêng biệt của Champagne.',
     },
     summary: {
-      en: 'Grown exclusively within France’s Champagne AOC in northern France, authentic Champagne undergoes secondary fermentation inside the exact bottle sold, followed by extended aging sur lie for fine mousse and brioche depth.',
-      vi: 'Chỉ được sản xuất tại vùng bảo hộ AOC Champagne miền Bắc nước Pháp, Champagne đích thực trải qua quá trình lên men lần hai ngay trong từng chai và ủ dài ngày trên cặn men (sur lie) để tạo bọt mịn cùng tầng hương bánh nướng tinh tế.',
+      en: 'Discover why ancient chalk soils and patient lees autolysis create fine effervescence and peerless depth.',
+      vi: 'Khám phá vì sao thổ nhưỡng đá phấn cổ đại và quá trình ủ cặn men tạo nên bọt sủi mịn màng cùng chiều sâu vị giác độc nhất.',
     },
     readMinutes: 4,
     keyTakeaways: {
@@ -519,6 +707,49 @@ export const LIBRARY_ENTRIES = [
       },
     ],
     relatedSlugs: ['champagne-telmont'],
+    glossary: [
+      {
+            "term": {
+                  "en": "Méthode Traditionnelle",
+                  "vi": "Phương pháp truyền thống"
+            },
+            "def": {
+                  "en": "Inducing secondary fermentation directly inside the sealed bottle to trap natural carbon dioxide, creating microscopic, persistent bubbles.",
+                  "vi": "Quy trình tạo bọt sủi tự nhiên bằng cách kích hoạt lên men lần hai ngay bên trong từng chai thủy tinh dày."
+            }
+      },
+      {
+            "term": {
+                  "en": "Lees Autolysis",
+                  "vi": "Ủ cặn men (Autolysis)"
+            },
+            "def": {
+                  "en": "Enzymatic breakdown of spent yeast cells during bottle aging, imparting signature brioche, toast, cream, and almond complexity.",
+                  "vi": "Quá trình xác men tự phân giải trong hầm tối qua nhiều năm, giải phóng hợp chất tạo hương bánh mì nướng, kem bơ và hạt ngậy."
+            }
+      },
+      {
+            "term": {
+                  "en": "Dosage (Liqueur d'expédition)",
+                  "vi": "Định lượng Dosage"
+            },
+            "def": {
+                  "en": "Wine and sugar solution added after disgorging to balance acidity and establish sweetness categories from Brut Nature to Demi-Sec.",
+                  "vi": "Hỗn hợp rượu và đường mía bổ sung sau khi tống cặn để cân bằng độ chua và xác lập phân hạng vị ngọt."
+            }
+      }
+],
+    nextStep: {
+      "title": {
+            "en": "Study Organic Vision & In the Name of Mother Nature at Telmont",
+            "vi": "Tìm hiểu triết lý hữu cơ và di sản thủ công tại Champagne Telmont"
+      },
+      "slug": "champagne-telmont",
+      "actionLabel": {
+            "en": "View Telmont Profile →",
+            "vi": "Xem hồ sơ Champagne Telmont →"
+      }
+},
     sourceNote: { en: 'Comité Champagne AOC specifications & Maison Telmont viticultural dossier', vi: 'Quy chuẩn AOC của Comité Champagne & Hồ sơ canh tác Maison Telmont' },
     lastUpdated: '2026-11-03',
   },
@@ -526,20 +757,23 @@ export const LIBRARY_ENTRIES = [
     slug: 'history-of-rum',
     status: 'approved',
     group: 'origins',
+    topicId: 'rum',
+    coverImage: 'media/origins/rum-sugarcane.svg',
+    shortCta: {"en": "Explore Rum →", "vi": "Tìm hiểu Rum →"},
     brandId: null,
     brandIds: ['mount-gay'],
     categoryLabel: { en: 'Category History · Sugarcane & Rum', vi: 'Lịch sử phân loại · Mía đường & Rượu Rum' },
     title: {
-      en: 'Rum: Sugarcane, Coral-Filtered Water & Tropical Maturation',
-      vi: 'Rum: Cây mía, Nước lọc đá san hô & Quá trình ủ nhiệt đới',
+      en: 'Rum: Sugarcane, Coral Water & Tropical Aging',
+      vi: 'Rum: Cây mía, Nước đá san hô & Quá trình ủ nhiệt đới',
     },
     subtitle: {
       en: 'How Barbados birthed documented rum distillation in the early 18th century and shaped pot-and-column blending.',
       vi: 'Cách hòn đảo Barbados khai sinh lịch sử chưng cất Rum có chứng thư từ đầu thế kỷ 18 và định hình nghệ thuật phối trộn nồi đồng – tháp cột.',
     },
     summary: {
-      en: 'Distilled from sugarcane molasses or fresh cane juice, rum spans crisp light column distillates to rich double-retort copper pot spirits matured rapidly under Caribbean heat.',
-      vi: 'Được chưng cất từ mật mía hoặc nước mía tươi, Rum trải rộng từ chất rượu thanh nhẹ của tháp chưng cất đến dòng rượu đậm đà từ nồi đồng hai bầu ngưng tụ, trưởng thành mạnh mẽ dưới khí hậu nhiệt đới vùng Caribe.',
+      en: 'Learn molasses vs cane juice styles, pot-column blending, and how tropical maturation transforms rum in Barbados.',
+      vi: 'Học cách phân biệt Rum mật mía và Rhum Agricole, nghệ thuật phối trộn nồi đồng - tháp cột và tốc độ trưởng thành nhiệt đới.',
     },
     readMinutes: 4,
     keyTakeaways: {
@@ -601,6 +835,49 @@ export const LIBRARY_ENTRIES = [
       },
     ],
     relatedSlugs: ['mount-gay-rum'],
+    glossary: [
+      {
+            "term": {
+                  "en": "Blackstrap Molasses",
+                  "vi": "Mật rỉ đường mía"
+            },
+            "def": {
+                  "en": "Rich, bittersweet syrup remaining after sugar crystallization, packed with minerals and sulfur that feed ester development during rum fermentation.",
+                  "vi": "Sản phẩm cô đặc giàu khoáng chất thu được sau quá trình kết tinh đường mía, cung cấp dinh dưỡng tạo nên ester trái cây đậm đà."
+            }
+      },
+      {
+            "term": {
+                  "en": "Double-Retort Pot Still",
+                  "vi": "Nồi chưng cất hai bình hồi lưu"
+            },
+            "def": {
+                  "en": "Historic British Caribbean still system where vapor passes through two intermediate vessels containing low wines and high wines, concentrating proof and deep flavor in a single batch.",
+                  "vi": "Hệ thống nồi đồng truyền thống vùng Caribbean dẫn hơi cồn qua hai bình phụ để nâng cao nồng độ cồn và giữ trọn hương vị đậm sâu."
+            }
+      },
+      {
+            "term": {
+                  "en": "Angel's Share (Tropical)",
+                  "vi": "Phần rượu của thiên thần"
+            },
+            "def": {
+                  "en": "Annual evaporation rate through wooden casks; up to 7–10% per year in the Caribbean versus 2% in Scotland, accelerating maturity threefold.",
+                  "vi": "Tỷ lệ rượu bay hơi qua thớ gỗ sồi hàng năm; đạt tới 7–10%/năm tại vùng nhiệt đới Caribbean so với 2% tại Scotland, giúp rượu trưởng thành nhanh gấp 3 lần."
+            }
+      }
+],
+    nextStep: {
+      "title": {
+            "en": "Trace 1703 Heritage & Pot-Still Blends at Mount Gay Rum",
+            "vi": "Tra cứu di sản chưng cất 1703 và kỹ thuật phối trộn tại Mount Gay Rum"
+      },
+      "slug": "mount-gay-rum",
+      "actionLabel": {
+            "en": "View Mount Gay Profile →",
+            "vi": "Xem hồ sơ Mount Gay Rum →"
+      }
+},
     sourceNote: { en: 'Barbados Rum Geographical Indication standards & Mount Gay 1703 archives', vi: 'Tiêu chuẩn Chỉ dẫn địa lý Rum Barbados & Tư liệu lưu trữ Mount Gay 1703' },
     lastUpdated: '2026-11-03',
   },
@@ -608,21 +885,24 @@ export const LIBRARY_ENTRIES = [
     slug: 'history-of-islay-whisky',
     status: 'approved',
     group: 'origins',
+    topicId: 'whisky',
+    coverImage: 'media/origins/islay-whisky.svg',
+    shortCta: {"en": "Explore Islay Whisky →", "vi": "Tìm hiểu Islay Whisky →"},
     brandId: null,
     brandIds: ['bruichladdich', 'port-charlotte', 'octomore'],
     parentHouseId: 'bruichladdich-distillery',
     categoryLabel: { en: 'Category History · Scotch & Islay Single Malt', vi: 'Lịch sử phân loại · Scotch & Islay Single Malt' },
     title: {
-      en: 'Islay Single Malt: Maritime Terroir, Barley Provenance & the Peat Spectrum',
-      vi: 'Islay Single Malt: Khí hậu biển, Lúa mạch bản địa & Phổ khói than bùn',
+      en: 'Islay Single Malt: Maritime Terroir & Peat Spectrum',
+      vi: 'Islay Single Malt: Khí hậu biển & Phổ khói than bùn',
     },
     subtitle: {
       en: 'Why Scotland’s southernmost Hebridean island produces both floral unpeated malts (0 PPM) and the world’s most heavily peated whiskies.',
       vi: 'Vì sao hòn đảo cực Nam quần đảo Hebrides vừa làm ra dòng Single Malt không khói (0 PPM) thanh tao, vừa nắm giữ kỷ lục khói than bùn đậm nhất thế giới.',
     },
     summary: {
-      en: 'Exposed to Atlantic gales off Scotland’s west coast, Islay shapes single malt Scotch through barley origin, tall vs. squat copper stills, sea-air dunnage maturation, and malt peating measured in Parts Per Million (PPM) of phenols.',
-      vi: 'Đón gió biển Đại Tây Dương ngoài khơi bờ Tây Scotland, đảo Islay định hình cá tính Single Malt qua nguồn gốc lúa mạch, chiều cao cổ nồi đồng, kho ủ sát biển và chỉ số phenol khói than bùn tính bằng PPM.',
+      en: 'Decode the peat PPM spectrum from unpeated 0 PPM to extreme peating, shaped by wild Atlantic sea spray.',
+      vi: 'Giải mã chỉ số khói PPM từ 0 PPM thanh tao đến hơn 100 PPM bùng nổ, cùng ảnh hưởng của gió biển Hebrides lên thùng ủ.',
     },
     readMinutes: 5,
     keyTakeaways: {
@@ -684,6 +964,49 @@ export const LIBRARY_ENTRIES = [
       },
     ],
     relatedSlugs: ['bruichladdich-classic-laddie', 'port-charlotte-10', 'octomore'],
+    glossary: [
+      {
+            "term": {
+                  "en": "Phenol PPM",
+                  "vi": "Chỉ số khói PPM"
+            },
+            "def": {
+                  "en": "Parts Per Million of aromatic phenolic compounds measured on dry malted barley after kiln smoking with local peat turf.",
+                  "vi": "Đơn vị phần triệu (Parts Per Million) đo lường mật độ hợp chất phenol khói than bùn bám trên hạt lúa mạch khô sau khi sấy lò."
+            }
+      },
+      {
+            "term": {
+                  "en": "Peat (Mùn than bùn)",
+                  "vi": "Mùn than bùn Islay"
+            },
+            "def": {
+                  "en": "Dense, compressed layers of sphagnum moss, heather, and bracken decomposed over millennia in waterlogged Hebridean bogs.",
+                  "vi": "Thảm thực vật, rêu và thạch nam biển phân hủy qua hàng ngàn năm trong các đầm lầy ngập nước của đảo Islay, tạo hương khói sát trùng và mặn mòi đặc trưng."
+            }
+      },
+      {
+            "term": {
+                  "en": "Maritime Warehouse",
+                  "vi": "Nhà kho ủ ven biển"
+            },
+            "def": {
+                  "en": "Traditional stone, earth-floored dunnage warehouses washed by Atlantic sea spray, infusing casks with iodine, salt, and seaweed microclimate notes.",
+                  "vi": "Nhà kho truyền thống nền đất sát mép biển Đại Tây Dương, giúp thùng sồi thở và hấp thụ hơi muối mặn, i-ốt và rong biển qua nhiều thập kỷ."
+            }
+      }
+],
+    nextStep: {
+      "title": {
+            "en": "Compare Bruichladdich Classic Laddie, Port Charlotte & Octomore",
+            "vi": "Đối chiếu bộ ba The Classic Laddie, Port Charlotte 10 và Octomore"
+      },
+      "slug": "bruichladdich-classic-laddie",
+      "actionLabel": {
+            "en": "View The Classic Laddie →",
+            "vi": "Xem hồ sơ The Classic Laddie →"
+      }
+},
     sourceNote: { en: 'Scotch Whisky Regulations 2009 & Bruichladdich Distillery Academy BDC Bible', vi: 'Quy chuẩn Scotch Whisky 2009 & Cẩm nang đào tạo Bruichladdich Distillery Academy' },
     lastUpdated: '2026-11-03',
   },

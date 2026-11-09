@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-orange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18141F"/>
+      <stop offset="60%" stop-color="#24140D"/>
+      <stop offset="100%" stop-color="#0E1117"/>
+    </linearGradient>
+    <linearGradient id="citrus-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF9E44"/>
+      <stop offset="50%" stop-color="#FF6B2B"/>
+      <stop offset="100%" stop-color="#C24409"/>
+    </linearGradient>
+    <linearGradient id="copper-alembic" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E88A58"/>
+      <stop offset="100%" stop-color="#8A3614"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg-orange)"/>
+  <!-- Concentric aroma wave lines -->
+  <g stroke="rgba(255, 158, 68, 0.08)" stroke-width="1.2" fill="none">
+    <circle cx="420" cy="180" r="70"/>
+    <circle cx="420" cy="180" r="105"/>
+    <circle cx="420" cy="180" r="140"/>
+    <circle cx="420" cy="180" r="180"/>
+  </g>
+  <!-- Stylized Citrus wheel & Essential Oil droplets -->
+  <g transform="translate(420, 180)" stroke="url(#citrus-grad)" stroke-width="2" fill="none">
+    <circle cx="0" cy="0" r="54" stroke-width="2.5" fill="rgba(255, 107, 43, 0.08)"/>
+    <circle cx="0" cy="0" r="46" stroke-dasharray="3 3" stroke-width="1"/>
+    <!-- Citrus segments -->
+    <path d="M 0 0 L 0 -42 M 0 0 L 36 -21 M 0 0 L 36 21 M 0 0 L 0 42 M 0 0 L -36 21 M 0 0 L -36 -21" stroke-width="1.8"/>
+  </g>
+  <!-- Distillation column & alembic lines -->
+  <g transform="translate(180, 180)" stroke="url(#copper-alembic)" stroke-width="2" fill="none" stroke-linecap="round">
+    <rect x="-35" y="-70" width="70" height="140" rx="8" stroke-width="2" fill="rgba(232, 138, 88, 0.06)"/>
+    <line x1="-35" y1="-30" x2="35" y2="-30" stroke-width="1.2"/>
+    <line x1="-35" y1="10" x2="35" y2="10" stroke-width="1.2"/>
+    <line x1="-35" y1="50" x2="35" y2="50" stroke-width="1.2"/>
+    <path d="M 0 -70 L 0 -95 C 0 -110, 60 -110, 80 -80 L 120 20" stroke-width="2"/>
+    <!-- Golden oil drops -->
+    <circle cx="120" cy="45" r="5" fill="#FF9E44" stroke="none"/>
+    <circle cx="120" cy="70" r="3.5" fill="#FF9E44" stroke="none"/>
+  </g>
+  <!-- Editorial Badge -->
+  <g transform="translate(48, 48)">
+    <rect width="165" height="24" rx="12" fill="rgba(255, 110, 43, 0.12)" stroke="rgba(255, 110, 43, 0.35)" stroke-width="1"/>
+    <text x="82" y="16" fill="#FF9E44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" text-anchor="middle">CITRUS &amp; TRIPLE SEC</text>
+  </g>
+  <text x="48" y="325" fill="#8E9AA8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="500" letter-spacing="0.5">SWEET &amp; BITTER PEELS · ESSENTIAL OILS · MARGARITA BACKBONE</text>
+</svg>

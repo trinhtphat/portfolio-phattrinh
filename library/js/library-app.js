@@ -44,6 +44,7 @@ export function mountLibraryApp(rootEl, options = {}) {
     group: parsedInitial.group || 'all',
     brand: parsedInitial.brand || 'all',
     query: parsedInitial.query || '',
+    topic: 'all',
   };
 
   function t(field) {
@@ -98,7 +99,7 @@ export function mountLibraryApp(rootEl, options = {}) {
         const isActive = !state.entry && state.group === gKey && state.brand === 'all';
         return `
           <li>
-            <button type="button" class="lib-nav-btn${isActive ? ' is-active' : ''}" data-action="nav-group" data-group="${gKey}">
+            <button type="button" class="lib-nav-btn${isActive ? ' is-active' : ''}" data-action="set-group" data-nav="1" data-group="${gKey}">
               <span>${escapeHtml(t(meta.groups?.[gKey]))}</span>
               <span class="lib-nav-count">${counts[gKey]}</span>
             </button>
@@ -187,22 +188,40 @@ export function mountLibraryApp(rootEl, options = {}) {
     const summaryObj = localizeField(entry.summary, state.lang);
     const catObj = localizeField(entry.categoryLabel, state.lang);
 
-    const badgeLogo = brand
-      ? `<span class="lib-logo-tile"><img src="${escapeHtml(brand.logo)}" alt="${escapeHtml(brand.name)}" loading="lazy"></span>`
-      : `<span class="lib-origin-monogram" aria-hidden="true">${escapeHtml(state.lang === 'vi' ? 'LS' : 'OH')}</span>`;
+    let topVisualHtml = '';
+    if (entry.coverImage) {
+      topVisualHtml = `
+        <div class="lib-entry-cover-frame">
+          <img src="${escapeHtml(entry.coverImage)}" alt="${escapeHtml(titleObj.text)}" class="lib-entry-cover-img" loading="lazy">
+          <span class="lib-card-cat-badge">${escapeHtml(catObj.text)}</span>
+        </div>
+      `;
+    } else {
+      const badgeLogo = brand
+        ? `<span class="lib-logo-tile"><img src="${escapeHtml(brand.logo)}" alt="${escapeHtml(brand.name)}" loading="lazy"></span>`
+        : `<span class="lib-origin-monogram" aria-hidden="true">${escapeHtml(state.lang === 'vi' ? 'LS' : 'OH')}</span>`;
 
-    return `
-      <article class="lib-entry-card" data-entry-card="${escapeHtml(entry.slug)}" tabindex="0" role="button" aria-label="${escapeHtml(titleObj.text)}">
+      topVisualHtml = `
         <div class="lib-entry-card-top">
           ${badgeLogo}
           <div class="lib-entry-card-meta">
             <span class="lib-meta-line">${escapeHtml(catObj.text)}</span>
           </div>
         </div>
+      `;
+    }
+
+    const ctaText = entry.shortCta
+      ? localizeField(entry.shortCta, state.lang).text
+      : (state.lang === 'vi' ? 'Xem tài liệu tra cứu →' : 'Open reference sheet →');
+
+    return `
+      <article class="lib-entry-card${entry.coverImage ? ' has-cover' : ''}" data-entry-card="${escapeHtml(entry.slug)}" tabindex="0" role="button" aria-label="${escapeHtml(titleObj.text)}">
+        ${topVisualHtml}
         <h2 class="lib-entry-card-title">${escapeHtml(titleObj.text)}</h2>
         <p class="lib-entry-card-summary">${escapeHtml(summaryObj.text)}</p>
         <div class="lib-entry-card-foot">
-          <span class="lib-open-prompt">${escapeHtml(state.lang === 'vi' ? 'Xem tài liệu tra cứu →' : 'Open reference sheet →')}</span>
+          <span class="lib-open-prompt">${escapeHtml(ctaText)}</span>
         </div>
       </article>
     `;
@@ -215,12 +234,16 @@ export function mountLibraryApp(rootEl, options = {}) {
       lang: state.lang,
     });
 
-    const filtered = filterEntries(publishedEntries, {
+    let filtered = filterEntries(publishedEntries, {
       group: state.group,
       brand: state.brand,
       query: state.query,
       lang: state.lang,
     });
+
+    if (state.group === 'origins' && state.topic && state.topic !== 'all') {
+      filtered = filtered.filter((e) => e.topicId === state.topic);
+    }
 
     const countCardsHtml = ['all', 'origins', 'brands', 'recipes']
       .map((gKey) => {
@@ -233,6 +256,44 @@ export function mountLibraryApp(rootEl, options = {}) {
         `;
       })
       .join('');
+
+    let categoryNavigationHtml = '';
+    if (state.group === 'all') {
+      categoryNavigationHtml = `
+        <div class="lib-count-strip" data-ui="count-strip" role="group" aria-label="Content type filter">
+          ${countCardsHtml}
+        </div>
+      `;
+    } else {
+      categoryNavigationHtml = `
+        <div class="lib-category-hero" data-ui="cat-hero">
+          <div class="lib-cat-hero-top">
+            <span class="lib-cat-hero-breadcrumb">
+              <button type="button" class="lib-crumb-btn" data-action="set-group" data-group="all">${escapeHtml(state.lang === 'vi' ? '← Tất cả chuyên mục' : '← All Modules')}</button>
+            </span>
+            <div class="lib-cat-hero-meta">
+              <span class="lib-cat-count-badge">${filtered.length} ${escapeHtml(state.lang === 'vi' ? 'bài viết' : 'modules')}</span>
+              ${state.group === 'recipes' ? `<span class="lib-status-badge">⏳ ${escapeHtml(t(meta.recipesStatusBadge))}</span>` : ''}
+            </div>
+          </div>
+          <h2 class="lib-cat-hero-title">${escapeHtml(t(meta.groups?.[state.group]))}</h2>
+          <p class="lib-cat-hero-desc">${escapeHtml(t(meta.groupDescriptions?.[state.group]))}</p>
+          
+          ${state.group === 'origins' ? `
+            <div class="lib-topic-strip" role="group" aria-label="${escapeHtml(state.lang === 'vi' ? 'Lọc theo chủ đề' : 'Filter by topic')}">
+              ${(meta.originTopics || []).map((topic) => {
+                const isActive = (state.topic || 'all') === topic.id;
+                return `
+                  <button type="button" class="lib-topic-chip${isActive ? ' is-active' : ''}" data-action="set-topic" data-topic="${escapeHtml(topic.id)}">
+                    ${escapeHtml(t(topic.label))}
+                  </button>
+                `;
+              }).join('')}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
 
     const mobileBrandChips = [
       `<button type="button" class="lib-brand-chip${state.brand === 'all' ? ' is-active' : ''}" data-ui="chip" data-action="set-brand" data-brand="all">${escapeHtml(t(meta.allBrandsLabel))}</button>`,
@@ -327,9 +388,7 @@ export function mountLibraryApp(rootEl, options = {}) {
           </div>
         </header>
 
-        <div class="lib-count-strip" data-ui="count-strip" role="group" aria-label="Content type filter">
-          ${countCardsHtml}
-        </div>
+        ${categoryNavigationHtml}
 
         <div class="lib-mobile-brands" data-ui="mobile-brands" role="group" aria-label="Brand filter">
           ${mobileBrandChips}
@@ -369,9 +428,11 @@ export function mountLibraryApp(rootEl, options = {}) {
     const related = getRelatedEntries(publishedEntries, entry);
     const headings = meta.sectionHeadings || {};
 
-    const coverHtml = brand
-      ? `<div class="lib-detail-logo-well"><img src="${escapeHtml(brand.logo)}" alt="${escapeHtml(brand.name)}"></div>`
-      : `<div class="lib-detail-monogram" aria-hidden="true">${escapeHtml(state.lang === 'vi' ? 'LS' : 'OH')}</div>`;
+    const coverHtml = entry.coverImage
+      ? `<div class="lib-detail-cover-well"><img src="${escapeHtml(entry.coverImage)}" alt="${escapeHtml(titleText)}" class="lib-detail-cover-img"></div>`
+      : (brand
+          ? `<div class="lib-detail-logo-well"><img src="${escapeHtml(brand.logo)}" alt="${escapeHtml(brand.name)}"></div>`
+          : `<div class="lib-detail-monogram" aria-hidden="true">${escapeHtml(state.lang === 'vi' ? 'LS' : 'OH')}</div>`);
 
     const specsRowsHtml = Array.isArray(entry.specs)
       ? entry.specs
@@ -395,12 +456,20 @@ export function mountLibraryApp(rootEl, options = {}) {
       }
     }
 
+    const isOrigin = entry.group === 'origins';
+    const glanceBadgeTitle = isOrigin
+      ? t(headings.atAGlanceOrigins || headings.atAGlance)
+      : t(headings.atAGlance);
+    const glanceNoteTitle = isOrigin
+      ? (state.lang === 'vi' ? 'Khái niệm cốt lõi cần nhớ' : 'Core concepts to master')
+      : (state.lang === 'vi' ? 'Tra cứu thực chiến tại quầy' : 'On-bar speed cheat-sheet');
+
     const atAGlanceHtml = glancePills.length > 0
       ? `
         <div class="lib-glance-box" data-ui="at-a-glance">
           <div class="lib-glance-header">
-            <span class="lib-glance-badge">⚡ ${escapeHtml(t(headings.atAGlance))}</span>
-            <span class="lib-glance-note">${escapeHtml(state.lang === 'vi' ? 'Tra cứu thực chiến tại quầy' : 'On-bar speed cheat-sheet')}</span>
+            <span class="lib-glance-badge">⚡ ${escapeHtml(glanceBadgeTitle)}</span>
+            <span class="lib-glance-note">${escapeHtml(glanceNoteTitle)}</span>
           </div>
           <div class="lib-glance-grid">
             ${glancePills.slice(0, 4).map(p => `
@@ -410,6 +479,60 @@ export function mountLibraryApp(rootEl, options = {}) {
               </div>
             `).join('')}
           </div>
+        </div>
+      `
+      : '';
+
+    const tocStripHtml = `
+      <nav class="lib-toc-strip" aria-label="${escapeHtml(state.lang === 'vi' ? 'Mục lục bài viết' : 'Table of Contents')}">
+        <span class="lib-toc-lbl">📑 ${escapeHtml(t(headings.toc))}:</span>
+        <div class="lib-toc-links">
+          ${takeaways.length ? `<a href="#section-takeaways" class="lib-toc-link">${escapeHtml(t(headings.takeaways))}</a>` : ''}
+          ${specsRowsHtml ? `<a href="#section-specs" class="lib-toc-link">${escapeHtml(t(headings.specs))}</a>` : ''}
+          ${originParagraphs.length ? `<a href="#section-origin" class="lib-toc-link">${escapeHtml(t(headings.originStory))}</a>` : ''}
+          ${productionParagraphs.length ? `<a href="#section-production" class="lib-toc-link">${escapeHtml(t(headings.production))}</a>` : ''}
+          ${servingItems.length ? `<a href="#section-serving" class="lib-toc-link">${escapeHtml(t(headings.serving))}</a>` : ''}
+          ${Array.isArray(entry.glossary) && entry.glossary.length ? `<a href="#section-glossary" class="lib-toc-link">${escapeHtml(t(headings.glossary))}</a>` : ''}
+          ${Array.isArray(entry.faq) && entry.faq.length ? `<a href="#section-faq" class="lib-toc-link">FAQ</a>` : ''}
+        </div>
+      </nav>
+    `;
+
+    const glossaryHtml = Array.isArray(entry.glossary) && entry.glossary.length > 0
+      ? `
+        <section class="lib-grid-card lib-span-6" id="section-glossary">
+          <h2 class="lib-panel-heading">📖 ${escapeHtml(t(headings.glossary))}</h2>
+          <div class="lib-glossary-grid">
+            ${entry.glossary.map(g => `
+              <div class="lib-glossary-item">
+                <dt class="lib-glossary-term">${escapeHtml(loc(g.term))}</dt>
+                <dd class="lib-glossary-def">${escapeHtml(loc(g.def))}</dd>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+      `
+      : '';
+
+    const nextStepHtml = entry.nextStep
+      ? `
+        <section class="lib-next-step-box lib-span-6" data-ui="next-step">
+          <div class="lib-next-step-header">
+            <span class="lib-next-step-badge">🚀 ${escapeHtml(t(headings.nextStep))}</span>
+          </div>
+          <h3 class="lib-next-step-title">${escapeHtml(loc(entry.nextStep.title))}</h3>
+          <button type="button" class="lib-primary-pill" data-action="open-entry" data-slug="${escapeHtml(entry.nextStep.slug)}">
+            ${escapeHtml(loc(entry.nextStep.actionLabel))}
+          </button>
+        </section>
+      `
+      : '';
+
+    const referencesHtml = entry.sourceNote
+      ? `
+        <div class="lib-references-card lib-span-6">
+          <span class="lib-ref-badge">🏛️ ${escapeHtml(t(headings.references))}:</span>
+          <span class="lib-ref-text">${escapeHtml(loc(entry.sourceNote))}</span>
         </div>
       `
       : '';
@@ -449,7 +572,7 @@ export function mountLibraryApp(rootEl, options = {}) {
           ${
             originParagraphs.length
               ? `
-                <section class="lib-grid-card lib-span-3">
+                <section class="lib-grid-card lib-span-3" id="section-origin">
                   <h2 class="lib-panel-heading">${escapeHtml(t(headings.originStory))}</h2>
                   <div class="lib-prose-stack">
                     ${originParagraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join('')}
@@ -461,7 +584,7 @@ export function mountLibraryApp(rootEl, options = {}) {
           ${
             productionParagraphs.length
               ? `
-                <section class="lib-grid-card lib-span-3">
+                <section class="lib-grid-card lib-span-3" id="section-production">
                   <h2 class="lib-panel-heading">${escapeHtml(t(headings.production))}</h2>
                   <div class="lib-prose-stack">
                     ${productionParagraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join('')}
@@ -547,7 +670,7 @@ export function mountLibraryApp(rootEl, options = {}) {
 
     const servingHtml = servingItems.length
       ? `
-        <section class="lib-grid-card lib-span-2">
+        <section class="lib-grid-card lib-span-2" id="section-serving">
           <h2 class="lib-panel-heading">${escapeHtml(t(headings.serving))}</h2>
           <ul class="lib-prose-list">
             ${servingItems.map((s) => `<li>${escapeHtml(s)}</li>`).join('')}
@@ -613,7 +736,7 @@ export function mountLibraryApp(rootEl, options = {}) {
     const faqHtml =
       Array.isArray(entry.faq) && entry.faq.length > 0
         ? `
-          <section class="lib-grid-card lib-span-6">
+          <section class="lib-grid-card lib-span-6" id="section-faq">
             <h2 class="lib-panel-heading">${escapeHtml(t(headings.faq))}</h2>
             <div class="lib-faq-list" data-ui="faq">
               ${entry.faq
@@ -658,11 +781,13 @@ export function mountLibraryApp(rootEl, options = {}) {
 
         ${atAGlanceHtml}
 
+        ${tocStripHtml}
+
         <div class="lib-detail-grid">
           ${
             takeaways.length
               ? `
-                <section class="lib-grid-card lib-span-4">
+                <section class="lib-grid-card lib-span-4" id="section-takeaways">
                   <h2 class="lib-panel-heading">${escapeHtml(t(headings.takeaways))}</h2>
                   <ul class="lib-prose-list">
                     ${takeaways.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
@@ -675,7 +800,7 @@ export function mountLibraryApp(rootEl, options = {}) {
           ${
             specsRowsHtml
               ? `
-                <section class="lib-grid-card ${takeaways.length ? 'lib-span-2' : 'lib-span-6'}">
+                <section class="lib-grid-card ${takeaways.length ? 'lib-span-2' : 'lib-span-6'}" id="section-specs">
                   <h2 class="lib-panel-heading">${escapeHtml(t(headings.specs))}</h2>
                   <table class="lib-spec-table">
                     <tbody>${specsRowsHtml}</tbody>
@@ -691,9 +816,12 @@ export function mountLibraryApp(rootEl, options = {}) {
           ${expressionsHtml}
           ${tastingHtml}
           ${servingHtml}
+          ${glossaryHtml}
           ${relatedRecipesHtml}
           ${relatedReadingHtml}
           ${faqHtml}
+          ${nextStepHtml}
+          ${referencesHtml}
         </div>
       </article>
     `;
@@ -872,14 +1000,22 @@ export function mountLibraryApp(rootEl, options = {}) {
       }
     } else if (action === 'set-group') {
       state.group = actionEl.getAttribute('data-group') || 'all';
+      state.topic = 'all';
+      if (actionEl.hasAttribute('data-nav')) {
+        state.brand = 'all';
+      }
       state.entry = '';
       pushUrlState(false);
       updateRegionsWithoutTouchingSearchInput();
     } else if (action === 'nav-group') {
       state.group = actionEl.getAttribute('data-group') || 'all';
+      state.topic = 'all';
       state.brand = 'all';
       state.entry = '';
       pushUrlState(false);
+      updateRegionsWithoutTouchingSearchInput();
+    } else if (action === 'set-topic') {
+      state.topic = actionEl.getAttribute('data-topic') || 'all';
       updateRegionsWithoutTouchingSearchInput();
     } else if (action === 'set-brand') {
       state.brand = actionEl.getAttribute('data-brand') || 'all';
@@ -888,6 +1024,7 @@ export function mountLibraryApp(rootEl, options = {}) {
       updateRegionsWithoutTouchingSearchInput();
     } else if (action === 'reset-filters') {
       state.group = 'all';
+      state.topic = 'all';
       state.brand = 'all';
       state.query = '';
       state.entry = '';

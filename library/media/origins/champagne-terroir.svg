@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-champagne" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16181C"/>
+      <stop offset="60%" stop-color="#1A1B14"/>
+      <stop offset="100%" stop-color="#0E1012"/>
+    </linearGradient>
+    <linearGradient id="champagne-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F2D794"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#9C7A14"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg-champagne)"/>
+  <!-- Subterranean Chalk Cellar Arch (Crayères) -->
+  <g stroke="rgba(242, 215, 148, 0.12)" stroke-width="1.5" fill="none">
+    <path d="M 120 360 L 120 180 C 120 80, 520 80, 520 180 L 520 360"/>
+    <path d="M 160 360 L 160 195 C 160 115, 480 115, 480 195 L 480 360"/>
+    <path d="M 200 360 L 200 210 C 200 150, 440 150, 440 210 L 440 360"/>
+  </g>
+  <!-- Stylized Champagne Flute / Coupe & Ascending Effervescence -->
+  <g transform="translate(320, 210)" stroke="url(#champagne-gold)" stroke-width="2" fill="none" stroke-linecap="round">
+    <!-- Tulip / Wine Glass silhouette -->
+    <path d="M -26 -60 C -36 -20, -20 15, 0 25 L 0 85 M -20 85 L 20 85 M 0 25 C 20 15, 36 -20, 26 -60 Z" stroke-width="2" fill="rgba(212, 175, 55, 0.08)"/>
+    <!-- Ascending fine effervescence beads (perlage) -->
+    <circle cx="0" cy="5" r="2" fill="#F2D794" stroke="none"/>
+    <circle cx="-3" cy="-12" r="2.2" fill="#F2D794" stroke="none"/>
+    <circle cx="2" cy="-28" r="2.5" fill="#F2D794" stroke="none"/>
+    <circle cx="-2" cy="-45" r="2.2" fill="#F2D794" stroke="none"/>
+    <circle cx="1" cy="-62" r="2.8" fill="#F2D794" stroke="none"/>
+    <circle cx="-4" cy="-80" r="3" fill="#F2D794" stroke="none"/>
+    <circle cx="3" cy="-100" r="3.2" fill="#F2D794" stroke="none"/>
+  </g>
+  <!-- Chalk layers notation -->
+  <g transform="translate(48, 48)">
+    <rect width="180" height="24" rx="12" fill="rgba(212, 175, 55, 0.12)" stroke="rgba(212, 175, 55, 0.35)" stroke-width="1"/>
+    <text x="90" y="16" fill="#F2D794" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" text-anchor="middle">CHAMPAGNE TERROIR</text>
+  </g>
+  <text x="48" y="325" fill="#8E9AA8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="500" letter-spacing="0.5">CHALK CRAYÈRES · MÉTHODE TRADITIONNELLE · LEES AUTOLYSIS</text>
+</svg>

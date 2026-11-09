@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-islay" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E171E"/>
+      <stop offset="60%" stop-color="#151C22"/>
+      <stop offset="100%" stop-color="#0A0E12"/>
+    </linearGradient>
+    <linearGradient id="whisky-amber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F39C12"/>
+      <stop offset="50%" stop-color="#D68910"/>
+      <stop offset="100%" stop-color="#7E5109"/>
+    </linearGradient>
+    <linearGradient id="sea-slate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5DADE2"/>
+      <stop offset="100%" stop-color="#1B4F72"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg-islay)"/>
+  <!-- Atlantic Ocean Waves & Coastal Shoreline -->
+  <g stroke="rgba(93, 173, 226, 0.12)" stroke-width="1.4" fill="none">
+    <path d="M -20 250 C 140 230, 260 270, 400 240 C 500 220, 580 260, 660 245"/>
+    <path d="M -20 280 C 120 265, 280 295, 420 275 C 520 260, 590 290, 660 280"/>
+    <path d="M -20 310 C 160 300, 320 320, 480 305 C 560 295, 620 320, 660 315"/>
+  </g>
+  <!-- Iconic Distillery Pagoda Kiln Chimney & Peat Smoke curls -->
+  <g transform="translate(320, 170)">
+    <!-- Pagoda roof silhouette -->
+    <g stroke="url(#whisky-amber)" stroke-width="2.2" fill="none" stroke-linejoin="round" stroke-linecap="round">
+      <!-- Upper Pagoda cap -->
+      <path d="M -40 -30 C -25 -40, -10 -45, 0 -60 C 10 -45, 25 -40, 40 -30 L 30 -22 L -30 -22 Z" fill="rgba(243, 156, 18, 0.12)"/>
+      <!-- Pagoda vent louvers -->
+      <line x1="-24" y1="-14" x2="24" y2="-14"/>
+      <line x1="-24" y1="-6" x2="24" y2="-6"/>
+      <line x1="-24" y1="2" x2="24" y2="2"/>
+      <!-- Lower kiln roof slope -->
+      <path d="M -65 30 L -30 10 L 30 10 L 65 30"/>
+      <!-- Kiln stone wall base -->
+      <line x1="-50" y1="30" x2="-50" y2="90"/>
+      <line x1="50" y1="30" x2="50" y2="90"/>
+    </g>
+    <!-- Peat spade & peat briquette silhouette on left -->
+    <g transform="translate(-130, 10)" stroke="#A07855" stroke-width="2" fill="rgba(160, 120, 85, 0.15)">
+      <!-- Peat turf bricks -->
+      <rect x="-30" y="20" width="35" height="18" rx="2"/>
+      <rect x="-8" y="2" width="35" height="18" rx="2"/>
+      <rect x="-24" y="-16" width="35" height="18" rx="2"/>
+      <!-- Peat spade (Tusker) -->
+      <line x1="30" y1="-45" x2="45" y2="38" stroke="#D5D8DC" stroke-width="2.5"/>
+      <path d="M 40 38 L 52 35 L 56 50 L 44 53 Z" fill="#D5D8DC"/>
+    </g>
+    <!-- Aromatic peat smoke curls rising from pagoda -->
+    <g stroke="rgba(243, 156, 18, 0.25)" stroke-width="1.8" fill="none" stroke-linecap="round">
+      <path d="M 0 -65 C 10 -85, -15 -105, 5 -125"/>
+      <path d="M -15 -60 C -30 -80, -5 -95, -20 -115"/>
+    </g>
+  </g>
+  <!-- Editorial Badge -->
+  <g transform="translate(48, 48)">
+    <rect width="180" height="24" rx="12" fill="rgba(243, 156, 18, 0.12)" stroke="rgba(243, 156, 18, 0.35)" stroke-width="1"/>
+    <text x="90" y="16" fill="#F39C12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" text-anchor="middle">ISLAY SINGLE MALT</text>
+  </g>
+  <text x="48" y="325" fill="#8E9AA8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="500" letter-spacing="0.5">HEBRIDEAN MARITIME · PEAT PPM SPECTRUM · 0 TO 100+ PPM</text>
+</svg>
