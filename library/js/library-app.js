@@ -8,7 +8,7 @@ import {
   parseLibraryUrlState,
   buildLibraryUrlSearch,
   getRelatedEntries,
-} from './library-core.js?v=2.2.1';
+} from './library-core.js?v=2.3.0';
 
 export function mountLibraryApp(rootEl, options = {}) {
   if (!rootEl) throw new Error('mountLibraryApp requires a root DOM element');
@@ -182,41 +182,57 @@ export function mountLibraryApp(rootEl, options = {}) {
     `;
   }
 
-  function renderEntryCard(entry) {
+  function renderEntryCard(entry, index = 0) {
     const brand = entry.brandId ? brandById.get(entry.brandId) : null;
     const titleObj = localizeField(entry.title, state.lang);
     const summaryObj = localizeField(entry.summary, state.lang);
     const catObj = localizeField(entry.categoryLabel, state.lang);
+    const altObj = entry.imageAlt ? localizeField(entry.imageAlt, state.lang) : titleObj;
+
+    const ctaText = state.lang === 'vi' ? 'Xem tài liệu tra cứu →' : 'Open reference sheet →';
 
     let topVisualHtml = '';
     if (entry.coverImage) {
+      const isAboveFold = index < 2;
+      const webpSrc = entry.coverImageWebp ? `<source srcset="${escapeHtml(entry.coverImageWebp)}" type="image/webp">` : '';
       topVisualHtml = `
         <div class="lib-entry-cover-frame">
-          <img src="${escapeHtml(entry.coverImage)}" alt="${escapeHtml(titleObj.text)}" class="lib-entry-cover-img" loading="lazy">
-          <span class="lib-card-cat-badge">${escapeHtml(catObj.text)}</span>
+          <picture>
+            ${webpSrc}
+            <img src="${escapeHtml(entry.coverImage)}" alt="${escapeHtml(altObj.text)}" class="lib-entry-cover-img" width="1448" height="1086" loading="${isAboveFold ? 'eager' : 'lazy'}">
+          </picture>
         </div>
       `;
-    } else {
-      const badgeLogo = brand
-        ? `<span class="lib-logo-tile"><img src="${escapeHtml(brand.logo)}" alt="${escapeHtml(brand.name)}" loading="lazy"></span>`
-        : `<span class="lib-origin-monogram" aria-hidden="true">${escapeHtml(state.lang === 'vi' ? 'LS' : 'OH')}</span>`;
-
-      topVisualHtml = `
-        <div class="lib-entry-card-top">
-          ${badgeLogo}
-          <div class="lib-entry-card-meta">
-            <span class="lib-meta-line">${escapeHtml(catObj.text)}</span>
+      return `
+        <article class="lib-entry-card has-cover" data-entry-card="${escapeHtml(entry.slug)}" tabindex="0" role="button" aria-label="${escapeHtml(titleObj.text)}">
+          ${topVisualHtml}
+          <div class="lib-entry-card-body">
+            <span class="lib-card-cat-label">${escapeHtml(catObj.text)}</span>
+            <h2 class="lib-entry-card-title">${escapeHtml(titleObj.text)}</h2>
+            <p class="lib-entry-card-summary">${escapeHtml(summaryObj.text)}</p>
+            <div class="lib-entry-card-foot">
+              <span class="lib-open-prompt">${escapeHtml(ctaText)}</span>
+            </div>
           </div>
-        </div>
+        </article>
       `;
     }
 
-    const ctaText = entry.shortCta
-      ? localizeField(entry.shortCta, state.lang).text
-      : (state.lang === 'vi' ? 'Xem tài liệu tra cứu →' : 'Open reference sheet →');
+    const badgeLogo = brand
+      ? `<span class="lib-logo-tile"><img src="${escapeHtml(brand.logo)}" alt="${escapeHtml(brand.name)}" loading="lazy"></span>`
+      : `<span class="lib-origin-monogram" aria-hidden="true">${escapeHtml(state.lang === 'vi' ? 'LS' : 'OH')}</span>`;
+
+    topVisualHtml = `
+      <div class="lib-entry-card-top">
+        ${badgeLogo}
+        <div class="lib-entry-card-meta">
+          <span class="lib-meta-line">${escapeHtml(catObj.text)}</span>
+        </div>
+      </div>
+    `;
 
     return `
-      <article class="lib-entry-card${entry.coverImage ? ' has-cover' : ''}" data-entry-card="${escapeHtml(entry.slug)}" tabindex="0" role="button" aria-label="${escapeHtml(titleObj.text)}">
+      <article class="lib-entry-card" data-entry-card="${escapeHtml(entry.slug)}" tabindex="0" role="button" aria-label="${escapeHtml(titleObj.text)}">
         ${topVisualHtml}
         <h2 class="lib-entry-card-title">${escapeHtml(titleObj.text)}</h2>
         <p class="lib-entry-card-summary">${escapeHtml(summaryObj.text)}</p>
@@ -347,7 +363,7 @@ export function mountLibraryApp(rootEl, options = {}) {
 
     let bodyHtml = '';
     if (filtered.length > 0) {
-      bodyHtml = `<div class="lib-cards-grid">${filtered.map(renderEntryCard).join('')}</div>`;
+      bodyHtml = `<div class="lib-cards-grid">${filtered.map((e, idx) => renderEntryCard(e, idx)).join('')}</div>`;
     } else if (state.group === 'recipes' && !state.query.trim()) {
       bodyHtml = recipesPendingHtml;
     } else {
