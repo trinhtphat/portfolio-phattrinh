@@ -40,11 +40,11 @@
 - Modify: `library/js/library-app.js`
 - Test: `tests/browser_suite.js`
 
-- [ ] **Step 1.1: Khai báo CSS Tokens cho Light & Dark Theme**
+- [x] **Step 1.1: Khai báo CSS Tokens cho Light & Dark Theme**
   - Trong `index.html`: Định nghĩa `:root[data-theme="light"]` với `--bg-primary: #F7F6F2`, `--bg-deep: #EFECE6`, `--bg-surface: #FFFFFF`, `--ink: #18181B`, `--ink-muted: #52525B`, `--aqua: #008774`.
   - Trong `library/library.css`: Bổ sung bộ biến màu cho `[data-theme="light"]` tương thích với toàn bộ các class `.lib-shell`, `.lib-card`, `.lib-topbar`, `.lib-spec-table`.
 
-- [ ] **Step 1.2: Xây dựng Theme Init Script chống giật FOUC trong `<head>`**
+- [x] **Step 1.2: Xây dựng Theme Init Script chống giật FOUC trong `<head>`**
   - Thêm đoạn script inline nhẹ trong `<head>` của cả `index.html` và `library/index.html`:
     ```javascript
     (function() {
@@ -55,16 +55,16 @@
     })();
     ```
 
-- [ ] **Step 1.3: Thêm Theme Toggle Button trên Navigation Header**
+- [x] **Step 1.3: Thêm Theme Toggle Button trên Navigation Header**
   - Trong `index.html`: Thêm nút bấm chuyển theme (biểu tượng Mặt trời ☀️ / Mặt trăng 🌙 bằng SVG sắc nét) vào Mobile Topbar và Sidebar Desktop, ngay cạnh bộ chuyển cờ.
   - Trong `library/js/library-app.js`: Thêm nút theme toggle vào `lib-topbar` bên cạnh `lib-topbar-lang`.
   - Bổ sung logic click: Đổi giá trị `data-theme` giữa `light` và `dark`, lưu vào `localStorage.setItem('theme-pref', newTheme)`.
 
-- [ ] **Step 1.4: Viết Unit Test kiểm chứng chuyển theme**
+- [x] **Step 1.4: Viết Unit Test kiểm chứng chuyển theme**
   - Trong `tests/browser_suite.js`: Thêm test case xác nhận `data-theme` khởi tạo đúng theo OS/localStorage và cập nhật tức thì khi click nút toggle.
   - Chạy `py -m unittest discover -s tests` để đảm bảo test pass.
 
-- [ ] **Step 1.5: Commit Task 1**
+- [x] **Step 1.5: Commit Task 1**
   - Commit với thông điệp: `feat: universal light/dark theme engine with OS preference and persistence`
 
 ---
@@ -77,15 +77,15 @@
 - Modify: `library/data/library-data.js`
 - Test: `tests/browser_suite.js`
 
-- [ ] **Step 2.1: Bổ sung cấu trúc dữ liệu At-A-Glance (Quick Specs)**
+- [x] **Step 2.1: Bổ sung cấu trúc dữ liệu At-A-Glance (Quick Specs)**
   - Cập nhật hàm render trong `library/js/library-app.js` để trích xuất các thông số thực chiến cốt lõi: ABV, PPM (nếu có), Thổ nhưỡng/Vùng sản xuất, Kiểu ly, Chuẩn đá già, Tỷ lệ Signature Serve.
   - Bổ sung nhãn song ngữ tương ứng trong `LIBRARY_META.sectionHeadings` (`atAGlance: { en: 'At-A-Glance · Quick Bar Specs', vi: 'Thông số thực chiến tại quầy' }`).
 
-- [ ] **Step 2.2: Thiết kế giao diện At-A-Glance Box trong trang chi tiết bài viết**
+- [x] **Step 2.2: Thiết kế giao diện At-A-Glance Box trong trang chi tiết bài viết**
   - Đặt khối At-A-Glance nổi bật ngay dưới tiêu đề và tóm tắt ngắn của bài viết.
   - Sử dụng bố cục lưới pill & highlight badge (`.lib-glance-grid`) hiển thị rõ ràng thông số trong cả nền sáng và nền tối.
 
-- [ ] **Step 2.3: Tinh chỉnh Top Navigation Tabs theo phong cách Tạp chí F&B**
+- [x] **Step 2.3: Tinh chỉnh Top Navigation Tabs theo phong cách Tạp chí F&B**
   - Tái cấu trúc nhóm hiển thị trên thanh danh mục:
     * `ALL` (Tất cả mục)
     * `THE BASICS & TERROIR` (Cội nguồn & Nền tảng)
@@ -93,11 +93,11 @@
     * `COCKTAIL RECIPES` (Công thức & Chuẩn pha chế)
   - Thêm hiệu ứng gạch chân hairline tinh xảo khi active tab.
 
-- [ ] **Step 2.4: Kiểm thử hiển thị At-A-Glance và Category Tabs**
+- [x] **Step 2.4: Kiểm thử hiển thị At-A-Glance và Category Tabs**
   - Chạy kiểm thử tự động `py -m unittest discover -s tests`.
   - Xác nhận các bài viết hiển thị đầy đủ thông số và không bị vỡ layout trên desktop và mobile.
 
-- [ ] **Step 2.5: Commit Task 2**
+- [x] **Step 2.5: Commit Task 2**
   - Commit với thông điệp: `feat: at-a-glance speed cheat-sheet box and liquor.com editorial tabs`
 
 ---
@@ -109,23 +109,23 @@
 - Modify: `library/library.css`
 - Test: `tests/browser_suite.js`
 
-- [ ] **Step 3.1: Nâng cấp Banner Trạng thái 0 Công thức Cocktail (Transparent Queue)**
+- [x] **Step 3.1: Nâng cấp Banner Trạng thái 0 Công thức Cocktail (Transparent Queue)**
   - Thay thế khối thông báo pending đơn điệu bằng banner chuyên môn cao cấp:
     * Tiêu đề: *Công thức Cocktail chính thức đang trong bước đối chiếu chuẩn mực*.
     * Nội dung giải thích 4 chốt kiểm duyệt: Tỷ lệ ml vàng, chuẩn đá khối/đá già, dáng ly chuẩn vị, kỹ thuật lắc/khuấy và nghi thức viền ly.
     * Gợi ý liên kết trực tiếp tới các bài viết nền tảng về Cointreau, The Botanist, Rémy Martin và Bruichladdich.
 
-- [ ] **Step 3.2: Xây dựng Bottom Drawer / Quick Filter trên Mobile**
+- [x] **Step 3.2: Xây dựng Bottom Drawer / Quick Filter trên Mobile**
   - Khi xem trên màn hình điện thoại (< 768px), bổ sung nút "Lọc nội dung & Nhà rượu" nổi bật.
   - Khi bấm, mở một panel kéo lên từ cạnh dưới (Bottom Drawer) với các nút chọn nhanh phân loại nội dung và danh sách 8 nhà rượu.
 
-- [ ] **Step 3.3: Tối ưu tương thích cảm ứng (Touch Targets)**
+- [x] **Step 3.3: Tối ưu tương thích cảm ứng (Touch Targets)**
   - Đảm bảo tất cả các nút lọc, nút chuyển ngôn ngữ, nút theme toggle có diện tích chạm tối thiểu `44x44px` theo chuẩn WCAG dành cho thiết bị di động.
 
-- [ ] **Step 3.4: Chạy bộ kiểm thử tự động và headless Chrome**
+- [x] **Step 3.4: Chạy bộ kiểm thử tự động và headless Chrome**
   - Chạy `py -m unittest discover -s tests`.
 
-- [ ] **Step 3.5: Commit Task 3**
+- [x] **Step 3.5: Commit Task 3**
   - Commit với thông điệp: `feat: mobile filter drawer and verified cocktail recipe review banner`
 
 ---
@@ -138,13 +138,13 @@
 - Review: `library/library.css`
 - Test: Toàn bộ suite kiểm thử
 
-- [ ] **Step 4.1: Kiểm tra tương phản màu sắc & Visual Polish**
+- [x] **Step 4.1: Kiểm tra tương phản màu sắc & Visual Polish**
   - Đo độ tương phản màu sắc của Light Mode trên nền `#F7F6F2`: Đảm bảo toàn bộ chữ thường đạt trên `4.5:1`, tiêu đề đạt trên `7:1`.
   - Kiểm tra các đường viền hairline không bị mờ nhạt hoặc quá đậm.
 
-- [ ] **Step 4.2: Chạy kiểm thử hồi quy toàn diện**
+- [x] **Step 4.2: Chạy kiểm thử hồi quy toàn diện**
   - Kiểm tra 15 link URL cũ (`?entry=history-of-cognac`, `?entry=octomore`, etc.) đảm bảo hoạt động chính xác.
   - Chạy `py -m unittest discover -s tests` với kết quả 100% OK.
 
-- [ ] **Step 4.3: Báo cáo kết quả và chuẩn bị triển khai lên GitHub Pages**
+- [x] **Step 4.3: Báo cáo kết quả và chuẩn bị triển khai lên GitHub Pages**
   - Tổng kết các thay đổi, cung cấp link localhost để Phát nghiệm thu trực quan trước khi đẩy lên domain `trinhtphat.io.vn`.
