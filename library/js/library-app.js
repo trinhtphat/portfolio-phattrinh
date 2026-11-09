@@ -370,6 +370,30 @@ export function mountLibraryApp(rootEl, options = {}) {
         `
         : '';
 
+    const videoHtml =
+      entry.media && entry.media.video
+        ? `
+          <section class="lib-grid-card lib-span-6 lib-video-section">
+            <div class="lib-video-header">
+              <h2 class="lib-panel-heading">🎬 ${escapeHtml(entry.media.title ? loc(entry.media.title) : (state.lang === 'vi' ? 'Video Giới Thiệu &amp; Masterclass' : 'Brand Masterclass &amp; Video Overview'))}</h2>
+              ${entry.media.duration ? `<span class="lib-abv-pill">⏱ ${escapeHtml(entry.media.duration)}</span>` : ''}
+            </div>
+            <div class="lib-video-wrapper">
+              <video
+                class="lib-video-player"
+                controls
+                playsinline
+                preload="metadata"
+                ${entry.media.thumbnail ? `poster="${escapeHtml(entry.media.thumbnail)}"` : ''}
+              >
+                <source src="${escapeHtml(entry.media.video)}" type="video/mp4">
+                ${state.lang === 'vi' ? 'Trình duyệt của bạn không hỗ trợ phát video.' : 'Your browser does not support the video tag.'}
+              </video>
+            </div>
+          </section>
+        `
+        : '';
+
     const expressionsHtml =
       Array.isArray(entry.expressions) && entry.expressions.length > 0
         ? `
@@ -558,6 +582,7 @@ export function mountLibraryApp(rootEl, options = {}) {
 
           ${recipeBlocksHtml}
           ${heritageAndProductionHtml}
+          ${videoHtml}
           ${expressionsHtml}
           ${tastingHtml}
           ${servingHtml}
@@ -597,8 +622,12 @@ export function mountLibraryApp(rootEl, options = {}) {
             >
           </div>
           <div class="lib-topbar-lang" data-ui="lang-switch" role="group" aria-label="Language switcher">
-            <button type="button" class="lib-lang-btn${state.lang === 'en' ? ' is-active' : ''}" data-action="set-lang" data-lang="en">EN</button>
-            <button type="button" class="lib-lang-btn${state.lang === 'vi' ? ' is-active' : ''}" data-action="set-lang" data-lang="vi">VI</button>
+            <button type="button" class="lib-lang-btn${state.lang === 'vi' ? ' is-active' : ''}" data-action="set-lang" data-lang="vi" aria-label="Tiếng Việt" title="Tiếng Việt">
+              <svg class="lib-flag-icon" viewBox="0 0 640 480" width="22" height="15" aria-hidden="true"><rect width="640" height="480" fill="#da251d" rx="20"/><polygon fill="#ff0" points="320,80 367,225 520,225 396,315 443,460 320,370 197,460 244,315 120,225 273,225"/></svg>
+            </button>
+            <button type="button" class="lib-lang-btn${state.lang === 'en' ? ' is-active' : ''}" data-action="set-lang" data-lang="en" aria-label="English" title="English">
+              <svg class="lib-flag-icon" viewBox="0 0 60 30" width="22" height="15" aria-hidden="true"><clipPath id="uk-flag-lib"><rect width="60" height="30" rx="3"/></clipPath><g clip-path="url(#uk-flag-lib)"><clipPath id="s-lib"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t-lib"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s-lib)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t-lib)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></g></svg>
+            </button>
           </div>
         </header>
 

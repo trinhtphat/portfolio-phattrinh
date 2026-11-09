@@ -5,6 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Phát Trịnh — Brand Ambassador &amp; Spirits Educator</title>
   <meta name="description" content="Portfolio of Phát Trịnh — Brand Ambassador & Spirits Educator representing Rémy Cointreau Heritage Spirits in Vietnam.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta property="og:site_name" content="Phát Trịnh | Spirits Educator">
+  <meta property="og:title" content="Phát Trịnh — Brand Ambassador & Spirits Educator">
+  <meta property="og:description" content="Hồ sơ năng lực & The Drinks Library — Phát Trịnh, Brand Ambassador đại diện danh mục rượu di sản Rémy Cointreau tại Việt Nam.">
+  <meta property="og:url" content="https://trinhtphat.io.vn/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://trinhtphat.io.vn/favicon-192x192.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://trinhtphat.io.vn/#website",
+        "url": "https://trinhtphat.io.vn/",
+        "name": "Phát Trịnh",
+        "alternateName": ["Phat Trinh", "The Drinks Library"],
+        "description": "Portfolio of Phát Trịnh — Brand Ambassador & Spirits Educator",
+        "publisher": {
+          "@id": "https://trinhtphat.io.vn/#person"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://trinhtphat.io.vn/#person",
+        "name": "Phát Trịnh",
+        "jobTitle": "Brand Ambassador & Spirits Educator",
+        "url": "https://trinhtphat.io.vn/",
+        "image": "https://trinhtphat.io.vn/portrait.jpg",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Rémy Cointreau"
+        }
+      }
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -159,30 +200,44 @@
 
   /* Language Switch */
   .lang-toggle {
-    display: flex;
+    display: inline-flex;
+    align-items: center;
     background: var(--bg-surface);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-pill);
-    padding: 4px;
-    gap: 4px;
+    padding: 3px;
+    gap: 3px;
   }
   .lang-toggle button {
-    flex: 1;
-    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
     background: transparent;
-    color: var(--ink-muted);
-    font-weight: 700;
-    font-size: var(--step-small);
-    padding: 6px 0;
+    padding: 5px 8px;
     border-radius: var(--radius-pill);
     cursor: pointer;
     transition: var(--transition);
+    opacity: 0.55;
+    line-height: 1;
   }
   .lang-toggle button:hover {
-    color: var(--ink);
+    opacity: 0.9;
+    background: rgba(255, 255, 255, 0.05);
   }
   .lang-toggle button.active {
-    background: var(--aqua);
-    color: var(--bg-deep);
+    opacity: 1;
+    background: var(--aqua-surface);
+    border-color: rgba(0, 210, 180, 0.4);
+    box-shadow: 0 0 8px rgba(0, 210, 180, 0.25);
+  }
+  .flag-icon {
+    display: block;
+    width: 22px;
+    height: 15px;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    pointer-events: none;
   }
 
   /* Knowledge Hub Trigger in Sidebar (Solution A) */
@@ -1227,9 +1282,12 @@
     flex-shrink: 0;
   }
   .mobile-topbar .lang-toggle button {
-    padding: 4px 7px;
-    font-size: 11px;
-    min-width: 28px;
+    padding: 3px 5px;
+    min-width: 26px;
+  }
+  .mobile-topbar .lang-toggle .flag-icon {
+    width: 18px;
+    height: 12px;
   }
 
   /* ---------------- 3D Interactive Depth & Specular Light Sheen ---------------- */
@@ -1417,8 +1475,12 @@
         <span class="mobile-hub-badge">HUB</span>
       </a>
       <div class="lang-toggle" role="group" aria-label="Language selection / Chọn ngôn ngữ">
-        <button type="button" data-setlang="en" aria-label="Switch to English" aria-pressed="false">EN</button>
-        <button type="button" data-setlang="vi" class="active" aria-label="Chuyển sang Tiếng Việt" aria-pressed="true">VI</button>
+        <button type="button" data-setlang="vi" class="active" aria-label="Tiếng Việt" title="Tiếng Việt" aria-pressed="true">
+          <svg class="flag-icon" viewBox="0 0 640 480" width="22" height="15" aria-hidden="true"><rect width="640" height="480" fill="#da251d" rx="20"/><polygon fill="#ff0" points="320,80 367,225 520,225 396,315 443,460 320,370 197,460 244,315 120,225 273,225"/></svg>
+        </button>
+        <button type="button" data-setlang="en" aria-label="English" title="English" aria-pressed="false">
+          <svg class="flag-icon" viewBox="0 0 60 30" width="22" height="15" aria-hidden="true"><clipPath id="uk-flag-m"><rect width="60" height="30" rx="3"/></clipPath><g clip-path="url(#uk-flag-m)"><clipPath id="s-m"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t-m"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s-m)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t-m)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></g></svg>
+        </button>
       </div>
     </div>
   </header>
@@ -1432,8 +1494,12 @@
 
       <!-- Language Toggle -->
       <div class="lang-toggle" role="group" aria-label="Language selection / Chọn ngôn ngữ">
-        <button type="button" data-setlang="en" aria-label="Switch to English" aria-pressed="false">EN</button>
-        <button type="button" data-setlang="vi" aria-label="Chuyển sang Tiếng Việt" aria-pressed="true">VI</button>
+        <button type="button" data-setlang="vi" class="active" aria-label="Tiếng Việt" title="Tiếng Việt" aria-pressed="true">
+          <svg class="flag-icon" viewBox="0 0 640 480" width="22" height="15" aria-hidden="true"><rect width="640" height="480" fill="#da251d" rx="20"/><polygon fill="#ff0" points="320,80 367,225 520,225 396,315 443,460 320,370 197,460 244,315 120,225 273,225"/></svg>
+        </button>
+        <button type="button" data-setlang="en" aria-label="English" title="English" aria-pressed="false">
+          <svg class="flag-icon" viewBox="0 0 60 30" width="22" height="15" aria-hidden="true"><clipPath id="uk-flag-s"><rect width="60" height="30" rx="3"/></clipPath><g clip-path="url(#uk-flag-s)"><clipPath id="s-s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t-s"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s-s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t-s)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></g></svg>
+        </button>
       </div>
 
       <!-- THE DRINKS LIBRARY ENTRY -->
