@@ -42,12 +42,26 @@ export const LIBRARY_META = {
     vi: 'Nhà chưng cất Bruichladdich (Islay) chế tác Bruichladdich, Port Charlotte, Octomore và The Botanist.',
   },
   recipesPendingTitle: {
-    en: 'Official cocktail serves are under final verification',
-    vi: 'Công thức cocktail chính thức đang được đối chiếu',
+    en: 'Official Cocktails Under Strict Verification',
+    vi: 'Công thức Cocktail chính thức đang trong bước đối chiếu chuẩn mực',
   },
   recipesPendingBody: {
-    en: 'Every serve in The Drinks Library is verified line by line for exact ml ratios, ice format, glassware, and garnish before publication. Browse Origins & History or Brands & Bottles while the first batch of approved recipes is finalized.',
-    vi: 'Mỗi công thức trong The Drinks Library đều được đối chiếu từng định lượng ml, chuẩn đá, kiểu ly và trang trí trước khi công bố. Bạn có thể tra cứu trước mục Cội nguồn & Lịch sử hoặc Thương hiệu & Sản phẩm.',
+    en: 'To maintain bar-ready professional integrity, every cocktail serve in The Drinks Library must pass 4 verification gates before release: precise ml specs, calibrated ice dilution, correct glassware ergonomics, and garnish ritual. In the meantime, study the core spirits and terroir foundations below.',
+    vi: 'Để đảm bảo tính chuẩn xác và thực chiến tại quầy bar, mọi công thức cocktail trong The Drinks Library đều trải qua 4 chốt kiểm duyệt: tỷ lệ ml vàng, độ tan đá già/đá khối, dáng ly chuẩn vị và kỹ thuật thao tác/garnish. Trong thời gian hoàn thiện bản phát hành đầu tiên, bạn có thể tra cứu kiến thức nền tảng của các dòng rượu cốt lõi bên dưới.',
+  },
+  recipesVerificationGates: {
+    en: [
+      { num: '01', title: 'Exact ml Ratios', desc: 'Strict measurements tested for balance' },
+      { num: '02', title: 'Ice Format', desc: 'Block vs cube thermal dilution calibration' },
+      { num: '03', title: 'Glassware', desc: 'Aroma focus & serving temperature preservation' },
+      { num: '04', title: 'Garnish Ritual', desc: 'Essential oils express, rims & sensory balance' },
+    ],
+    vi: [
+      { num: '01', title: 'Tỷ lệ ml vàng', desc: 'Định lượng chuẩn xác cân bằng vị giác' },
+      { num: '02', title: 'Chuẩn đá già & đá khối', desc: 'Kiểm soát tốc độ tan và độ lạnh tối ưu' },
+      { num: '03', title: 'Dáng ly chuẩn vị', desc: 'Tập trung tầng hương và giữ độ lạnh' },
+      { num: '04', title: 'Nghi thức viền ly & Garnish', desc: 'Kích hoạt tinh dầu và trải nghiệm thưởng thức' },
+    ],
   },
   noSearchResultsTitle: {
     en: 'No matching entries found',

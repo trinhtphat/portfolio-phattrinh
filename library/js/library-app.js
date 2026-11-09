@@ -145,6 +145,42 @@ export function mountLibraryApp(rootEl, options = {}) {
     `;
   }
 
+  function renderDrawerInner() {
+    const counts = computeGroupCounts(publishedEntries, {
+      brand: 'all',
+      query: '',
+      lang: state.lang,
+    });
+
+    const groupButtons = ['all', 'origins', 'brands', 'recipes'].map((gKey) => {
+      const isSel = state.group === gKey;
+      return `
+        <button type="button" class="lib-drawer-item${isSel ? ' is-active' : ''}" data-action="drawer-set-group" data-group="${gKey}">
+          <span class="lib-drawer-item-label">${escapeHtml(t(meta.groups?.[gKey]))}</span>
+          <span class="lib-drawer-item-count">${counts[gKey]}</span>
+        </button>
+      `;
+    }).join('');
+
+    const brandButtons = [
+      `<button type="button" class="lib-drawer-brand-btn${state.brand === 'all' ? ' is-active' : ''}" data-action="drawer-set-brand" data-brand="all">${escapeHtml(t(meta.allBrandsLabel))}</button>`,
+      ...brands.map((b) => `
+        <button type="button" class="lib-drawer-brand-btn${state.brand === b.id ? ' is-active' : ''}" data-action="drawer-set-brand" data-brand="${escapeHtml(b.id)}">${escapeHtml(b.name)}</button>
+      `),
+    ].join('');
+
+    return `
+      <div class="lib-drawer-section">
+        <div class="lib-drawer-section-title">${escapeHtml(state.lang === 'vi' ? 'Danh mục tra cứu' : 'Collections')}</div>
+        <div class="lib-drawer-list">${groupButtons}</div>
+      </div>
+      <div class="lib-drawer-section">
+        <div class="lib-drawer-section-title">${escapeHtml(t(meta.brandFilterHeading))}</div>
+        <div class="lib-drawer-chips">${brandButtons}</div>
+      </div>
+    `;
+  }
+
   function renderEntryCard(entry) {
     const brand = entry.brandId ? brandById.get(entry.brandId) : null;
     const titleObj = localizeField(entry.title, state.lang);
@@ -206,20 +242,53 @@ export function mountLibraryApp(rootEl, options = {}) {
       ),
     ].join('');
 
+    const verificationGates = Array.isArray(meta.recipesVerificationGates?.[state.lang])
+      ? meta.recipesVerificationGates[state.lang]
+      : (meta.recipesVerificationGates?.en || []);
+
+    const recipesPendingHtml = `
+      <section class="lib-empty-panel lib-pending-panel" data-role="recipes-pending-state">
+        <div class="lib-pending-header">
+          <div class="lib-pending-badge">
+            <span class="lib-pending-pulse" aria-hidden="true"></span>
+            ${escapeHtml(state.lang === 'vi' ? 'Tiêu chuẩn thẩm định khắt khe' : 'Strict Bar Quality Gates')}
+          </div>
+          <h2 class="lib-empty-title">${escapeHtml(t(meta.recipesPendingTitle))}</h2>
+          <p class="lib-empty-body">${escapeHtml(t(meta.recipesPendingBody))}</p>
+        </div>
+
+        <div class="lib-gates-grid">
+          ${verificationGates.map((gate) => `
+            <div class="lib-gate-card">
+              <span class="lib-gate-num">${escapeHtml(gate.num)}</span>
+              <h4 class="lib-gate-title">${escapeHtml(gate.title)}</h4>
+              <p class="lib-gate-desc">${escapeHtml(gate.desc)}</p>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="lib-pending-suggestions">
+          <p class="lib-suggestions-title">${escapeHtml(state.lang === 'vi' ? 'Tra cứu trước cội nguồn & các dòng rượu nền tảng đã thẩm định:' : 'Explore verified foundation spirit profiles & terroir:')}</p>
+          <div class="lib-suggestions-chips">
+            <button type="button" class="lib-sug-chip" data-action="open-entry" data-slug="cointreau-lunique">Cointreau L'Unique</button>
+            <button type="button" class="lib-sug-chip" data-action="open-entry" data-slug="the-botanist-islay-dry-gin">The Botanist Gin</button>
+            <button type="button" class="lib-sug-chip" data-action="open-entry" data-slug="remy-martin">Rémy Martin Cognac</button>
+            <button type="button" class="lib-sug-chip" data-action="open-entry" data-slug="bruichladdich-classic-laddie">The Classic Laddie</button>
+          </div>
+        </div>
+
+        <div class="lib-empty-actions">
+          <button type="button" class="lib-primary-pill" data-action="set-group" data-group="brands">${escapeHtml(t(meta.groups?.brands))}</button>
+          <button type="button" class="lib-secondary-pill" data-ui="pill" data-action="set-group" data-group="origins">${escapeHtml(t(meta.groups?.origins))}</button>
+        </div>
+      </section>
+    `;
+
     let bodyHtml = '';
     if (filtered.length > 0) {
       bodyHtml = `<div class="lib-cards-grid">${filtered.map(renderEntryCard).join('')}</div>`;
     } else if (state.group === 'recipes' && !state.query.trim()) {
-      bodyHtml = `
-        <section class="lib-empty-panel" data-role="recipes-pending-state">
-          <h2 class="lib-empty-title">${escapeHtml(t(meta.recipesPendingTitle))}</h2>
-          <p class="lib-empty-body">${escapeHtml(t(meta.recipesPendingBody))}</p>
-          <div class="lib-empty-actions">
-            <button type="button" class="lib-primary-pill" data-action="set-group" data-group="brands">${escapeHtml(t(meta.groups?.brands))}</button>
-            <button type="button" class="lib-secondary-pill" data-ui="pill" data-action="set-group" data-group="origins">${escapeHtml(t(meta.groups?.origins))}</button>
-          </div>
-        </section>
-      `;
+      bodyHtml = recipesPendingHtml;
     } else {
       bodyHtml = `
         <section class="lib-empty-panel" data-role="no-results-state">
@@ -245,11 +314,17 @@ export function mountLibraryApp(rootEl, options = {}) {
             <h1 class="lib-page-title">${escapeHtml(scopeTitle)}</h1>
             <p class="lib-page-subtitle">${escapeHtml(scopeSubtitle)}</p>
           </div>
-          ${
-            state.brand !== 'all' || state.query.trim()
-              ? `<button type="button" class="lib-secondary-pill" data-ui="pill" data-action="reset-filters">${escapeHtml(t(meta.resetFiltersLabel))}</button>`
-              : ''
-          }
+          <div class="lib-title-actions">
+            <button type="button" class="lib-mobile-filter-trigger" data-action="open-drawer" aria-label="Open filter drawer">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+              <span>${state.lang === 'vi' ? 'Bộ lọc' : 'Filter'}</span>
+            </button>
+            ${
+              state.brand !== 'all' || state.query.trim()
+                ? `<button type="button" class="lib-secondary-pill" data-ui="pill" data-action="reset-filters">${escapeHtml(t(meta.resetFiltersLabel))}</button>`
+                : ''
+            }
+          </div>
         </header>
 
         <div class="lib-count-strip" data-ui="count-strip" role="group" aria-label="Content type filter">
@@ -675,6 +750,21 @@ export function mountLibraryApp(rootEl, options = {}) {
             ${renderMainStage()}
           </main>
         </div>
+
+        <div class="lib-drawer-backdrop" data-ui="drawer-backdrop" aria-hidden="true">
+          <div class="lib-drawer-sheet" data-ui="drawer-sheet" role="dialog" aria-modal="true" aria-label="${state.lang === 'vi' ? 'Bộ lọc tra cứu F&B' : 'Library Filter'}">
+            <div class="lib-drawer-header">
+              <h3 class="lib-drawer-title">${state.lang === 'vi' ? 'Bộ lọc tra cứu F&B' : 'Library Filter'}</h3>
+              <button type="button" class="lib-drawer-close" data-action="close-drawer" aria-label="Close filters">✕</button>
+            </div>
+            <div class="lib-drawer-content" data-role="drawer-body">
+              ${renderDrawerInner()}
+            </div>
+            <div class="lib-drawer-footer">
+              <button type="button" class="lib-primary-pill" data-action="close-drawer">${state.lang === 'vi' ? 'Xem kết quả' : 'View Results'}</button>
+            </div>
+          </div>
+        </div>
       </div>
     `;
   }
@@ -683,11 +773,19 @@ export function mountLibraryApp(rootEl, options = {}) {
     syncDocumentMeta();
     const sidebarEl = rootEl.querySelector('[data-role="sidebar-body"]');
     const mainEl = rootEl.querySelector('[data-role="main-stage"]');
+    const drawerEl = rootEl.querySelector('[data-role="drawer-body"]');
     if (sidebarEl) sidebarEl.innerHTML = renderSidebarInner();
     if (mainEl) mainEl.innerHTML = renderMainStage();
+    if (drawerEl) drawerEl.innerHTML = renderDrawerInner();
   }
 
   rootEl.addEventListener('click', (ev) => {
+    if (ev.target && ev.target.getAttribute && ev.target.getAttribute('data-ui') === 'drawer-backdrop') {
+      ev.target.classList.remove('is-open');
+      ev.target.setAttribute('aria-hidden', 'true');
+      return;
+    }
+
     const actionEl = ev.target.closest('[data-action], [data-entry-card]');
     if (!actionEl || !rootEl.contains(actionEl)) return;
 
@@ -708,6 +806,50 @@ export function mountLibraryApp(rootEl, options = {}) {
     }
 
     ev.preventDefault();
+
+    if (action === 'open-drawer') {
+      const drawer = rootEl.querySelector('[data-ui="drawer-backdrop"]');
+      if (drawer) {
+        drawer.classList.add('is-open');
+        drawer.setAttribute('aria-hidden', 'false');
+      }
+      return;
+    }
+
+    if (action === 'close-drawer') {
+      const drawer = rootEl.querySelector('[data-ui="drawer-backdrop"]');
+      if (drawer) {
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+      }
+      return;
+    }
+
+    if (action === 'drawer-set-group') {
+      state.group = actionEl.getAttribute('data-group') || 'all';
+      state.entry = '';
+      const drawer = rootEl.querySelector('[data-ui="drawer-backdrop"]');
+      if (drawer) {
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+      }
+      pushUrlState(false);
+      updateRegionsWithoutTouchingSearchInput();
+      return;
+    }
+
+    if (action === 'drawer-set-brand') {
+      state.brand = actionEl.getAttribute('data-brand') || 'all';
+      state.entry = '';
+      const drawer = rootEl.querySelector('[data-ui="drawer-backdrop"]');
+      if (drawer) {
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+      }
+      pushUrlState(false);
+      updateRegionsWithoutTouchingSearchInput();
+      return;
+    }
 
     if (action === 'toggle-theme') {
       const current = document.documentElement.getAttribute('data-theme') || 'dark';
