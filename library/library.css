@@ -1,5 +1,5 @@
 /* The Drinks Library — Ruled T-Frame & Tone-Stepped Flat Surface System */
-:root {
+:root, :root[data-theme="dark"] {
   --bg-deep: #070A0E;
   --bg-primary: #0D1117;
   --bg-surface: #161D26;
@@ -17,6 +17,20 @@
   --radius-sm: 10px;
   --radius-pill: 999px;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root[data-theme="light"] {
+  --bg-deep: #EFECE6;
+  --bg-primary: #F7F6F2;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #EDEAE2;
+  --rule-color: #E2DDD5;
+  --control-border: #D1C9BE;
+  --ink: #18181B;
+  --ink-secondary: #3F3F46;
+  --ink-muted: #64646E;
+  --aqua: #008774;
+  --aqua-surface: rgba(0, 135, 116, 0.10);
 }
 
 *, *::before, *::after {
@@ -138,13 +152,65 @@ input.lib-search-input:focus {
   border-color: var(--aqua);
 }
 
-[data-ui="lang-switch"].lib-topbar-lang {
+.lib-topbar-controls {
   justify-self: end;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding-left: 20px;
+  gap: 10px;
   height: 64px;
+}
+
+.lib-theme-btn {
+  height: 32px;
+  width: 32px;
+  min-width: 32px;
+  padding: 0;
+  border: 1px solid var(--control-border);
+  border-radius: var(--radius-pill);
+  background: var(--bg-surface);
+  color: var(--ink-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 160ms var(--ease-out);
+}
+
+.lib-theme-btn:hover {
+  color: var(--aqua);
+  background-color: var(--bg-surface-elevated);
+  border-color: var(--aqua);
+}
+
+:root[data-theme="dark"] .lib-theme-btn .theme-moon { display: none !important; }
+:root[data-theme="dark"] .lib-theme-btn .theme-sun { display: block !important; }
+:root[data-theme="light"] .lib-theme-btn .theme-sun { display: none !important; }
+:root[data-theme="light"] .lib-theme-btn .theme-moon { display: block !important; }
+
+:root[data-theme="light"] .lib-entry-card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
+  border: 1px solid var(--rule-color);
+}
+
+:root[data-theme="light"] .lib-grid-card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--rule-color);
+}
+
+:root[data-theme="light"] .lib-spec-table th {
+  color: var(--ink-muted);
+}
+
+:root[data-theme="light"] .lib-spec-table td {
+  color: var(--ink);
+}
+
+[data-ui="lang-switch"].lib-topbar-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding-left: 12px;
+  height: 32px;
   border-left: 1px solid var(--rule-color);
 }
 

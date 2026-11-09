@@ -621,13 +621,19 @@ export function mountLibraryApp(rootEl, options = {}) {
               autocomplete="off"
             >
           </div>
-          <div class="lib-topbar-lang" data-ui="lang-switch" role="group" aria-label="Language switcher">
-            <button type="button" class="lib-lang-btn${state.lang === 'vi' ? ' is-active' : ''}" data-action="set-lang" data-lang="vi" aria-label="Tiếng Việt" title="Tiếng Việt">
-              <svg class="lib-flag-icon" viewBox="0 0 640 480" width="22" height="15" aria-hidden="true"><rect width="640" height="480" fill="#da251d" rx="20"/><polygon fill="#ff0" points="320,80 367,225 520,225 396,315 443,460 320,370 197,460 244,315 120,225 273,225"/></svg>
+          <div class="lib-topbar-controls">
+            <button type="button" class="lib-theme-btn" data-action="toggle-theme" aria-label="Toggle Light / Dark mode" title="Chuyển giao diện Sáng / Tối">
+              <svg class="theme-icon theme-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              <svg class="theme-icon theme-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </button>
-            <button type="button" class="lib-lang-btn${state.lang === 'en' ? ' is-active' : ''}" data-action="set-lang" data-lang="en" aria-label="English" title="English">
-              <svg class="lib-flag-icon" viewBox="0 0 60 30" width="22" height="15" aria-hidden="true"><clipPath id="uk-flag-lib"><rect width="60" height="30" rx="3"/></clipPath><g clip-path="url(#uk-flag-lib)"><clipPath id="s-lib"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t-lib"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s-lib)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t-lib)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></g></svg>
-            </button>
+            <div class="lib-topbar-lang" data-ui="lang-switch" role="group" aria-label="Language switcher">
+              <button type="button" class="lib-lang-btn${state.lang === 'vi' ? ' is-active' : ''}" data-action="set-lang" data-lang="vi" aria-label="Tiếng Việt" title="Tiếng Việt">
+                <svg class="lib-flag-icon" viewBox="0 0 640 480" width="22" height="15" aria-hidden="true"><rect width="640" height="480" fill="#da251d" rx="20"/><polygon fill="#ff0" points="320,80 367,225 520,225 396,315 443,460 320,370 197,460 244,315 120,225 273,225"/></svg>
+              </button>
+              <button type="button" class="lib-lang-btn${state.lang === 'en' ? ' is-active' : ''}" data-action="set-lang" data-lang="en" aria-label="English" title="English">
+                <svg class="lib-flag-icon" viewBox="0 0 60 30" width="22" height="15" aria-hidden="true"><clipPath id="uk-flag-lib"><rect width="60" height="30" rx="3"/></clipPath><g clip-path="url(#uk-flag-lib)"><clipPath id="s-lib"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t-lib"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s-lib)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t-lib)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></g></svg>
+              </button>
+            </div>
           </div>
         </header>
 
@@ -672,6 +678,16 @@ export function mountLibraryApp(rootEl, options = {}) {
     }
 
     ev.preventDefault();
+
+    if (action === 'toggle-theme') {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try {
+        if (storage) storage.setItem('theme-pref', next);
+      } catch (e) {}
+      return;
+    }
 
     if (action === 'set-lang') {
       const nextLang = actionEl.getAttribute('data-lang') === 'vi' ? 'vi' : 'en';

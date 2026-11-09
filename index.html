@@ -2,6 +2,19 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('theme-pref');
+        if (saved === 'light' || saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', saved);
+        } else {
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Phát Trịnh — Brand Ambassador &amp; Spirits Educator</title>
   <meta name="description" content="Portfolio of Phát Trịnh — Brand Ambassador & Spirits Educator representing Rémy Cointreau Heritage Spirits in Vietnam.">
@@ -50,7 +63,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-  :root {
+  :root, :root[data-theme="dark"] {
     /* Concept 2: The Progressive Disruptor (Obsidian & Bruichladdich Aqua) */
     --bg-primary: #0D1117;
     --bg-deep: #070A0E;
@@ -66,6 +79,7 @@
     --aqua: #00D2B4;
     --aqua-hover: #00F0CF;
     --aqua-surface: rgba(0, 210, 180, 0.12);
+    --border-color: rgba(255, 255, 255, 0.08);
 
     --font-head: 'Plus Jakarta Sans', sans-serif;
     --font-body: 'Be Vietnam Pro', sans-serif;
@@ -83,6 +97,22 @@
     --radius-lg: 20px;
     --radius-pill: 9999px;
     --transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  :root[data-theme="light"] {
+    --bg-primary: #F7F6F2;
+    --bg-deep: #EFECE6;
+    --bg-surface: #FFFFFF;
+    --bg-surface-elevated: #EDEAE2;
+
+    --ink: #18181B;
+    --ink-secondary: #3F3F46;
+    --ink-muted: #64646E;
+
+    --aqua: #008774;
+    --aqua-hover: #00A890;
+    --aqua-surface: rgba(0, 135, 116, 0.10);
+    --border-color: rgba(0, 0, 0, 0.08);
   }
 
   *, *::before, *::after { box-sizing: border-box; }
@@ -238,6 +268,48 @@
     border-radius: 2px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
     pointer-events: none;
+  }
+
+  /* Universal Theme Toggle Button */
+  .theme-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    color: var(--ink-muted);
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 0;
+  }
+  .theme-toggle-btn:hover {
+    color: var(--aqua);
+    background: var(--bg-surface-elevated);
+    border-color: var(--aqua);
+  }
+  :root[data-theme="dark"] .theme-toggle-btn .theme-moon { display: none !important; }
+  :root[data-theme="dark"] .theme-toggle-btn .theme-sun { display: block !important; }
+  :root[data-theme="light"] .theme-toggle-btn .theme-sun { display: none !important; }
+  :root[data-theme="light"] .theme-toggle-btn .theme-moon { display: block !important; }
+
+  /* Light mode elevation polish (design-taste-frontend) */
+  :root[data-theme="light"] .stat-card,
+  :root[data-theme="light"] .pillar-card,
+  :root[data-theme="light"] .proof-card,
+  :root[data-theme="light"] .g-tile,
+  :root[data-theme="light"] .contact-card,
+  :root[data-theme="light"] .hero-portrait-card {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
+    border: 1px solid var(--border-color);
+  }
+  :root[data-theme="light"] .sidebar {
+    border-right: 1px solid var(--border-color);
+  }
+  :root[data-theme="light"] .mobile-topbar {
+    border-bottom: 1px solid var(--border-color);
   }
 
   /* Knowledge Hub Trigger in Sidebar (Solution A) */
@@ -1469,11 +1541,15 @@
       </div>
       <span class="mobile-topbar-brand">Phát Trịnh</span>
     </a>
-    <div class="mobile-topbar-right">
+    <div class="mobile-topbar-right" style="display: flex; align-items: center; gap: 8px;">
       <a href="library/index.html" class="mobile-hub-link" aria-label="The Drinks Library">
         <span class="mobile-hub-icon">🥃</span>
         <span class="mobile-hub-badge">HUB</span>
       </a>
+      <button type="button" class="theme-toggle-btn" aria-label="Toggle Light / Dark mode" title="Chuyển giao diện Sáng / Tối">
+        <svg class="theme-icon theme-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="theme-icon theme-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
       <div class="lang-toggle" role="group" aria-label="Language selection / Chọn ngôn ngữ">
         <button type="button" data-setlang="vi" class="active" aria-label="Tiếng Việt" title="Tiếng Việt" aria-pressed="true">
           <svg class="flag-icon" viewBox="0 0 640 480" width="22" height="15" aria-hidden="true"><rect width="640" height="480" fill="#da251d" rx="20"/><polygon fill="#ff0" points="320,80 367,225 520,225 396,315 443,460 320,370 197,460 244,315 120,225 273,225"/></svg>
@@ -1492,13 +1568,19 @@
         <img src="portrait.jpg" alt="Phát Trịnh" width="120" height="120" decoding="async">
       </div>
 
-      <!-- Language Toggle -->
-      <div class="lang-toggle" role="group" aria-label="Language selection / Chọn ngôn ngữ">
-        <button type="button" data-setlang="vi" class="active" aria-label="Tiếng Việt" title="Tiếng Việt" aria-pressed="true">
-          <svg class="flag-icon" viewBox="0 0 640 480" width="22" height="15" aria-hidden="true"><rect width="640" height="480" fill="#da251d" rx="20"/><polygon fill="#ff0" points="320,80 367,225 520,225 396,315 443,460 320,370 197,460 244,315 120,225 273,225"/></svg>
-        </button>
-        <button type="button" data-setlang="en" aria-label="English" title="English" aria-pressed="false">
-          <svg class="flag-icon" viewBox="0 0 60 30" width="22" height="15" aria-hidden="true"><clipPath id="uk-flag-s"><rect width="60" height="30" rx="3"/></clipPath><g clip-path="url(#uk-flag-s)"><clipPath id="s-s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t-s"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s-s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t-s)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></g></svg>
+      <!-- Controls: Language & Theme Switcher -->
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+        <div class="lang-toggle" role="group" aria-label="Language selection / Chọn ngôn ngữ">
+          <button type="button" data-setlang="vi" class="active" aria-label="Tiếng Việt" title="Tiếng Việt" aria-pressed="true">
+            <svg class="flag-icon" viewBox="0 0 640 480" width="22" height="15" aria-hidden="true"><rect width="640" height="480" fill="#da251d" rx="20"/><polygon fill="#ff0" points="320,80 367,225 520,225 396,315 443,460 320,370 197,460 244,315 120,225 273,225"/></svg>
+          </button>
+          <button type="button" data-setlang="en" aria-label="English" title="English" aria-pressed="false">
+            <svg class="flag-icon" viewBox="0 0 60 30" width="22" height="15" aria-hidden="true"><clipPath id="uk-flag-s"><rect width="60" height="30" rx="3"/></clipPath><g clip-path="url(#uk-flag-s)"><clipPath id="s-s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t-s"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s-s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t-s)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></g></svg>
+          </button>
+        </div>
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle Light / Dark mode" title="Chuyển giao diện Sáng / Tối">
+          <svg class="theme-icon theme-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="theme-icon theme-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
       </div>
 
@@ -2155,6 +2237,17 @@
   var initial = 'en';
   try { initial = localStorage.getItem('bio-lang') || 'en'; } catch(e) {}
   setLang(initial);
+
+  // Universal Theme Switcher (Sync with localStorage and system pref)
+  function toggleTheme() {
+    var cur = document.documentElement.getAttribute('data-theme') || 'dark';
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme-pref', next); } catch(e) {}
+  }
+  document.querySelectorAll('.theme-toggle-btn').forEach(function(btn){
+    btn.addEventListener('click', toggleTheme);
+  });
 
   // Portfolio 3-Pillar Filter (Training, Guest Bartender, Event Sponsor)
   var filterButtons = document.querySelectorAll('.filters button');
