@@ -24,9 +24,9 @@ export const LIBRARY_META = {
     vi: 'Tìm sản phẩm, phân loại, nồng độ ABV, PPM, vùng đất, hương vị...',
   },
   groups: {
-    all: { en: 'All entries', vi: 'Tất cả mục' },
-    origins: { en: 'Origins & History', vi: 'Cội nguồn & Lịch sử' },
-    brands: { en: 'Brands & Bottles', vi: 'Thương hiệu & Sản phẩm' },
+    all: { en: 'All Modules', vi: 'Tất cả mục' },
+    origins: { en: 'The Basics & Terroir', vi: 'The Basics & Cội nguồn' },
+    brands: { en: 'Spirits & Houses', vi: 'Dòng rượu & Thương hiệu' },
     recipes: { en: 'Cocktail Recipes', vi: 'Công thức Cocktail' },
   },
   brandFilterHeading: {
@@ -86,6 +86,7 @@ export const LIBRARY_META = {
     vi: 'Một số thông tin đang hiển thị theo ngôn ngữ gốc đã xác thực trong khi bản dịch đang được rà soát.',
   },
   sectionHeadings: {
+    atAGlance: { en: 'At-A-Glance · Quick Bar Specs', vi: 'Thông số thực chiến tại quầy' },
     takeaways: { en: 'Key Takeaways', vi: 'Điểm cốt lõi' },
     specs: { en: 'Technical Specifications', vi: 'Thông số kỹ thuật' },
     originStory: { en: 'Origin & Heritage', vi: 'Nguồn gốc & Di sản' },

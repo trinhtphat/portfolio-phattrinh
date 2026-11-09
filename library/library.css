@@ -394,7 +394,7 @@ input.lib-search-input:focus {
   min-height: 64px;
   padding: 12px 16px;
   border-radius: 12px;
-  border: 1.5px solid transparent;
+  border: 1.5px solid var(--rule-color);
   background-color: var(--bg-surface);
   color: var(--ink);
   display: flex;
@@ -404,16 +404,30 @@ input.lib-search-input:focus {
   gap: 4px;
   cursor: pointer;
   text-align: left;
-  transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out);
+  position: relative;
+  transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 160ms var(--ease-out);
 }
 
 [data-ui="count-card"].lib-count-card:hover {
   background-color: var(--bg-surface-elevated);
+  transform: translateY(-1px);
 }
 
 [data-ui="count-card"].lib-count-card.is-selected {
   border-color: var(--aqua);
   background-color: var(--aqua-surface);
+  box-shadow: 0 0 0 1px var(--aqua);
+}
+
+:root[data-theme="light"] [data-ui="count-card"].lib-count-card {
+  background-color: #FFFFFF;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+:root[data-theme="light"] [data-ui="count-card"].lib-count-card.is-selected {
+  border-color: var(--aqua);
+  background-color: rgba(0, 135, 116, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 135, 116, 0.12);
 }
 
 .lib-count-label {
@@ -724,6 +738,71 @@ input.lib-search-input:focus {
   font-size: 16px;
   line-height: 1.7;
   max-width: 72ch;
+}
+
+/* At-A-Glance Speed Cheat-sheet (Liquor.com style) */
+.lib-glance-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--rule-color);
+  border-radius: var(--radius-card);
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+:root[data-theme="light"] .lib-glance-box {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 135, 116, 0.2);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+}
+
+.lib-glance-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule-color);
+}
+
+.lib-glance-badge {
+  font-family: var(--font-head);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--aqua);
+}
+
+.lib-glance-note {
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+.lib-glance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px 16px;
+}
+
+.lib-glance-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.lib-glance-lbl {
+  font-size: 11px;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.lib-glance-val {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
 }
 
 /* 6-Column Reading Grid */

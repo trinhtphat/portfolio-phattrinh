@@ -311,6 +311,34 @@ export function mountLibraryApp(rootEl, options = {}) {
           .join('')
       : '';
 
+    const glancePills = [];
+    if (Array.isArray(entry.specs)) {
+      for (const s of entry.specs) {
+        const lbl = loc(s.label);
+        const val = loc(s.value);
+        if (lbl && val) glancePills.push({ label: lbl, value: val });
+      }
+    }
+
+    const atAGlanceHtml = glancePills.length > 0
+      ? `
+        <div class="lib-glance-box" data-ui="at-a-glance">
+          <div class="lib-glance-header">
+            <span class="lib-glance-badge">⚡ ${escapeHtml(t(headings.atAGlance))}</span>
+            <span class="lib-glance-note">${escapeHtml(state.lang === 'vi' ? 'Tra cứu thực chiến tại quầy' : 'On-bar speed cheat-sheet')}</span>
+          </div>
+          <div class="lib-glance-grid">
+            ${glancePills.slice(0, 4).map(p => `
+              <div class="lib-glance-item">
+                <span class="lib-glance-lbl">${escapeHtml(p.label)}</span>
+                <span class="lib-glance-val">${escapeHtml(p.value)}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `
+      : '';
+
     const recipeBlocksHtml =
       entry.group === 'recipes' && Array.isArray(entry.ingredients)
         ? `
@@ -552,6 +580,8 @@ export function mountLibraryApp(rootEl, options = {}) {
         }
 
         <p class="lib-detail-lead">${escapeHtml(summaryText)}</p>
+
+        ${atAGlanceHtml}
 
         <div class="lib-detail-grid">
           ${
