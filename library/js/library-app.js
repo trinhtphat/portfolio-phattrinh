@@ -8,7 +8,7 @@ import {
   parseLibraryUrlState,
   buildLibraryUrlSearch,
   getRelatedEntries,
-} from './library-core.js';
+} from './library-core.js?v=2.2.1';
 
 export function mountLibraryApp(rootEl, options = {}) {
   if (!rootEl) throw new Error('mountLibraryApp requires a root DOM element');
