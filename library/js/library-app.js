@@ -8,7 +8,7 @@ import {
   parseLibraryUrlState,
   buildLibraryUrlSearch,
   getRelatedEntries,
-} from './library-core.js?v=2.3.0';
+} from './library-core.js?v=2.4.0';
 
 export function mountLibraryApp(rootEl, options = {}) {
   if (!rootEl) throw new Error('mountLibraryApp requires a root DOM element');
@@ -183,13 +183,32 @@ export function mountLibraryApp(rootEl, options = {}) {
   }
 
   function renderEntryCard(entry, index = 0) {
-    const brand = entry.brandId ? brandById.get(entry.brandId) : null;
+    const primaryBrandId = entry.brandId || (Array.isArray(entry.brandIds) && entry.brandIds[0]) || null;
+    const brand = primaryBrandId ? brandById.get(primaryBrandId) : null;
     const titleObj = localizeField(entry.title, state.lang);
     const summaryObj = localizeField(entry.summary, state.lang);
     const catObj = localizeField(entry.categoryLabel, state.lang);
     const altObj = entry.imageAlt ? localizeField(entry.imageAlt, state.lang) : titleObj;
 
-    const ctaText = state.lang === 'vi' ? 'Xem tài liệu tra cứu →' : 'Open reference sheet →';
+    const isRecipe = entry.group === 'recipes';
+    const ctaText = isRecipe
+      ? (state.lang === 'vi' ? 'Xem công thức →' : 'View recipe →')
+      : (state.lang === 'vi' ? 'Xem tài liệu tra cứu →' : 'Open reference sheet →');
+
+    let recipePillsHtml = '';
+    if (isRecipe) {
+      const brandPills = Array.isArray(entry.brandIds)
+        ? entry.brandIds
+            .map((bId) => brandById.get(bId))
+            .filter(Boolean)
+            .map((b) => `<span class="lib-recipe-pill lib-recipe-brand">${escapeHtml(b.name)}</span>`)
+            .join('')
+        : '';
+      const methodLabel = entry.method
+        ? `<span class="lib-recipe-pill lib-recipe-method">🍸 ${escapeHtml(localizeField(entry.method, state.lang).text)}</span>`
+        : '';
+      recipePillsHtml = `<div class="lib-recipe-meta-pills">${brandPills}${methodLabel}</div>`;
+    }
 
     let topVisualHtml = '';
     if (entry.coverImage) {
@@ -199,7 +218,7 @@ export function mountLibraryApp(rootEl, options = {}) {
         <div class="lib-entry-cover-frame">
           <picture>
             ${webpSrc}
-            <img src="${escapeHtml(entry.coverImage)}" alt="${escapeHtml(altObj.text)}" class="lib-entry-cover-img" width="1448" height="1086" loading="${isAboveFold ? 'eager' : 'lazy'}">
+            <img src="${escapeHtml(entry.coverImage)}" alt="${escapeHtml(altObj.text)}" class="lib-entry-cover-img" width="800" height="600" loading="${isAboveFold ? 'eager' : 'lazy'}">
           </picture>
         </div>
       `;
@@ -209,6 +228,7 @@ export function mountLibraryApp(rootEl, options = {}) {
           <div class="lib-entry-card-body">
             <span class="lib-card-cat-label">${escapeHtml(catObj.text)}</span>
             <h2 class="lib-entry-card-title">${escapeHtml(titleObj.text)}</h2>
+            ${recipePillsHtml}
             <p class="lib-entry-card-summary">${escapeHtml(summaryObj.text)}</p>
             <div class="lib-entry-card-foot">
               <span class="lib-open-prompt">${escapeHtml(ctaText)}</span>
@@ -235,6 +255,7 @@ export function mountLibraryApp(rootEl, options = {}) {
       <article class="lib-entry-card" data-entry-card="${escapeHtml(entry.slug)}" tabindex="0" role="button" aria-label="${escapeHtml(titleObj.text)}">
         ${topVisualHtml}
         <h2 class="lib-entry-card-title">${escapeHtml(titleObj.text)}</h2>
+        ${recipePillsHtml}
         <p class="lib-entry-card-summary">${escapeHtml(summaryObj.text)}</p>
         <div class="lib-entry-card-foot">
           <span class="lib-open-prompt">${escapeHtml(ctaText)}</span>
@@ -289,7 +310,7 @@ export function mountLibraryApp(rootEl, options = {}) {
             </span>
             <div class="lib-cat-hero-meta">
               <span class="lib-cat-count-badge">${filtered.length} ${escapeHtml(state.lang === 'vi' ? 'bài viết' : 'modules')}</span>
-              ${state.group === 'recipes' ? `<span class="lib-status-badge">⏳ ${escapeHtml(t(meta.recipesStatusBadge))}</span>` : ''}
+              ${state.group === 'recipes' && filtered.length === 0 ? `<span class="lib-status-badge">⏳ ${escapeHtml(t(meta.recipesStatusBadge))}</span>` : ''}
             </div>
           </div>
           <h2 class="lib-cat-hero-title">${escapeHtml(t(meta.groups?.[state.group]))}</h2>
@@ -416,7 +437,8 @@ export function mountLibraryApp(rootEl, options = {}) {
   }
 
   function renderDetailView(entry) {
-    const brand = entry.brandId ? brandById.get(entry.brandId) : null;
+    const primaryBrandId = entry.brandId || (Array.isArray(entry.brandIds) && entry.brandIds[0]) || null;
+    const brand = primaryBrandId ? brandById.get(primaryBrandId) : null;
     let hasMissingTranslation = false;
 
     const loc = (field) => {
@@ -439,7 +461,7 @@ export function mountLibraryApp(rootEl, options = {}) {
     const originParagraphs = locArr(entry.originStory);
     const productionParagraphs = locArr(entry.production);
     const servingItems = locArr(entry.serving);
-    const methodSteps = locArr(entry.method);
+    const methodSteps = locArr(entry.steps || entry.method);
 
     const related = getRelatedEntries(publishedEntries, entry);
     const headings = meta.sectionHeadings || {};
@@ -473,12 +495,13 @@ export function mountLibraryApp(rootEl, options = {}) {
     }
 
     const isOrigin = entry.group === 'origins';
-    const glanceBadgeTitle = isOrigin
-      ? t(headings.atAGlanceOrigins || headings.atAGlance)
-      : t(headings.atAGlance);
-    const glanceNoteTitle = isOrigin
-      ? (state.lang === 'vi' ? 'Khái niệm cốt lõi cần nhớ' : 'Core concepts to master')
-      : (state.lang === 'vi' ? 'Tra cứu thực chiến tại quầy' : 'On-bar speed cheat-sheet');
+    const isRecipe = entry.group === 'recipes';
+    const glanceBadgeTitle = isRecipe
+      ? (state.lang === 'vi' ? 'Thông tin nhanh tại quầy' : 'Quick Bar Specs')
+      : (isOrigin ? t(headings.atAGlanceOrigins || headings.atAGlance) : t(headings.atAGlance));
+    const glanceNoteTitle = isRecipe
+      ? (state.lang === 'vi' ? 'Dụng cụ · Kỹ thuật · Trang trí' : 'Glassware · Method · Garnish')
+      : (isOrigin ? (state.lang === 'vi' ? 'Khái niệm cốt lõi cần nhớ' : 'Core concepts to master') : (state.lang === 'vi' ? 'Tra cứu thực chiến tại quầy' : 'On-bar speed cheat-sheet'));
 
     const atAGlanceHtml = glancePills.length > 0
       ? `
@@ -503,6 +526,8 @@ export function mountLibraryApp(rootEl, options = {}) {
       <nav class="lib-toc-strip" aria-label="${escapeHtml(state.lang === 'vi' ? 'Mục lục bài viết' : 'Table of Contents')}">
         <span class="lib-toc-lbl">📑 ${escapeHtml(t(headings.toc))}:</span>
         <div class="lib-toc-links">
+          ${isRecipe ? `<a href="#section-ingredients" class="lib-toc-link">${escapeHtml(t(headings.ingredients))}</a>` : ''}
+          ${isRecipe ? `<a href="#section-method" class="lib-toc-link">${escapeHtml(t(headings.method))}</a>` : ''}
           ${takeaways.length ? `<a href="#section-takeaways" class="lib-toc-link">${escapeHtml(t(headings.takeaways))}</a>` : ''}
           ${specsRowsHtml ? `<a href="#section-specs" class="lib-toc-link">${escapeHtml(t(headings.specs))}</a>` : ''}
           ${originParagraphs.length ? `<a href="#section-origin" class="lib-toc-link">${escapeHtml(t(headings.originStory))}</a>` : ''}
@@ -544,7 +569,7 @@ export function mountLibraryApp(rootEl, options = {}) {
       `
       : '';
 
-    const referencesHtml = entry.sourceNote
+    const referencesHtml = entry.sourceNote && entry.group !== 'recipes'
       ? `
         <div class="lib-references-card lib-span-6">
           <span class="lib-ref-badge">🏛️ ${escapeHtml(t(headings.references))}:</span>
@@ -556,8 +581,8 @@ export function mountLibraryApp(rootEl, options = {}) {
     const recipeBlocksHtml =
       entry.group === 'recipes' && Array.isArray(entry.ingredients)
         ? `
-          <section class="lib-grid-card lib-span-3">
-            <h2 class="lib-panel-heading">${escapeHtml(t(headings.ingredients))}</h2>
+          <section class="lib-grid-card lib-span-3" id="section-ingredients">
+            <h2 class="lib-panel-heading">🍋 ${escapeHtml(t(headings.ingredients))}</h2>
             <table class="lib-spec-table">
               <tbody>
                 ${entry.ingredients
@@ -565,7 +590,7 @@ export function mountLibraryApp(rootEl, options = {}) {
                     (ing) => `
                       <tr>
                         <th scope="row">${escapeHtml(loc(ing.item))}</th>
-                        <td>${escapeHtml(ing.amount || '')}</td>
+                        <td style="font-weight: 600; color: var(--aqua);">${escapeHtml(ing.amount || '')}</td>
                       </tr>
                     `
                   )
@@ -573,8 +598,8 @@ export function mountLibraryApp(rootEl, options = {}) {
               </tbody>
             </table>
           </section>
-          <section class="lib-grid-card lib-span-3">
-            <h2 class="lib-panel-heading">${escapeHtml(t(headings.method))}</h2>
+          <section class="lib-grid-card lib-span-3" id="section-method">
+            <h2 class="lib-panel-heading">🍸 ${escapeHtml(t(headings.method))}</h2>
             <ol class="lib-prose-list lib-ordered-steps">
               ${methodSteps.map((step) => `<li>${escapeHtml(step)}</li>`).join('')}
             </ol>
@@ -770,10 +795,16 @@ export function mountLibraryApp(rootEl, options = {}) {
         `
         : '';
 
+    const backBtnText = entry.group === 'recipes'
+      ? (state.lang === 'vi' ? '← Công thức Cocktail' : '← Cocktail Recipes')
+      : (entry.group === 'origins'
+          ? (state.lang === 'vi' ? '← Kiến thức nền tảng' : '← The Basics')
+          : escapeHtml(t(meta.backToList)));
+
     return `
       <article class="lib-detail-stage">
         <div class="lib-detail-back-row">
-          <button type="button" class="lib-back-inline" data-action="close-entry">${escapeHtml(t(meta.backToList))}</button>
+          <button type="button" class="lib-back-inline" data-action="close-entry">${backBtnText}</button>
         </div>
 
         <header class="lib-object-header" data-ui="object-header">
@@ -814,7 +845,7 @@ export function mountLibraryApp(rootEl, options = {}) {
           }
 
           ${
-            specsRowsHtml
+            specsRowsHtml && !isRecipe
               ? `
                 <section class="lib-grid-card ${takeaways.length ? 'lib-span-2' : 'lib-span-6'}" id="section-specs">
                   <h2 class="lib-panel-heading">${escapeHtml(t(headings.specs))}</h2>

@@ -1887,4 +1887,1086 @@ export const LIBRARY_ENTRIES = [
     sourceNote: { en: 'Bruichladdich Distillery Academy BDC Bible & Octomore Series Archives', vi: 'Cẩm nang đào tạo Bruichladdich Distillery Academy & Hồ sơ lưu trữ Octomore' },
     lastUpdated: '2026-11-03',
   },
+  {
+    "slug": "sidecar",
+    "status": "approved",
+    "group": "recipes",
+    "brandIds": [
+      "remy-martin",
+      "cointreau"
+    ],
+    "categoryLabel": {
+      "en": "Cocktail Recipe · Cognac & Triple Sec",
+      "vi": "Công thức Cocktail · Cognac & Triple Sec"
+    },
+    "title": {
+      "en": "Sidecar",
+      "vi": "Sidecar"
+    },
+    "subtitle": {
+      "en": "Classic harmony of Cognac, Cointreau orange liqueur, and crisp lemon",
+      "vi": "Sự hòa quyện kinh điển giữa Cognac, rượu mùi cam Cointreau và chanh vàng tươi"
+    },
+    "summary": {
+      "en": "Classic cocktail combining Cognac, orange liqueur, and crisp fresh lemon juice.",
+      "vi": "Cocktail cổ điển kết hợp Cognac, rượu mùi cam và vị chua thanh của chanh vàng."
+    },
+    "glassware": {
+      "en": "Chilled Coupe",
+      "vi": "Coupe lạnh"
+    },
+    "method": {
+      "en": "Shake · Double strain",
+      "vi": "Shake · Double strain"
+    },
+    "garnish": {
+      "en": "Lemon twist",
+      "vi": "Vỏ chanh vàng xoắn"
+    },
+    "ingredients": [
+      {
+        "amount": "45ml",
+        "item": {
+          "en": "Rémy Martin VSOP Cognac",
+          "vi": "Rémy Martin VSOP"
+        }
+      },
+      {
+        "amount": "20ml",
+        "item": {
+          "en": "Cointreau Orange Liqueur",
+          "vi": "Cointreau"
+        }
+      },
+      {
+        "amount": "15ml",
+        "item": {
+          "en": "Fresh lemon juice",
+          "vi": "Nước cốt chanh vàng"
+        }
+      }
+    ],
+    "steps": {
+      "vi": [
+        "Cho toàn bộ nguyên liệu vào bình shaker cùng đá viên.",
+        "Lắc mạnh trong 10–12 giây.",
+        "Lọc mịn vào ly Coupe lạnh."
+      ],
+      "en": [
+        "Add all ingredients into a shaker with ice cubes.",
+        "Shake vigorously for 10–12 seconds.",
+        "Double strain into a chilled Coupe glass."
+      ]
+    },
+    "specs": [
+      {
+        "label": {
+          "en": "Glassware",
+          "vi": "Ly phục vụ"
+        },
+        "value": {
+          "en": "Chilled Coupe",
+          "vi": "Coupe lạnh"
+        }
+      },
+      {
+        "label": {
+          "en": "Method",
+          "vi": "Phương pháp"
+        },
+        "value": {
+          "en": "Shake · Double strain",
+          "vi": "Shake · Double strain"
+        }
+      },
+      {
+        "label": {
+          "en": "Garnish",
+          "vi": "Trang trí"
+        },
+        "value": {
+          "en": "Lemon twist",
+          "vi": "Vỏ chanh vàng xoắn"
+        }
+      },
+      {
+        "label": {
+          "en": "Primary Spirits",
+          "vi": "Dòng rượu chính"
+        },
+        "value": {
+          "en": "Rémy Martin VSOP & Cointreau",
+          "vi": "Rémy Martin VSOP & Cointreau"
+        }
+      }
+    ],
+    "relatedSlugs": [
+      "remy-martin-vsop",
+      "cointreau-lunique",
+      "history-of-cognac",
+      "history-of-orange-liqueur"
+    ],
+    "lastUpdated": "2026-11-09"
+  },
+  {
+    "slug": "remy-ginger",
+    "status": "approved",
+    "group": "recipes",
+    "brandIds": [
+      "remy-martin"
+    ],
+    "categoryLabel": {
+      "en": "Cocktail Recipe · Cognac Highball",
+      "vi": "Công thức Cocktail · Cognac Highball"
+    },
+    "title": {
+      "en": "Rémy Ginger",
+      "vi": "Rémy Ginger"
+    },
+    "subtitle": {
+      "en": "Effervescent highball matching vibrant Cognac notes with spicy ginger ale",
+      "vi": "Dòng highball sảng khoái kết hợp sắc thái Cognac với vị cay nhẹ của ginger ale"
+    },
+    "summary": {
+      "en": "Refreshing and straightforward highball pairing Cognac with the gentle spice of ginger ale.",
+      "vi": "Highball đơn giản, tươi mát, kết hợp Cognac với vị cay nhẹ của Ginger Ale."
+    },
+    "glassware": {
+      "en": "Highball",
+      "vi": "Highball"
+    },
+    "method": {
+      "en": "Build",
+      "vi": "Build"
+    },
+    "garnish": {
+      "en": "Lime wedge or fresh ginger slice",
+      "vi": "Một múi chanh hoặc một lát gừng tươi"
+    },
+    "ingredients": [
+      {
+        "amount": "45ml",
+        "item": {
+          "en": "Rémy Martin VSOP Cognac",
+          "vi": "Rémy Martin VSOP"
+        }
+      },
+      {
+        "amount": "90ml",
+        "item": {
+          "en": "Ginger Ale",
+          "vi": "Ginger Ale"
+        }
+      }
+    ],
+    "steps": {
+      "vi": [
+        "Cho đầy đá viên vào ly Highball.",
+        "Rót Rémy Martin VSOP vào ly.",
+        "Rót Ginger Ale lên trên.",
+        "Khuấy nhẹ một nhịp."
+      ],
+      "en": [
+        "Fill a Highball glass with ice cubes.",
+        "Pour Rémy Martin VSOP into the glass.",
+        "Top with Ginger Ale.",
+        "Stir gently once to integrate."
+      ]
+    },
+    "specs": [
+      {
+        "label": {
+          "en": "Glassware",
+          "vi": "Ly phục vụ"
+        },
+        "value": {
+          "en": "Highball",
+          "vi": "Highball"
+        }
+      },
+      {
+        "label": {
+          "en": "Method",
+          "vi": "Phương pháp"
+        },
+        "value": {
+          "en": "Build",
+          "vi": "Build"
+        }
+      },
+      {
+        "label": {
+          "en": "Garnish",
+          "vi": "Trang trí"
+        },
+        "value": {
+          "en": "Lime wedge or fresh ginger",
+          "vi": "Một múi chanh hoặc một lát gừng tươi"
+        }
+      },
+      {
+        "label": {
+          "en": "Primary Spirit",
+          "vi": "Rượu nền"
+        },
+        "value": {
+          "en": "Rémy Martin VSOP",
+          "vi": "Rémy Martin VSOP"
+        }
+      }
+    ],
+    "relatedSlugs": [
+      "remy-martin-vsop",
+      "history-of-cognac"
+    ],
+    "lastUpdated": "2026-11-09"
+  },
+  {
+    "slug": "botanist-apple-collins",
+    "status": "approved",
+    "group": "recipes",
+    "brandIds": [
+      "the-botanist"
+    ],
+    "categoryLabel": {
+      "en": "Cocktail Recipe · Islay Gin Collins",
+      "vi": "Công thức Cocktail · Islay Gin Collins"
+    },
+    "title": {
+      "en": "Botanist Apple Collins",
+      "vi": "Botanist Apple Collins"
+    },
+    "subtitle": {
+      "en": "Crisp orchard apple and club soda highlighting 22 hand-foraged Islay botanicals",
+      "vi": "Vị táo thanh tao cùng soda lạnh tôn vinh 22 loại thảo mộc hái tay vùng Islay"
+    },
+    "summary": {
+      "en": "Crisp Gin Collins with apple juice, club soda, and the botanical complexity of The Botanist.",
+      "vi": "Gin Collins tươi mát với táo, soda và hương thảo mộc của The Botanist."
+    },
+    "glassware": {
+      "en": "Highball",
+      "vi": "Highball"
+    },
+    "method": {
+      "en": "Build",
+      "vi": "Build"
+    },
+    "garnish": {
+      "en": "Apple fan slice & fresh mint sprig",
+      "vi": "Lát táo tươi tỉa quạt & Nhánh bạc hà"
+    },
+    "ingredients": [
+      {
+        "amount": "45ml",
+        "item": {
+          "en": "The Botanist Islay Dry Gin",
+          "vi": "The Botanist Gin"
+        }
+      },
+      {
+        "amount": "60ml",
+        "item": {
+          "en": "Apple juice",
+          "vi": "Nước ép táo"
+        }
+      },
+      {
+        "amount": "30ml",
+        "item": {
+          "en": "Soda water",
+          "vi": "Soda water"
+        }
+      }
+    ],
+    "steps": {
+      "vi": [
+        "Cho đầy đá vào ly Highball.",
+        "Rót The Botanist Gin và nước ép táo vào ly.",
+        "Rót Soda water lên trên.",
+        "Khuấy nhẹ."
+      ],
+      "en": [
+        "Fill a Highball glass with ice.",
+        "Pour The Botanist Gin and apple juice into the glass.",
+        "Top with Soda water.",
+        "Stir gently."
+      ]
+    },
+    "specs": [
+      {
+        "label": {
+          "en": "Glassware",
+          "vi": "Ly phục vụ"
+        },
+        "value": {
+          "en": "Highball",
+          "vi": "Highball"
+        }
+      },
+      {
+        "label": {
+          "en": "Method",
+          "vi": "Phương pháp"
+        },
+        "value": {
+          "en": "Build",
+          "vi": "Build"
+        }
+      },
+      {
+        "label": {
+          "en": "Garnish",
+          "vi": "Trang trí"
+        },
+        "value": {
+          "en": "Apple fan & fresh mint",
+          "vi": "Lát táo tươi tỉa quạt & Nhánh bạc hà"
+        }
+      },
+      {
+        "label": {
+          "en": "Primary Spirit",
+          "vi": "Rượu nền"
+        },
+        "value": {
+          "en": "The Botanist Islay Dry Gin",
+          "vi": "The Botanist Gin"
+        }
+      }
+    ],
+    "relatedSlugs": [
+      "the-botanist-islay-dry-gin",
+      "history-of-gin"
+    ],
+    "lastUpdated": "2026-11-09"
+  },
+  {
+    "slug": "bees-knees",
+    "status": "approved",
+    "group": "recipes",
+    "brandIds": [
+      "the-botanist"
+    ],
+    "categoryLabel": {
+      "en": "Cocktail Recipe · Classic Gin Sour",
+      "vi": "Công thức Cocktail · Classic Gin Sour"
+    },
+    "title": {
+      "en": "Bee’s Knees",
+      "vi": "Bee’s Knees"
+    },
+    "subtitle": {
+      "en": "Prohibition-era sour harmonizing honey syrup, fresh lemon, and Islay botanicals",
+      "vi": "Dòng sour kinh điển thời Cấm vận cân bằng giữa si-rô mật ong, chanh vàng và thảo mộc"
+    },
+    "summary": {
+      "en": "Classic gin cocktail balancing honey, fresh lemon, and botanicals.",
+      "vi": "Cocktail Gin cổ điển cân bằng giữa mật ong, chanh vàng và thảo mộc."
+    },
+    "glassware": {
+      "en": "Chilled Nick & Nora",
+      "vi": "Nick & Nora lạnh"
+    },
+    "method": {
+      "en": "Shake · Double strain",
+      "vi": "Shake · Double strain"
+    },
+    "garnish": {
+      "en": "Lemon twist",
+      "vi": "Vỏ chanh vàng xoắn"
+    },
+    "ingredients": [
+      {
+        "amount": "50ml",
+        "item": {
+          "en": "The Botanist Islay Dry Gin",
+          "vi": "The Botanist Gin"
+        }
+      },
+      {
+        "amount": "20ml",
+        "item": {
+          "en": "Honey water (1:1 honey and warm water)",
+          "vi": "Nước mật ong, pha mật ong với nước ấm theo tỷ lệ 1:1"
+        }
+      },
+      {
+        "amount": "15ml",
+        "item": {
+          "en": "Fresh lemon juice",
+          "vi": "Nước cốt chanh vàng"
+        }
+      }
+    ],
+    "steps": {
+      "vi": [
+        "Cho gin, nước mật ong và nước cốt chanh vàng vào bình shaker cùng đá viên.",
+        "Lắc mạnh trong 12 giây để các nguyên liệu hòa quyện.",
+        "Lọc mịn vào ly Nick & Nora lạnh."
+      ],
+      "en": [
+        "Add gin, honey water, and fresh lemon juice into a shaker with ice cubes.",
+        "Shake vigorously for 12 seconds to thoroughly integrate.",
+        "Double strain into a chilled Nick & Nora glass."
+      ]
+    },
+    "specs": [
+      {
+        "label": {
+          "en": "Glassware",
+          "vi": "Ly phục vụ"
+        },
+        "value": {
+          "en": "Chilled Nick & Nora",
+          "vi": "Nick & Nora lạnh"
+        }
+      },
+      {
+        "label": {
+          "en": "Method",
+          "vi": "Phương pháp"
+        },
+        "value": {
+          "en": "Shake · Double strain",
+          "vi": "Shake · Double strain"
+        }
+      },
+      {
+        "label": {
+          "en": "Garnish",
+          "vi": "Trang trí"
+        },
+        "value": {
+          "en": "Lemon twist",
+          "vi": "Vỏ chanh vàng xoắn"
+        }
+      },
+      {
+        "label": {
+          "en": "Primary Spirit",
+          "vi": "Rượu nền"
+        },
+        "value": {
+          "en": "The Botanist Islay Dry Gin",
+          "vi": "The Botanist Gin"
+        }
+      }
+    ],
+    "relatedSlugs": [
+      "the-botanist-islay-dry-gin",
+      "history-of-gin"
+    ],
+    "lastUpdated": "2026-11-09"
+  },
+  {
+    "slug": "cointreau-fizz",
+    "status": "approved",
+    "group": "recipes",
+    "brandIds": [
+      "cointreau"
+    ],
+    "categoryLabel": {
+      "en": "Cocktail Recipe · Refreshing Long Drink",
+      "vi": "Công thức Cocktail · Long Drink Thanh Mát"
+    },
+    "title": {
+      "en": "Cointreau Fizz",
+      "vi": "Cointreau Fizz"
+    },
+    "subtitle": {
+      "en": "Vibrant orange peel essential oils balanced with fresh lime juice and sparkling soda",
+      "vi": "Hương tinh dầu vỏ cam tự nhiên hòa cùng nước cốt chanh và bọt sủi soda mát lạnh"
+    },
+    "summary": {
+      "en": "Effervescent long drink combining Cointreau, fresh citrus, and chilled soda.",
+      "vi": "Long drink nhẹ nhàng kết hợp Cointreau, citrus tươi và soda lạnh."
+    },
+    "glassware": {
+      "en": "Highball",
+      "vi": "Highball"
+    },
+    "method": {
+      "en": "Build",
+      "vi": "Build"
+    },
+    "garnish": {
+      "en": "Orange slice",
+      "vi": "Lát cam"
+    },
+    "ingredients": [
+      {
+        "amount": "45ml",
+        "item": {
+          "en": "Cointreau L'Unique",
+          "vi": "Cointreau"
+        }
+      },
+      {
+        "amount": "20ml",
+        "item": {
+          "en": "Fresh lime juice",
+          "vi": "Nước cốt chanh"
+        }
+      },
+      {
+        "amount": "Top up",
+        "item": {
+          "en": "Chilled Soda water",
+          "vi": "Rót đầy bằng Soda water lạnh"
+        }
+      }
+    ],
+    "steps": {
+      "vi": [
+        "Cho đầy đá vào ly Highball.",
+        "Rót Cointreau và nước cốt chanh vào ly.",
+        "Rót đầy bằng Soda water lạnh.",
+        "Khuấy nhẹ."
+      ],
+      "en": [
+        "Fill a Highball glass with ice.",
+        "Pour Cointreau and fresh lime juice into the glass.",
+        "Top with chilled Soda water.",
+        "Stir gently."
+      ]
+    },
+    "specs": [
+      {
+        "label": {
+          "en": "Glassware",
+          "vi": "Ly phục vụ"
+        },
+        "value": {
+          "en": "Highball",
+          "vi": "Highball"
+        }
+      },
+      {
+        "label": {
+          "en": "Method",
+          "vi": "Phương pháp"
+        },
+        "value": {
+          "en": "Build",
+          "vi": "Build"
+        }
+      },
+      {
+        "label": {
+          "en": "Garnish",
+          "vi": "Trang trí"
+        },
+        "value": {
+          "en": "Orange slice",
+          "vi": "Lát cam"
+        }
+      },
+      {
+        "label": {
+          "en": "Primary Spirit",
+          "vi": "Rượu nền"
+        },
+        "value": {
+          "en": "Cointreau",
+          "vi": "Cointreau"
+        }
+      }
+    ],
+    "relatedSlugs": [
+      "cointreau-lunique",
+      "history-of-orange-liqueur"
+    ],
+    "lastUpdated": "2026-11-09"
+  },
+  {
+    "slug": "margarita",
+    "status": "approved",
+    "group": "recipes",
+    "brandIds": [
+      "cointreau"
+    ],
+    "categoryLabel": {
+      "en": "Cocktail Recipe · The Original Margarita",
+      "vi": "Công thức Cocktail · The Original Margarita"
+    },
+    "title": {
+      "en": "Margarita",
+      "vi": "Margarita"
+    },
+    "subtitle": {
+      "en": "The iconic 1948 Acapulco recipe balancing Blanco Tequila, Cointreau, fresh lime, and salt",
+      "vi": "Công thức Acapulco 1948 biểu tượng cân bằng hoàn hảo giữa Tequila, Cointreau, chanh và muối"
+    },
+    "summary": {
+      "en": "Classic Margarita balancing Tequila, Cointreau, fresh lime, and salt.",
+      "vi": "Margarita cổ điển cân bằng giữa Tequila, Cointreau, chanh tươi và muối."
+    },
+    "glassware": null,
+    "method": {
+      "en": "Shake · Strain",
+      "vi": "Shake · Strain"
+    },
+    "garnish": {
+      "en": "Fresh lime wheel & half-salted rim",
+      "vi": "Lát chanh tươi & Viền muối nửa miệng ly"
+    },
+    "ingredients": [
+      {
+        "amount": "45ml",
+        "item": {
+          "en": "Blanco Tequila",
+          "vi": "Blanco Tequila"
+        }
+      },
+      {
+        "amount": "20ml",
+        "item": {
+          "en": "Cointreau L'Unique",
+          "vi": "Cointreau"
+        }
+      },
+      {
+        "amount": "15ml",
+        "item": {
+          "en": "Fresh lime juice",
+          "vi": "Nước cốt chanh"
+        }
+      }
+    ],
+    "steps": {
+      "vi": [
+        "Quẹt chanh và viền muối một nửa miệng ly.",
+        "Cho Blanco Tequila, Cointreau và nước cốt chanh vào shaker cùng đá.",
+        "Lắc mạnh trong 10 giây.",
+        "Lọc vào ly đã chuẩn bị."
+      ],
+      "en": [
+        "Moisten rim with lime and salt half the rim of the glass.",
+        "Add Blanco Tequila, Cointreau, and fresh lime juice into a shaker with ice.",
+        "Shake vigorously for 10 seconds.",
+        "Strain into the prepared glass."
+      ]
+    },
+    "specs": [
+      {
+        "label": {
+          "en": "Method",
+          "vi": "Phương pháp"
+        },
+        "value": {
+          "en": "Shake · Strain",
+          "vi": "Shake · Strain"
+        }
+      },
+      {
+        "label": {
+          "en": "Garnish",
+          "vi": "Trang trí"
+        },
+        "value": {
+          "en": "Fresh lime wheel & half-salted rim",
+          "vi": "Lát chanh tươi & Viền muối nửa miệng ly"
+        }
+      },
+      {
+        "label": {
+          "en": "Core Spirits",
+          "vi": "Dòng rượu chính"
+        },
+        "value": {
+          "en": "Blanco Tequila & Cointreau",
+          "vi": "Blanco Tequila & Cointreau"
+        }
+      }
+    ],
+    "relatedSlugs": [
+      "cointreau-lunique",
+      "cointreau-noir",
+      "history-of-orange-liqueur"
+    ],
+    "lastUpdated": "2026-11-09"
+  },
+  {
+    "slug": "cointreau-shot",
+    "status": "approved",
+    "group": "recipes",
+    "brandIds": [
+      "cointreau"
+    ],
+    "categoryLabel": {
+      "en": "Cocktail Recipe · Chilled Ritual Serve",
+      "vi": "Công thức Cocktail · Nghi Thức Thưởng Thức Lạnh"
+    },
+    "title": {
+      "en": "Cointreau Shot",
+      "vi": "Cointreau Shot"
+    },
+    "subtitle": {
+      "en": "Sub-zero chilled Cointreau served with coarse sea salt and a fresh lime wedge",
+      "vi": "Cointreau ướp lạnh sâu dùng kèm muối hạt và một múi chanh tươi kích vị"
+    },
+    "summary": {
+      "en": "Deep chilled Cointreau served in a shot glass with coarse salt and a fresh lime wedge.",
+      "vi": "Cointreau ướp lạnh phục vụ trong ly shot cùng muối và một múi chanh."
+    },
+    "glassware": {
+      "en": "Shot glass",
+      "vi": "Ly shot"
+    },
+    "method": {
+      "en": "Pour",
+      "vi": "Pour"
+    },
+    "garnish": {
+      "en": "Fresh lime wedge & salt rim",
+      "vi": "Một múi chanh & Viền muối"
+    },
+    "ingredients": [
+      {
+        "amount": "Chilled",
+        "item": {
+          "en": "Cointreau (deep chilled)",
+          "vi": "Cointreau, ướp thật lạnh"
+        }
+      },
+      {
+        "amount": "To taste",
+        "item": {
+          "en": "Coarse sea salt",
+          "vi": "Muối hạt"
+        }
+      },
+      {
+        "amount": "1 wedge",
+        "item": {
+          "en": "Fresh lime wedge",
+          "vi": "Một múi chanh"
+        }
+      }
+    ],
+    "steps": {
+      "vi": [
+        "Chấm muối quanh miệng ly shot.",
+        "Rót Cointreau đã được ướp lạnh sâu trực tiếp vào ly.",
+        "Đặt múi chanh lên miệng ly.",
+        "Dùng cùng chanh và muối."
+      ],
+      "en": [
+        "Dip the rim of the shot glass in salt.",
+        "Pour deeply chilled Cointreau directly into the shot glass.",
+        "Place a lime wedge on the rim of the glass.",
+        "Serve alongside the lime and salt."
+      ]
+    },
+    "specs": [
+      {
+        "label": {
+          "en": "Glassware",
+          "vi": "Ly phục vụ"
+        },
+        "value": {
+          "en": "Shot glass",
+          "vi": "Ly shot"
+        }
+      },
+      {
+        "label": {
+          "en": "Method",
+          "vi": "Phương pháp"
+        },
+        "value": {
+          "en": "Pour",
+          "vi": "Pour"
+        }
+      },
+      {
+        "label": {
+          "en": "Garnish",
+          "vi": "Trang trí"
+        },
+        "value": {
+          "en": "Lime wedge & salt rim",
+          "vi": "Một múi chanh & Viền muối"
+        }
+      },
+      {
+        "label": {
+          "en": "Primary Spirit",
+          "vi": "Rượu nền"
+        },
+        "value": {
+          "en": "Cointreau L'Unique",
+          "vi": "Cointreau"
+        }
+      }
+    ],
+    "relatedSlugs": [
+      "cointreau-lunique",
+      "history-of-orange-liqueur"
+    ],
+    "lastUpdated": "2026-11-09"
+  },
+  {
+    "slug": "telmont-french-75",
+    "status": "approved",
+    "group": "recipes",
+    "brandIds": [
+      "the-botanist",
+      "telmont"
+    ],
+    "categoryLabel": {
+      "en": "Cocktail Recipe · Gin & Champagne",
+      "vi": "Công thức Cocktail · Gin & Champagne"
+    },
+    "title": {
+      "en": "Telmont French 75",
+      "vi": "Telmont French 75"
+    },
+    "subtitle": {
+      "en": "Sophisticated pairing of 22 Islay botanicals and certified organic Champagne Telmont",
+      "vi": "Sự kết hợp tinh tế giữa 22 loại thảo mộc đảo Islay và Champagne Telmont hữu cơ"
+    },
+    "summary": {
+      "en": "Elevated French 75 pairing The Botanist Gin with Champagne Telmont.",
+      "vi": "Phiên bản French 75 kết hợp The Botanist Gin với Champagne Telmont."
+    },
+    "glassware": {
+      "en": "Chilled Tulip or Coupe",
+      "vi": "Tulip hoặc Coupe lạnh"
+    },
+    "method": {
+      "en": "Shake · Double strain · Top with Champagne",
+      "vi": "Shake · Double strain · Top with Champagne"
+    },
+    "garnish": {
+      "en": "Lemon twist",
+      "vi": "Vỏ chanh vàng xoắn"
+    },
+    "ingredients": [
+      {
+        "amount": "35ml",
+        "item": {
+          "en": "The Botanist Islay Dry Gin",
+          "vi": "The Botanist Gin"
+        }
+      },
+      {
+        "amount": "15ml",
+        "item": {
+          "en": "Fresh lemon juice",
+          "vi": "Nước cốt chanh vàng"
+        }
+      },
+      {
+        "amount": "10ml",
+        "item": {
+          "en": "Simple syrup",
+          "vi": "Nước đường"
+        }
+      },
+      {
+        "amount": "60ml",
+        "item": {
+          "en": "Champagne Telmont Réserve Brut",
+          "vi": "Champagne Telmont"
+        }
+      }
+    ],
+    "steps": {
+      "vi": [
+        "Cho The Botanist Gin, nước cốt chanh vàng và nước đường vào shaker cùng đá.",
+        "Lắc mạnh trong 10 giây.",
+        "Lọc mịn vào ly Tulip hoặc Coupe lạnh.",
+        "Rót Champagne Telmont lên trên.",
+        "Khuấy nhẹ."
+      ],
+      "en": [
+        "Add The Botanist Gin, fresh lemon juice, and simple syrup into a shaker with ice.",
+        "Shake vigorously for 10 seconds.",
+        "Double strain into a chilled Tulip or Coupe glass.",
+        "Top with Champagne Telmont.",
+        "Stir gently."
+      ]
+    },
+    "specs": [
+      {
+        "label": {
+          "en": "Glassware",
+          "vi": "Ly phục vụ"
+        },
+        "value": {
+          "en": "Chilled Tulip or Coupe",
+          "vi": "Tulip hoặc Coupe lạnh"
+        }
+      },
+      {
+        "label": {
+          "en": "Method",
+          "vi": "Phương pháp"
+        },
+        "value": {
+          "en": "Shake · Double strain · Top with Champagne",
+          "vi": "Shake · Double strain · Top with Champagne"
+        }
+      },
+      {
+        "label": {
+          "en": "Garnish",
+          "vi": "Trang trí"
+        },
+        "value": {
+          "en": "Lemon twist",
+          "vi": "Vỏ chanh vàng xoắn"
+        }
+      },
+      {
+        "label": {
+          "en": "Primary Spirits",
+          "vi": "Dòng rượu chính"
+        },
+        "value": {
+          "en": "The Botanist Gin & Champagne Telmont",
+          "vi": "The Botanist Gin & Champagne Telmont"
+        }
+      }
+    ],
+    "relatedSlugs": [
+      "the-botanist-islay-dry-gin",
+      "telmont-reserve-brut",
+      "history-of-gin",
+      "history-of-champagne"
+    ],
+    "lastUpdated": "2026-11-09"
+  },
+  {
+    "slug": "classic-remy-champagne-cocktail",
+    "status": "approved",
+    "group": "recipes",
+    "brandIds": [
+      "remy-martin",
+      "telmont"
+    ],
+    "categoryLabel": {
+      "en": "Cocktail Recipe · Heritage Champagne Cocktail",
+      "vi": "Công thức Cocktail · Heritage Champagne Cocktail"
+    },
+    "title": {
+      "en": "Classic Rémy Champagne Cocktail",
+      "vi": "Classic Rémy Champagne Cocktail"
+    },
+    "subtitle": {
+      "en": "Timeless celebration cocktail matching Fine Champagne Cognac, bitters, and Champagne Telmont",
+      "vi": "Cocktail lễ hội kinh điển kết hợp Fine Champagne Cognac, rượu đắng bitters và Champagne Telmont"
+    },
+    "summary": {
+      "en": "Champagne Cocktail combining Rémy Martin VSOP, Champagne Telmont, cane sugar, and bitters.",
+      "vi": "Champagne Cocktail kết hợp Rémy Martin VSOP, Champagne Telmont, đường mía và bitters."
+    },
+    "glassware": {
+      "en": "Tulip",
+      "vi": "Tulip"
+    },
+    "method": {
+      "en": "Build",
+      "vi": "Build"
+    },
+    "garnish": {
+      "en": "Orange twist",
+      "vi": "Vỏ cam xoắn"
+    },
+    "ingredients": [
+      {
+        "amount": "25ml",
+        "item": {
+          "en": "Rémy Martin VSOP Cognac",
+          "vi": "Rémy Martin VSOP"
+        }
+      },
+      {
+        "amount": "1 cube",
+        "item": {
+          "en": "Cane sugar cube",
+          "vi": "Một viên đường mía"
+        }
+      },
+      {
+        "amount": "2–3 dashes",
+        "item": {
+          "en": "Angostura Bitters",
+          "vi": "2–3 giọt Angostura Bitters"
+        }
+      },
+      {
+        "amount": "90ml",
+        "item": {
+          "en": "Champagne Telmont Réserve Brut",
+          "vi": "Champagne Telmont"
+        }
+      }
+    ],
+    "steps": {
+      "vi": [
+        "Nhỏ Angostura Bitters để tẩm đẫm viên đường.",
+        "Thả viên đường vào đáy ly Tulip.",
+        "Rót Rémy Martin VSOP trực tiếp lên viên đường.",
+        "Nghiêng ly và rót từ từ Champagne Telmont lạnh vào."
+      ],
+      "en": [
+        "Saturate the sugar cube with dashes of Angostura Bitters.",
+        "Drop the soaked sugar cube into the base of the Tulip glass.",
+        "Pour Rémy Martin VSOP directly over the sugar cube.",
+        "Tilt the glass and slowly top with chilled Champagne Telmont."
+      ]
+    },
+    "specs": [
+      {
+        "label": {
+          "en": "Glassware",
+          "vi": "Ly phục vụ"
+        },
+        "value": {
+          "en": "Tulip",
+          "vi": "Tulip"
+        }
+      },
+      {
+        "label": {
+          "en": "Method",
+          "vi": "Phương pháp"
+        },
+        "value": {
+          "en": "Build",
+          "vi": "Build"
+        }
+      },
+      {
+        "label": {
+          "en": "Garnish",
+          "vi": "Trang trí"
+        },
+        "value": {
+          "en": "Orange twist",
+          "vi": "Vỏ cam xoắn"
+        }
+      },
+      {
+        "label": {
+          "en": "Primary Spirits",
+          "vi": "Dòng rượu chính"
+        },
+        "value": {
+          "en": "Rémy Martin VSOP & Champagne Telmont",
+          "vi": "Rémy Martin VSOP & Champagne Telmont"
+        }
+      }
+    ],
+    "relatedSlugs": [
+      "remy-martin-vsop",
+      "telmont-reserve-brut",
+      "history-of-cognac",
+      "history-of-champagne"
+    ],
+    "lastUpdated": "2026-11-09"
+  }
 ];
