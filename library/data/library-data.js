@@ -59,6 +59,7 @@ export const LIBRARY_META = {
     { id: 'champagne', label: { en: 'Champagne & Sparkling', vi: 'Champagne & Vang sủi' } },
     { id: 'rum', label: { en: 'Rum & Sugarcane', vi: 'Rum & Mía đường' } },
     { id: 'whisky', label: { en: 'Islay Single Malt', vi: 'Islay Single Malt' } },
+    { id: 'agave', label: { en: 'Agave, Tequila & Mezcal', vi: 'Agave, Tequila & Mezcal' } },
   ],
 
   brandFilterHeading: {
@@ -1040,6 +1041,210 @@ export const LIBRARY_ENTRIES = [
     sourceNote: { en: 'Scotch Whisky Regulations 2009 & Bruichladdich Distillery Academy BDC Bible', vi: 'Quy chuẩn Scotch Whisky 2009 & Cẩm nang đào tạo Bruichladdich Distillery Academy' },
     lastUpdated: '2026-11-03',
   },
+  {
+    slug: 'history-of-agave',
+    status: 'approved',
+    group: 'origins',
+    topicId: 'agave',
+    image: 'media/origins/07-agave-spirits.png',
+    coverImage: 'media/origins/07-agave-spirits.png',
+    coverImageWebp: 'media/origins/07-agave-spirits.webp',
+    detailHeroImage: 'media/origins/agave-highlands-hero.png',
+    detailHeroImageWebp: 'media/origins/agave-highlands-hero.webp',
+    detailHeroImageAlt: {
+      vi: 'Cánh đồng agave vùng cao nguyên Mexico trải dài dưới nắng, minh họa Mid-century',
+      en: 'Mid-century blue agave highlands under golden sunlight',
+    },
+    originImage: 'media/origins/agave-harvest-jimador.png',
+    originImageWebp: 'media/origins/agave-harvest-jimador.webp',
+    originImageAlt: {
+      vi: 'Người jimador thu hoạch lõi piña từ cây agave bằng dao coa truyền thống',
+      en: 'Jimador harvesting a mature agave piña with a traditional coa',
+    },
+    productionImage: 'media/origins/agave-roasting-masonry-oven.png',
+    productionImageWebp: 'media/origins/agave-roasting-masonry-oven.webp',
+    productionImageAlt: {
+      vi: 'Những lõi agave piña bổ đôi xếp trong lò gạch mampostería truyền thống',
+      en: 'Split agave piñas roasting inside a traditional masonry oven',
+    },
+    imageAlt: {
+      vi: 'Cây agave xanh trên cánh đồng Mexico dưới nắng vàng, minh họa Mid-century editorial',
+      en: 'Blue agave plant beneath an ochre sun in Mexico, Mid-century editorial illustration',
+    },
+    brandId: null,
+    brandIds: [],
+    categoryLabel: { en: 'Category History · Agave Spirits', vi: 'Kiến thức nền tảng · Agave Spirits' },
+    title: {
+      en: 'What is Agave? Foundations of Tequila and Mezcal for New Bartenders',
+      vi: 'Agave là gì? Kiến thức nền tảng về Tequila và Mezcal cho bartender mới',
+    },
+    subtitle: {
+      en: 'From Mexican blue agave fields to Tequila and Mezcal: plant origins, protected DO rules, and bar craft foundations.',
+      vi: 'Từ cánh đồng agave Mexico đến Tequila và Mezcal: nhận diện nguyên liệu thực vật, vùng bảo hộ DO và kỹ nghệ chế tác.',
+    },
+    summary: {
+      en: 'Master the difference between agave, Tequila, and Mezcal: plant botany, harvest piñas, production methods, and speed tasting notes.',
+      vi: 'Nắm vững phân loại thực vật họ Agave, nhận diện lõi piña, quy chuẩn vùng bảo hộ Tequila & Mezcal và kỹ năng đọc nhãn tại quầy bar.',
+    },
+    readMinutes: 4,
+    keyTakeaways: {
+      en: [
+        'Agave is a botanical genus in the Asparagaceae family, not a cactus; the sugar-dense core (piña) revealed after trimming leaves is the raw material for spirits.',
+        'Tequila and Mezcal are legally distinct Mexican Appellations of Origin (DO): Tequila exclusively uses Blue Weber agave within delimited territories, while Mezcal is 100% agave crafted from approved native species.',
+        'Mezcal is not defined purely by smoky flavor: earthen pit roasting is only one production method, and final profiles depend on agave species, terroir, and ancestral/artesanal craft.',
+      ],
+      vi: [
+        'Agave là một chi thực vật thuộc họ Asparagaceae, hoàn toàn không phải xương rồng; phần lõi piña giàu đường sau khi tỉa sạch lá là nguyên liệu duy nhất đưa vào chế biến rượu.',
+        'Tequila và Mezcal là hai danh xưng xuất xứ địa lý (DO) tách biệt của Mexico: Tequila chỉ dùng loài Blue Weber agave trong vùng bảo hộ quy định; Mezcal chưng cất từ 100% agave từ nhiều loài bản địa được phép.',
+        'Mezcal không mặc định luôn có vị khói: phương pháp nấu piña trong hố đá ngầm chỉ là một yếu tố quy trình; phong cách từng chai phụ thuộc vào giống cây, thổ nhưỡng và tay nghề nghệ nhân (Ancestral / Artesanal).',
+      ],
+    },
+    specs: [
+      { label: { en: 'Botanical Family', vi: 'Họ thực vật học' }, value: { en: 'Asparagaceae (genus Agave, not a cactus)', vi: 'Họ Măng tây (Asparagaceae, chi Agave - không phải xương rồng)' } },
+      { label: { en: 'Tequila Raw Material', vi: 'Nguyên liệu Tequila' }, value: { en: 'Exclusively Blue Weber agave (Agave tequilana Weber)', vi: 'Độc quyền loài Blue Weber agave (Agave tequilana Weber)' } },
+      { label: { en: 'Mezcal Raw Material', vi: 'Nguyên liệu Mezcal' }, value: { en: '100% agave, multiple permitted native species (Espadín, Tobalá, Arroqueño...)', vi: '100% agave, nhiều loài được cấp phép (Espadín, Tobalá, Arroqueño...)' } },
+      { label: { en: 'Official Standards', vi: 'Tiêu chuẩn kiểm định' }, value: { en: 'NOM-006-SCFI-2012 (Tequila) · NOM-070-SCFI-2016 (Mezcal)', vi: 'NOM-006-SCFI-2012 (Tequila) · NOM-070-SCFI-2016 (Mezcal)' } },
+      { label: { en: 'Key Label Classes', vi: 'Phân loại trên nhãn' }, value: { en: 'Tequila: 100% Agave vs Mixto (51%+) | Mezcal: Ancestral, Artesanal, Mezcal', vi: 'Tequila: 100% Agave vs Mixto (tối thiểu 51%) | Mezcal: Ancestral, Artesanal, Mezcal' } },
+      { label: { en: 'Oak Aging Tiers', vi: 'Phân lớp tuổi ủ gỗ' }, value: { en: 'Blanco (<2 mos), Reposado (2+ mos), Añejo (1+ yr), Extra Añejo (3+ yrs)', vi: 'Blanco (<2 tháng), Reposado (từ 2 tháng), Añejo (từ 1 năm), Extra Añejo (từ 3 năm)' } },
+    ],
+    originStory: {
+      en: [
+        'Agave has anchored Mexican landscape, agriculture, and ritual culture long before modern spirits bottles reached global bar backbars. In highland and lowland fields, skilled harvesters known as jimadores use the razor-sharp circular coa blade to shear away rigid, thorny leaves, exposing the compact, fibrous core called the piña.',
+        'Today, Tequila and Mezcal are fiercely guarded under Mexican Denominations of Origin (DO). Tequila production is restricted to Jalisco and designated municipalities in Guanajuato, Michoacán, Nayarit, and Tamaulipas. Mezcal carries its own protected territory spanning Oaxaca, Puebla, Durango, and neighboring states. Distilling agave spirits outside these legal zones forfeits the right to carry either historic name on the label.',
+      ],
+      vi: [
+        'Cây agave là linh hồn gắn liền với cảnh quan, nông nghiệp và văn hóa Mexico từ nhiều thế kỷ trước khi các chai rượu hiện đại xuất hiện trên quầy bar thế giới. Trên những cánh đồng đất đỏ, người thợ thu hoạch lành nghề (jimador) dùng lưỡi dao tròn sắc bén (coa) gọt bỏ lớp lá gai nhọn dày đặc, làm lộ ra phần lõi sợi căng tròn gọi là piña (hình quả dứa).',
+        'Ngày nay, danh xưng Tequila và Mezcal được pháp luật Mexico bảo hộ nghiêm ngặt qua quy chuẩn Chỉ dẫn Xuất xứ Địa lý (DO). Tequila bắt buộc sản xuất trong vùng quy hoạch gồm toàn bộ bang Jalisco cùng các vùng chỉ định tại Guanajuato, Michoacán, Nayarit và Tamaulipas. Mezcal sở hữu vùng bảo hộ riêng với trung tâm lịch sử tại Oaxaca. Bất kỳ loại rượu agave nào sản xuất ngoài ranh giới quy chuẩn đều không được phép ghi tên Tequila hay Mezcal trên nhãn chai.',
+      ],
+    },
+    production: {
+      en: [
+        'The foundational agave craft follows six core stages: harvest -> cooking the piña -> crushing and sugar extraction -> fermentation -> distillation -> oak aging or bottling. The cooking method defines the aromatic direction: Tequila predominantly cooks piñas in brick masonry ovens (hornos) or stainless autoclaves to convert inulin into fermentable sugars, whereas artisanal and ancestral Mezcal slow-roasts piñas underground over volcanic rock and wood fire, imparting evocative earthy nuances.',
+        'Fermentation uses natural wild or cultured yeasts, followed by distillation in copper pot stills, stainless columns, or traditional clay pots (ollas de barro). On Tequila labels, aging tiers signal maturation craft rather than absolute quality: Blanco remains unaged or rests under two months; Reposado rests in oak for at least two months; Añejo matures in oak barrels up to 600 liters for at least one year; and Extra Añejo ages for at least three years.',
+      ],
+      vi: [
+        'Hành trình từ cánh đồng đến ly rượu trải qua 6 công đoạn cốt lõi: thu hoạch piña -> nấu chín chuyển hóa đường inulin -> nghiền ép lấy dịch mật -> lên men -> chưng cất -> ủ thùng gỗ hoặc đóng chai. Phương pháp nấu quyết định trực tiếp phong cách hương vị: Tequila thường nấu piña trong lò gạch truyền thống (hornos) hoặc nồi áp suất (autoclave) để giữ trọn vị thanh tươi; trong khi Mezcal thủ công nướng chín piña trong hố đất ngầm phủ đá núi lửa và củi, tạo nên nốt hương đất và khói đặc trưng.',
+        'Quá trình chưng cất diễn ra trong nồi đồng (alembic), tháp chưng cất hoặc nồi đất nung (ollas de barro đối với Mezcal Ancestral). Khi đọc nhãn Tequila, các phân lớp tuổi thể hiện thời gian tiếp xúc gỗ sồi: Blanco không qua ủ hoặc dưới 2 tháng; Reposado ủ gỗ tối thiểu 2 tháng; Añejo ủ trong thùng sồi dưới 600 lít tối thiểu 1 năm; và Extra Añejo ủ từ 3 năm trở lên.',
+      ],
+    },
+    tasting: {
+      nose: {
+        en: 'Fresh green agave, white pepper, lime zest, crushed limestone, subtle earthen smoke or vanilla depending on process',
+        vi: 'Hương agave tươi thảo mộc, tiêu trắng, vỏ chanh xanh, khoáng chất đá vôi; phảng phất hương khói đất hoặc caramel vani tùy phương pháp nấu và ủ gỗ',
+      },
+      palate: {
+        en: 'Naturally sweet cooked agave nectar, vibrant citrus acidity, warming peppery prickle, and crisp mineral texture',
+        vi: 'Vị ngọt thanh tự nhiên của dịch agave chín, độ chua giòn của cam chanh, vị cay ấm của tiêu và cấu trúc khoáng chất khô ráo',
+      },
+      finish: {
+        en: 'Clean, long, and botanical; lingering notes of peppery zest, earthy minerality, or gentle oak-derived spice',
+        vi: 'Kéo dài, sạch sẽ và giàu tinh dầu thảo mộc; đọng lại hậu vị tiêu cay ấm, khoáng chất đất đá hoặc gia vị gỗ êm dịu',
+      },
+    },
+    serving: {
+      en: [
+        'Neat tasting in a flute or specialized agave copita/veladora glass at room temperature to evaluate purity before mixing.',
+        'Behind the bar, deploy Tequila Blanco as the crisp citrus backbone of the classic Margarita; when introducing Mezcal, taste and adjust acid/sweetness ratios to balance its earthy depth.',
+      ],
+      vi: [
+        'Nếm nguyên chất (neat) trong ly tulip hoặc ly nếm chuyên dụng ở nhiệt độ phòng để cảm nhận trọn vẹn hương vị agave nguyên bản trước khi pha chế.',
+        'Tại quầy bar, dùng Tequila Blanco làm trụ cột vị chua thanh cho Margarita kinh điển; khi sử dụng Mezcal, cần nếm và cân chỉnh tỉ lệ chua/ngọt để làm nổi bật chiều sâu hương đất đá.',
+      ],
+    },
+    faq: [
+      {
+        q: { en: 'Is agave a type of cactus?', vi: 'Agave có phải là một loài xương rồng không?' },
+        a: {
+          en: 'No. Botanically, agave belongs to the Asparagaceae family (related to asparagus and succulents), not Cactaceae. While their drought-resistant form resembles cacti, they are entirely distinct plant families.',
+          vi: 'Không. Về mặt thực vật học, agave thuộc họ Măng tây (Asparagaceae), hoàn toàn không phải xương rồng (Cactaceae). Hình dáng gai nhọn có thể làm liên tưởng đến xương rồng nhưng bản chất sinh học hoàn toàn khác nhau.',
+        },
+      },
+      {
+        q: { en: 'Is all Tequila made from 100% agave?', vi: 'Có phải mọi chai Tequila đều được làm từ 100% agave?' },
+        a: {
+          en: 'No. "Tequila 100% Agave" derives all fermentable sugars exclusively from Blue Weber agave. Standard "Tequila" (Mixto) requires a minimum of 51% Blue Weber sugars, with the remainder from other approved sugar sources. This figure refers to sugar source proportion, not bottle ABV.',
+          vi: 'Không. Nhóm "Tequila 100% Agave" sử dụng toàn bộ đường lên men từ Blue Weber agave. Nhóm "Tequila" (thường gọi là Mixto) chỉ yêu cầu tối thiểu 51% đường từ Blue Weber, phần còn lại từ nguồn đường khác. Con số 51% là tỷ lệ nguồn đường lên men, không phải nồng độ cồn trong chai.',
+        },
+      },
+      {
+        q: { en: 'Is Mezcal simply a smoky Tequila?', vi: 'Mezcal có phải là Tequila vị khói không?' },
+        a: {
+          en: 'No. Tequila and Mezcal are separate DO denominations with different permitted agave species, territories, and historical techniques. While earthen pit roasting often imparts a distinctive smoke note to artisan Mezcal, flavor profiles vary widely based on agave varieties and terroir.',
+          vi: 'Không. Tequila và Mezcal là hai danh xưng địa lý tách biệt với quy định khác nhau về loài agave, vùng sản xuất và phương pháp. Dù phương pháp nấu piña trong hố đá ngầm tạo cảm nhận khói cho nhiều dòng Mezcal thủ công, không nên dùng vị khói để định nghĩa toàn bộ thế giới Mezcal.',
+        },
+      },
+    ],
+    relatedSlugs: ['margarita', 'history-of-orange-liqueur'],
+    glossary: [
+      {
+        term: {
+          en: 'Jimador',
+          vi: 'Jimador',
+        },
+        def: {
+          en: 'Skilled Mexican harvester who uses the traditional coa de jima tool to cut leaves and extract the agave piña.',
+          vi: 'Nghệ nhân thu hoạch agave lành nghề tại Mexico, sử dụng dao coa truyền thống để tỉa bỏ lá và lấy lõi piña.',
+        },
+      },
+      {
+        term: {
+          en: 'Piña',
+          vi: 'Piña (Lõi agave)',
+        },
+        def: {
+          en: 'The dense, spherical heart of the agave plant rich in inulin starches, visually resembling a pinecone or pineapple.',
+          vi: 'Phần lõi hình cầu căng tròn giàu đường inulin của cây agave sau khi tỉa lá; hình dáng gợi quả dứa nhưng không phải trái cây.',
+        },
+      },
+      {
+        term: {
+          en: 'Blue Weber',
+          vi: 'Blue Weber (Agave tequilana)',
+        },
+        def: {
+          en: 'The sole agave species legally permitted for Tequila production under Mexican standard NOM-006.',
+          vi: 'Loài agave duy nhất được phép sử dụng trong sản xuất Tequila theo tiêu chuẩn NOM-006 của Mexico.',
+        },
+      },
+      {
+        term: {
+          en: 'Denominación de Origen',
+          vi: 'Denominación de Origen (DO)',
+        },
+        def: {
+          en: 'Protected geographical appellation codified by Mexican law establishing strict territorial and production requirements.',
+          vi: 'Danh xưng Xuất xứ Địa lý được luật pháp Mexico bảo hộ, quy định nghiêm ngặt về ranh giới vùng và quy chuẩn chế tác.',
+        },
+      },
+      {
+        term: {
+          en: 'Mezcal Artesanal / Ancestral',
+          vi: 'Mezcal Artesanal / Ancestral',
+        },
+        def: {
+          en: 'Official process categories under NOM-070 regulating traditional pit roasting, stone milling, and copper or clay pot distillation.',
+          vi: 'Hai nhóm phân loại quy trình thủ công truyền thống theo chuẩn NOM-070, quy định phương pháp nấu hố ngầm, nghiền đá và nồi chưng cất đồng hoặc đất nung.',
+        },
+      },
+    ],
+    nextStep: {
+      title: {
+        en: 'Master the Original Margarita Spec & Balance',
+        vi: 'Luyện kỹ thuật cân bằng Cocktail Margarita nguyên bản',
+      },
+      slug: 'margarita',
+      actionLabel: {
+        en: 'Explore Margarita Recipe →',
+        vi: 'Xem công thức Margarita →',
+      },
+    },
+    sourceNote: {
+      en: 'Kew Science, Consejo Regulador del Tequila (NOM-006-SCFI-2012) & COMERCAM (NOM-070-SCFI-2016)',
+      vi: 'Kew Science, Hội đồng Quản lý Tequila CRT (NOM-006) & COMERCAM (NOM-070)',
+    },
+    lastUpdated: '2026-11-10',
+  },
+
   {
     slug: 'remy-martin',
     status: 'approved',

@@ -8,7 +8,7 @@ import {
   parseLibraryUrlState,
   buildLibraryUrlSearch,
   getRelatedEntries,
-} from './library-core.js?v=2.4.0';
+} from './library-core.js?v=2.5.0';
 
 export function mountLibraryApp(rootEl, options = {}) {
   if (!rootEl) throw new Error('mountLibraryApp requires a root DOM element');
@@ -466,8 +466,16 @@ export function mountLibraryApp(rootEl, options = {}) {
     const related = getRelatedEntries(publishedEntries, entry);
     const headings = meta.sectionHeadings || {};
 
-    const coverHtml = entry.coverImage
-      ? `<div class="lib-detail-cover-well"><img src="${escapeHtml(entry.coverImage)}" alt="${escapeHtml(titleText)}" class="lib-detail-cover-img"></div>`
+    const detailHeroSrc = entry.detailHeroImage || entry.coverImage;
+    const detailHeroWebp = entry.detailHeroImageWebp || (entry.detailHeroImage ? null : entry.coverImageWebp);
+    const detailHeroAlt = entry.detailHeroImageAlt ? loc(entry.detailHeroImageAlt) : titleText;
+    const coverHtml = detailHeroSrc
+      ? `<div class="lib-detail-cover-well">
+          <picture>
+            ${detailHeroWebp ? `<source srcset="${escapeHtml(detailHeroWebp)}" type="image/webp">` : ''}
+            <img src="${escapeHtml(detailHeroSrc)}" alt="${escapeHtml(detailHeroAlt)}" class="lib-detail-cover-img" width="1024" height="576" loading="eager">
+          </picture>
+        </div>`
       : (brand
           ? `<div class="lib-detail-logo-well"><img src="${escapeHtml(brand.logo)}" alt="${escapeHtml(brand.name)}"></div>`
           : `<div class="lib-detail-monogram" aria-hidden="true">${escapeHtml(state.lang === 'vi' ? 'LS' : 'OH')}</div>`);
@@ -532,9 +540,11 @@ export function mountLibraryApp(rootEl, options = {}) {
           ${specsRowsHtml ? `<a href="#section-specs" class="lib-toc-link">${escapeHtml(t(headings.specs))}</a>` : ''}
           ${originParagraphs.length ? `<a href="#section-origin" class="lib-toc-link">${escapeHtml(t(headings.originStory))}</a>` : ''}
           ${productionParagraphs.length ? `<a href="#section-production" class="lib-toc-link">${escapeHtml(t(headings.production))}</a>` : ''}
+          ${entry.tasting ? `<a href="#section-tasting" class="lib-toc-link">${escapeHtml(t(headings.tasting))}</a>` : ''}
           ${servingItems.length ? `<a href="#section-serving" class="lib-toc-link">${escapeHtml(t(headings.serving))}</a>` : ''}
           ${Array.isArray(entry.glossary) && entry.glossary.length ? `<a href="#section-glossary" class="lib-toc-link">${escapeHtml(t(headings.glossary))}</a>` : ''}
           ${Array.isArray(entry.faq) && entry.faq.length ? `<a href="#section-faq" class="lib-toc-link">FAQ</a>` : ''}
+          ${entry.nextStep ? `<a href="#section-next-step" class="lib-toc-link">${escapeHtml(t(headings.nextStep))}</a>` : ''}
         </div>
       </nav>
     `;
@@ -557,7 +567,7 @@ export function mountLibraryApp(rootEl, options = {}) {
 
     const nextStepHtml = entry.nextStep
       ? `
-        <section class="lib-next-step-box lib-span-6" data-ui="next-step">
+        <section class="lib-next-step-box lib-span-6" id="section-next-step" data-ui="next-step">
           <div class="lib-next-step-header">
             <span class="lib-next-step-badge">🚀 ${escapeHtml(t(headings.nextStep))}</span>
           </div>
@@ -615,6 +625,18 @@ export function mountLibraryApp(rootEl, options = {}) {
               ? `
                 <section class="lib-grid-card lib-span-3" id="section-origin">
                   <h2 class="lib-panel-heading">${escapeHtml(t(headings.originStory))}</h2>
+                  ${
+                    entry.originImage
+                      ? `
+                        <div class="lib-section-figure">
+                          <picture>
+                            ${entry.originImageWebp ? `<source srcset="${escapeHtml(entry.originImageWebp)}" type="image/webp">` : ''}
+                            <img src="${escapeHtml(entry.originImage)}" alt="${escapeHtml(loc(entry.originImageAlt || entry.imageAlt))}" class="lib-section-img" width="1024" height="576" loading="lazy">
+                          </picture>
+                        </div>
+                      `
+                      : ''
+                  }
                   <div class="lib-prose-stack">
                     ${originParagraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join('')}
                   </div>
@@ -627,6 +649,18 @@ export function mountLibraryApp(rootEl, options = {}) {
               ? `
                 <section class="lib-grid-card lib-span-3" id="section-production">
                   <h2 class="lib-panel-heading">${escapeHtml(t(headings.production))}</h2>
+                  ${
+                    entry.productionImage
+                      ? `
+                        <div class="lib-section-figure">
+                          <picture>
+                            ${entry.productionImageWebp ? `<source srcset="${escapeHtml(entry.productionImageWebp)}" type="image/webp">` : ''}
+                            <img src="${escapeHtml(entry.productionImage)}" alt="${escapeHtml(loc(entry.productionImageAlt || entry.imageAlt))}" class="lib-section-img" width="1024" height="576" loading="lazy">
+                          </picture>
+                        </div>
+                      `
+                      : ''
+                  }
                   <div class="lib-prose-stack">
                     ${productionParagraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join('')}
                   </div>
@@ -687,7 +721,7 @@ export function mountLibraryApp(rootEl, options = {}) {
 
     const tastingHtml = entry.tasting
       ? `
-        <section class="lib-grid-card lib-span-4">
+        <section class="lib-grid-card lib-span-4" id="section-tasting">
           <h2 class="lib-panel-heading">${escapeHtml(t(headings.tasting))}</h2>
           <table class="lib-spec-table">
             <tbody>
