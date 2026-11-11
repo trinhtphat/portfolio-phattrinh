@@ -1764,16 +1764,20 @@ table.lib-spec-table td {
   }
 }
 
-/* Detail Cover Well */
+/* Detail Cover Well & Frame */
 .lib-detail-cover-well {
   width: 100%;
   max-width: 520px;
+  margin-bottom: 16px;
+}
+
+.lib-detail-cover-frame {
+  width: 100%;
   aspect-ratio: 16 / 9;
   border-radius: 12px;
   overflow: hidden;
   background: #141822;
   border: 1px solid var(--rule-color);
-  margin-bottom: 16px;
 }
 
 .lib-detail-cover-img {
@@ -1783,13 +1787,17 @@ table.lib-spec-table td {
   display: block;
 }
 
-/* Section Storytelling Figures */
+/* Section Storytelling Figures & Frames */
 .lib-section-figure {
+  margin: 0 0 18px 0;
+  width: 100%;
+}
+
+.lib-figure-frame {
   width: 100%;
   aspect-ratio: 16 / 9;
   border-radius: 10px;
   overflow: hidden;
-  margin-bottom: 16px;
   background: var(--bg-surface, #141822);
   border: 1px solid var(--rule-color);
 }
@@ -1799,6 +1807,15 @@ table.lib-spec-table td {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.lib-figure-caption {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin-top: 8px;
+  padding: 0 2px;
+  font-style: italic;
 }
 
 /* Table of Contents Strip */

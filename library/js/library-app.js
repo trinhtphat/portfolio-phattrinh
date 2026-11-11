@@ -8,7 +8,7 @@ import {
   parseLibraryUrlState,
   buildLibraryUrlSearch,
   getRelatedEntries,
-} from './library-core.js?v=2.5.0';
+} from './library-core.js?v=2.6.0';
 
 export function mountLibraryApp(rootEl, options = {}) {
   if (!rootEl) throw new Error('mountLibraryApp requires a root DOM element');
@@ -469,12 +469,16 @@ export function mountLibraryApp(rootEl, options = {}) {
     const detailHeroSrc = entry.detailHeroImage || entry.coverImage;
     const detailHeroWebp = entry.detailHeroImageWebp || (entry.detailHeroImage ? null : entry.coverImageWebp);
     const detailHeroAlt = entry.detailHeroImageAlt ? loc(entry.detailHeroImageAlt) : titleText;
+    const detailHeroCaptionText = entry.detailHeroCaption ? loc(entry.detailHeroCaption) : '';
     const coverHtml = detailHeroSrc
       ? `<div class="lib-detail-cover-well">
-          <picture>
-            ${detailHeroWebp ? `<source srcset="${escapeHtml(detailHeroWebp)}" type="image/webp">` : ''}
-            <img src="${escapeHtml(detailHeroSrc)}" alt="${escapeHtml(detailHeroAlt)}" class="lib-detail-cover-img" width="1024" height="576" loading="eager">
-          </picture>
+          <div class="lib-detail-cover-frame">
+            <picture>
+              ${detailHeroWebp ? `<source srcset="${escapeHtml(detailHeroWebp)}" type="image/webp">` : ''}
+              <img src="${escapeHtml(detailHeroSrc)}" alt="${escapeHtml(detailHeroAlt)}" class="lib-detail-cover-img" width="1024" height="576" loading="eager">
+            </picture>
+          </div>
+          ${detailHeroCaptionText ? `<p class="lib-figure-caption">${escapeHtml(detailHeroCaptionText)}</p>` : ''}
         </div>`
       : (brand
           ? `<div class="lib-detail-logo-well"><img src="${escapeHtml(brand.logo)}" alt="${escapeHtml(brand.name)}"></div>`
@@ -617,6 +621,9 @@ export function mountLibraryApp(rootEl, options = {}) {
         `
         : '';
 
+    const originCaptionText = entry.originImageCaption ? loc(entry.originImageCaption) : '';
+    const productionCaptionText = entry.productionImageCaption ? loc(entry.productionImageCaption) : '';
+
     const heritageAndProductionHtml =
       originParagraphs.length || productionParagraphs.length
         ? `
@@ -628,12 +635,15 @@ export function mountLibraryApp(rootEl, options = {}) {
                   ${
                     entry.originImage
                       ? `
-                        <div class="lib-section-figure">
-                          <picture>
-                            ${entry.originImageWebp ? `<source srcset="${escapeHtml(entry.originImageWebp)}" type="image/webp">` : ''}
-                            <img src="${escapeHtml(entry.originImage)}" alt="${escapeHtml(loc(entry.originImageAlt || entry.imageAlt))}" class="lib-section-img" width="1024" height="576" loading="lazy">
-                          </picture>
-                        </div>
+                        <figure class="lib-section-figure">
+                          <div class="lib-figure-frame">
+                            <picture>
+                              ${entry.originImageWebp ? `<source srcset="${escapeHtml(entry.originImageWebp)}" type="image/webp">` : ''}
+                              <img src="${escapeHtml(entry.originImage)}" alt="${escapeHtml(loc(entry.originImageAlt || entry.imageAlt))}" class="lib-section-img" width="1024" height="576" loading="lazy">
+                            </picture>
+                          </div>
+                          ${originCaptionText ? `<figcaption class="lib-figure-caption">${escapeHtml(originCaptionText)}</figcaption>` : ''}
+                        </figure>
                       `
                       : ''
                   }
@@ -652,12 +662,15 @@ export function mountLibraryApp(rootEl, options = {}) {
                   ${
                     entry.productionImage
                       ? `
-                        <div class="lib-section-figure">
-                          <picture>
-                            ${entry.productionImageWebp ? `<source srcset="${escapeHtml(entry.productionImageWebp)}" type="image/webp">` : ''}
-                            <img src="${escapeHtml(entry.productionImage)}" alt="${escapeHtml(loc(entry.productionImageAlt || entry.imageAlt))}" class="lib-section-img" width="1024" height="576" loading="lazy">
-                          </picture>
-                        </div>
+                        <figure class="lib-section-figure">
+                          <div class="lib-figure-frame">
+                            <picture>
+                              ${entry.productionImageWebp ? `<source srcset="${escapeHtml(entry.productionImageWebp)}" type="image/webp">` : ''}
+                              <img src="${escapeHtml(entry.productionImage)}" alt="${escapeHtml(loc(entry.productionImageAlt || entry.imageAlt))}" class="lib-section-img" width="1024" height="576" loading="lazy">
+                            </picture>
+                          </div>
+                          ${productionCaptionText ? `<figcaption class="lib-figure-caption">${escapeHtml(productionCaptionText)}</figcaption>` : ''}
+                        </figure>
                       `
                       : ''
                   }

@@ -36,7 +36,7 @@ export const LIBRARY_META = {
     },
     origins: {
       en: 'Foundational modules on terroir, raw ingredients, and distillation for bartenders.',
-      vi: '6 chuyên đề cốt lõi về thổ nhưỡng, nguyên liệu và kỹ nghệ chưng cất cho bartender mới.',
+      vi: 'Các chuyên đề cốt lõi về thổ nhưỡng, nguyên liệu và kỹ nghệ chưng cất cho bartender mới.',
     },
     brands: {
       en: 'Heritage houses, signature expressions, and technical tasting specifications.',
@@ -231,6 +231,36 @@ export const LIBRARY_ENTRIES = [
     image: 'media/origins/01-brandy-cognac.png',
     coverImage: 'media/origins/01-brandy-cognac.png',
     coverImageWebp: 'media/origins/01-brandy-cognac.webp',
+    detailHeroImage: 'media/origins/cognac/hero.png',
+    detailHeroImageWebp: 'media/origins/cognac/hero.webp',
+    detailHeroImageAlt: {
+      vi: "Vườn nho và đất đá phấn vùng Charente — minh họa.",
+      en: "White grapes and chalk-rich vineyards in Charente",
+    },
+    detailHeroCaption: {
+      vi: "Vườn nho và đất đá phấn vùng Charente — minh họa.",
+      en: "White grapes and chalk-rich vineyards in Charente",
+    },
+    originImage: 'media/origins/cognac/origin.png',
+    originImageWebp: 'media/origins/cognac/origin.webp',
+    originImageAlt: {
+      vi: "Thu hoạch nho trắng trong vườn nho Charente — minh họa.",
+      en: "A grower hand-harvesting white grapes",
+    },
+    originImageCaption: {
+      vi: "Thu hoạch nho trắng trong vườn nho Charente — minh họa.",
+      en: "A grower hand-harvesting white grapes",
+    },
+    productionImage: 'media/origins/cognac/production.png',
+    productionImageWebp: 'media/origins/cognac/production.webp',
+    productionImageAlt: {
+      vi: "Nghề chưng cất Cognac với nồi đồng Charentais — minh họa nghệ thuật, không phải sơ đồ thiết bị.",
+      en: "A distiller beside a closed copper Charentais still",
+    },
+    productionImageCaption: {
+      vi: "Nghề chưng cất Cognac với nồi đồng Charentais — minh họa nghệ thuật, không phải sơ đồ thiết bị.",
+      en: "A distiller beside a closed copper Charentais still",
+    },
     imageAlt: {
       vi: 'Nồi chưng cất Cognac bằng đồng, nho trắng và thùng gỗ sồi',
       en: 'Copper Cognac still with white grapes and an oak barrel',
@@ -382,6 +412,36 @@ export const LIBRARY_ENTRIES = [
     image: 'media/origins/02-triple-sec-orange-liqueur.png',
     coverImage: 'media/origins/02-triple-sec-orange-liqueur.png',
     coverImageWebp: 'media/origins/02-triple-sec-orange-liqueur.webp',
+    detailHeroImage: 'media/origins/orange-liqueur/hero.png',
+    detailHeroImageWebp: 'media/origins/orange-liqueur/hero.webp',
+    detailHeroImageAlt: {
+      vi: "Cam và vỏ cam — nguyên liệu tạo hương cho rượu mùi cam.",
+      en: "Oranges and curling peel in a citrus grove",
+    },
+    detailHeroCaption: {
+      vi: "Cam và vỏ cam — nguyên liệu tạo hương cho rượu mùi cam.",
+      en: "Oranges and curling peel in a citrus grove",
+    },
+    originImage: 'media/origins/orange-liqueur/origin.png',
+    originImageWebp: 'media/origins/orange-liqueur/origin.webp',
+    originImageAlt: {
+      vi: "Tuyển chọn vỏ cam tươi và vỏ cam khô — minh họa nghề thủ công.",
+      en: "An artisan sorting fresh and dried orange peels",
+    },
+    originImageCaption: {
+      vi: "Tuyển chọn vỏ cam tươi và vỏ cam khô — minh họa nghề thủ công.",
+      en: "An artisan sorting fresh and dried orange peels",
+    },
+    productionImage: 'media/origins/orange-liqueur/production.png',
+    productionImageWebp: 'media/origins/orange-liqueur/production.webp',
+    productionImageAlt: {
+      vi: "Chuẩn bị vỏ cam cho chưng cất — minh họa một công đoạn sản xuất.",
+      en: "Loading orange peels into a copper distillation vessel",
+    },
+    productionImageCaption: {
+      vi: "Chuẩn bị vỏ cam cho chưng cất — minh họa một công đoạn sản xuất.",
+      en: "Loading orange peels into a copper distillation vessel",
+    },
     imageAlt: {
       vi: 'Cam đắng, vỏ cam và nồi chưng cất rượu mùi cam',
       en: 'Bitter orange, orange peel and an orange liqueur still',
@@ -515,6 +575,36 @@ export const LIBRARY_ENTRIES = [
     image: 'media/origins/03-gin-botanicals.png',
     coverImage: 'media/origins/03-gin-botanicals.png',
     coverImageWebp: 'media/origins/03-gin-botanicals.webp',
+    detailHeroImage: 'media/origins/gin/hero.png',
+    detailHeroImageWebp: 'media/origins/gin/hero.webp',
+    detailHeroImageAlt: {
+      vi: "Juniper và cảnh quan thảo mộc — minh họa.",
+      en: "Juniper branch overlooking a coastal meadow",
+    },
+    detailHeroCaption: {
+      vi: "Juniper và cảnh quan thảo mộc — minh họa.",
+      en: "Juniper branch overlooking a coastal meadow",
+    },
+    originImage: 'media/origins/gin/origin.png',
+    originImageWebp: 'media/origins/gin/origin.webp',
+    originImageAlt: {
+      vi: "Thu hái thảo mộc — minh họa nghề thủ công.",
+      en: "A forager gathering herbs into a basket",
+    },
+    originImageCaption: {
+      vi: "Thu hái thảo mộc — minh họa nghề thủ công.",
+      en: "A forager gathering herbs into a basket",
+    },
+    productionImage: 'media/origins/gin/production.png',
+    productionImageWebp: 'media/origins/gin/production.webp',
+    productionImageAlt: {
+      vi: "Vapor infusion — minh họa một phương pháp chiết xuất hương trong sản xuất Gin; không đại diện cho mọi loại Gin.",
+      en: "Illustrated gin vapor-infusion apparatus with a botanical basket",
+    },
+    productionImageCaption: {
+      vi: "Vapor infusion — minh họa một phương pháp chiết xuất hương trong sản xuất Gin; không đại diện cho mọi loại Gin.",
+      en: "Illustrated gin vapor-infusion apparatus with a botanical basket",
+    },
     imageAlt: {
       vi: 'Nồi chưng cất Gin cùng quả bách xù và các loại thảo mộc',
       en: 'Gin still surrounded by juniper berries and botanicals',
@@ -648,6 +738,36 @@ export const LIBRARY_ENTRIES = [
     image: 'media/origins/04-champagne-sparkling-wine.png',
     coverImage: 'media/origins/04-champagne-sparkling-wine.png',
     coverImageWebp: 'media/origins/04-champagne-sparkling-wine.webp',
+    detailHeroImage: 'media/origins/champagne/hero.png',
+    detailHeroImageWebp: 'media/origins/champagne/hero.webp',
+    detailHeroImageAlt: {
+      vi: "Vườn nho và thổ nhưỡng đá phấn vùng Champagne — minh họa.",
+      en: "Grapes and chalk-rich Champagne vineyards",
+    },
+    detailHeroCaption: {
+      vi: "Vườn nho và thổ nhưỡng đá phấn vùng Champagne — minh họa.",
+      en: "Grapes and chalk-rich Champagne vineyards",
+    },
+    originImage: 'media/origins/champagne/origin.png',
+    originImageWebp: 'media/origins/champagne/origin.webp',
+    originImageAlt: {
+      vi: "Thu hoạch nho nguyên chùm bằng tay — minh họa.",
+      en: "Hand-harvesting grapes in a Champagne vineyard",
+    },
+    originImageCaption: {
+      vi: "Thu hoạch nho nguyên chùm bằng tay — minh họa.",
+      en: "Hand-harvesting grapes in a Champagne vineyard",
+    },
+    productionImage: 'media/origins/champagne/production.png',
+    productionImageWebp: 'media/origins/champagne/production.webp',
+    productionImageAlt: {
+      vi: "Remuage: xoay chai nghiêng cổ xuống để gom cặn men — minh họa.",
+      en: "A cellar worker rotating sealed neck-down bottles on a riddling rack",
+    },
+    productionImageCaption: {
+      vi: "Remuage: xoay chai nghiêng cổ xuống để gom cặn men — minh họa.",
+      en: "A cellar worker rotating sealed neck-down bottles on a riddling rack",
+    },
     imageAlt: {
       vi: 'Chai vang sủi, nho trắng, bọt khí và lớp đất đá phấn',
       en: 'Sparkling wine bottle, white grapes, bubbles and chalk soil',
@@ -782,6 +902,36 @@ export const LIBRARY_ENTRIES = [
     image: 'media/origins/05-rum-sugarcane.png',
     coverImage: 'media/origins/05-rum-sugarcane.png',
     coverImageWebp: 'media/origins/05-rum-sugarcane.webp',
+    detailHeroImage: 'media/origins/rum/hero.png',
+    detailHeroImageWebp: 'media/origins/rum/hero.webp',
+    detailHeroImageAlt: {
+      vi: "Mía đường và cảnh quan Caribe — minh họa.",
+      en: "Cut sugarcane and a Caribbean distillery landscape",
+    },
+    detailHeroCaption: {
+      vi: "Mía đường và cảnh quan Caribe — minh họa.",
+      en: "Cut sugarcane and a Caribbean distillery landscape",
+    },
+    originImage: 'media/origins/rum/origin.png',
+    originImageWebp: 'media/origins/rum/origin.webp',
+    originImageAlt: {
+      vi: "Mía, nước mía và mật mía trong bối cảnh chế biến đường — minh họa; không phải mọi loại Rum đều dùng cùng nguyên liệu.",
+      en: "Cane pressing with juice collection and a separate bowl of molasses",
+    },
+    originImageCaption: {
+      vi: "Mía, nước mía và mật mía trong bối cảnh chế biến đường — minh họa; không phải mọi loại Rum đều dùng cùng nguyên liệu.",
+      en: "Cane pressing with juice collection and a separate bowl of molasses",
+    },
+    productionImage: 'media/origins/rum/production.png',
+    productionImageWebp: 'media/origins/rum/production.webp',
+    productionImageAlt: {
+      vi: "Nồi đồng và hai retort — minh họa thiết bị thường gặp trong một số truyền thống Rum, không phải sơ đồ kỹ thuật.",
+      en: "A rum pot still with two smaller retorts",
+    },
+    productionImageCaption: {
+      vi: "Nồi đồng và hai retort — minh họa thiết bị thường gặp trong một số truyền thống Rum, không phải sơ đồ kỹ thuật.",
+      en: "A rum pot still with two smaller retorts",
+    },
     imageAlt: {
       vi: 'Cây mía, mật mía và nồi chưng cất Rum bằng đồng',
       en: 'Sugarcane, molasses and a copper rum still',
@@ -915,6 +1065,36 @@ export const LIBRARY_ENTRIES = [
     image: 'media/origins/06-islay-single-malt.png',
     coverImage: 'media/origins/06-islay-single-malt.png',
     coverImageWebp: 'media/origins/06-islay-single-malt.webp',
+    detailHeroImage: 'media/origins/islay/hero.png',
+    detailHeroImageWebp: 'media/origins/islay/hero.webp',
+    detailHeroImageAlt: {
+      vi: "Lúa mạch và cảnh quan ven biển Islay — minh họa.",
+      en: "Barley fields and whitewashed Islay coastal warehouses",
+    },
+    detailHeroCaption: {
+      vi: "Lúa mạch và cảnh quan ven biển Islay — minh họa.",
+      en: "Barley fields and whitewashed Islay coastal warehouses",
+    },
+    originImage: 'media/origins/islay/origin.png',
+    originImageWebp: 'media/origins/islay/origin.webp',
+    originImageAlt: {
+      vi: "Nông nghiệp lúa mạch trên Islay — minh họa.",
+      en: "A farmer inspecting ripe barley beside an Islay bay",
+    },
+    originImageCaption: {
+      vi: "Nông nghiệp lúa mạch trên Islay — minh họa.",
+      en: "A farmer inspecting ripe barley beside an Islay bay",
+    },
+    productionImage: 'media/origins/islay/production.png',
+    productionImageWebp: 'media/origins/islay/production.webp',
+    productionImageAlt: {
+      vi: "Sấy malt bằng khói than bùn — minh họa riêng phương pháp peated; không phải mọi whisky Islay đều có khói.",
+      en: "A cutaway showing peat smoke passing through malt above a kiln fire",
+    },
+    productionImageCaption: {
+      vi: "Sấy malt bằng khói than bùn — minh họa riêng phương pháp peated; không phải mọi whisky Islay đều có khói.",
+      en: "A cutaway showing peat smoke passing through malt above a kiln fire",
+    },
     imageAlt: {
       vi: 'Nồi chưng cất Whisky, than bùn, lúa mạch và bờ biển Islay',
       en: 'Whisky still, peat, barley and the Islay coastline',
